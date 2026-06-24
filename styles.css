@@ -92,6 +92,48 @@ svg {
 }
 
 /* ── Hero ── */
+.video-banner {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 41.6667vw, 620px);
+  overflow: hidden;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: linear-gradient(180deg, rgba(24, 26, 31, 0.18), rgba(24, 26, 31, 0.48));
+  text-align: center;
+}
+
+.banner-overlay h1 {
+  margin: 0;
+  color: var(--paper);
+  text-shadow: 0 3px 22px rgba(0, 0, 0, 0.4);
+}
+
+.banner-title p {
+  margin: 14px 0 0;
+  color: var(--paper);
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 700;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
+}
+
 .hero {
   border-bottom: 1px solid var(--line);
 }
@@ -133,6 +175,14 @@ svg {
 }
 
 h1 {
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.hero-name {
   font-size: clamp(2.8rem, 6vw, 5.2rem);
   line-height: 0.96;
   letter-spacing: -0.02em;
@@ -215,11 +265,11 @@ p {
 /* ── Experience / Logo Row ── */
 .logo-grid-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 24px;
   align-items: center;
   padding-top: 16px;
-  max-width: 800px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
@@ -658,6 +708,10 @@ p {
 
 /* ── Responsive ── */
 @media (max-width: 860px) {
+  .video-banner {
+    height: clamp(260px, 50vw, 430px);
+  }
+
   .hero-inner,
   .project-hero,
   .project-layout {
@@ -690,8 +744,8 @@ p {
   }
 
   .logo-grid-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
   }
 
   /* Scale down the timeline proportionally on tablets */
@@ -706,6 +760,14 @@ p {
 }
 
 @media (max-width: 620px) {
+  .video-banner {
+    height: clamp(260px, 75vw, 380px);
+  }
+
+  .banner-overlay {
+    padding: 24px 18px;
+  }
+
   .nav {
     flex-direction: column;
     justify-content: center;
@@ -742,8 +804,12 @@ p {
   }
 
   .logo-grid-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .logo-item {
+    padding: 4px;
   }
 
   /* On mobile, compress the timeline height further */
@@ -756,7 +822,8 @@ p {
     font-size: 0.72rem;
   }
 
-  .tl-job-logo {
+  .tl-job-logo,
+  .tl-job-logo-placeholder {
     width: 32px;
     height: 32px;
   }
