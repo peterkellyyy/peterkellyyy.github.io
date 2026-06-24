@@ -268,6 +268,7 @@ p {
   grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 24px;
   align-items: center;
+  padding-bottom: 28px;
   padding-top: 16px;
   max-width: 980px;
   margin: 0 auto;
@@ -279,6 +280,7 @@ p {
   justify-content: center;
   aspect-ratio: 1 / 1;
   padding: 12px;
+  position: relative;
 }
 
 .logo-item img {
@@ -290,6 +292,28 @@ p {
 
 .logo-item img:hover {
   transform: scale(1.08);
+}
+
+.logo-label {
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  left: 50%;
+  line-height: 1.15;
+  margin-top: 10px;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  text-align: center;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.logo-item:hover .logo-label,
+.logo-item:focus-within .logo-label {
+  opacity: 1;
 }
 
 /* ── Centered Proportional Dual-Sided Timeline ── */
@@ -498,7 +522,7 @@ p {
   flex-direction: column;
 }
 
-.tl-role::before {
+.tl-promotion .tl-role::before {
   content: "";
   position: absolute;
   left: -19px;
@@ -507,7 +531,7 @@ p {
   height: 8px;
   border-radius: 50%;
   background: var(--paper);
-  border: 2px solid var(--accent);
+  border: 2px solid var(--tl-color, var(--accent));
 }
 
 /* ── Project Grid ── */
@@ -834,5 +858,146 @@ p {
 
   .tl-job-date {
     font-size: 0.68rem;
+  }
+}
+
+/* Data-generated timeline */
+.timeline-scroll {
+  margin-top: 64px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 28px 0 34px;
+}
+
+.timeline-scroll .timeline-wrap {
+  height: auto;
+  margin: 0 auto;
+  max-width: none;
+  min-width: 980px;
+  width: 980px;
+}
+
+.timeline-loading {
+  color: var(--muted);
+  margin: 0;
+  text-align: center;
+}
+
+.timeline-scroll .tl-line {
+  z-index: 0;
+}
+
+.timeline-scroll .tl-year {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  left: 50%;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.timeline-scroll .tl-year-top {
+  top: -22px;
+}
+
+.timeline-scroll .tl-year-bottom {
+  bottom: -22px;
+  top: auto;
+  transform: translateX(-50%);
+}
+
+.timeline-scroll .tl-cylinder {
+  background: var(--tl-color, var(--accent));
+  width: 12px;
+  z-index: 2;
+}
+
+.timeline-scroll .tl-milestone {
+  max-width: 360px;
+  padding-right: 42px;
+  width: 42%;
+  z-index: 5;
+}
+
+.timeline-scroll .tl-milestone::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 42px;
+  height: 2px;
+  background: var(--line);
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.timeline-scroll .tl-milestone-dot {
+  border-color: var(--accent);
+  height: 14px;
+  right: -7px;
+  width: 14px;
+  z-index: 6;
+}
+
+.timeline-scroll .tl-milestone-content {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
+  padding: 9px 11px;
+  position: relative;
+  z-index: 5;
+}
+
+.timeline-scroll .tl-job {
+  max-width: 430px;
+  padding-left: 42px;
+  width: 45%;
+  z-index: 5;
+}
+
+.timeline-scroll .tl-job-connector {
+  background: var(--tl-color, var(--line));
+  width: 42px;
+  z-index: 3;
+}
+
+.timeline-scroll .tl-job-content {
+  align-items: flex-start;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
+  gap: 14px;
+  padding: 12px 14px;
+}
+
+.timeline-scroll .tl-job-logo {
+  height: 46px;
+  width: 46px;
+}
+
+.timeline-scroll .tl-job-company {
+  margin-bottom: 7px;
+}
+
+.timeline-scroll .tl-job-title {
+  font-size: 0.9rem;
+}
+
+.timeline-scroll .tl-job-date {
+  font-size: 0.69rem;
+}
+
+@media (max-width: 620px) {
+  .timeline-scroll {
+    margin-left: -18px;
+    margin-right: -18px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }

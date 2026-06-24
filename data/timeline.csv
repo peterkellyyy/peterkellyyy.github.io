@@ -1,0 +1,14 @@
+type,group,company,title,start,end,date,logo,color
+job,berkshire-grey,Berkshire Grey,Principal Mechanical R&D Engineer,2026-04-01,present,,logos/Berkshire Grey.png,#1D5FDB
+job,berkshire-grey,Berkshire Grey,Senior Mechanical R&D Engineer,2024-10-01,2026-04-01,,logos/Berkshire Grey.png,#1D5FDB
+job,markforged,Markforged,Research and Development Engineer II,2022-04-01,2024-09-01,,logos/Markforged.png,#111111
+job,markforged,Markforged,Research and Development Engineer I,2021-06-01,2022-04-01,,logos/Markforged.png,#111111
+job,siliconsynapse,NEU SiliconSynapse Lab,Graduate Research Assistant,2020-01-01,2021-06-01,,logos/SiliconSynapse Lab.png,#CC0000
+job,morse,MORSE Corp,Mechanical Engineering Co-op,2019-01-01,2019-07-01,,logos/MORSE.png,#005EB8
+job,irobot,iRobot,R&D Robotics Engineering Co-op,2018-01-01,2018-07-01,,logos/iRobot.png,#6DB33F
+job,sikorsky,Sikorsky Aircraft,Propulsion Engineering Co-op,2017-01-01,2017-09-01,,logos/Sikorsky.png,#005EB8
+event,patents,,Patents Submitted (BG End Effectors),,,2025-07-01,,
+event,fx10,,FX10 Print Head Development,,,2023-06-01,,
+event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,
+event,bachelors,,B.S. Mechanical Engineering,,,2019-12-01,,
+event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,
