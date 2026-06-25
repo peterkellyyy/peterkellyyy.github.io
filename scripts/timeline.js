@@ -3,30 +3,32 @@
   if (!mount) return;
 
   const source = mount.dataset.source || "data/timeline.csv";
-  const fallbackCsv = `type,group,company,title,start,end,date,logo,color,url,description,related
-job,berkshire-grey,Berkshire Grey,Principal Mechanical R&D Engineer,2026-04-01,present,,logos/Berkshire Grey.png,#1D5FDB,,"Leading R&D mechanical engineering for robotic manipulation, end effectors, and hardware for embodied intelligence.",
-job,berkshire-grey,Berkshire Grey,Senior Mechanical R&D Engineer,2024-10-01,2026-04-01,,logos/Berkshire Grey.png,#1D5FDB,,"Developed and validated high-performance robotic mechanisms from early concepts through production-ready hardware.",
-job,markforged,Markforged,Research and Development Engineer II,2022-04-01,2024-09-01,,logos/Markforged.png,#111111,,"Developed advanced additive-manufacturing hardware, reinforced-part processes, and next-generation mechanical systems.",
-job,markforged,Markforged,Research and Development Engineer I,2021-06-01,2022-04-01,,logos/Markforged.png,#111111,,"Designed, prototyped, and tested mechanical subsystems supporting reinforced additive-manufacturing platforms.",
-job,siliconsynapse,NEU SiliconSynapse Lab,Graduate Research Assistant,2020-01-01,2021-06-01,,logos/SiliconSynapse Lab.png,#93A7AC,,"Researched bio-inspired robotics, computational mechanism design, and legged robotic systems.",
-job,morse,MORSE Corp,Mechanical Engineering Co-op,2019-01-01,2019-07-01,,logos/MORSE.png,#005EB8,,"Supported mechanical design, rapid prototyping, integration, and testing for advanced engineering programs.",
-job,irobot,iRobot,R&D Robotics Engineering Co-op,2018-01-01,2018-07-01,,logos/iRobot.png,#6DB33F,,"Designed and tested robotic mechanisms and prototype hardware for consumer robotics R&D.",
-job,sikorsky,Sikorsky Aircraft,Propulsion Engineering Co-op,2017-01-01,2017-09-01,,logos/Sikorsky.png,#005EB8,,"Supported propulsion-system mechanical engineering through design analysis, documentation, and hardware evaluation.",
-patent,thermoset-injection,,Thermoset Injection into Fused Filament Fabrication Parts with Discontinuous and/or Continuous Reinforcement,,,2024-04-01,,,https://patents.google.com/patent/US12539664B2/en,,markforged:2022-04-01
-patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcement,,,2023-10-01,,,https://patents.google.com/patent/US20240140042A1/en,,markforged:2022-04-01
-patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01
-publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement,,,2023-05-01,,,,,markforged:2022-04-01
-publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion,,,2021-10-01,,,,,markforged:2021-06-01
-event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,
-publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,,,siliconsynapse:2020-01-01
-publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,,,siliconsynapse:2020-01-01
-event,bachelors,,B.S. Mechanical Engineering,,,2019-12-01,,,,,
-event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
+  const fallbackCsv = `type,group,company,title,start,end,date,logo,color,url,description,related,route_lane
+job,berkshire-grey,Berkshire Grey,Principal Mechanical R&D Engineer,2026-04-01,present,,logos/Berkshire Grey.png,#1D5FDB,,"Leading R&D mechanical engineering for robotic manipulation, end effectors, and hardware for embodied intelligence.",,0
+job,berkshire-grey,Berkshire Grey,Senior Mechanical R&D Engineer,2024-10-01,2026-04-01,,logos/Berkshire Grey.png,#1D5FDB,,"Developed and validated high-performance robotic mechanisms from early concepts through production-ready hardware.",,0
+job,markforged,Markforged,Research and Development Engineer II,2022-04-01,2024-09-01,,logos/Markforged.png,#111111,,"Developed advanced additive-manufacturing hardware, reinforced-part processes, and next-generation mechanical systems.",,0
+job,markforged,Markforged,Research and Development Engineer I,2021-06-01,2022-04-01,,logos/Markforged.png,#111111,,"Designed, prototyped, and tested mechanical subsystems supporting reinforced additive-manufacturing platforms.",,0
+job,siliconsynapse,NEU SiliconSynapse Lab,Graduate Research Assistant,2020-01-01,2021-06-01,,logos/SiliconSynapse Lab.png,#93A7AC,,"Researched bio-inspired robotics, computational mechanism design, and legged robotic systems.",,0
+job,morse,MORSE Corp,Mechanical Engineering Co-op,2019-01-01,2019-07-01,,logos/MORSE.png,#005EB8,,"Supported mechanical design, rapid prototyping, integration, and testing for advanced engineering programs.",,0
+job,irobot,iRobot,R&D Robotics Engineering Co-op,2018-01-01,2018-07-01,,logos/iRobot.png,#6DB33F,,"Designed and tested robotic mechanisms and prototype hardware for consumer robotics R&D.",,1
+job,sikorsky,Sikorsky Aircraft,Propulsion Engineering Co-op,2017-01-01,2017-09-01,,logos/Sikorsky.png,#005EB8,,"Supported propulsion-system mechanical engineering through design analysis, documentation, and hardware evaluation.",,0
+patent,thermoset-injection,,Thermoset Injection into Fused Filament Fabrication Parts with Discontinuous and/or Continuous Reinforcement,,,2024-04-01,,,https://patents.google.com/patent/US12539664B2/en,,markforged:2022-04-01,8
+patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcement,,,2023-10-01,,,https://patents.google.com/patent/US20240140042A1/en,,markforged:2022-04-01,7
+patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01,6
+publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement in Additively Manufactured Parts via Co-Part Assembly,,,2023-05-01,,,https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf,,markforged:2022-04-01,5
+publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion and Moisture Absorption on the Dimensional Accuracy of Carbon-Reinforced 3D Printed Parts,,,2021-10-01,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC8587952/pdf/polymers-13-03637.pdf,,markforged:2021-06-01,4
+event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,,markforged:3|siliconsynapse:5|default:3
+publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,https://arxiv.org/pdf/2104.05834,,siliconsynapse:2020-01-01,4
+publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,https://par.nsf.gov/servlets/purl/10194913,,siliconsynapse:2020-01-01,3
+event,bachelors,,B.S. Mechanical Engineering,,,2019-12-01,,,,,,2
+event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
   const pxPerYear = 120;
   const minHeight = 1200;
   const padDays = 120;
   const dayMs = 24 * 60 * 60 * 1000;
   let cardResizeObserver;
+  let layoutFrame;
+  let traceAnimationFrame;
 
   const parseCsv = (text) => {
     const rows = [];
@@ -90,11 +92,36 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
 
   const normalizeColor = (value) => (/^#[0-9a-f]{6}$/i.test(value) ? value : "#0f766e");
   const normalizeUrl = (value) => (/^https:\/\/[^\s]+$/i.test(value) ? value : "");
+  const resolveRouteLane = (value, group) => {
+    if (/^\d+$/.test(value)) return Number(value);
+    const entries = value.split("|").map((entry) => entry.split(":"));
+    const match = entries.find(([key]) => key === group)
+      || entries.find(([key]) => key === "default");
+    return match && /^\d+$/.test(match[1]) ? Number(match[1]) : 0;
+  };
 
   const centerTimeline = () => {
     const scroller = mount.closest(".timeline-scroll");
     if (!scroller || scroller.scrollWidth <= scroller.clientWidth) return;
     scroller.scrollLeft = (scroller.scrollWidth - scroller.clientWidth) / 2;
+  };
+
+  const fitTimelineToViewport = () => {
+    const scroller = mount.closest(".timeline-scroll");
+    if (!scroller) return;
+
+    if (window.matchMedia("(max-width: 620px)").matches) {
+      const availableWidth = Math.max(0, scroller.clientWidth - 36);
+      const scale = Math.min(1, availableWidth / mount.offsetWidth);
+      mount.style.setProperty("--timeline-scale", scale.toFixed(4));
+      scroller.style.height = `${Math.ceil(mount.offsetHeight * scale + 62)}px`;
+      scroller.scrollLeft = 0;
+      return;
+    }
+
+    mount.style.removeProperty("--timeline-scale");
+    scroller.style.removeProperty("height");
+    centerTimeline();
   };
 
   const placeTimelineItems = (elements, gap = 18) => {
@@ -131,67 +158,6 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
     });
   };
 
-  const segmentsIntersect = (first, second) => {
-    const [a, b] = first;
-    const [c, d] = second;
-    const firstVertical = a.x === b.x;
-    const secondVertical = c.x === d.x;
-
-    if (firstVertical === secondVertical) return false;
-
-    const vertical = firstVertical ? first : second;
-    const horizontal = firstVertical ? second : first;
-    const x = vertical[0].x;
-    const y = horizontal[0].y;
-    const withinVertical = y > Math.min(vertical[0].y, vertical[1].y)
-      && y < Math.max(vertical[0].y, vertical[1].y);
-    const withinHorizontal = x > Math.min(horizontal[0].x, horizontal[1].x)
-      && x < Math.max(horizontal[0].x, horizontal[1].x);
-
-    return withinVertical && withinHorizontal;
-  };
-
-  const segmentClearance = (first, second) => {
-    const [a, b] = first;
-    const [c, d] = second;
-    const firstVertical = a.x === b.x;
-    const secondVertical = c.x === d.x;
-
-    if (firstVertical && secondVertical) {
-      const overlap = Math.min(Math.max(a.y, b.y), Math.max(c.y, d.y))
-        - Math.max(Math.min(a.y, b.y), Math.min(c.y, d.y));
-      return overlap > 0 ? Math.abs(a.x - c.x) : Number.POSITIVE_INFINITY;
-    }
-
-    if (!firstVertical && !secondVertical) {
-      const overlap = Math.min(Math.max(a.x, b.x), Math.max(c.x, d.x))
-        - Math.max(Math.min(a.x, b.x), Math.min(c.x, d.x));
-      return overlap > 0 ? Math.abs(a.y - c.y) : Number.POSITIVE_INFINITY;
-    }
-
-    const vertical = firstVertical ? first : second;
-    const horizontal = firstVertical ? second : first;
-    const xDistance = Math.max(
-      Math.min(horizontal[0].x, horizontal[1].x) - vertical[0].x,
-      vertical[0].x - Math.max(horizontal[0].x, horizontal[1].x),
-      0
-    );
-    const yDistance = Math.max(
-      Math.min(vertical[0].y, vertical[1].y) - horizontal[0].y,
-      horizontal[0].y - Math.max(vertical[0].y, vertical[1].y),
-      0
-    );
-    return Math.hypot(xDistance, yDistance);
-  };
-
-  const permutations = (values) => {
-    if (values.length <= 1) return [values];
-    return values.flatMap((value, index) =>
-      permutations([...values.slice(0, index), ...values.slice(index + 1)])
-        .map((rest) => [value, ...rest])
-    );
-  };
-
   const roundedPath = (points, radius = 7) => {
     let path = `M ${points[0].x} ${points[0].y}`;
 
@@ -216,81 +182,104 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
     return `${path} L ${last.x} ${last.y}`;
   };
 
-  const routeDocumentTraces = (documents) => {
+  const routeAllTraces = (elements) => {
     const layer = mount.querySelector(".tl-traces");
     if (!layer) return;
     layer.replaceChildren();
     layer.setAttribute("viewBox", `0 0 ${mount.clientWidth} ${mount.clientHeight}`);
     layer.setAttribute("preserveAspectRatio", "none");
-    if (!documents.length) return;
+    if (!elements.length) return;
 
     const mountRect = mount.getBoundingClientRect();
+    const scale = Number(getComputedStyle(mount).getPropertyValue("--timeline-scale")) || 1;
     const centerX = mount.clientWidth / 2;
-    const routes = documents.map((element) => {
-      const cardRect = element.querySelector(".tl-milestone-content").getBoundingClientRect();
-      const cardX = cardRect.right - mountRect.left;
-      const cardY = cardRect.top + cardRect.height / 2 - mountRect.top;
+    const activeGroup = mount.dataset.activeGroup || "";
+    const routes = elements.map((element) => {
+      const isJob = element.classList.contains("tl-job");
+      const isLeft = !isJob || element.classList.contains("tl-job-left");
+      const card = element.querySelector(isJob ? ".tl-job-content" : ".tl-milestone-content");
+      const cardRect = card.getBoundingClientRect();
+      const cardX = ((isLeft ? cardRect.right : cardRect.left) - mountRect.left) / scale;
+      const cardY = (cardRect.top + cardRect.height / 2 - mountRect.top) / scale;
       const anchorY = Number(element.dataset.anchorRatio) * mount.clientHeight;
-      return { element, cardX, cardY, anchorY };
+      const lane = resolveRouteLane(element.dataset.routeLane || "", activeGroup);
+      const styles = getComputedStyle(element);
+      const color = isJob
+        ? styles.getPropertyValue("--tl-color").trim()
+        : styles.getPropertyValue("--trace-color").trim();
+      return { element, cardX, cardY, anchorY, lane, isJob, isLeft, color };
     });
-    const lanePitch = 16;
-    const nearestLane = centerX - 30;
-    const idealFarthestLane = nearestLane - (routes.length - 1) * lanePitch;
-    const cardClearance = Math.max(...routes.map((route) => route.cardX)) + 20;
-    const farthestLane = Math.max(cardClearance, idealFarthestLane);
-    const actualPitch = routes.length > 1
-      ? (nearestLane - farthestLane) / (routes.length - 1)
-      : 0;
-    const lanes = routes.map((_, index) => nearestLane - index * actualPitch);
-    let best = { score: Number.POSITIVE_INFINITY, lanes };
+    const lanePitch = 18;
 
-    permutations(lanes).forEach((candidate) => {
-      const routeSegments = routes.map((route, index) => [
-        [{ x: route.cardX, y: route.cardY }, { x: candidate[index], y: route.cardY }],
-        [{ x: candidate[index], y: route.cardY }, { x: candidate[index], y: route.anchorY }],
-        [{ x: candidate[index], y: route.anchorY }, { x: centerX, y: route.anchorY }],
-      ]);
-      let score = 0;
-
-      for (let first = 0; first < routeSegments.length; first += 1) {
-        for (let second = first + 1; second < routeSegments.length; second += 1) {
-          routeSegments[first].forEach((a) => {
-            routeSegments[second].forEach((b) => {
-              if (segmentsIntersect(a, b)) score += 1000;
-              const clearance = segmentClearance(a, b);
-              if (clearance < 14) score += (14 - clearance) * 0.2;
-            });
-          });
-        }
-      }
-
-      candidate.forEach((lane, index) => {
-        score += Math.abs(lane - lanes[index]) * 0.002;
-      });
-
-      if (score < best.score) best = { score, lanes: candidate };
-    });
-
-    routes.forEach((route, index) => {
-      const laneX = best.lanes[index];
+    routes.forEach((route) => {
+      const direction = route.isLeft ? -1 : 1;
+      const laneX = centerX + direction * (30 + route.lane * lanePitch);
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute("d", roundedPath([
         { x: route.cardX, y: route.cardY },
         { x: laneX, y: route.cardY },
         { x: laneX, y: route.anchorY },
         { x: centerX, y: route.anchorY },
-      ]));
-      path.setAttribute("class", `tl-trace tl-trace-${route.element.dataset.documentType}`);
+      ], 6));
+      const traceType = route.isJob ? "job" : (route.element.dataset.documentType || "event");
+      path.setAttribute("class", `tl-trace tl-trace-${traceType}`);
+      path.setAttribute("stroke", route.color || "#d9dde3");
       layer.appendChild(path);
+
+      const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      dot.setAttribute("cx", centerX);
+      dot.setAttribute("cy", route.anchorY);
+      dot.setAttribute("r", "6");
+      dot.setAttribute("class", `tl-trace-dot tl-trace-dot-${traceType}`);
+      dot.setAttribute("stroke", route.color || "#d9dde3");
+      layer.appendChild(dot);
+    });
+  };
+
+  const animateTraceRouting = () => {
+    const startedAt = performance.now();
+    if (traceAnimationFrame) cancelAnimationFrame(traceAnimationFrame);
+
+    const update = (now) => {
+      routeAllTraces([
+        ...mount.querySelectorAll(".tl-job"),
+        ...mount.querySelectorAll(".tl-milestone-svg:not([hidden])"),
+      ]);
+      if (now - startedAt < 430) {
+        traceAnimationFrame = requestAnimationFrame(update);
+      } else {
+        traceAnimationFrame = null;
+      }
+    };
+
+    traceAnimationFrame = requestAnimationFrame(update);
+  };
+
+  const scheduleTimelineLayout = () => {
+    if (layoutFrame) cancelAnimationFrame(layoutFrame);
+    layoutFrame = requestAnimationFrame(() => {
+      layoutFrame = null;
+      layoutTimeline();
     });
   };
 
   const layoutTimeline = () => {
     const rightItems = [...mount.querySelectorAll(".tl-job:not(.tl-job-left)")];
-    const straightItems = [...mount.querySelectorAll(".tl-milestone-straight:not([hidden])")];
-    const leftItems = [...mount.querySelectorAll(".tl-milestone:not([hidden]):not(.tl-milestone-straight), .tl-job-left")];
-    const visibleDocuments = [...mount.querySelectorAll(".tl-milestone-document:not([hidden])")]
-      .sort((a, b) => Number(a.dataset.anchorRatio) - Number(b.dataset.anchorRatio));
+    const masters = mount.querySelector('.tl-milestone[data-event-key="masters"]');
+    const routeMasters = ["markforged", "siliconsynapse"].includes(mount.dataset.activeGroup);
+    const straightItems = [
+      ...mount.querySelectorAll(".tl-milestone-straight:not([hidden])"),
+      ...(masters && !routeMasters ? [masters] : []),
+    ];
+    const leftItems = [
+      ...mount.querySelectorAll('.tl-milestone:not([hidden]):not(.tl-milestone-straight):not([data-event-key="masters"]), .tl-job-left'),
+      ...(masters && routeMasters ? [masters] : []),
+    ];
+    const routedMilestones = [...leftItems, ...straightItems]
+      .filter((item) => item.matches(".tl-milestone-svg:not([hidden])"));
+    const maxLane = routedMilestones.reduce((maximum, item) =>
+      Math.max(maximum, resolveRouteLane(item.dataset.routeLane || "", mount.dataset.activeGroup || "")), 0);
+    mount.style.setProperty("--document-trace-gutter", `${Math.max(116, 48 + (maxLane + 1) * 18)}px`);
     const requiredHeight = (items) =>
       items.reduce((total, element) => total + element.offsetHeight, 0)
       + Math.max(0, items.length - 1) * 24
@@ -298,7 +287,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
     const baseHeight = Number(mount.dataset.baseHeight);
 
     if (!baseHeight) {
-      centerTimeline();
+      fitTimelineToViewport();
       return;
     }
 
@@ -311,8 +300,8 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
       item.style.setProperty("--connector-top", "0px");
       item.style.setProperty("--connector-height", "0px");
     });
-    routeDocumentTraces(visibleDocuments);
-    centerTimeline();
+    routeAllTraces([...rightItems, ...leftItems, ...straightItems]);
+    fitTimelineToViewport();
   };
 
   const render = (rows) => {
@@ -391,9 +380,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
         "beforeend",
         `<div class="tl-cylinder" style="--tl-color:${color};top:${cylinderTop.toFixed(4)}%;height:${cylinderHeight.toFixed(4)}%"></div>
         ${promotionMarkers}
-        <div class="tl-job${sideClass}" data-group="${escapeHtml(primary.group)}" data-anchor-ratio="${anchorRatio.toFixed(6)}" style="--tl-color:${color};top:${topFor(center).toFixed(4)}%">
-          <div class="tl-job-connector"></div>
-          <div class="tl-job-dot"></div>
+        <div class="tl-job tl-job-svg${sideClass}" data-group="${escapeHtml(primary.group)}" data-route-lane="${escapeHtml(primary.route_lane || "0")}" data-anchor-ratio="${anchorRatio.toFixed(6)}" style="--tl-color:${color};top:${topFor(center).toFixed(4)}%">
           <div class="tl-job-content">
             <button class="tl-job-toggle" type="button" aria-expanded="false">
               <span class="tl-job-summary">
@@ -426,22 +413,21 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
       const anchorRatio = topFor(event.eventDate) / 100;
       mount.insertAdjacentHTML(
         "beforeend",
-        `<div class="tl-milestone${isDocument ? ` tl-milestone-document tl-milestone-${event.type}` : ""}${isStraight ? " tl-milestone-straight" : ""}" ${isDocument ? `hidden data-document-type="${event.type}" data-related-group="${escapeHtml(relatedGroup)}"` : `data-event-key="${escapeHtml(event.group)}"`} data-anchor-ratio="${anchorRatio.toFixed(6)}" style="top:${topFor(event.eventDate).toFixed(4)}%">
+        `<div class="tl-milestone tl-milestone-svg${isDocument ? ` tl-milestone-document tl-milestone-${event.type}` : ""}${isStraight ? " tl-milestone-straight" : ""}" ${isDocument ? `hidden data-document-type="${event.type}" data-related-group="${escapeHtml(relatedGroup)}"` : `data-event-key="${escapeHtml(event.group)}"`} data-route-lane="${escapeHtml(event.route_lane || "0")}" data-anchor-ratio="${anchorRatio.toFixed(6)}" style="top:${topFor(event.eventDate).toFixed(4)}%">
           ${contentOpen}
             ${isDocument ? `<span class="tl-m-type">${eventType}</span>` : ""}
             <span class="tl-m-label">${escapeHtml(event.title)}</span>
             <span class="tl-m-year">${formatDate(event.eventDate)}</span>
           ${contentClose}
-          <div class="tl-milestone-dot"></div>
         </div>`
       );
     });
 
-    requestAnimationFrame(layoutTimeline);
-    if (document.fonts) document.fonts.ready.then(layoutTimeline);
+    scheduleTimelineLayout();
+    if (document.fonts) document.fonts.ready.then(scheduleTimelineLayout);
     if ("ResizeObserver" in window) {
       if (cardResizeObserver) cardResizeObserver.disconnect();
-      cardResizeObserver = new ResizeObserver(() => requestAnimationFrame(layoutTimeline));
+      cardResizeObserver = new ResizeObserver(scheduleTimelineLayout);
       mount.querySelectorAll(".tl-job-content").forEach((card) => cardResizeObserver.observe(card));
     }
 
@@ -486,10 +472,11 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,`;
       });
     }
 
-    requestAnimationFrame(layoutTimeline);
+    scheduleTimelineLayout();
+    animateTraceRouting();
   };
 
-  window.addEventListener("resize", layoutTimeline);
+  window.addEventListener("resize", scheduleTimelineLayout);
   mount.addEventListener("click", (event) => {
     const card = event.target.closest(".tl-job-content");
     if (!card) return;

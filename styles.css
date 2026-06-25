@@ -135,10 +135,11 @@ svg {
 }
 
 .hero {
-  border-bottom: 1px solid var(--line);
+  padding-bottom: 74px;
 }
 
 .hero-inner,
+.experience-inner,
 .section,
 .project-main {
   margin: 0 auto;
@@ -170,6 +171,7 @@ svg {
 }
 
 .summary-contact {
+  align-items: center;
   border-top: 1px solid var(--line);
   display: flex;
   flex-wrap: wrap;
@@ -187,6 +189,27 @@ svg {
 
 .summary-contact a:hover {
   color: var(--accent);
+}
+
+.summary-contact .linkedin-button {
+  align-items: center;
+  background: #0a66c2;
+  border-radius: 3px;
+  color: var(--paper);
+  display: inline-flex;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  height: 28px;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.2s ease;
+  width: 28px;
+}
+
+.summary-contact .linkedin-button:hover {
+  background: #004182;
+  color: var(--paper);
 }
 
 h1 {
@@ -229,14 +252,20 @@ p {
 }
 
 /* ── Experience / Logo Row ── */
+.experience-title {
+  font-size: 1.8rem;
+  margin: 0 auto 18px;
+  max-width: 780px;
+}
+
 .logo-grid-row {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 24px;
+  gap: 6px;
   align-items: center;
   padding-bottom: 8px;
   padding-top: 4px;
-  max-width: 980px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
@@ -356,18 +385,6 @@ p {
   transform: translateY(-50%);
 }
 
-.tl-milestone-dot {
-  position: absolute;
-  right: -6px;          /* straddle the center line */
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--paper);
-  border: 2px solid var(--muted);
-  z-index: 2; /* raised above cylinders */
-  flex-shrink: 0;
-}
-
 .tl-milestone-content {
   text-align: right;
 }
@@ -395,17 +412,6 @@ p {
   display: flex;
   align-items: center;
   transform: translateY(-50%);
-}
-
-.tl-job-connector {
-  position: absolute;
-  left: 0;
-  width: 36px;
-  height: 2px;
-  background: var(--line);
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 0;
 }
 
 .tl-job-content {
@@ -761,7 +767,7 @@ p {
 
   .logo-grid-row {
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
+    gap: 8px;
   }
 
   /* Scale down the timeline proportionally on tablets */
@@ -803,6 +809,7 @@ p {
   }
 
   .hero-inner,
+  .experience-inner,
   .section,
   .project-main {
     padding-left: 18px;
@@ -820,7 +827,7 @@ p {
   }
 
   .logo-grid-row {
-    gap: 6px 16px;
+    gap: 6px 8px;
     grid-template-columns: repeat(3, 88px);
     justify-content: center;
   }
@@ -962,16 +969,6 @@ p {
   z-index: 4;
 }
 
-.timeline-scroll .tl-milestone-dot {
-  border-color: var(--trace-color);
-  height: 14px;
-  right: -7px;
-  top: calc(50% + var(--anchor-offset, 0px));
-  transform: translateY(-50%);
-  width: 14px;
-  z-index: 6;
-}
-
 .timeline-scroll .tl-milestone-content {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -982,9 +979,18 @@ p {
   z-index: 5;
 }
 
+.timeline-scroll .tl-milestone-svg {
+  background: none;
+}
+
+.timeline-scroll .tl-milestone-svg::before,
+.timeline-scroll .tl-milestone-svg::after {
+  display: none;
+}
+
 .timeline-scroll .tl-milestone-document {
-  --trace-gutter: 116px;
-  max-width: 452px;
+  --trace-gutter: var(--document-trace-gutter, 116px);
+  max-width: calc(336px + var(--document-trace-gutter, 116px));
 }
 
 .timeline-scroll .tl-milestone-patent {
@@ -993,15 +999,6 @@ p {
 
 .timeline-scroll .tl-milestone-publication {
   --trace-color: #70b77e;
-}
-
-.timeline-scroll .tl-milestone-document {
-  background: none;
-}
-
-.timeline-scroll .tl-milestone-document::before,
-.timeline-scroll .tl-milestone-document::after {
-  display: none;
 }
 
 .timeline-scroll .tl-traces {
@@ -1021,12 +1018,21 @@ p {
   stroke-width: 2;
 }
 
+.timeline-scroll .tl-trace-dot {
+  fill: var(--paper);
+  stroke-width: 3;
+}
+
 .timeline-scroll .tl-trace-patent {
   stroke: #2563eb;
 }
 
 .timeline-scroll .tl-trace-publication {
   stroke: #70b77e;
+}
+
+.timeline-scroll .tl-trace-event {
+  stroke: var(--line);
 }
 
 .timeline-scroll .tl-milestone-document .tl-milestone-content {
@@ -1045,12 +1051,20 @@ p {
 }
 
 .timeline-scroll .tl-milestone-link {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .timeline-scroll .tl-milestone-link:hover {
   border-color: color-mix(in srgb, var(--trace-color) 72%, #000000);
-  box-shadow: 0 5px 20px rgba(24, 26, 31, 0.12);
+  background: color-mix(in srgb, var(--trace-color) 7%, var(--paper));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--trace-color) 72%, #000000),
+    0 6px 22px rgba(24, 26, 31, 0.16);
+}
+
+.timeline-scroll .tl-milestone[data-event-key="masters"] {
+  --trace-gutter: 42px;
+  max-width: 360px;
 }
 
 .timeline-scroll .timeline-wrap[data-active-group="siliconsynapse"] .tl-milestone[data-event-key="masters"] {
@@ -1081,72 +1095,12 @@ p {
   z-index: 5;
 }
 
-.timeline-scroll .tl-job-connector {
-  background: linear-gradient(var(--tl-color, var(--line)), var(--tl-color, var(--line))) right center / 22px 2px no-repeat;
-  width: 42px;
-  z-index: 3;
-}
-
-.timeline-scroll .tl-job-connector::before {
-  background: var(--tl-color, var(--line));
-  content: "";
-  height: var(--connector-height, 0);
-  left: 20px;
-  position: absolute;
-  top: var(--connector-top, 0);
-  width: 2px;
-}
-
-.timeline-scroll .tl-job-connector::after {
-  background: var(--tl-color, var(--line));
-  content: "";
-  height: 2px;
-  left: 0;
-  position: absolute;
-  top: var(--anchor-offset, 0);
-  width: 20px;
-}
-
-.timeline-scroll .tl-job-dot {
-  background: var(--paper);
-  border: 3px solid var(--tl-color, var(--ink));
-  border-radius: 50%;
-  height: 14px;
-  left: -7px;
-  position: absolute;
-  top: calc(50% + var(--anchor-offset, 0px));
-  transform: translateY(-50%);
-  width: 14px;
-  z-index: 6;
-}
-
 .timeline-scroll .tl-job-left {
   justify-content: flex-end;
   left: auto;
   padding-left: 0;
   padding-right: 42px;
   right: 50%;
-}
-
-.timeline-scroll .tl-job-left .tl-job-connector {
-  background-position: left center;
-  left: auto;
-  right: 0;
-}
-
-.timeline-scroll .tl-job-left .tl-job-connector::before {
-  left: auto;
-  right: 20px;
-}
-
-.timeline-scroll .tl-job-left .tl-job-connector::after {
-  left: auto;
-  right: 0;
-}
-
-.timeline-scroll .tl-job-left .tl-job-dot {
-  left: auto;
-  right: -7px;
 }
 
 .timeline-scroll .tl-job-content {
@@ -1262,7 +1216,18 @@ p {
   .timeline-scroll {
     margin-left: -18px;
     margin-right: -18px;
+    overflow-x: hidden;
+    overflow-y: hidden;
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .timeline-scroll .timeline-wrap {
+    left: 50%;
+    margin-left: -490px;
+    margin-right: 0;
+    position: relative;
+    transform: scale(var(--timeline-scale, 1));
+    transform-origin: top center;
   }
 }

@@ -1,19 +1,19 @@
-type,group,company,title,start,end,date,logo,color,url,description,related
-job,berkshire-grey,Berkshire Grey,Principal Mechanical R&D Engineer,2026-04-01,present,,logos/Berkshire Grey.png,#1D5FDB,,"Leading R&D mechanical engineering for robotic manipulation, end effectors, and hardware for embodied intelligence.",
-job,berkshire-grey,Berkshire Grey,Senior Mechanical R&D Engineer,2024-10-01,2026-04-01,,logos/Berkshire Grey.png,#1D5FDB,,"Developed and validated high-performance robotic mechanisms from early concepts through production-ready hardware.",
-job,markforged,Markforged,Research and Development Engineer II,2022-04-01,2024-09-01,,logos/Markforged.png,#111111,,"Developed advanced additive-manufacturing hardware, reinforced-part processes, and next-generation mechanical systems.",
-job,markforged,Markforged,Research and Development Engineer I,2021-06-01,2022-04-01,,logos/Markforged.png,#111111,,"Designed, prototyped, and tested mechanical subsystems supporting reinforced additive-manufacturing platforms.",
-job,siliconsynapse,NEU SiliconSynapse Lab,Graduate Research Assistant,2020-01-01,2021-06-01,,logos/SiliconSynapse Lab.png,#93A7AC,,"Researched bio-inspired robotics, computational mechanism design, and legged robotic systems.",
-job,morse,MORSE Corp,Mechanical Engineering Co-op,2019-01-01,2019-07-01,,logos/MORSE.png,#005EB8,,"Supported mechanical design, rapid prototyping, integration, and testing for advanced engineering programs.",
-job,irobot,iRobot,R&D Robotics Engineering Co-op,2018-01-01,2018-07-01,,logos/iRobot.png,#6DB33F,,"Designed and tested robotic mechanisms and prototype hardware for consumer robotics R&D.",
-job,sikorsky,Sikorsky Aircraft,Propulsion Engineering Co-op,2017-01-01,2017-09-01,,logos/Sikorsky.png,#005EB8,,"Supported propulsion-system mechanical engineering through design analysis, documentation, and hardware evaluation.",
-patent,thermoset-injection,,Thermoset Injection into Fused Filament Fabrication Parts with Discontinuous and/or Continuous Reinforcement,,,2024-04-01,,,https://patents.google.com/patent/US12539664B2/en,,markforged:2022-04-01
-patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcement,,,2023-10-01,,,https://patents.google.com/patent/US20240140042A1/en,,markforged:2022-04-01
-patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01
-publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement,,,2023-05-01,,,,,markforged:2022-04-01
-publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion,,,2021-10-01,,,,,markforged:2021-06-01
-event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,
-publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,,,siliconsynapse:2020-01-01
-publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,,,siliconsynapse:2020-01-01
-event,bachelors,,B.S. Mechanical Engineering,,,2019-12-01,,,,,
-event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,
+type,group,company,title,start,end,date,logo,color,url,description,related,route_lane
+job,berkshire-grey,Berkshire Grey,Principal Mechanical R&D Engineer,2026-04-01,present,,logos/Berkshire Grey.png,#1D5FDB,,"Leading R&D mechanical engineering for robotic manipulation, end effectors, and hardware for embodied intelligence.",,0
+job,berkshire-grey,Berkshire Grey,Senior Mechanical R&D Engineer,2024-10-01,2026-04-01,,logos/Berkshire Grey.png,#1D5FDB,,"Developed and validated high-performance robotic mechanisms from early concepts through production-ready hardware.",,0
+job,markforged,Markforged,Research and Development Engineer II,2022-04-01,2024-09-01,,logos/Markforged.png,#111111,,"Developed advanced additive-manufacturing hardware, reinforced-part processes, and next-generation mechanical systems.",,0
+job,markforged,Markforged,Research and Development Engineer I,2021-06-01,2022-04-01,,logos/Markforged.png,#111111,,"Designed, prototyped, and tested mechanical subsystems supporting reinforced additive-manufacturing platforms.",,0
+job,siliconsynapse,NEU SiliconSynapse Lab,Graduate Research Assistant,2020-01-01,2021-06-01,,logos/SiliconSynapse Lab.png,#93A7AC,,"Researched bio-inspired robotics, computational mechanism design, and legged robotic systems.",,0
+job,morse,MORSE Corp,Mechanical Engineering Co-op,2019-01-01,2019-07-01,,logos/MORSE.png,#005EB8,,"Supported mechanical design, rapid prototyping, integration, and testing for advanced engineering programs.",,0
+job,irobot,iRobot,R&D Robotics Engineering Co-op,2018-01-01,2018-07-01,,logos/iRobot.png,#6DB33F,,"Designed and tested robotic mechanisms and prototype hardware for consumer robotics R&D.",,1
+job,sikorsky,Sikorsky Aircraft,Propulsion Engineering Co-op,2017-01-01,2017-09-01,,logos/Sikorsky.png,#005EB8,,"Supported propulsion-system mechanical engineering through design analysis, documentation, and hardware evaluation.",,0
+patent,thermoset-injection,,Thermoset Injection into Fused Filament Fabrication Parts with Discontinuous and/or Continuous Reinforcement,,,2024-04-01,,,https://patents.google.com/patent/US12539664B2/en,,markforged:2022-04-01,8
+patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcement,,,2023-10-01,,,https://patents.google.com/patent/US20240140042A1/en,,markforged:2022-04-01,7
+patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01,6
+publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement in Additively Manufactured Parts via Co-Part Assembly,,,2023-05-01,,,https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf,,markforged:2022-04-01,5
+publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion and Moisture Absorption on the Dimensional Accuracy of Carbon-Reinforced 3D Printed Parts,,,2021-10-01,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC8587952/pdf/polymers-13-03637.pdf,,markforged:2021-06-01,4
+event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,,markforged:3|siliconsynapse:5|default:3
+publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,https://arxiv.org/pdf/2104.05834,,siliconsynapse:2020-01-01,4
+publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,https://par.nsf.gov/servlets/purl/10194913,,siliconsynapse:2020-01-01,3
+event,bachelors,,B.S. Mechanical Engineering,,,2019-12-01,,,,,,2
+event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0
