@@ -26,6 +26,9 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
   const minHeight = 1200;
   const padDays = 120;
   const dayMs = 24 * 60 * 60 * 1000;
+  const desktopLaneOffset = 20;
+  const desktopLanePitch = 14;
+  const desktopCardClearance = 18;
   let cardResizeObserver;
   let layoutFrame;
   let traceAnimationFrame;
@@ -99,6 +102,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       || entries.find(([key]) => key === "default");
     return match && /^\d+$/.test(match[1]) ? Number(match[1]) : 0;
   };
+  const isMobileTimeline = () => window.matchMedia("(max-width: 620px)").matches;
 
   const centerTimeline = () => {
     const scroller = mount.closest(".timeline-scroll");
@@ -110,11 +114,9 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
     const scroller = mount.closest(".timeline-scroll");
     if (!scroller) return;
 
-    if (window.matchMedia("(max-width: 620px)").matches) {
-      const availableWidth = Math.max(0, scroller.clientWidth - 36);
-      const scale = Math.min(1, availableWidth / mount.offsetWidth);
-      mount.style.setProperty("--timeline-scale", scale.toFixed(4));
-      scroller.style.height = `${Math.ceil(mount.offsetHeight * scale + 62)}px`;
+    if (isMobileTimeline()) {
+      mount.style.removeProperty("--timeline-scale");
+      scroller.style.removeProperty("height");
       scroller.scrollLeft = 0;
       return;
     }
@@ -191,12 +193,13 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
     if (!elements.length) return;
 
     const mountRect = mount.getBoundingClientRect();
+    const mobile = isMobileTimeline();
     const scale = Number(getComputedStyle(mount).getPropertyValue("--timeline-scale")) || 1;
-    const centerX = mount.clientWidth / 2;
+    const centerX = mobile ? 28 : mount.clientWidth / 2;
     const activeGroup = mount.dataset.activeGroup || "";
     const routes = elements.map((element) => {
       const isJob = element.classList.contains("tl-job");
-      const isLeft = !isJob || element.classList.contains("tl-job-left");
+      const isLeft = mobile ? false : (!isJob || element.classList.contains("tl-job-left"));
       const card = element.querySelector(isJob ? ".tl-job-content" : ".tl-milestone-content");
       const cardRect = card.getBoundingClientRect();
       const cardX = ((isLeft ? cardRect.right : cardRect.left) - mountRect.left) / scale;
@@ -209,11 +212,12 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
         : styles.getPropertyValue("--trace-color").trim();
       return { element, cardX, cardY, anchorY, lane, isJob, isLeft, color };
     });
-    const lanePitch = 18;
+    const lanePitch = mobile ? 3 : desktopLanePitch;
+    const laneOffset = mobile ? 6 : desktopLaneOffset;
 
     routes.forEach((route) => {
       const direction = route.isLeft ? -1 : 1;
-      const laneX = centerX + direction * (30 + route.lane * lanePitch);
+      const laneX = centerX + direction * (laneOffset + route.lane * lanePitch);
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute("d", roundedPath([
         { x: route.cardX, y: route.cardY },
@@ -264,6 +268,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
   };
 
   const layoutTimeline = () => {
+    const mobile = isMobileTimeline();
     const rightItems = [...mount.querySelectorAll(".tl-job:not(.tl-job-left)")];
     const masters = mount.querySelector('.tl-milestone[data-event-key="masters"]');
     const routeMasters = ["markforged", "siliconsynapse"].includes(mount.dataset.activeGroup);
@@ -279,7 +284,8 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       .filter((item) => item.matches(".tl-milestone-svg:not([hidden])"));
     const maxLane = routedMilestones.reduce((maximum, item) =>
       Math.max(maximum, resolveRouteLane(item.dataset.routeLane || "", mount.dataset.activeGroup || "")), 0);
-    mount.style.setProperty("--document-trace-gutter", `${Math.max(116, 48 + (maxLane + 1) * 18)}px`);
+    const traceGutter = desktopLaneOffset + maxLane * desktopLanePitch + desktopCardClearance;
+    mount.style.setProperty("--document-trace-gutter", `${Math.max(72, traceGutter)}px`);
     const requiredHeight = (items) =>
       items.reduce((total, element) => total + element.offsetHeight, 0)
       + Math.max(0, items.length - 1) * 24
@@ -291,16 +297,26 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       return;
     }
 
-    mount.style.height = `${Math.max(baseHeight, requiredHeight(rightItems), requiredHeight(leftItems))}px`;
-    placeTimelineItems(rightItems);
-    placeTimelineItems(leftItems, 24);
-    straightItems.forEach((item) => {
-      item.style.top = `${Number(item.dataset.anchorRatio) * mount.clientHeight}px`;
-      item.style.setProperty("--anchor-offset", "0px");
-      item.style.setProperty("--connector-top", "0px");
-      item.style.setProperty("--connector-height", "0px");
-    });
-    routeAllTraces([...rightItems, ...leftItems, ...straightItems]);
+    if (mobile) {
+      const mobileItems = [
+        ...mount.querySelectorAll(".tl-job"),
+        ...mount.querySelectorAll(".tl-milestone:not([hidden])"),
+      ];
+      mount.style.height = `${Math.max(baseHeight, requiredHeight(mobileItems))}px`;
+      placeTimelineItems(mobileItems, 18);
+      routeAllTraces(mobileItems);
+    } else {
+      mount.style.height = `${Math.max(baseHeight, requiredHeight(rightItems), requiredHeight(leftItems))}px`;
+      placeTimelineItems(rightItems);
+      placeTimelineItems(leftItems, 24);
+      straightItems.forEach((item) => {
+        item.style.top = `${Number(item.dataset.anchorRatio) * mount.clientHeight}px`;
+        item.style.setProperty("--anchor-offset", "0px");
+        item.style.setProperty("--connector-top", "0px");
+        item.style.setProperty("--connector-height", "0px");
+      });
+      routeAllTraces([...rightItems, ...leftItems, ...straightItems]);
+    }
     fitTimelineToViewport();
   };
 

@@ -932,13 +932,13 @@ p {
 
 .timeline-scroll .tl-milestone {
   --trace-color: var(--line);
-  --trace-gutter: 42px;
+  --trace-gutter: var(--document-trace-gutter, 72px);
   --trace-lane: 20px;
   background: linear-gradient(var(--trace-color), var(--trace-color)) right var(--trace-lane) center / calc(var(--trace-gutter) - var(--trace-lane)) 2px no-repeat;
-  max-width: 360px;
+  max-width: calc(336px + var(--trace-gutter));
   padding-right: var(--trace-gutter);
   transition: top 0.38s ease, padding-right 0.38s ease, max-width 0.38s ease;
-  width: 42%;
+  width: 46%;
   z-index: 5;
 }
 
@@ -974,9 +974,12 @@ p {
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
+  margin-left: auto;
+  max-width: 315px;
   padding: 9px 11px;
   position: relative;
   z-index: 5;
+  width: max-content;
 }
 
 .timeline-scroll .tl-milestone-svg {
@@ -989,8 +992,7 @@ p {
 }
 
 .timeline-scroll .tl-milestone-document {
-  --trace-gutter: var(--document-trace-gutter, 116px);
-  max-width: calc(336px + var(--document-trace-gutter, 116px));
+  max-width: calc(336px + var(--trace-gutter));
 }
 
 .timeline-scroll .tl-milestone-patent {
@@ -1039,10 +1041,7 @@ p {
   border-color: var(--trace-color);
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  max-width: 315px;
   padding: 7px 10px;
-  width: max-content;
 }
 
 .timeline-scroll .tl-milestone-document .tl-m-label {
@@ -1063,13 +1062,11 @@ p {
 }
 
 .timeline-scroll .tl-milestone[data-event-key="masters"] {
-  --trace-gutter: 42px;
-  max-width: 360px;
+  max-width: calc(336px + var(--trace-gutter));
 }
 
 .timeline-scroll .timeline-wrap[data-active-group="siliconsynapse"] .tl-milestone[data-event-key="masters"] {
-  --trace-gutter: 116px;
-  max-width: 452px;
+  max-width: calc(336px + var(--trace-gutter));
 }
 
 .timeline-scroll .tl-milestone-straight {
@@ -1099,8 +1096,10 @@ p {
   justify-content: flex-end;
   left: auto;
   padding-left: 0;
-  padding-right: 42px;
+  padding-right: var(--document-trace-gutter, 72px);
   right: 50%;
+  transition: top 0.38s ease, padding-right 0.38s ease;
+  width: 46%;
 }
 
 .timeline-scroll .tl-job-content {
@@ -1218,16 +1217,104 @@ p {
     margin-right: -18px;
     overflow-x: hidden;
     overflow-y: hidden;
-    padding-left: 18px;
-    padding-right: 18px;
+    padding: 28px 0 34px;
   }
 
   .timeline-scroll .timeline-wrap {
-    left: 50%;
-    margin-left: -490px;
-    margin-right: 0;
+    left: auto;
+    margin: 0;
+    min-width: 0;
     position: relative;
-    transform: scale(var(--timeline-scale, 1));
-    transform-origin: top center;
+    transform: none;
+    width: 100%;
+  }
+
+  .timeline-scroll .tl-line,
+  .timeline-scroll .tl-cylinder,
+  .timeline-scroll .tl-promotion-marker,
+  .timeline-scroll .tl-year {
+    left: 28px;
+  }
+
+  .timeline-scroll .tl-year {
+    transform: translate(-50%, -50%);
+  }
+
+  .timeline-scroll .tl-year-bottom {
+    transform: translateX(-50%);
+  }
+
+  .timeline-scroll .tl-job,
+  .timeline-scroll .tl-job-left,
+  .timeline-scroll .tl-milestone {
+    left: 28px;
+    max-width: none !important;
+    padding-left: 52px;
+    padding-right: 16px;
+    right: auto;
+    width: calc(100% - 28px);
+  }
+
+  .timeline-scroll .tl-job-left,
+  .timeline-scroll .tl-milestone {
+    justify-content: flex-start;
+  }
+
+  .timeline-scroll .tl-job-content,
+  .timeline-scroll .tl-milestone-content,
+  .timeline-scroll .tl-milestone-document .tl-milestone-content {
+    margin-left: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .timeline-scroll .tl-job-content,
+  .timeline-scroll .tl-milestone-content {
+    border-radius: 6px;
+    box-shadow: 0 3px 12px rgba(24, 26, 31, 0.08);
+  }
+
+  .timeline-scroll .tl-milestone-content {
+    text-align: left;
+  }
+
+  .timeline-scroll .tl-job-logo {
+    height: 42px;
+    width: 42px;
+  }
+
+  .timeline-scroll .tl-job-summary {
+    gap: 12px;
+    padding-right: 24px;
+  }
+
+  .timeline-scroll .tl-job-title {
+    font-size: 0.88rem;
+  }
+
+  .timeline-scroll .tl-job-date {
+    font-size: 0.69rem;
+  }
+
+  .timeline-scroll .tl-m-label,
+  .timeline-scroll .tl-milestone-document .tl-m-label {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .timeline-scroll .tl-milestone-content,
+  .timeline-scroll .tl-milestone-document .tl-milestone-content {
+    padding: 10px 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-scroll .tl-job,
+  .timeline-scroll .tl-job-left,
+  .timeline-scroll .tl-milestone,
+  .timeline-scroll .tl-job-expanded,
+  .timeline-scroll .tl-milestone-document {
+    animation: none;
+    transition: none;
   }
 }
