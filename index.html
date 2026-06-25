@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Peter Kelly | Robotics Mechanical Engineer</title>
     <meta name="description" content="Robotics mechanical engineering portfolio with selected product development, analysis, and prototyping work.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -38,19 +41,12 @@
 
       <section class="hero">
         <div class="hero-inner">
-          <div class="hero-image-placeholder" aria-label="Profile photo">
-            <svg viewBox="0 0 480 480" role="img">
-              <rect width="480" height="480" fill="#f4f5f7"></rect>
-              <circle cx="240" cy="180" r="72" fill="#d9dde3"></circle>
-              <ellipse cx="240" cy="380" rx="120" ry="80" fill="#d9dde3"></ellipse>
-            </svg>
-          </div>
-          <div class="hero-text">
-            <h2 class="hero-name">Peter Kelly</h2>
-            <p class="hero-subtitle">Robotics Mechanical Engineer</p>
-            <div class="hero-actions">
-              <a class="button primary" href="#projects">View Projects</a>
-              <a class="button" href="mailto:peter@example.com">Get in Touch</a>
+          <div class="personal-summary">
+            <h2>Personal Summary</h2>
+            <p>I&rsquo;m an R&amp;D mechanical engineer specialized in mechatronics and robotics, currently pushing the boundaries of robotic manipulation and hardware for embodied intelligence at Berkshire Grey.</p>
+            <div class="summary-contact">
+              <p><strong>Phone:</strong> <a href="tel:+12012864963">201-286-4963</a></p>
+              <p><strong>Email:</strong> <a href="mailto:peterkellyyy@gmail.com">peterkellyyy@gmail.com</a></p>
             </div>
           </div>
         </div>
@@ -61,33 +57,38 @@
           <h2>Experience</h2>
         </div>
         <div class="logo-grid-row">
-          <div class="logo-item" title="Berkshire Grey">
+          <button class="logo-item" type="button" data-timeline-group="berkshire-grey" title="Berkshire Grey">
             <img src="logos/Berkshire Grey.png" alt="Berkshire Grey logo">
             <span class="logo-label">Berkshire Grey</span>
-          </div>
-          <div class="logo-item" title="Markforged">
+          </button>
+          <button class="logo-item" type="button" data-timeline-group="markforged" title="Markforged">
             <img src="logos/Markforged.png" alt="Markforged logo">
             <span class="logo-label">Markforged</span>
-          </div>
-          <div class="logo-item" title="SiliconSynapse Lab">
+          </button>
+          <button class="logo-item" type="button" data-timeline-group="siliconsynapse" title="SiliconSynapse Lab">
             <img src="logos/SiliconSynapse Lab.png" alt="SiliconSynapse Lab logo">
             <span class="logo-label">SiliconSynapse Lab</span>
-          </div>
-          <div class="logo-item" title="MORSE Corp">
+          </button>
+          <button class="logo-item" type="button" data-timeline-group="morse" title="MORSE Corp">
             <img src="logos/MORSE.png" alt="MORSE Corp logo">
             <span class="logo-label">MORSE Corp.</span>
-          </div>
-          <div class="logo-item" title="iRobot">
+          </button>
+          <button class="logo-item" type="button" data-timeline-group="irobot" title="iRobot">
             <img src="logos/iRobot.png" alt="iRobot logo">
             <span class="logo-label">iRobot</span>
-          </div>
-          <div class="logo-item" title="Sikorsky">
+          </button>
+          <button class="logo-item" type="button" data-timeline-group="sikorsky" title="Sikorsky">
             <img src="logos/Sikorsky.png" alt="Sikorsky logo">
             <span class="logo-label">Sikorsky</span>
-          </div>
+          </button>
         </div>
 
-        <div class="timeline-scroll" aria-label="Professional timeline">`r`n          <div class="timeline-wrap" data-source="data/timeline.csv">`r`n            <p class="timeline-loading">Loading timeline...</p>`r`n          </div>`r`n        </div>`r`n      </section>
+        <div class="timeline-scroll" aria-label="Professional timeline">
+          <div class="timeline-wrap" data-source="data/timeline.csv">
+            <p class="timeline-loading">Loading timeline...</p>
+          </div>
+        </div>
+      </section>
 
       <section class="section" id="projects">
 
