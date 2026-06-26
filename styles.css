@@ -75,19 +75,7 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 16px;
   position: relative;
-}
-
-.nav-brand::before {
-  background: var(--signal-blue);
-  content: "";
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
 }
 
 .brand-name {
@@ -1115,28 +1103,55 @@ p {
 
 /* ── Footer ── */
 .site-footer {
-  border-top: 3px solid var(--signal-blue);
+  background: #f7f9fb;
+  border-top: 1px solid var(--line);
 }
 
 .footer-inner {
-  color: var(--muted);
+  align-items: center;
   display: flex;
+  gap: 24px;
   justify-content: space-between;
   margin: 0 auto;
   max-width: var(--max);
-  padding: 34px 24px;
+  padding: 34px 24px 38px;
 }
 
-.footer-inner span {
+.footer-brand {
+  max-width: 420px;
+}
+
+.footer-brand span {
   color: var(--ink);
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.footer-brand p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.footer-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  justify-content: flex-end;
+}
+
+.footer-links a {
+  color: var(--muted);
+  font-size: 0.86rem;
   font-weight: 800;
 }
 
-.footer-inner a {
-  text-decoration: underline;
-  text-decoration-color: var(--signal-green);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: var(--signal-blue);
 }
 
 :focus-visible {
@@ -1553,11 +1568,13 @@ p {
 }
 
 .fx10-project-main .back-link {
+  box-sizing: border-box;
   display: block;
   font-size: 0.78rem;
   margin: 28px auto 0;
   max-width: 1180px;
   padding: 0 24px;
+  width: calc(100% - 48px);
 }
 
 .fx10-project-main .back-link::before {
@@ -1571,12 +1588,16 @@ p {
     linear-gradient(90deg, #ffffff 0%, #ffffff 42%, rgba(255, 255, 255, 0.86) 54%, rgba(255, 255, 255, 0) 74%),
     linear-gradient(180deg, #f7fafc 0%, #eef6fb 100%);
   border-bottom: 1px solid var(--line);
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+  margin: 0 auto;
+  max-width: 1180px;
   min-height: 500px;
   overflow: hidden;
-  padding: 38px max(24px, calc((100vw - 1180px) / 2)) 34px;
+  padding: 38px 24px 34px;
   position: relative;
+  width: calc(100% - 48px);
 }
 
 .fx10-hero-copy {
@@ -1692,7 +1713,7 @@ p {
 .fx10-hero-media {
   align-items: center;
   display: flex;
-  inset: 0 0 0 42%;
+  inset: 0 0 0 44%;
   justify-content: center;
   overflow: hidden;
   position: absolute;
@@ -1709,9 +1730,11 @@ p {
 
 .fx10-section {
   border-top: 1px solid var(--line);
+  box-sizing: border-box;
   margin: 0 auto;
   max-width: 1180px;
   padding: 42px 24px;
+  width: calc(100% - 48px);
 }
 
 .fx10-overview-section {
@@ -2408,6 +2431,15 @@ p {
     bottom: -2px;
   }
 
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+
   .hero-inner,
   .experience-inner,
   .section,
@@ -3010,6 +3042,7 @@ p {
     grid-template-columns: 1fr;
     min-height: 0;
     padding-bottom: 0;
+    width: calc(100% - 48px);
   }
 
   .fx10-hero-copy {
@@ -3204,11 +3237,13 @@ p {
   .fx10-project-main .back-link {
     margin-top: 22px;
     padding: 0 18px;
+    width: calc(100% - 36px);
   }
 
   .fx10-hero {
     padding-left: 18px;
     padding-right: 18px;
+    width: calc(100% - 36px);
   }
 
   .fx10-hero h1 {
@@ -3221,6 +3256,7 @@ p {
 
   .fx10-section {
     padding: 36px 18px;
+    width: calc(100% - 36px);
   }
 
   .fx10-glance {
