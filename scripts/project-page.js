@@ -549,8 +549,131 @@ const createLink = ([label, href], className = "archive-action") => {
   return link;
 };
 
+const renderFx10CaseStudy = () => {
+  document.title = "FX10 Metal Print Head | Peter Kelly";
+  document.body.classList.add("fx10-case-study");
+
+  const backLink = document.querySelector(".back-link");
+  if (backLink) backLink.textContent = "Back to Projects";
+
+  const hero = el("section", "fx10-hero");
+  const heroCopy = el("div", "fx10-hero-copy");
+  heroCopy.append(
+    el("p", "fx10-eyebrow", "Markforged"),
+    el("h1", "", "FX10 Metal Print Head"),
+    el("p", "fx10-lede", "Next-generation metal printhead enabling high-performance 17-4 PH stainless steel and copper printing for the Markforged FX10 platform.")
+  );
+
+  const tags = el("div", "fx10-tags");
+  ["Mechanical Design", "Additive Manufacturing", "Electromechanical"].forEach((tag) => tags.append(el("span", "", tag)));
+  heroCopy.append(tags);
+
+  const stats = el("div", "fx10-stats");
+  [
+    ["12+", "Months Development"],
+    ["2", "Materials Supported"],
+    ["Modular", "Swappable Architecture"],
+    ["EVT", "May 2024"]
+  ].forEach(([value, label]) => {
+    const stat = el("div", "fx10-stat");
+    stat.append(el("span", "fx10-stat-icon", ""), el("strong", "", value), el("small", "", label));
+    stats.append(stat);
+  });
+  heroCopy.append(stats);
+
+  const heroMedia = el("div", "fx10-hero-media");
+  const heroImage = el("img");
+  heroImage.src = "../assets/projects/fx10/01-b94fac15ce02.png";
+  heroImage.alt = "Markforged FX10 metal printhead";
+  heroImage.loading = "eager";
+  heroMedia.append(heroImage);
+  hero.append(heroCopy, heroMedia);
+  root.append(hero);
+
+  const overview = el("section", "fx10-overview-section fx10-section");
+  const overviewCopy = el("div", "fx10-overview-copy");
+  overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
+  addParagraphs(overviewCopy, [
+    "From its inception, the FX10 was designed to be a modular printer capable of printing both composite and metal filaments. Those material systems impose different thermal, mechanical, and flow requirements, so the printhead needed a swappable architecture that could support both production performance and serviceability.",
+    "Beginning in June 2022, I leveraged prior Metal X and fine-feature process-development experience to lead the initial R&D of the FX10 metal printhead and carry the architecture through engineering validation."
+  ]);
+
+  const glance = el("aside", "fx10-glance");
+  glance.append(el("h2", "", "At a Glance"));
+  [
+    ["Role", "Lead Mechanical Engineer"],
+    ["Team", "R&D Hardware Team"],
+    ["Timeline", "Jun 2022 - May 2024"],
+    ["Stage", "EVT"],
+    ["Platform", "Markforged FX10"]
+  ].forEach(([label, value]) => {
+    const row = el("div");
+    row.append(el("span", "", label), el("strong", "", value));
+    glance.append(row);
+  });
+  overview.append(overviewCopy, glance);
+  root.append(overview);
+
+  const highlights = el("section", "fx10-section");
+  highlights.append(el("p", "fx10-section-kicker", "Design Highlights"));
+  const highlightGrid = el("div", "fx10-highlight-grid");
+  [
+    ["../assets/projects/fx10/01-b94fac15ce02.png", "FX10 Metal Print Head", "Compact modular architecture with integrated cooling and electronics enclosure."],
+    ["../assets/projects/fx10/02-def065ceee78.png", "Lower Shroud and Top Cover Removed", "Internal architecture revealing PCB, heat sink stack, quick-disconnects, and modular subassemblies for serviceability."],
+    ["../assets/projects/fx10/03-7b0f59b15173.png", "Front Plane PCB Removed", "Drive system, filament path components, and structural framework exposed for design review."]
+  ].forEach(([src, title, copy]) => {
+    const card = el("article", "fx10-highlight-card");
+    const image = el("img");
+    image.src = src;
+    image.alt = title;
+    image.loading = "lazy";
+    card.append(image, el("h3", "", title), el("p", "", copy));
+    highlightGrid.append(card);
+  });
+  highlights.append(highlightGrid);
+  root.append(highlights);
+
+  const split = el("section", "fx10-split fx10-section");
+  const challenges = el("div", "fx10-list-panel");
+  challenges.append(el("p", "fx10-section-kicker", "Key Challenges"));
+  [
+    ["Material Differences", "Balanced thermal, mechanical, and flow requirements across composite and metal printing."],
+    ["Swappable Architecture", "Developed a repeatable docking and electrical interface to enable quick head swaps."],
+    ["Thermal Management", "Engineered heat dissipation for consistent performance with high-temperature metals."],
+    ["Serviceability", "Designed modular subassemblies for rapid maintenance and replacement."]
+  ].forEach(([title, copy]) => {
+    const item = el("div", "fx10-list-item");
+    item.append(el("span", "fx10-list-icon", ""), el("h3", "", title), el("p", "", copy));
+    challenges.append(item);
+  });
+
+  const impact = el("div", "fx10-list-panel");
+  impact.append(el("p", "fx10-section-kicker", "Impact"));
+  [
+    "Enabled metal printing on the FX10 platform with 17-4 PH stainless steel and copper.",
+    "Delivered next-generation printhead hardware to EVT in May 2024.",
+    "Laid groundwork for future material expansion and performance improvements.",
+    "Strengthened Markforged's industrial metal additive manufacturing platform."
+  ].forEach((copy) => {
+    const item = el("div", "fx10-impact-item");
+    item.append(el("span", "fx10-check-icon", ""), el("p", "", copy));
+    impact.append(item);
+  });
+  split.append(challenges, impact);
+  root.append(split);
+
+  const views = el("section", "fx10-section");
+  views.append(el("p", "fx10-section-kicker", "Additional Views"));
+  const viewGrid = el("div", "fx10-view-grid");
+  project.media.forEach((media) => viewGrid.append(createFigure(media, "fx10-view-media")));
+  views.append(viewGrid);
+  root.append(views);
+};
+
 if (!root || !project) {
   if (root) root.append(el("p", "lede", "Project data could not be loaded."));
+} else if (key === "fx10") {
+  renderFx10CaseStudy();
 } else {
   document.title = `${project.title} | Peter Kelly`;
 
