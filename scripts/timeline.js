@@ -17,6 +17,7 @@ patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcemen
 patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01,6
 publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement in Additively Manufactured Parts via Co-Part Assembly,,,2023-05-01,,,https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf,,markforged:2022-04-01,5
 publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion and Moisture Absorption on the Dimensional Accuracy of Carbon-Reinforced 3D Printed Parts,,,2021-10-01,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC8587952/pdf/polymers-13-03637.pdf,,markforged:2021-06-01,4
+thesis,siliconsynapse,NEU SiliconSynapse Lab,"Design of a Thruster Assisted Bipedal Robot",,,2021-04-01,,,,"Designed and analyzed the Harpy thruster-assisted bipedal robot platform.",siliconsynapse:2020-01-01,4
 event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,,markforged:3|siliconsynapse:5|default:3
 publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,https://arxiv.org/pdf/2104.05834,,siliconsynapse:2020-01-01,4
 publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,https://par.nsf.gov/servlets/purl/10194913,,siliconsynapse:2020-01-01,3
@@ -332,7 +333,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       }));
 
     const documents = rows
-      .filter((row) => row.type === "publication" || row.type === "patent")
+      .filter((row) => row.type === "publication" || row.type === "patent" || row.type === "thesis")
       .map((row) => ({ ...row, eventDate: parseDate(row.date) }));
 
     const events = rows
@@ -375,6 +376,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       const primary = group[0];
       const color = normalizeColor(primary.color);
       const sideClass = primary.group === "irobot" ? " tl-job-left" : "";
+      const hasPresentRole = Boolean(primary.present);
       const cylinderTop = topFor(end);
       const cylinderHeight = topFor(start) - cylinderTop;
       const promotionMarkers = group.slice(0, -1).map((job) =>
@@ -402,7 +404,10 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
               <span class="tl-job-summary">
                 <img class="tl-job-logo" src="${escapeHtml(primary.logo)}" alt="">
                 <span class="tl-job-details">
-                  <span class="tl-job-company">${escapeHtml(primary.company)}</span>
+                  <span class="tl-job-company-row">
+                    <span class="tl-job-company">${escapeHtml(primary.company)}</span>
+                    ${hasPresentRole ? '<span class="tl-job-present" aria-label="Present">Present</span>' : ""}
+                  </span>
                   <span class="${group.length > 1 ? "tl-promotion" : "tl-role-single"}">${roles}</span>
                 </span>
                 <span class="tl-role-toggle" aria-hidden="true"></span>
@@ -417,19 +422,22 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
     });
 
     [...events, ...documents].forEach((event) => {
-      const isDocument = event.type === "publication" || event.type === "patent";
+      const isDocument = event.type === "publication" || event.type === "patent" || event.type === "thesis";
       const relatedGroup = isDocument ? event.related.split(":")[0] : "";
       const isStraight = !isDocument && event.group === "enrolled";
-      const eventType = event.type === "patent" ? "Patent" : "Publication";
+      const isEducation = !isDocument && (event.group === "masters" || event.group === "bachelors");
+      const eventType = event.type === "patent" ? "Patent" : event.type === "thesis" ? "Thesis" : "Publication";
       const url = normalizeUrl(event.url);
-      const contentOpen = url
+      const contentOpen = isEducation
+        ? `<div class="tl-milestone-content tl-milestone-education-content"><img class="tl-milestone-icon" src="logos/Graduation Cap.png" alt="" aria-hidden="true"><div class="tl-milestone-education-copy">`
+        : url
         ? `<a class="tl-milestone-content tl-milestone-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">`
         : '<div class="tl-milestone-content">';
-      const contentClose = url ? "</a>" : "</div>";
+      const contentClose = isEducation ? "</div></div>" : (url ? "</a>" : "</div>");
       const anchorRatio = topFor(event.eventDate) / 100;
       mount.insertAdjacentHTML(
         "beforeend",
-        `<div class="tl-milestone tl-milestone-svg${isDocument ? ` tl-milestone-document tl-milestone-${event.type}` : ""}${isStraight ? " tl-milestone-straight" : ""}" ${isDocument ? `hidden data-document-type="${event.type}" data-related-group="${escapeHtml(relatedGroup)}"` : `data-event-key="${escapeHtml(event.group)}"`} data-route-lane="${escapeHtml(event.route_lane || "0")}" data-anchor-ratio="${anchorRatio.toFixed(6)}" style="top:${topFor(event.eventDate).toFixed(4)}%">
+        `<div class="tl-milestone tl-milestone-svg${isDocument ? ` tl-milestone-document tl-milestone-${event.type}` : ""}${isStraight ? " tl-milestone-straight" : ""}${isEducation ? " tl-milestone-education" : ""}" ${isDocument ? `hidden data-document-type="${event.type}" data-related-group="${escapeHtml(relatedGroup)}"` : `data-event-key="${escapeHtml(event.group)}"`} data-route-lane="${escapeHtml(event.route_lane || "0")}" data-anchor-ratio="${anchorRatio.toFixed(6)}" style="top:${topFor(event.eventDate).toFixed(4)}%">
           ${contentOpen}
             ${isDocument ? `<span class="tl-m-type">${eventType}</span>` : ""}
             <span class="tl-m-label">${escapeHtml(event.title)}</span>
