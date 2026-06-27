@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      if (window.location.hash) {
+        document.documentElement.classList.add("hash-anchor-pending");
+      }
+    </script>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -20,9 +25,9 @@
           <span class="brand-title">Robotics Mechanical Engineer</span>
         </div>
         <div class="nav-links">
+          <a href="#about">About Me</a>
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
-          <a href="#capabilities">Capabilities</a>
           <a href="mailto:peterkellyyy@gmail.com">Contact</a>
         </div>
       </nav>
@@ -35,9 +40,8 @@
         </video>
         <div class="banner-overlay">
           <div class="banner-content">
-            <p class="banner-eyebrow">Design. Build. Deliver.</p>
-            <h1>Robotic systems that perform in the real world.</h1>
-            <p class="banner-lede">R&amp;D mechanical engineer specializing in mechatronics and robotics. I design, develop, and deliver advanced hardware from concept to production.</p>
+            <h1>Peter Kelly</h1>
+            <p class="banner-lede">Robotics Mechanical Engineer</p>
             <div class="banner-actions" aria-label="Hero actions">
               <a class="banner-button banner-button-primary" href="#projects">
                 <span>View Projects</span>
@@ -48,106 +52,68 @@
                 <span>Get in Touch</span>
               </a>
             </div>
-            <dl class="banner-stats" aria-label="Career highlights">
-              <div>
-                <dt>5+</dt>
-                <dd>Years Experience</dd>
-              </div>
-              <div>
-                <dt>10+</dt>
-                <dd>Major Hardware Systems</dd>
-              </div>
-              <div>
-                <dt>9</dt>
-                <dd>Robotic Cells Delivered</dd>
-              </div>
-              <div>
-                <dt>4</dt>
-                <dd>Patents</dd>
-              </div>
-              <div>
-                <dt>2</dt>
-                <dd>Publications</dd>
-              </div>
-            </dl>
           </div>
         </div>
       </section>
 
-      <section class="section featured-projects-section" id="featured-projects">
-        <div class="featured-projects-head">
-          <div class="featured-projects-kicker">
-            <span class="featured-projects-mark" aria-hidden="true"></span>
-            <h2>Featured Projects</h2>
-          </div>
-          <a class="featured-projects-view-all" href="#projects">
-            <span>View all projects</span>
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-
-        <div class="featured-projects-grid">
-          <a class="featured-project-card" href="projects/fx10.html">
-            <figure class="featured-project-media portfolio-thumb" aria-label="Markforged FX10 thumbnail">
-              <img src="assets/projects/fx10/01-b94fac15ce02.png" alt="Markforged FX10 metal printhead" loading="lazy">
-            </figure>
-            <div class="featured-project-body">
-              <h3>FX10 Metal Printhead</h3>
-              <p>Swappable metal printhead architecture developed from early R&amp;D through EVT.</p>
-              <span class="featured-project-company">Markforged</span>
-            </div>
-          </a>
-
-          <a class="featured-project-card" href="projects/px100.html">
-            <figure class="featured-project-media portfolio-thumb portfolio-thumb-cover" aria-label="Markforged PX100 thumbnail">
-              <img src="assets/projects/px100/01-864df172f280.jpg" alt="Markforged PX100 binder jet printer" loading="lazy">
-            </figure>
-            <div class="featured-project-body">
-              <h3>PX100 Binder Jet Platform</h3>
-              <p>Production-scale binder jet hardware support from concept validation through commissioning.</p>
-              <span class="featured-project-company">Markforged</span>
-            </div>
-          </a>
-
-          <a class="featured-project-card" href="projects/harpy.html">
-            <figure class="featured-project-media featured-project-media-harpy" aria-label="Harpy bipedal robot thumbnail">
-              <img src="assets/harpy/harpy-front.png" alt="Harpy thruster-assisted bipedal robot" loading="lazy">
-            </figure>
-            <div class="featured-project-body">
-              <h3>Harpy Bipedal Robot</h3>
-              <p>Lightweight thruster-assisted platform for dynamic locomotion research and testing.</p>
-              <span class="featured-project-company">NEU SiliconSynapse Lab</span>
-            </div>
-          </a>
-
-          <a class="featured-project-card" href="projects/husky-carbon.html">
-            <figure class="featured-project-media portfolio-thumb" aria-label="Husky Carbon thumbnail">
-              <img src="assets/projects/husky-carbon/01-0be0e19d0e5e.png" alt="Husky Carbon multi-modal robot" loading="lazy">
-            </figure>
-            <div class="featured-project-body">
-              <h3>Husky Carbon</h3>
-              <p>Carbon-composite legged robot architecture built around a multi-mode mobility concept.</p>
-              <span class="featured-project-company">NEU SiliconSynapse Lab</span>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <section class="hero" id="experience">
+      <section class="hero" id="about">
         <div class="hero-inner">
           <div class="personal-summary">
-            <h2>About</h2>
-            <p>I&rsquo;m an R&amp;D mechanical engineer specialized in mechatronics and robotics, currently pushing the boundaries of robotic manipulation and hardware for embodied intelligence at Berkshire Grey.</p>
-            <div class="summary-contact">
-              <p><strong>Email:</strong> <a href="mailto:peterkellyyy@gmail.com">peterkellyyy@gmail.com</a></p>
-              <a class="linkedin-button" href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer" aria-label="Peter Kelly on LinkedIn" title="LinkedIn">
-                <span aria-hidden="true">in</span>
-              </a>
+            <div class="about-copy">
+              <p class="section-label">About Me</p>
+              <h2>Building intelligent, real-world robotics.</h2>
+              <p>I&rsquo;m an R&amp;D mechanical engineer specializing in mechatronics and robotics. I design, develop, and deliver advanced hardware from concept to production, pushing the boundaries of robotic manipulation and embodied intelligence at <span class="about-company">Berkshire Grey</span>.</p>
+              <div class="summary-contact">
+                <a class="contact-card" href="mailto:peterkellyyy@gmail.com" aria-label="Email Peter Kelly">
+                  <span class="contact-icon" aria-hidden="true"><img src="icons/email.png" alt=""></span>
+                  <span>
+                    <strong>Email</strong>
+                    <span>peterkellyyy@gmail.com</span>
+                  </span>
+                </a>
+                <a class="contact-card" href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer" aria-label="Peter Kelly on LinkedIn">
+                  <span class="contact-icon contact-icon-linkedin" aria-hidden="true"><img src="icons/linkedin.svg" alt=""></span>
+                  <span>
+                    <strong>LinkedIn</strong>
+                    <span>linkedin.com/in/peterkellyy</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="about-pillars" aria-label="Engineering strengths">
+              <article class="about-pillar">
+                <span class="about-pillar-icon" aria-hidden="true">*</span>
+                <div>
+                  <h3>Systems Thinker</h3>
+                  <p>I architect hardware systems that balance performance, manufacturability, and reliability.</p>
+                </div>
+              </article>
+              <article class="about-pillar">
+                <span class="about-pillar-icon about-pillar-icon-tools" aria-hidden="true"><img src="icons/tools.png" alt=""></span>
+                <div>
+                  <h3>Hands-On Engineer</h3>
+                  <p>From CAD to build to test, I stay close to the details that make hardware successful.</p>
+                </div>
+              </article>
+              <article class="about-pillar">
+                <span class="about-pillar-icon" aria-hidden="true">o</span>
+                <div>
+                  <h3>Impact Driven</h3>
+                  <p>I focus on delivering measurable results and solving the right problems at scale.</p>
+                </div>
+              </article>
+              <article class="about-pillar">
+                <span class="about-pillar-icon" aria-hidden="true">::</span>
+                <div>
+                  <h3>Collaborative Leader</h3>
+                  <p>I lead cross-functional teams and partner across disciplines to ship complex systems.</p>
+                </div>
+              </article>
             </div>
           </div>
         </div>
-        <div class="experience-inner">
-          <h2 class="experience-title">Experience</h2>
+        <div class="experience-inner" id="experience">
+          <h2 class="section-label experience-title">Experience</h2>
           <div class="logo-grid-row">
             <button class="logo-item" type="button" data-timeline-group="berkshire-grey" title="Berkshire Grey">
               <img src="logos/Berkshire Grey.png" alt="Berkshire Grey logo">
@@ -186,7 +152,7 @@
       <section class="section" id="projects">
 
         <div class="section-head centered">
-          <h2>Selected Projects</h2>
+          <h2 class="section-label">Projects</h2>
         </div>
 
         <div class="project-grid">
@@ -197,6 +163,7 @@
             <p class="project-meta">Product Development</p>
             <h3 class="project-title">Markforged FX10</h3>
             <p class="project-summary">Next-generation swappable metal printhead developed from initial R&amp;D through EVT.</p>
+            <span class="project-company">Markforged</span>
           </a>
 
           <a class="project-link" href="projects/px100.html">
@@ -206,6 +173,7 @@
             <p class="project-meta">Metal Binder Jetting</p>
             <h3 class="project-title">Markforged PX100</h3>
             <p class="project-summary">US lab buildout, process knowledge transfer, commissioning, and system validation.</p>
+            <span class="project-company">Markforged</span>
           </a>
 
           <a class="project-link" href="projects/finefeatures.html">
@@ -215,6 +183,7 @@
             <p class="project-meta">Process Development</p>
             <h3 class="project-title">Metal X Fine Features</h3>
             <p class="project-summary">Qualified copper and stainless profiles for finer, stronger, more accurate metal parts.</p>
+            <span class="project-company">Markforged</span>
           </a>
 
           <a class="project-link" href="projects/co-parts.html">
@@ -224,15 +193,17 @@
             <p class="project-meta">Published Research</p>
             <h3 class="project-title">Continuous-Fiber Co-parts</h3>
             <p class="project-summary">Interlocking printed components optimized for reinforcement across multiple load planes.</p>
+            <span class="project-company">Markforged</span>
           </a>
 
           <a class="project-link" href="projects/harpy.html">
             <figure class="thumb harpy-thumb" aria-label="Harpy bipedal robot thumbnail">
-              <img src="assets/harpy/harpy-front.png" alt="Harpy thruster-assisted bipedal robot" loading="lazy">
+              <img src="assets/projects/harpy/harpy-front.png" alt="Harpy thruster-assisted bipedal robot" loading="lazy">
             </figure>
             <p class="project-meta">Robotics Research</p>
             <h3 class="project-title">Harpy Bipedal Robot</h3>
             <p class="project-summary">Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.</p>
+            <span class="project-company">NEU SiliconSynapse Lab</span>
           </a>
 
           <a class="project-link" href="projects/husky-carbon.html">
@@ -242,6 +213,7 @@
             <p class="project-meta">Multi-modal Robotics</p>
             <h3 class="project-title">Husky Carbon</h3>
             <p class="project-summary">Carbon-composite legged platform designed to morph into a quadrotor configuration.</p>
+            <span class="project-company">NEU SiliconSynapse Lab</span>
           </a>
 
           <a class="project-link" href="projects/aerobat.html">
@@ -251,6 +223,7 @@
             <p class="project-meta">Bio-inspired Robotics</p>
             <h3 class="project-title">Aerobat</h3>
             <p class="project-summary">Parametric, flexible wing mechanisms inspired by the flight of fruit bats.</p>
+            <span class="project-company">NEU SiliconSynapse Lab</span>
           </a>
 
           <a class="project-link" href="projects/rotary-rf-pcb-manufacturing.html">
@@ -260,6 +233,7 @@
             <p class="project-meta">Special-Purpose Machinery</p>
             <h3 class="project-title">Rotary RF PCB System</h3>
             <p class="project-summary">Large-format heated coating machine delivered at less than half the prior-system cost.</p>
+            <span class="project-company">MORSE Corp</span>
           </a>
 
           <a class="project-link" href="projects/asthma-inhaler-assistive-device.html">
@@ -269,6 +243,7 @@
             <p class="project-meta">Assistive Mechatronics</p>
             <h3 class="project-title">Inhaler Assistive Device</h3>
             <p class="project-summary">Award-winning breath-triggered device designed for users with limited motor ability.</p>
+            <span class="project-company">Northeastern University</span>
           </a>
 
           <a class="project-link" href="projects/3dtrails.html">
@@ -278,6 +253,7 @@
             <p class="project-meta">Digital Fabrication</p>
             <h3 class="project-title">3DTrails</h3>
             <p class="project-summary">Geospatial data transformed into multicolor printed trail maps and custom installations.</p>
+            <span class="project-company">Personal Project</span>
           </a>
 
           <a class="project-link" href="projects/audio-variometer.html">
@@ -287,6 +263,7 @@
             <p class="project-meta">Flight Instrumentation</p>
             <h3 class="project-title">Audio Variometer</h3>
             <p class="project-summary">Compact barometric instrument translating climb and sink rate into audible guidance.</p>
+            <span class="project-company">Personal Project</span>
           </a>
 
           <a class="project-link" href="projects/cat-treat-dispenser.html">
@@ -296,34 +273,10 @@
             <p class="project-meta">Embedded Product</p>
             <h3 class="project-title">Cat Treat Dispenser</h3>
             <p class="project-summary">Animal-operated dispenser with sensing, stepper actuation, and a compact printed enclosure.</p>
+            <span class="project-company">Personal Project</span>
           </a>
         </div>
-      </section>
-
-      <section class="section" id="capabilities">
-        <div class="section-head centered">
-          <h2>Capabilities</h2>
-        </div>
-        <div class="capabilities">
-          <div class="capability">
-            <h3>CAD &amp; Drawings</h3>
-            <p>Parametric modeling, assemblies, tolerance checks, and production-ready drawings.</p>
-          </div>
-          <div class="capability">
-            <h3>Analysis</h3>
-            <p>Structural and thermal first-pass simulation paired with hand calculations.</p>
-          </div>
-          <div class="capability">
-            <h3>Prototyping</h3>
-            <p>Fast mechanical prototypes for fit checks, ergonomics, and functional validation.</p>
-          </div>
-          <div class="capability">
-            <h3>Testing</h3>
-            <p>Fixture design, data capture plans, and clear reporting for design decisions.</p>
-          </div>
-        </div>
-      </section>
-    </main>
+      </section></main>
 
     <footer class="site-footer">
       <div class="footer-inner">
@@ -332,13 +285,15 @@
           <p>Robotics mechanical engineer building practical, production-ready hardware.</p>
         </div>
         <div class="footer-links" aria-label="Footer navigation">
+          <a href="#about">About Me</a>
           <a href="#experience">Experience</a>
           <a href="#projects">Projects</a>
-          <a href="#capabilities">Capabilities</a>
           <a href="mailto:peterkellyyy@gmail.com">Contact</a>
         </div>
       </div>
     </footer>
     <script src="scripts/timeline.js"></script>
+    <script src="scripts/page-transition.js"></script>
+
   </body>
 </html>

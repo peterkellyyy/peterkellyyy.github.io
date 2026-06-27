@@ -3,8 +3,8 @@ const projectCatalog = {
     title: "Markforged FX10",
     eyebrow: "Production Additive Manufacturing",
     lede: "R&D and product development for the FX10's swappable metal printhead, from initial feasibility work through engineering validation.",
-    hero: "../assets/projects/fx10/01-b94fac15ce02.png",
-    heroAlt: "Markforged FX10 metal printhead",
+    hero: "../assets/projects/fx10/FX10-hero.png",
+    heroAlt: "Markforged FX10 platform with metal printhead",
     tags: ["Printhead architecture", "Metal FFF", "Validation", "Manufacturing"],
     facts: [
       ["2x", "Metal X print speed"],
@@ -553,9 +553,6 @@ const renderFx10CaseStudy = () => {
   document.title = "FX10 Metal Print Head | Peter Kelly";
   document.body.classList.add("fx10-case-study");
 
-  const backLink = document.querySelector(".back-link");
-  if (backLink) backLink.textContent = "Back to Projects";
-
   const hero = el("section", "fx10-hero");
   const heroCopy = el("div", "fx10-hero-copy");
   heroCopy.append(
@@ -583,8 +580,8 @@ const renderFx10CaseStudy = () => {
 
   const heroMedia = el("div", "fx10-hero-media");
   const heroImage = el("img");
-  heroImage.src = "../assets/projects/fx10/01-b94fac15ce02.png";
-  heroImage.alt = "Markforged FX10 metal printhead";
+  heroImage.src = project.hero;
+  heroImage.alt = project.heroAlt;
   heroImage.loading = "eager";
   heroMedia.append(heroImage);
   hero.append(heroCopy, heroMedia);

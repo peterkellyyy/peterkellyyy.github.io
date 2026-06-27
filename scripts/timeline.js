@@ -430,7 +430,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       const eventType = event.type === "patent" ? "Patent" : event.type === "thesis" ? "Thesis" : "Publication";
       const url = normalizeUrl(event.url);
       const contentOpen = isEducation
-        ? `<div class="tl-milestone-content tl-milestone-education-content"><img class="tl-milestone-icon" src="logos/Graduation Cap.png" alt="" aria-hidden="true"><div class="tl-milestone-education-copy">`
+        ? `<div class="tl-milestone-content tl-milestone-education-content"><img class="tl-milestone-icon" src="icons/Graduation Cap.png" alt="" aria-hidden="true"><div class="tl-milestone-education-copy">`
         : url
         ? `<a class="tl-milestone-content tl-milestone-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">`
         : '<div class="tl-milestone-content">';
