@@ -17,7 +17,7 @@ patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcemen
 patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01,6
 publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement in Additively Manufactured Parts via Co-Part Assembly,,,2023-05-01,,,https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf,,markforged:2022-04-01,5
 publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion and Moisture Absorption on the Dimensional Accuracy of Carbon-Reinforced 3D Printed Parts,,,2021-10-01,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC8587952/pdf/polymers-13-03637.pdf,,markforged:2021-06-01,4
-thesis,siliconsynapse,NEU SiliconSynapse Lab,"Design of a Thruster Assisted Bipedal Robot",,,2021-04-01,,,,"Designed and analyzed the Harpy thruster-assisted bipedal robot platform.",siliconsynapse:2020-01-01,4
+thesis,siliconsynapse,NEU SiliconSynapse Lab,"Design of a Thruster Assisted Bipedal Robot",,,2021-04-01,,,https://web.archive.org/web/20220826032004id_/https://repository.library.northeastern.edu/files/neu:bz60w8418/fulltext.pdf,"Designed and analyzed the Harpy thruster-assisted bipedal robot platform.",siliconsynapse:2020-01-01,4
 event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,,markforged:3|siliconsynapse:5|default:3
 publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,https://arxiv.org/pdf/2104.05834,,siliconsynapse:2020-01-01,4
 publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,https://par.nsf.gov/servlets/purl/10194913,,siliconsynapse:2020-01-01,3
@@ -33,6 +33,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
   let cardResizeObserver;
   let layoutFrame;
   let traceAnimationFrame;
+  let activeJob;
 
   const parseCsv = (text) => {
     const rows = [];
@@ -441,6 +442,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
           ${contentOpen}
             ${isDocument ? `<span class="tl-m-type">${eventType}</span>` : ""}
             <span class="tl-m-label">${escapeHtml(event.title)}</span>
+            ${isEducation ? '<span class="tl-m-school">Northeastern University</span>' : ""}
             <span class="tl-m-year">${formatDate(event.eventDate)}</span>
           ${contentClose}
         </div>`
@@ -470,10 +472,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       render(parseCsv(fallbackCsv));
     });
 
-  const setOpenJob = (selectedJob, forceOpen = false) => {
-    const toggle = selectedJob.querySelector(".tl-job-toggle");
-    const opening = forceOpen || !selectedJob.classList.contains("is-open");
-
+  const applyActiveJob = (activeJob) => {
     mount.querySelectorAll(".tl-job.is-open").forEach((job) => {
       job.classList.remove("is-open");
       job.querySelector(".tl-job-toggle").setAttribute("aria-expanded", "false");
@@ -485,23 +484,39 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
     });
     delete mount.dataset.activeGroup;
 
-    if (opening) {
-      selectedJob.classList.add("is-open");
+    if (activeJob) {
+      activeJob.classList.add("is-open");
+      const toggle = activeJob.querySelector(".tl-job-toggle");
       toggle.setAttribute("aria-expanded", "true");
-      selectedJob.querySelector(".tl-job-expanded").setAttribute("aria-hidden", "false");
-      const group = selectedJob.dataset.group;
+      activeJob.querySelector(".tl-job-expanded").setAttribute("aria-hidden", "false");
+      const group = activeJob.dataset.group;
       mount.dataset.activeGroup = group;
-      mount.querySelectorAll(`.tl-milestone-document[data-related-group="${group}"]`).forEach((milestone) => {
-        milestone.hidden = false;
-      });
+      mount.querySelectorAll(".tl-milestone-document[data-related-group]")
+        .forEach((milestone) => {
+          milestone.hidden = milestone.dataset.relatedGroup !== group;
+        });
     }
 
     scheduleTimelineLayout();
     animateTraceRouting();
   };
 
+  const setOpenJob = (selectedJob) => {
+    if (activeJob === selectedJob) return;
+    activeJob = selectedJob;
+    applyActiveJob(activeJob);
+  };
+
   window.addEventListener("resize", scheduleTimelineLayout);
-  mount.addEventListener("click", (event) => {
+  mount.addEventListener("pointerover", (event) => {
+    const card = event.target.closest(".tl-job-content");
+    if (!card || !mount.contains(card)) return;
+    if (card.contains(event.relatedTarget)) return;
+
+    setOpenJob(card.closest(".tl-job"));
+  });
+
+  mount.addEventListener("focusin", (event) => {
     const card = event.target.closest(".tl-job-content");
     if (!card) return;
 
@@ -514,7 +529,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       const selectedJob = mount.querySelector(`.tl-job[data-group="${group}"]`);
       if (!selectedJob) return;
 
-      setOpenJob(selectedJob, true);
+      setOpenJob(selectedJob);
       window.setTimeout(() => {
         selectedJob.scrollIntoView({
           behavior: "smooth",

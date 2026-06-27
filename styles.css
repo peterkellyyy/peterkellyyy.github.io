@@ -2672,6 +2672,10 @@ p {
   --trace-color: #70b77e;
 }
 
+.timeline-scroll .tl-milestone-thesis {
+  --trace-color: #7c3aed;
+}
+
 .timeline-scroll .tl-traces {
   height: 100%;
   inset: 0;
@@ -2716,6 +2720,15 @@ p {
 .timeline-scroll .tl-milestone-document .tl-m-label {
   font-size: 0.76rem;
   line-height: 1.2;
+}
+
+.timeline-scroll .tl-m-school {
+  color: var(--ink);
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 2px;
 }
 
 .timeline-scroll .tl-milestone-link {

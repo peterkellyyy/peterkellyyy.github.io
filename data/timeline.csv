@@ -12,7 +12,7 @@ patent,partial-rotation,,3D Printing with Partial Part Rotation and Reinforcemen
 patent,filament-path,,Devices and Systems for Varying Filament Path Length,,,2023-09-21,,,https://patents.google.com/patent/US20240100772A1/en,,markforged:2022-04-01,6
 publication,multiplanar,,Multiplanar Continuous Fiber Reinforcement in Additively Manufactured Parts via Co-Part Assembly,,,2023-05-01,,,https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf,,markforged:2022-04-01,5
 publication,thermal-expansion,,Effects of Coefficient of Thermal Expansion and Moisture Absorption on the Dimensional Accuracy of Carbon-Reinforced 3D Printed Parts,,,2021-10-01,,,https://pmc.ncbi.nlm.nih.gov/articles/PMC8587952/pdf/polymers-13-03637.pdf,,markforged:2021-06-01,4
-thesis,siliconsynapse,NEU SiliconSynapse Lab,"Design of a Thruster Assisted Bipedal Robot",,,2021-04-01,,,,"Designed and analyzed the Harpy thruster-assisted bipedal robot platform.",siliconsynapse:2020-01-01,4
+thesis,siliconsynapse,NEU SiliconSynapse Lab,"Design of a Thruster Assisted Bipedal Robot",,,2021-04-01,,,https://web.archive.org/web/20220826032004id_/https://repository.library.northeastern.edu/files/neu:bz60w8418/fulltext.pdf,"Designed and analyzed the Harpy thruster-assisted bipedal robot platform.",siliconsynapse:2020-01-01,4
 event,masters,,M.S. Mechanical Engineering,,,2021-05-01,,,,,,markforged:3|siliconsynapse:5|default:3
 publication,husky-carbon,,"Generative Design of NU's Husky Carbon, A Morpho-Functional, Legged Robot",,,2021-04-01,,,https://arxiv.org/pdf/2104.05834,,siliconsynapse:2020-01-01,4
 publication,bio-inspired,,Computational Structure Design of a Bio-Inspired Armwing Mechanism,,,2020-07-01,,,https://par.nsf.gov/servlets/purl/10194913,,siliconsynapse:2020-01-01,3
