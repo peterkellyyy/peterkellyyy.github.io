@@ -515,6 +515,7 @@ p {
   aspect-ratio: 1 / 1;
   padding: 12px;
   position: relative;
+  --logo-glow: rgba(24, 26, 31, 0.34);
   transition: background 0.22s ease, transform 0.22s ease;
 }
 
@@ -522,11 +523,37 @@ p {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: filter 0.24s ease, transform 0.3s ease;
 }
 
-.logo-item img:hover {
+.logo-item:hover img,
+.logo-item:focus-visible img,
+.logo-item:focus-within img {
+  filter:
+    drop-shadow(0 0 6px var(--logo-glow))
+    drop-shadow(0 5px 8px color-mix(in srgb, var(--logo-glow) 46%, transparent));
   transform: scale(1.08);
+}
+
+.logo-item[data-timeline-group="berkshire-grey"],
+.logo-item[data-timeline-group="markforged"] {
+  --logo-glow: rgba(18, 18, 18, 0.27);
+}
+
+.logo-item[data-timeline-group="siliconsynapse"] {
+  --logo-glow: rgba(162, 181, 188, 0.68);
+}
+
+.logo-item[data-timeline-group="morse"] {
+  --logo-glow: rgba(20, 107, 226, 0.68);
+}
+
+.logo-item[data-timeline-group="irobot"] {
+  --logo-glow: rgba(93, 224, 91, 0.72);
+}
+
+.logo-item[data-timeline-group="sikorsky"] {
+  --logo-glow: rgba(16, 92, 220, 0.68);
 }
 
 .logo-item:hover,
@@ -542,7 +569,7 @@ p {
   font-weight: 700;
   left: 50%;
   line-height: 1.15;
-  margin-top: 10px;
+  margin-top: 2px;
   opacity: 0;
   position: absolute;
   top: 100%;
