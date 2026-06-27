@@ -187,7 +187,16 @@ svg {
 
 .banner-content {
   animation: banner-enter 0.75s ease both;
-  max-width: 560px;
+  background: linear-gradient(145deg, rgba(12, 17, 26, 0.52), rgba(12, 17, 26, 0.28));
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.24),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.22),
+    0 22px 58px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px) saturate(118%);
+  max-width: min(680px, 100%);
+  padding: 28px;
   position: relative;
   text-align: right;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.34);
@@ -196,7 +205,7 @@ svg {
 
 .banner-content h1 {
   color: #ffffff;
-  font-size: clamp(3.8rem, 7.2vw, 6.8rem);
+  font-size: clamp(3.6rem, 6.2vw, 5.95rem);
   letter-spacing: 0;
   line-height: 0.92;
   margin-bottom: 14px;
@@ -303,7 +312,7 @@ svg {
 .section-label {
   color: var(--signal-blue);
   display: block;
-  font-size: 1.92rem;
+  font-size: 1.34rem;
   font-weight: 900;
   letter-spacing: 0.04em;
   line-height: 1.1;
@@ -313,12 +322,12 @@ svg {
 
 .experience-title,
 .section-head .section-label {
-  font-size: 1.92rem;
+  font-size: 1.34rem;
   margin-bottom: 18px;
 }
 
 .experience-title.section-label {
-  font-size: 1.92rem;
+  font-size: 1.34rem;
 }
 
 .about-copy h2::before,
@@ -346,7 +355,7 @@ svg {
 .about-copy h2 {
   color: #111827;
   display: block;
-  font-size: clamp(2.45rem, 4.05vw, 3.45rem);
+  font-size: clamp(1.72rem, 2.84vw, 2.42rem);
   line-height: 1.08;
   margin: 0 0 22px;
   max-width: 560px;
@@ -1653,27 +1662,33 @@ p {
   border-top: 1px solid var(--line);
   box-sizing: border-box;
   margin: 0 auto;
-  max-width: 1180px;
-  padding: 42px 24px;
+  max-width: 1080px;
+  padding: 42px 0;
   width: calc(100% - 48px);
 }
 
 .fx10-overview-section {
   align-items: start;
   background: #ffffff;
-  border-top: 0;
   display: grid;
-  column-gap: clamp(12px, 2vw, 26px);
-  grid-template-columns: minmax(420px, 1.02fr) minmax(360px, 0.98fr);
+  column-gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: minmax(460px, 1.08fr) minmax(330px, 0.92fr);
   row-gap: 34px;
-  padding-top: 38px;
 }
 
 .fx10-overview-copy p:not(.fx10-section-kicker) {
   color: #435065;
   font-size: 0.98rem;
   line-height: 1.72;
-  max-width: 640px;
+  max-width: 100%;
+}
+
+.fx10-overview-copy a {
+  color: var(--signal-blue);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 .fx10-glance {
@@ -1707,20 +1722,89 @@ p {
 }
 
 .fx10-overview-video {
-  aspect-ratio: 16 / 9;
-  background: #0c0f14;
-  border-radius: 8px;
-  box-shadow: 0 18px 42px rgba(18, 24, 32, 0.12);
-  grid-column: 1 / -1;
-  margin: 8px 0 0;
-  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+  margin: 22px 0 0;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .fx10-overview-video iframe {
+  aspect-ratio: 16 / 9;
+  background: #0c0f14;
   border: 0;
+  border-radius: 8px;
   display: block;
-  height: 100%;
+  height: auto;
   width: 100%;
+}
+
+.fx10-overview-video figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.fx10-process-video-section {
+  border-top: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  max-width: none;
+  padding: 42px 0 0;
+  width: 100vw;
+}
+
+.fx10-process-video {
+  background: #0c0f14;
+  border-radius: 0;
+  display: block;
+  height: clamp(360px, 46vw, 620px);
+  object-fit: cover;
+  overflow: hidden;
+  width: 100%;
+}
+
+.fx10-design-copy {
+  color: #435065;
+  font-size: 0.98rem;
+  line-height: 1.76;
+  max-width: 100%;
+}
+
+.fx10-design-copy p {
+  margin: 0 0 16px;
+  max-width: 100%;
+}
+
+.fx10-design-copy p:first-child {
+  margin-bottom: 18px;
+}
+
+.fx10-design-copy p:nth-child(2),
+.fx10-design-copy p:nth-child(3),
+.fx10-design-copy p:nth-child(4) {
+  color: #132033;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.fx10-design-copy p:nth-child(2)::before,
+.fx10-design-copy p:nth-child(3)::before,
+.fx10-design-copy p:nth-child(4)::before {
+  color: var(--signal-blue);
+  content: "•";
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.fx10-outcome-section p:not(.fx10-section-kicker) {
+  color: #435065;
+  font-size: 1.05rem;
+  line-height: 1.72;
+  margin: 0;
+  max-width: 100%;
 }
 
 .fx10-highlight-grid {
@@ -1746,7 +1830,7 @@ p {
 
 .fx10-highlight-card img {
   display: block;
-  height: 320px;
+  height: 384px;
   margin-bottom: 20px;
   object-fit: contain;
   width: 100%;
@@ -1769,8 +1853,8 @@ p {
 
 .fx10-split {
   display: grid;
-  gap: 46px;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: 42px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .fx10-list-panel {
@@ -1778,12 +1862,12 @@ p {
   border-bottom: 0;
   border-left: 0;
   border-top: 0;
-  padding-right: 36px;
+  padding-right: 0;
 }
 
 .fx10-list-panel + .fx10-list-panel {
   border-right: 0;
-  padding-left: 10px;
+  padding-left: 0;
   padding-right: 0;
 }
 
@@ -1841,26 +1925,6 @@ p {
   top: 4px;
   transform: rotate(45deg);
   width: 4px;
-}
-
-.fx10-view-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.fx10-view-media {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  min-height: 260px;
-}
-
-.fx10-view-media img {
-  aspect-ratio: 4 / 3;
-  background: #f2f5f7;
-  height: 100%;
-  object-fit: contain;
-  padding: 24px;
 }
 
 /* Shared archived project pages */
@@ -2304,14 +2368,15 @@ p {
     inset: auto;
     object-position: 68% center;
     position: relative;
-    width: 100%;
+    transform: none;
+    width: 100vw;
   }
 
   .banner-overlay {
     align-items: stretch;
     display: block;
     min-height: 0;
-    padding: 28px 18px 38px;
+    padding: 28px 18px 20px;
   }
 
   .banner-content {
@@ -2391,30 +2456,30 @@ p {
   }
 
   .hero-inner {
-    padding-bottom: 54px;
-    padding-top: 54px;
+    padding-bottom: 42px;
+    padding-top: 22px;
   }
 
   .about-copy h2,
   .section-head h2:not(.section-label) {
-    font-size: 1.55rem;
+    font-size: 1.1rem;
   }
 
   .section-label,
   .experience-title.section-label,
   .section-head .section-label {
-    font-size: 1.92rem;
+    font-size: 1.34rem;
   }
 
   .personal-summary {
     display: grid;
     gap: 34px;
     grid-template-columns: 1fr;
-    padding: 28px 0;
+    padding: 12px 0 28px;
   }
 
   .about-copy h2 {
-    font-size: clamp(2.2rem, 9vw, 3rem);
+    font-size: clamp(1.54rem, 6.3vw, 2.1rem);
   }
 
   .about-copy > p:not(.section-label) {
@@ -2422,14 +2487,17 @@ p {
   }
 
   .summary-contact {
-    align-items: stretch;
+    align-items: center;
     flex-direction: column;
     margin-top: 22px;
+    text-align: center;
   }
 
   .contact-card {
+    grid-template-columns: 42px minmax(0, auto);
+    justify-content: center;
     padding: 0;
-    width: 100%;
+    width: auto;
   }
 
   .contact-card + .contact-card {
@@ -2455,15 +2523,17 @@ p {
   }
 
   .logo-grid-row {
-    gap: 6px 8px;
-    grid-template-columns: repeat(3, 88px);
+    gap: 4px 6px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     justify-content: center;
+    max-width: 100%;
+    width: 100%;
   }
 
   .logo-item {
-    height: 88px;
-    padding: 8px;
-    width: 88px;
+    height: auto;
+    padding: 6px;
+    width: 100%;
   }
 
   /* On mobile, compress the timeline height further */
@@ -3057,7 +3127,6 @@ p {
 
   .fx10-overview-section {
     gap: 22px;
-    padding-top: 32px;
   }
 
   .fx10-overview-copy p:not(.fx10-section-kicker) {
@@ -3081,11 +3150,14 @@ p {
   }
 
   .fx10-overview-video {
-    margin-top: 4px;
+    margin-top: 16px;
   }
 
-  .fx10-highlight-grid,
-  .fx10-view-grid {
+  .fx10-design-copy {
+    max-width: 100%;
+  }
+
+  .fx10-highlight-grid {
     grid-template-columns: 1fr;
   }
 
@@ -3101,7 +3173,7 @@ p {
   }
 
   .fx10-highlight-card img {
-    height: 300px;
+    height: 360px;
     max-height: 430px;
   }
 
@@ -3262,8 +3334,19 @@ p {
   }
 
   .fx10-section {
-    padding: 36px 18px;
+    padding: 36px 0;
     width: calc(100% - 36px);
+  }
+
+  .fx10-process-video-section {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 36px 0 0;
+    width: 100vw;
+  }
+
+  .fx10-process-video {
+    height: clamp(280px, 56vw, 420px);
   }
 
   .fx10-glance {
@@ -3281,7 +3364,7 @@ p {
   }
 
   .fx10-highlight-card img {
-    height: 260px;
+    height: 312px;
     max-height: 330px;
   }
 

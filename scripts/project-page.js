@@ -590,10 +590,21 @@ const renderFx10CaseStudy = () => {
   const overview = el("section", "fx10-overview-section fx10-section");
   const overviewCopy = el("div", "fx10-overview-copy");
   overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
-  addParagraphs(overviewCopy, [
-    "From its inception, the FX10 was designed to be a modular printer capable of printing both composite and metal filaments. Those material systems impose different thermal, mechanical, and flow requirements, so the printhead needed a swappable architecture that could support both production performance and serviceability.",
-    "Beginning in June 2022, I leveraged prior Metal X and fine-feature process-development experience to lead the initial R&D of the FX10 metal printhead and carry the architecture through engineering validation."
-  ]);
+
+  const overviewIntro = el("p", "", "From the beginning of the program, the FX10 was conceived as a modular additive manufacturing platform capable of printing both composite and metal filaments. Because those material systems place distinct demands on thermal control, extruder requirements, filament routing, and flow behavior, the printhead required a swappable architecture.");
+
+  const overviewDevelopment = el("p");
+  overviewDevelopment.append(
+    document.createTextNode("Beginning in June 2022, I leveraged my prior Metal X and "),
+    Object.assign(el("a", "", "fine-feature process development"), { href: "finefeatures.html" }),
+    document.createTextNode(" experience to lead the initial R&D of the FX10 metal printhead and carry the architecture through engineering validation. I owned the printhead architecture from early feasibility through EVT, translating process and material requirements into mechanical design decisions across the heater block, heat sink, extruder, and filament routing system.")
+  );
+
+  overviewCopy.append(
+    overviewIntro,
+    overviewDevelopment,
+    el("p", "", "As the program matured, I developed and released subsystem designs, part drawings, manufacturing fixtures, and work instructions to support builds and validation. I worked closely with electrical, software, materials, manufacturing, and print test teams to integrate the metal printhead into the FX10 platform, debug system-level issues, and advance the design from exploratory R&D into an production ready architecture.")
+  );
 
   const glance = el("figure", "fx10-glance");
   const glanceImage = el("img");
@@ -602,7 +613,10 @@ const renderFx10CaseStudy = () => {
   glanceImage.loading = "lazy";
   glance.append(glanceImage, el("figcaption", "", "FX10 metal print head"));
   overview.append(overviewCopy, glance);
+  root.append(overview);
 
+  const launchVideo = el("section", "fx10-section fx10-launch-video-section");
+  launchVideo.append(el("p", "fx10-section-kicker", "Launch Video"));
   const overviewVideo = el("figure", "fx10-overview-video");
   const iframe = el("iframe");
   const embedUrl = new URL(project.embed.src);
@@ -616,12 +630,23 @@ const renderFx10CaseStudy = () => {
   iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
   iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
   iframe.allowFullscreen = true;
-  overviewVideo.append(iframe);
-  overview.append(overviewVideo);
-  root.append(overview);
+  overviewVideo.append(iframe, el("figcaption", "", "FX10 metal print head shipping announcement video"));
+  launchVideo.append(overviewVideo);
+  root.append(launchVideo);
 
-  const highlights = el("section", "fx10-section");
-  highlights.append(el("p", "fx10-section-kicker", "Design Highlights"));
+  const design = el("section", "fx10-section fx10-design-section");
+  design.append(el("p", "fx10-section-kicker", "Design"));
+  const designCopy = el("div", "fx10-design-copy");
+  designCopy.append(
+    el("p", "", "Before starting to lay out the architecture of Markforged's next-gen metal printhead, I set out to answer three major questions:"),
+    el("p", "", "Whether a heatsink Peltier cooler is required with Markforged \"V2\" metal filaments"),
+    el("p", "", "Required hot zone length for 2x overall print speed"),
+    el("p", "", "If unit-to-unit variation could be limited with a new extruder design and calibration procedure"),
+    el("p", "", "Using a combination of print testing with stock Metal X print heads, and modified \"Frankenstein\" print heads, I answered all three questions, giving the engineering team the necessary confidence to proceed with the first print head prototype."),
+    el("p", "", "After the R&D phase, I laid out the initial architecture of the print head and collaborated with an electrical engineer to design the first prototype for internal testing, owning the 3D CAD and 2D part drawings. During the build process, I also developed the manufacturing work instructions and documented design issues."),
+    el("p", "", "As the metal print head team grew and the design later went through a second prototype before proceeding to the EVT design and test phase, I continued to lead the design of various subsystems, create 2D part and assembly drawings, and own validation testing deliverables.")
+  );
+  design.append(designCopy);
   const highlightGrid = el("div", "fx10-highlight-grid");
   [
     ["../assets/projects/fx10/01-b94fac15ce02.png", "FX10 Metal Print Head", "Compact modular architecture with integrated cooling and electronics enclosure."],
@@ -636,8 +661,20 @@ const renderFx10CaseStudy = () => {
     card.append(image, el("h3", "", title), el("p", "", copy));
     highlightGrid.append(card);
   });
-  highlights.append(highlightGrid);
-  root.append(highlights);
+  design.append(highlightGrid);
+  root.append(design);
+
+  const processVideoSection = el("section", "fx10-section fx10-process-video-section");
+  const processVideo = el("video", "fx10-process-video");
+  processVideo.src = "../assets/projects/fx10/FX10-metal-process.webm";
+  processVideo.autoplay = true;
+  processVideo.loop = true;
+  processVideo.muted = true;
+  processVideo.playsInline = true;
+  processVideo.preload = "metadata";
+  processVideo.setAttribute("aria-label", "FX10 metal printing process video");
+  processVideoSection.append(processVideo);
+  root.append(processVideoSection);
 
   const split = el("section", "fx10-split fx10-section");
   const challenges = el("div", "fx10-list-panel");
@@ -668,12 +705,12 @@ const renderFx10CaseStudy = () => {
   split.append(challenges, impact);
   root.append(split);
 
-  const views = el("section", "fx10-section");
-  views.append(el("p", "fx10-section-kicker", "Additional Views"));
-  const viewGrid = el("div", "fx10-view-grid");
-  project.media.forEach((media) => viewGrid.append(createFigure(media, "fx10-view-media")));
-  views.append(viewGrid);
-  root.append(views);
+  const outcome = el("section", "fx10-section fx10-outcome-section");
+  outcome.append(
+    el("p", "fx10-section-kicker", "Outcome"),
+    el("p", "", "This work helped establish the FX10 as a true multi-material platform rather than a single-material printer, enabling the same machine architecture to support both continuous-fiber composite printing and metal filament printing through a robust, serviceable, and swappable printhead system.")
+  );
+  root.append(outcome);
 };
 
 if (!root || !project) {
