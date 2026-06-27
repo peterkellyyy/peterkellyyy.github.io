@@ -595,20 +595,29 @@ const renderFx10CaseStudy = () => {
     "Beginning in June 2022, I leveraged prior Metal X and fine-feature process-development experience to lead the initial R&D of the FX10 metal printhead and carry the architecture through engineering validation."
   ]);
 
-  const glance = el("aside", "fx10-glance");
-  glance.append(el("h2", "", "At a Glance"));
-  [
-    ["Role", "Lead Mechanical Engineer"],
-    ["Team", "R&D Hardware Team"],
-    ["Timeline", "Jun 2022 - May 2024"],
-    ["Stage", "EVT"],
-    ["Platform", "Markforged FX10"]
-  ].forEach(([label, value]) => {
-    const row = el("div");
-    row.append(el("span", "", label), el("strong", "", value));
-    glance.append(row);
-  });
+  const glance = el("figure", "fx10-glance");
+  const glanceImage = el("img");
+  glanceImage.src = "../assets/projects/fx10/print head.png";
+  glanceImage.alt = "Markforged FX10 metal printhead";
+  glanceImage.loading = "lazy";
+  glance.append(glanceImage, el("figcaption", "", "FX10 metal print head"));
   overview.append(overviewCopy, glance);
+
+  const overviewVideo = el("figure", "fx10-overview-video");
+  const iframe = el("iframe");
+  const embedUrl = new URL(project.embed.src);
+  embedUrl.searchParams.set("origin", window.location.origin);
+  iframe.src = embedUrl.href;
+  iframe.title = "YouTube video player";
+  iframe.width = "560";
+  iframe.height = "315";
+  iframe.loading = "lazy";
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  overviewVideo.append(iframe);
+  overview.append(overviewVideo);
   root.append(overview);
 
   const highlights = el("section", "fx10-section");
