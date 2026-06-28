@@ -299,7 +299,7 @@ svg {
 
 .hero-inner {
   padding-bottom: 52px;
-  padding-top: 58px;
+  padding-top: 30px;
 }
 
 .personal-summary {
@@ -309,7 +309,7 @@ svg {
   grid-template-columns: minmax(340px, 0.86fr) minmax(420px, 1fr);
   max-width: none;
   margin: 0;
-  padding: 12px 0 22px;
+  padding: 0 0 22px;
   position: relative;
 }
 
@@ -378,8 +378,8 @@ svg {
 }
 
 .about-company {
-  color: var(--signal-blue);
-  font-weight: 800;
+  color: inherit;
+  font-weight: inherit;
 }
 
 .summary-contact {
@@ -2566,7 +2566,7 @@ p {
 
   .hero-inner {
     padding-bottom: 42px;
-    padding-top: 22px;
+    padding-top: 12px;
   }
 
   .about-copy h2,
@@ -2584,7 +2584,7 @@ p {
     display: grid;
     gap: 34px;
     grid-template-columns: 1fr;
-    padding: 12px 0 28px;
+    padding: 0 0 28px;
   }
 
   .about-copy h2 {
