@@ -428,7 +428,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       const relatedGroup = isDocument ? event.related.split(":")[0] : "";
       const isStraight = !isDocument && event.group === "enrolled";
       const isEducation = !isDocument && (event.group === "masters" || event.group === "bachelors" || event.group === "enrolled");
-      const educationIcon = event.group === "enrolled" ? "logos/Northeastern Monogram.svg" : "icons/Graduation Cap.png";
+      const educationIcon = event.group === "enrolled" ? "logos/Northeastern Monogram.svg" : "icons/graduation-cap.svg";
       const eventType = event.type === "patent" ? "Patent" : event.type === "thesis" ? "Thesis" : "Publication";
       const url = normalizeUrl(event.url);
       const contentOpen = isEducation
@@ -497,12 +497,14 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       const group = activeJob.dataset.group;
       mount.dataset.activeGroup = group;
       let visibleDocumentCount = 0;
-      mount.querySelectorAll(".tl-milestone-document[data-related-group]")
-        .forEach((milestone) => {
-          const isRelated = milestone.dataset.relatedGroup === group;
-          milestone.hidden = !isRelated;
-          if (isRelated) visibleDocumentCount += 1;
-        });
+      if (!isMobileTimeline()) {
+        mount.querySelectorAll(".tl-milestone-document[data-related-group]")
+          .forEach((milestone) => {
+            const isRelated = milestone.dataset.relatedGroup === group;
+            milestone.hidden = !isRelated;
+            if (isRelated) visibleDocumentCount += 1;
+          });
+      }
       if (visibleDocumentCount) {
         mount.dataset.documentsSettling = "true";
         documentSettleTimer = window.setTimeout(() => {
@@ -521,7 +523,10 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
     applyActiveJob(activeJob);
   };
 
-  window.addEventListener("resize", scheduleTimelineLayout);
+  window.addEventListener("resize", () => {
+    if (activeJob) applyActiveJob(activeJob);
+    else scheduleTimelineLayout();
+  });
   mount.addEventListener("pointerover", (event) => {
     const card = event.target.closest(".tl-job-content");
     if (!card || !mount.contains(card)) return;

@@ -709,7 +709,7 @@ const createReturnProjectsCard = () => {
   const link = el("a", "project-link more-project-return");
   link.href = "../index.html#projects";
   const icon = el("img", "more-project-return-icon");
-  icon.src = "../icons/forward-arrow.png";
+  icon.src = "../icons/circle-arrow-right.svg";
   icon.alt = "";
   icon.setAttribute("aria-hidden", "true");
   link.append(

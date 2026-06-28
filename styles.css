@@ -195,26 +195,26 @@ svg {
     inset -1px -1px 0 rgba(0, 0, 0, 0.22),
     0 22px 58px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(10px) saturate(118%);
-  max-width: min(680px, 100%);
-  padding: 28px;
+  max-width: min(720px, 100%);
+  padding: clamp(34px, 4.2vw, 54px) clamp(46px, 5.6vw, 74px);
   position: relative;
-  text-align: right;
+  text-align: center;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.34);
   z-index: 1;
 }
 
 .banner-content h1 {
   color: #ffffff;
-  font-size: clamp(3.6rem, 6.2vw, 5.95rem);
+  font-size: clamp(3.3rem, 5.7vw, 5.35rem);
   letter-spacing: 0;
-  line-height: 0.92;
-  margin-bottom: 14px;
+  line-height: 0.96;
+  margin-bottom: 10px;
   white-space: nowrap;
 }
 
 .banner-lede {
   color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+  font-size: clamp(1.08rem, 1.55vw, 1.34rem);
   font-weight: 800;
   line-height: 1.25;
   margin-bottom: 28px;
@@ -225,7 +225,7 @@ svg {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0;
 }
 
@@ -233,13 +233,21 @@ svg {
   align-items: center;
   border-radius: 5px;
   display: inline-flex;
-  font-size: 0.96rem;
+  font-size: 0.86rem;
   font-weight: 800;
   gap: 10px;
   justify-content: center;
-  min-height: 48px;
-  padding: 0 22px;
+  min-height: 42px;
+  padding: 0 20px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.banner-button-icon {
+  display: block;
+  filter: brightness(0) saturate(100%);
+  height: 22px;
+  object-fit: contain;
+  width: 22px;
 }
 
 .banner-button:hover,
@@ -471,21 +479,21 @@ svg {
   display: inline-flex;
   font-size: 1.85rem;
   font-weight: 800;
-  height: 32px;
+  height: 42px;
   justify-content: center;
   line-height: 1;
   margin-top: 2px;
-  width: 32px;
+  width: 42px;
 }
 
 .about-pillar-icon img {
   display: block;
-  height: 28px;
+  height: 36px;
   object-fit: contain;
-  width: 28px;
+  width: 36px;
 }
 
-.about-pillar-icon-tools img {
+.about-pillar-icon img {
   filter: brightness(0) saturate(100%) invert(35%) sepia(92%) saturate(2854%) hue-rotate(207deg) brightness(94%) contrast(87%);
 }
 
