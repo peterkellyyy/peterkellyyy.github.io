@@ -189,7 +189,7 @@ svg {
   animation: banner-enter 0.75s ease both;
   background: linear-gradient(145deg, rgba(12, 17, 26, 0.52), rgba(12, 17, 26, 0.28));
   border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 8px;
+  border-radius: 14px;
   box-shadow:
     inset 1px 1px 0 rgba(255, 255, 255, 0.24),
     inset -1px -1px 0 rgba(0, 0, 0, 0.22),
@@ -992,6 +992,47 @@ p {
   margin: auto 16px 16px;
   padding: 5px 8px 4px;
 }
+
+.more-projects-section {
+  padding-bottom: 0;
+}
+
+.more-projects-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.more-project-card .project-summary,
+.more-project-return .project-summary {
+  margin-bottom: 18px;
+}
+
+.more-project-return {
+  align-items: center;
+  background: var(--paper);
+  border-color: var(--line);
+  justify-content: center;
+  min-height: 100%;
+  padding: 22px;
+  text-align: center;
+}
+
+.more-project-return-icon {
+  height: 58px;
+  margin: 0 auto 18px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(35%) sepia(92%) saturate(2854%) hue-rotate(207deg) brightness(94%) contrast(87%);
+  width: 58px;
+}
+
+.more-project-return .project-title,
+.more-project-return .project-summary {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.more-project-return .project-title {
+  color: var(--signal-blue);
+}
 /* -- Footer -- */
 .site-footer {
   background: #f7f9fb;
@@ -1713,6 +1754,16 @@ p {
   width: auto;
 }
 
+.fx10-glance-video {
+  aspect-ratio: 1080 / 1400;
+  background: #0c0f14;
+  border-radius: 8px;
+  display: block;
+  max-height: 520px;
+  object-fit: contain;
+  width: auto;
+}
+
 .fx10-glance figcaption {
   color: #5b6675;
   font-size: 0.86rem;
@@ -1736,6 +1787,16 @@ p {
   border-radius: 8px;
   display: block;
   height: auto;
+  width: 100%;
+}
+
+.fx10-overview-video video {
+  aspect-ratio: 16 / 9;
+  background: #0c0f14;
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  object-fit: contain;
   width: 100%;
 }
 
@@ -1773,6 +1834,14 @@ p {
   max-width: 100%;
 }
 
+.fx10-design-copy h2 {
+  color: #132033;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.12;
+  margin: 0 0 18px;
+  max-width: 900px;
+}
+
 .fx10-design-copy p {
   margin: 0 0 16px;
   max-width: 100%;
@@ -1797,6 +1866,20 @@ p {
   content: "•";
   display: inline-block;
   margin-right: 10px;
+}
+
+.fx10-generic-design-copy p:nth-child(2),
+.fx10-generic-design-copy p:nth-child(3),
+.fx10-generic-design-copy p:nth-child(4) {
+  color: #435065;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.fx10-generic-design-copy p:nth-child(2)::before,
+.fx10-generic-design-copy p:nth-child(3)::before,
+.fx10-generic-design-copy p:nth-child(4)::before {
+  content: none;
 }
 
 .fx10-outcome-section p:not(.fx10-section-kicker) {
@@ -1840,6 +1923,10 @@ p {
   color: #132033;
   font-size: 1rem;
   margin-bottom: 10px;
+}
+
+.fx10-gallery-section .fx10-highlight-grid {
+  row-gap: 34px;
 }
 
 .fx10-highlight-card p,
@@ -2301,6 +2388,10 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .more-projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .logo-grid-row {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 8px;
@@ -2409,7 +2500,17 @@ p {
   }
 
   .banner-button {
+    box-shadow: none;
     width: 100%;
+  }
+
+  .banner-button-primary,
+  .banner-button-primary:hover,
+  .banner-button-primary:focus-visible,
+  .banner-button-secondary,
+  .banner-button-secondary:hover,
+  .banner-button-secondary:focus-visible {
+    box-shadow: none;
   }
 
   .nav {
@@ -2519,6 +2620,10 @@ p {
   }
 
   .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .more-projects-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2688,6 +2793,11 @@ p {
   width: 28px;
 }
 
+.timeline-scroll .tl-milestone[data-event-key="enrolled"] .tl-milestone-icon {
+  height: 46px;
+  width: 46px;
+}
+
 .timeline-scroll .tl-milestone-education-content {
   display: flex;
   align-items: center;
@@ -2698,6 +2808,7 @@ p {
 .timeline-scroll .tl-milestone-education-copy {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .timeline-scroll .tl-milestone-svg {
@@ -2782,6 +2893,10 @@ p {
 
 .timeline-scroll .tl-milestone-link {
   transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-scroll .timeline-wrap[data-documents-settling="true"] .tl-milestone-document .tl-milestone-link {
+  pointer-events: none;
 }
 
 .timeline-scroll .tl-milestone-link:hover {
@@ -3149,6 +3264,11 @@ p {
     width: min(100%, 420px);
   }
 
+  .fx10-glance-video {
+    max-height: 440px;
+    width: min(100%, 340px);
+  }
+
   .fx10-overview-video {
     margin-top: 16px;
   }
@@ -3356,6 +3476,11 @@ p {
   .fx10-glance img {
     max-height: 360px;
     width: 100%;
+  }
+
+  .fx10-glance-video {
+    max-height: 360px;
+    width: min(100%, 300px);
   }
 
   .fx10-hero-media {

@@ -137,12 +137,78 @@ const projectCatalog = {
     ],
     source: "https://peterkellyyy.wixsite.com/peterkelly/co-parts"
   },
+  harpy: {
+    title: "Harpy Bipedal Robot",
+    eyebrow: "Robotics Research Platform",
+    lede: "A super-lightweight bipedal robot built to explore thruster-assisted locomotion, dynamic balance, and movement in reduced gravity.",
+    hero: "../assets/projects/harpy/harpy-front.png",
+    heroAlt: "Front three-quarter rendering of the Harpy bipedal robot with twin electric ducted fans",
+    tags: ["Mechanical design", "Actuation", "Simulation", "Hardware testing"],
+    facts: [
+      ["6", "Leg actuators"],
+      ["2", "Thruster actuators"],
+      ["2", "EDF thrusters"],
+      ["CF", "Composite structure"]
+    ],
+    overview: [
+      "Harpy was conceived as a hardware platform for developing complex control algorithms for thruster-assisted bipedal locomotion. The twin electric ducted fans can augment balance, improve walking stability, and add impulse for jumping over obstacles.",
+      "The platform also creates a practical way to study legged locomotion in reduced-gravity conditions. By using controlled thrust to offset a portion of the robot's weight, experiments can approximate lower effective gravity without changing the leg mechanism."
+    ],
+    sections: [
+      {
+        kicker: "Architecture",
+        title: "Mass was treated as a system-level constraint.",
+        body: [
+          "Nearly every design decision was driven by the need to minimize weight while preserving stiffness and energy density. Carbon-fiber tubes, sandwich plates, composite 3D printing, and embedded bearings and carbon plates reduced part count while keeping the load paths direct.",
+          "Lightweight brushless motors are paired with compact Harmonic Drive component sets. The resulting actuators package high reduction and torque density into composite housings shaped around the robot rather than around conventional gearbox geometry."
+        ]
+      },
+      {
+        kicker: "Actuator Design",
+        title: "Compact transmission, integrated structure",
+        body: [
+          "The actuator housing carries bearings, transmission components, motor, and output structure in a tightly integrated assembly. Composite FDM enabled geometry that would be costly to machine while still supporting embedded high-load components."
+        ]
+      },
+      {
+        kicker: "Parametric Optimization",
+        title: "Designing around center of mass and inertia",
+        body: [
+          "A parametric model in Rhino and Grasshopper exposed actuator, thruster, drive, heatsink, battery, and geometry locations to an evolutionary solver. The solver compared each candidate against target center-of-mass and moment-of-inertia values.",
+          "Because hardware changes could be folded back into the model, the workflow remained useful as batteries, sensors, cameras, and other components evolved."
+        ]
+      },
+      {
+        kicker: "Hardware Validation",
+        title: "From simulation to a restrained leg test",
+        body: [
+          "A t-slot fixture was designed for controlled drop and hop testing. The simplified single-leg setup isolated the sagittal mechanism while preserving the thruster actuator and EDF, making it possible to measure how assisted thrust changed required joint torque and jump performance."
+        ]
+      }
+    ],
+    outcome: "This work established the hardware architecture for Harpy: a compact experimental platform where structure, actuation, mass distribution, simulation, and testing were developed as one system.",
+    media: [
+      ["../assets/projects/harpy/harpy-back.png", "Rear packaging view showing actuation, electronics, and thrust hardware"],
+      ["../assets/projects/harpy/actuator-exploded.png", "Exploded view of the Harpy actuator architecture"],
+      ["../assets/projects/harpy/harpy-detail-01.jpg", "Parametric mass-property model and inertia visualization"],
+      ["../assets/projects/harpy/harpy-simulation.jpg", "Jump simulation with increasing thruster force"],
+      ["../assets/projects/harpy/harpy-test-fixture.jpg", "Leg and actuated EDF test fixture"],
+      ["../assets/projects/harpy/harpy-detail-02.jpg", "Leg mechanism during fixture testing"]
+    ],
+    videos: [
+      ["../assets/projects/harpy/leg-test.mp4", "../assets/projects/harpy/harpy-test-fixture.jpg", "Leg jumping with and without thruster assistance"]
+    ],
+    links: [
+      ["Read the related thesis", "https://web.archive.org/web/20220826032004id_/https://repository.library.northeastern.edu/files/neu:bz60w8418/fulltext.pdf"]
+    ],
+    source: "https://peterkellyyy.wixsite.com/peterkelly/harpy"
+  },
   finefeatures: {
     title: "Metal X Fine Features",
     eyebrow: "Metal Process Development",
     lede: "Production print settings for finer detail, improved accuracy, smoother surfaces, and stronger metal parts.",
-    hero: "../assets/projects/finefeatures/01-a4f12fd4b466.jpg",
-    heroAlt: "Collection of stainless-steel parts printed with Metal X Fine Features settings",
+    hero: "../assets/projects/finefeatures/finefeatures-bg.png",
+    heroAlt: "Fine Features metal additive manufacturing background",
     tags: ["Print process R&D", "Copper", "17-4PH stainless", "Qualification"],
     facts: [
       ["2", "Qualified material profiles"],
@@ -153,6 +219,11 @@ const projectCatalog = {
     overview: [
       "Fine Features is a set of Metal X slicer settings released for copper and 17-4PH stainless steel. I led development and qualification of the profiles to improve surface finish, dimensional accuracy, minimum feature size, and interlaminar strength relative to the standard process."
     ],
+    overviewMedia: {
+      type: "video",
+      src: "../assets/projects/finefeatures/finefeatures-demo.webm",
+      caption: "Fine Features process demonstration"
+    },
     sections: [
       {
         kicker: "Exploration",
@@ -549,6 +620,119 @@ const createLink = ([label, href], className = "archive-action") => {
   return link;
 };
 
+const moreProjectCards = {
+  fx10: {
+    href: "fx10.html",
+    thumb: "../assets/projects/fx10/FX10-Metal-Gear-on-Printbed.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Metal gear printed on the Markforged FX10",
+    meta: "Product Development",
+    title: "Markforged FX10",
+    summary: "Next-generation swappable metal printhead developed from initial R&D through EVT.",
+    company: "Markforged"
+  },
+  harpy: {
+    href: "harpy.html",
+    thumb: "../assets/projects/harpy/harpy-front.png",
+    thumbClass: "harpy-thumb",
+    alt: "Harpy thruster-assisted bipedal robot",
+    meta: "Robotics Research",
+    title: "Harpy Bipedal Robot",
+    summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
+    company: "NEU SiliconSynapse Lab"
+  },
+  "co-parts": {
+    href: "co-parts.html",
+    thumb: "../assets/projects/co-parts/01-e66ed0c40c37.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Continuous-fiber reinforced co-part assembly",
+    meta: "Published Research",
+    title: "Continuous-Fiber Co-parts",
+    summary: "Interlocking printed components optimized for reinforcement across multiple load planes.",
+    company: "Markforged"
+  },
+  "asthma-inhaler-assistive-device": {
+    href: "asthma-inhaler-assistive-device.html",
+    thumb: "../assets/projects/asthma-inhaler-assistive-device/01-6375d08b0e61.png",
+    thumbClass: "portfolio-thumb",
+    alt: "Breath-triggered asthma inhaler assistive device",
+    meta: "Assistive Mechatronics",
+    title: "Inhaler Assistive Device",
+    summary: "Award-winning breath-triggered device designed for users with limited motor ability.",
+    company: "Northeastern University"
+  },
+  "3dtrails": {
+    href: "3dtrails.html",
+    thumb: "../assets/projects/3dtrails/01-d52419b917b1.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Printed topographic trail map",
+    meta: "Digital Fabrication",
+    title: "3DTrails",
+    summary: "Geospatial data transformed into multicolor printed trail maps and custom installations.",
+    company: "Personal Project"
+  },
+  aerobat: {
+    href: "aerobat.html",
+    thumb: "../assets/projects/aerobat/01-b89eff569b16.png",
+    thumbClass: "portfolio-thumb",
+    alt: "Aerobat biomimetic flapping robot",
+    meta: "Bio-inspired Robotics",
+    title: "Aerobat",
+    summary: "Parametric, flexible wing mechanisms inspired by the flight of fruit bats.",
+    company: "NEU SiliconSynapse Lab"
+  }
+};
+
+const moreProjectPriority = ["fx10", "harpy", "co-parts", "asthma-inhaler-assistive-device", "3dtrails", "aerobat"];
+
+const createMoreProjectCard = (card) => {
+  const link = el("a", "project-link more-project-card");
+  link.href = card.href;
+  const figure = el("figure", `thumb ${card.thumbClass}`.trim());
+  figure.setAttribute("aria-label", `${card.title} thumbnail`);
+  const image = el("img");
+  image.src = card.thumb;
+  image.alt = card.alt;
+  image.loading = "lazy";
+  figure.append(image);
+  link.append(
+    figure,
+    el("p", "project-meta", card.meta),
+    el("h3", "project-title", card.title),
+    el("p", "project-summary", card.summary),
+    el("span", "project-company", card.company)
+  );
+  return link;
+};
+
+const createReturnProjectsCard = () => {
+  const link = el("a", "project-link more-project-return");
+  link.href = "../index.html#projects";
+  const icon = el("img", "more-project-return-icon");
+  icon.src = "../icons/forward-arrow.png";
+  icon.alt = "";
+  icon.setAttribute("aria-hidden", "true");
+  link.append(
+    icon,
+    el("h3", "project-title", "Return to Projects"),
+    el("p", "project-summary", "Head back to the full project grid.")
+  );
+  return link;
+};
+
+const renderMoreProjects = () => {
+  const section = el("section", "fx10-section more-projects-section");
+  section.append(el("p", "fx10-section-kicker", "More Projects"));
+  const grid = el("div", "project-grid more-projects-grid");
+  moreProjectPriority
+    .filter((projectKey) => projectKey !== key)
+    .slice(0, 3)
+    .forEach((projectKey) => grid.append(createMoreProjectCard(moreProjectCards[projectKey])));
+  grid.append(createReturnProjectsCard());
+  section.append(grid);
+  root.append(section);
+};
+
 const renderFx10CaseStudy = () => {
   document.title = "FX10 Metal Print Head | Peter Kelly";
   document.body.classList.add("fx10-case-study");
@@ -711,12 +895,166 @@ const renderFx10CaseStudy = () => {
     el("p", "", "This work helped establish the FX10 as a true multi-material platform rather than a single-material printer, enabling the same machine architecture to support both continuous-fiber composite printing and metal filament printing through a robust, serviceable, and swappable printhead system.")
   );
   root.append(outcome);
+  renderMoreProjects();
 };
+
+const renderCaseStudyProject = () => {
+  document.title = `${project.title} | Peter Kelly`;
+  document.body.classList.add("fx10-case-study");
+  root.closest(".project-main")?.classList.add("fx10-project-main");
+
+  const hero = el("section", "fx10-hero");
+  const heroCopy = el("div", "fx10-hero-copy");
+  heroCopy.append(
+    el("p", "fx10-eyebrow", project.eyebrow),
+    el("h1", "", project.title),
+    el("p", "fx10-lede", project.lede)
+  );
+
+  const tags = el("div", "fx10-tags");
+  project.tags?.forEach((tag) => tags.append(el("span", "", tag)));
+  heroCopy.append(tags);
+
+  const stats = el("div", "fx10-stats");
+  project.facts?.forEach(([value, label]) => {
+    const stat = el("div", "fx10-stat");
+    stat.append(el("span", "fx10-stat-icon", ""), el("strong", "", value), el("small", "", label));
+    stats.append(stat);
+  });
+  heroCopy.append(stats);
+
+  const heroMedia = el("div", "fx10-hero-media");
+  const heroImage = el("img");
+  heroImage.src = project.hero;
+  heroImage.alt = project.heroAlt;
+  heroImage.loading = "eager";
+  heroMedia.append(heroImage);
+  hero.append(heroCopy, heroMedia);
+  root.append(hero);
+
+  const overview = el("section", "fx10-overview-section fx10-section");
+  const overviewCopy = el("div", "fx10-overview-copy");
+  overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
+  addParagraphs(overviewCopy, project.overview || []);
+  overview.append(overviewCopy);
+
+  if (project.overviewMedia) {
+    const glance = el("figure", "fx10-glance");
+    if (project.overviewMedia.type === "video") {
+      const video = el("video", "fx10-glance-video");
+      video.src = project.overviewMedia.src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", project.overviewMedia.caption || "");
+      glance.append(video);
+    } else {
+      const glanceImage = el("img");
+      glanceImage.src = project.overviewMedia.src;
+      glanceImage.alt = project.overviewMedia.caption || "";
+      glanceImage.loading = "lazy";
+      glance.append(glanceImage);
+    }
+    if (project.overviewMedia.caption) glance.append(el("figcaption", "", project.overviewMedia.caption));
+    overview.append(glance);
+  } else if (project.media?.[0]) {
+    const glance = el("figure", "fx10-glance");
+    const glanceImage = el("img");
+    glanceImage.src = project.media[0][0];
+    glanceImage.alt = project.media[0][1];
+    glanceImage.loading = "lazy";
+    glance.append(glanceImage, el("figcaption", "", project.media[0][1]));
+    overview.append(glance);
+  }
+  root.append(overview);
+
+  project.sections?.forEach((section) => {
+    const design = el("section", "fx10-section fx10-design-section");
+    design.append(el("p", "fx10-section-kicker", section.kicker));
+    const designCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
+    designCopy.append(el("h2", "", section.title));
+    addParagraphs(designCopy, section.body || []);
+    design.append(designCopy);
+    root.append(design);
+  });
+
+  if (project.media?.length) {
+    const gallery = el("section", "fx10-section fx10-gallery-section");
+    gallery.append(el("p", "fx10-section-kicker", "Design"));
+    const highlightGrid = el("div", "fx10-highlight-grid");
+    project.media.forEach(([src, caption]) => {
+      const card = el("article", "fx10-highlight-card");
+      const image = el("img");
+      image.src = src;
+      image.alt = caption;
+      image.loading = "lazy";
+      card.append(image, el("h3", "", caption));
+      highlightGrid.append(card);
+    });
+    gallery.append(highlightGrid);
+    root.append(gallery);
+  }
+
+  if (project.videos?.length || project.embed) {
+    const videoSection = el("section", "fx10-section fx10-launch-video-section");
+    videoSection.append(el("p", "fx10-section-kicker", "In Motion"));
+
+    project.videos?.forEach(([src, poster, caption]) => {
+      const figure = el("figure", "fx10-overview-video");
+      const video = el("video");
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.poster = poster;
+      const source = el("source");
+      source.src = src;
+      source.type = "video/mp4";
+      video.append(source);
+      figure.append(video, el("figcaption", "", caption));
+      videoSection.append(figure);
+    });
+
+    if (project.embed) {
+      const figure = el("figure", "fx10-overview-video");
+      const iframe = el("iframe");
+      const embedUrl = new URL(project.embed.src);
+      embedUrl.searchParams.set("origin", window.location.origin);
+      iframe.src = embedUrl.href;
+      iframe.title = project.embed.title;
+      iframe.loading = "lazy";
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      figure.append(iframe, el("figcaption", "", project.embed.title));
+      videoSection.append(figure);
+    }
+
+    root.append(videoSection);
+  }
+
+  const outcome = el("section", "fx10-section fx10-outcome-section");
+  outcome.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
+  if (project.links?.length || project.source) {
+    const actions = el("div", "archive-actions");
+    project.links?.forEach((link) => actions.append(createLink(link)));
+    if (project.source) actions.append(createLink(["View original archive", project.source], "archive-action archive-action-secondary"));
+    outcome.append(actions);
+  }
+  root.append(outcome);
+  if (key === "finefeatures") renderMoreProjects();
+};
+
+const fx10StyleProjects = new Set(["px100", "finefeatures", "co-parts", "harpy"]);
 
 if (!root || !project) {
   if (root) root.append(el("p", "lede", "Project data could not be loaded."));
 } else if (key === "fx10") {
   renderFx10CaseStudy();
+} else if (fx10StyleProjects.has(key)) {
+  renderCaseStudyProject();
 } else {
   document.title = `${project.title} | Peter Kelly`;
 

@@ -33,6 +33,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
   let cardResizeObserver;
   let layoutFrame;
   let traceAnimationFrame;
+  let documentSettleTimer;
   let activeJob;
 
   const parseCsv = (text) => {
@@ -426,11 +427,12 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       const isDocument = event.type === "publication" || event.type === "patent" || event.type === "thesis";
       const relatedGroup = isDocument ? event.related.split(":")[0] : "";
       const isStraight = !isDocument && event.group === "enrolled";
-      const isEducation = !isDocument && (event.group === "masters" || event.group === "bachelors");
+      const isEducation = !isDocument && (event.group === "masters" || event.group === "bachelors" || event.group === "enrolled");
+      const educationIcon = event.group === "enrolled" ? "logos/Northeastern Monogram.svg" : "icons/Graduation Cap.png";
       const eventType = event.type === "patent" ? "Patent" : event.type === "thesis" ? "Thesis" : "Publication";
       const url = normalizeUrl(event.url);
       const contentOpen = isEducation
-        ? `<div class="tl-milestone-content tl-milestone-education-content"><img class="tl-milestone-icon" src="icons/Graduation Cap.png" alt="" aria-hidden="true"><div class="tl-milestone-education-copy">`
+        ? `<div class="tl-milestone-content tl-milestone-education-content"><img class="tl-milestone-icon" src="${escapeHtml(educationIcon)}" alt="" aria-hidden="true"><div class="tl-milestone-education-copy">`
         : url
         ? `<a class="tl-milestone-content tl-milestone-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">`
         : '<div class="tl-milestone-content">';
@@ -442,7 +444,7 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
           ${contentOpen}
             ${isDocument ? `<span class="tl-m-type">${eventType}</span>` : ""}
             <span class="tl-m-label">${escapeHtml(event.title)}</span>
-            ${isEducation ? '<span class="tl-m-school">Northeastern University</span>' : ""}
+            ${isEducation && event.group !== "enrolled" ? '<span class="tl-m-school">Northeastern University</span>' : ""}
             <span class="tl-m-year">${formatDate(event.eventDate)}</span>
           ${contentClose}
         </div>`
@@ -473,6 +475,9 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
     });
 
   const applyActiveJob = (activeJob) => {
+    window.clearTimeout(documentSettleTimer);
+    delete mount.dataset.documentsSettling;
+
     mount.querySelectorAll(".tl-job.is-open").forEach((job) => {
       job.classList.remove("is-open");
       job.querySelector(".tl-job-toggle").setAttribute("aria-expanded", "false");
@@ -491,10 +496,19 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
       activeJob.querySelector(".tl-job-expanded").setAttribute("aria-hidden", "false");
       const group = activeJob.dataset.group;
       mount.dataset.activeGroup = group;
+      let visibleDocumentCount = 0;
       mount.querySelectorAll(".tl-milestone-document[data-related-group]")
         .forEach((milestone) => {
-          milestone.hidden = milestone.dataset.relatedGroup !== group;
+          const isRelated = milestone.dataset.relatedGroup === group;
+          milestone.hidden = !isRelated;
+          if (isRelated) visibleDocumentCount += 1;
         });
+      if (visibleDocumentCount) {
+        mount.dataset.documentsSettling = "true";
+        documentSettleTimer = window.setTimeout(() => {
+          delete mount.dataset.documentsSettling;
+        }, 520);
+      }
     }
 
     scheduleTimelineLayout();
@@ -522,6 +536,15 @@ event,enrolled,,Enrolled at Northeastern University,,,2015-09-01,,,,,,0`;
 
     setOpenJob(card.closest(".tl-job"));
   });
+
+  mount.addEventListener("click", (event) => {
+    if (mount.dataset.documentsSettling !== "true") return;
+    const documentLink = event.target.closest(".tl-milestone-document .tl-milestone-link");
+    if (!documentLink || !mount.contains(documentLink)) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+  }, true);
 
   document.querySelectorAll("[data-timeline-group]").forEach((logo) => {
     logo.addEventListener("click", () => {

@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
   </head>
-  <body>
+  <body data-project="harpy">
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <div class="nav-brand">
@@ -27,131 +27,7 @@
         </div>
       </nav>
     </header>
-
-    <main class="project-main harpy-page">
-      <section class="harpy-hero">
-        <div class="harpy-hero-copy">
-          <p class="eyebrow">Robotics Research Platform</p>
-          <h1>Harpy</h1>
-          <p class="lede">A super-lightweight bipedal robot built to explore thruster-assisted locomotion, dynamic balance, and movement in reduced gravity.</p>
-          <div class="harpy-role">
-            <span>Mechanical design</span>
-            <span>Actuation</span>
-            <span>Simulation</span>
-            <span>Hardware testing</span>
-          </div>
-        </div>
-        <figure class="harpy-render-stage">
-          <img src="../assets/projects/harpy/harpy-front.png" alt="Front three-quarter rendering of the Harpy bipedal robot with twin electric ducted fans">
-          <figcaption>Thruster-assisted bipedal research platform</figcaption>
-        </figure>
-      </section>
-
-      <div class="harpy-spec-strip" aria-label="Harpy system summary">
-        <div><strong>6</strong><span>Leg actuators</span></div>
-        <div><strong>2</strong><span>Thruster actuators</span></div>
-        <div><strong>2</strong><span>EDF thrusters</span></div>
-        <div><strong>CF</strong><span>Composite structure</span></div>
-      </div>
-
-      <section class="project-layout harpy-overview">
-        <div class="project-copy">
-          <h2>Overview</h2>
-          <p>Harpy was conceived as a hardware platform for developing complex control algorithms for thruster-assisted bipedal locomotion. The twin electric ducted fans can augment balance, improve walking stability, and add impulse for jumping over obstacles.</p>
-          <p>The platform also creates a practical way to study legged locomotion in reduced-gravity conditions. By using controlled thrust to offset a portion of the robot's weight, experiments can approximate lower effective gravity without changing the leg mechanism.</p>
-        </div>
-        <aside class="side-list">
-          <h2>Project Details</h2>
-          <dl>
-            <dt>Focus</dt>
-            <dd>Lightweight mechanisms and dynamic robotic locomotion</dd>
-            <dt>Methods</dt>
-            <dd>Parametric CAD, multibody simulation, composite design, prototype testing</dd>
-            <dt>Tools</dt>
-            <dd>Rhino 6, Grasshopper, evolutionary optimization, FDM fabrication</dd>
-          </dl>
-          <a class="archive-link" href="https://peterkellyyy.wixsite.com/peterkelly/harpy" target="_blank" rel="noreferrer">View original project archive</a>
-        </aside>
-      </section>
-
-      <section class="harpy-feature">
-        <div class="harpy-feature-copy">
-          <p class="section-kicker">Architecture</p>
-          <h2>Mass was treated as a system-level constraint.</h2>
-          <p>Nearly every design decision was driven by the need to minimize weight while preserving stiffness and energy density. Carbon-fiber tubes, sandwich plates, composite 3D printing, and embedded bearings and carbon plates reduced part count while keeping the load paths direct.</p>
-          <p>Lightweight brushless motors are paired with compact Harmonic Drive component sets. The resulting actuators package high reduction and torque density into composite housings shaped around the robot rather than around conventional gearbox geometry.</p>
-        </div>
-        <figure class="harpy-media harpy-media-back">
-          <img src="../assets/projects/harpy/harpy-back.png" alt="Rear rendering of Harpy showing its actuator layout, electronics, and twin thrusters" loading="lazy">
-          <figcaption>Rear packaging view showing actuation, electronics, and thrust hardware</figcaption>
-        </figure>
-      </section>
-
-      <section class="harpy-actuator">
-        <div class="section-head">
-          <p class="section-kicker">Actuator Design</p>
-          <h2>Compact transmission, integrated structure</h2>
-          <p>The actuator housing carries bearings, transmission components, motor, and output structure in a tightly integrated assembly. Composite FDM enabled geometry that would be costly to machine while still supporting embedded high-load components.</p>
-        </div>
-        <figure class="harpy-exploded">
-          <img src="../assets/projects/harpy/actuator-exploded.png" alt="Exploded rendering of the Harpy actuator, including harmonic drive, bearings, housing, motor, and output components" loading="lazy">
-          <figcaption>Exploded view of the Harpy actuator architecture</figcaption>
-        </figure>
-      </section>
-
-      <section class="harpy-feature harpy-feature-reverse">
-        <div class="harpy-feature-copy">
-          <p class="section-kicker">Parametric Optimization</p>
-          <h2>Designing around center of mass and inertia</h2>
-          <p>A parametric model in Rhino and Grasshopper exposed actuator, thruster, drive, heatsink, battery, and geometry locations to an evolutionary solver. The solver compared each candidate against target center-of-mass and moment-of-inertia values.</p>
-          <p>Because hardware changes could be folded back into the model, the workflow remained useful as batteries, sensors, cameras, and other components evolved. Packaging decisions could be evaluated against the behavior of the entire machine instead of one component at a time.</p>
-        </div>
-        <div class="harpy-media-pair">
-          <figure class="harpy-media">
-            <img src="../assets/projects/harpy/harpy-detail-01.jpg" alt="Front and side CAD views of Harpy with translucent inertia visualization" loading="lazy">
-            <figcaption>Parametric mass-property model and inertia visualization</figcaption>
-          </figure>
-          <figure class="harpy-media">
-            <img src="../assets/projects/harpy/harpy-simulation.jpg" alt="Sequence from a simulation of Harpy jumping with thruster assistance" loading="lazy">
-            <figcaption>Jump simulation with increasing thruster force</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="harpy-test">
-        <div class="section-head">
-          <p class="section-kicker">Hardware Validation</p>
-          <h2>From simulation to a restrained leg test</h2>
-          <p>A t-slot fixture was designed for controlled drop and hop testing. The simplified single-leg setup isolated the sagittal mechanism while preserving the thruster actuator and EDF, making it possible to measure how assisted thrust changed required joint torque and jump performance.</p>
-        </div>
-        <div class="harpy-test-grid">
-          <figure class="harpy-media">
-            <video controls playsinline preload="metadata" poster="../assets/projects/harpy/harpy-test-fixture.jpg">
-              <source src="../assets/projects/harpy/leg-test.mp4" type="video/mp4">
-              Your browser does not support embedded video.
-            </video>
-            <figcaption>Leg jumping with and without thruster assistance</figcaption>
-          </figure>
-          <div class="harpy-test-stills">
-            <figure class="harpy-media">
-              <img src="../assets/projects/harpy/harpy-test-fixture.jpg" alt="Harpy leg and actuated EDF mounted in a t-slot test fixture" loading="lazy">
-              <figcaption>Leg and actuated EDF test fixture</figcaption>
-            </figure>
-            <figure class="harpy-media">
-              <img src="../assets/projects/harpy/harpy-detail-02.jpg" alt="Close view of the Harpy leg mechanism mounted in its test fixture" loading="lazy">
-              <figcaption>Leg mechanism during fixture testing</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="harpy-outcome">
-        <p class="section-kicker">Outcome</p>
-        <h2>A mechanical foundation for control research</h2>
-        <p>This work established the hardware architecture for Harpy: a compact experimental platform where structure, actuation, mass distribution, simulation, and testing were developed as one system. The resulting design supports continued work on dynamic, thruster-assisted bipedal control.</p>
-      </section>
-    </main>
-
+    <main class="project-main archive-project-main"><div data-project-root></div></main>
     <footer class="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
@@ -166,6 +42,7 @@
         </div>
       </div>
     </footer>
+    <script src="../scripts/project-page.js"></script>
     <script src="../scripts/page-transition.js"></script>
 
   </body>
