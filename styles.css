@@ -975,6 +975,14 @@ p {
   text-transform: uppercase;
 }
 
+.project-date {
+  color: #4d5b6b;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin: 16px 16px 9px;
+}
+
 .project-title {
   font-size: 1.05rem;
   font-weight: 800;

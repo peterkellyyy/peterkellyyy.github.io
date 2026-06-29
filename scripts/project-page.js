@@ -616,6 +616,7 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Markforged FX10 metal printhead thumbnail",
     meta: "Product Development",
+    date: "Jun 2022 - May 2024",
     title: "Markforged FX10 Metal Printhead",
     summary: "Next-generation swappable metal printhead developed from initial R&D through EVT.",
     company: "Markforged"
@@ -626,6 +627,7 @@ const moreProjectCards = {
     thumbClass: "harpy-thumb",
     alt: "Harpy leg actuator assembly",
     meta: "Robotics Research",
+    date: "Jan 2020 - Apr 2021",
     title: "Harpy Bipedal Robot",
     summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
     company: "NEU SiliconSynapse Lab"
@@ -636,6 +638,7 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Continuous-fiber reinforced co-part assembly",
     meta: "Published Research",
+    date: "Jan 2022 - May 2023",
     title: "Continuous-Fiber Co-parts",
     summary: "Interlocking printed components optimized for reinforcement across multiple load planes.",
     company: "Markforged"
@@ -646,6 +649,7 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb",
     alt: "Breath-triggered asthma inhaler assistive device",
     meta: "Assistive Mechatronics",
+    date: "Sep 2019 - Dec 2019",
     title: "Inhaler Assistive Device",
     summary: "Award-winning breath-triggered device designed for users with limited motor ability.",
     company: "Northeastern University"
@@ -656,6 +660,7 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Printed topographic trail map",
     meta: "Digital Fabrication",
+    date: "Jan 2024 - Present",
     title: "3DTrails",
     summary: "Geospatial data transformed into multicolor printed trail maps and custom installations.",
     company: "Personal Project"
@@ -666,6 +671,7 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb",
     alt: "Aerobat biomimetic flapping robot",
     meta: "Bio-inspired Robotics",
+    date: "Jan 2020 - Jul 2020",
     title: "Aerobat",
     summary: "Parametric, flexible wing mechanisms inspired by the flight of fruit bats.",
     company: "NEU SiliconSynapse Lab"
@@ -686,7 +692,7 @@ const createMoreProjectCard = (card) => {
   figure.append(image);
   link.append(
     figure,
-    el("p", "project-meta", card.meta),
+    el("p", "project-date", card.date),
     el("h3", "project-title", card.title),
     el("p", "project-summary", card.summary),
     el("span", "project-company", card.company)
