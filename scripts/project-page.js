@@ -101,13 +101,12 @@ const projectCatalog = {
       ["2023", "Journal publication"]
     ],
     overview: [
-      "Continuous fiber can dramatically increase the in-plane strength of a printed part, but conventional FFF still leaves the build direction limited by the parent polymer and interlayer bonding.",
+      "Markforged printers can print with both a discontinuously reinforced base material and a variety of continuous fiber reinforcement, including carbon fiber. Continuous reinforcement provides a significant improvement, as typical engineering plastics (for example, nylon) will have tensile yield strength near 40MPa in the printed plane where the inlaid continuous carbon fiber will have up to 800MPa yield strength – nearly a 20-fold improvement. However, the composite strength is limited to the XY plane in which the fiber is laid. Consequently, the parts are limited to the strength of their parent plastic in the Z direction – a strength already reduced by the anisotropy inherent to the FFF additive manufacturing process.",
       "The co-part methodology separates features with conflicting load planes into interlocking components. Each component is printed in the orientation best suited to its own loads, then assembled into one functional part."
     ],
     sections: [
       {
-        kicker: "Demonstrator",
-        title: "Reinforcing a multi-plane mounting plate",
+        kicker: "Process",
         body: [
           "A tent-pole mounting plate provided a clear test case: four bolts secure the plate while a central pin applies load in a direction that cannot be optimally reinforced with one continuous-fiber print orientation.",
           "The geometry was separated into two co-parts using Boolean subtraction. Both were printed with continuous carbon fiber aligned to their primary loads and assembled with an arbor press."
@@ -115,7 +114,6 @@ const projectCatalog = {
       },
       {
         kicker: "Communication",
-        title: "Turning research into a repeatable design method",
         body: [
           "The work became a peer-reviewed Rapid Prototyping Journal paper, a Markforged technical article, and an educational video for which I wrote the script and presented the process.",
           "The video reached more than 80,000 views and became the company's strongest organic driver of YouTube views and subscribers at the time."
@@ -141,8 +139,8 @@ const projectCatalog = {
     title: "Harpy Bipedal Robot",
     eyebrow: "Robotics Research Platform",
     lede: "A super-lightweight bipedal robot built to explore thruster-assisted locomotion, dynamic balance, and movement in reduced gravity.",
-    hero: "../assets/projects/harpy/harpy-front.png",
-    heroAlt: "Front three-quarter rendering of the Harpy bipedal robot with twin electric ducted fans",
+    hero: "../assets/projects/harpy/harpy leg.png",
+    heroAlt: "Harpy leg actuator assembly",
     tags: ["Mechanical design", "Actuation", "Simulation", "Hardware testing"],
     facts: [
       ["6", "Leg actuators"],
@@ -168,7 +166,12 @@ const projectCatalog = {
         title: "Compact transmission, integrated structure",
         body: [
           "The actuator housing carries bearings, transmission components, motor, and output structure in a tightly integrated assembly. Composite FDM enabled geometry that would be costly to machine while still supporting embedded high-load components."
-        ]
+        ],
+        figure: {
+          src: "../assets/projects/harpy/actuator-exploded.png",
+          alt: "Exploded view of the Harpy actuator architecture",
+          caption: "Exploded view of the Harpy actuator architecture"
+        }
       },
       {
         kicker: "Parametric Optimization",
@@ -189,7 +192,6 @@ const projectCatalog = {
     outcome: "This work established the hardware architecture for Harpy: a compact experimental platform where structure, actuation, mass distribution, simulation, and testing were developed as one system.",
     media: [
       ["../assets/projects/harpy/harpy-back.png", "Rear packaging view showing actuation, electronics, and thrust hardware"],
-      ["../assets/projects/harpy/actuator-exploded.png", "Exploded view of the Harpy actuator architecture"],
       ["../assets/projects/harpy/harpy-detail-01.jpg", "Parametric mass-property model and inertia visualization"],
       ["../assets/projects/harpy/harpy-simulation.jpg", "Jump simulation with increasing thruster force"],
       ["../assets/projects/harpy/harpy-test-fixture.jpg", "Leg and actuated EDF test fixture"],
@@ -383,18 +385,15 @@ const projectCatalog = {
         body: [
           "The process supports both catalog designs and custom commissions. Large maps are divided into aligned printable sections while preserving continuous terrain and route geometry.",
           "Projects have included museum installations and a five-foot John Muir Trail map created for the John Muir Trail Conservancy."
-        ]
+        ],
+        bannerVideo: {
+          src: "../assets/projects/3dtrails/gliderroute.webm",
+          label: "Glider route topographic map animation"
+        }
       }
     ],
     outcome: "The project generated more than $15,000 in its first year and continues to grow through organic search, custom work, and an expanding collection of trail designs.",
-    media: [
-      ["../assets/projects/3dtrails/02-173eafead229.png", "Appalachian Trail topographic map"],
-      ["../assets/projects/3dtrails/03-698510bfbc1b.png", "Tahoe Rim Trail map"],
-      ["../assets/projects/3dtrails/04-5bbdf47a5b0a.png", "Close view of multicolor terrain and route detail"],
-      ["../assets/projects/3dtrails/05-f30d0653a598.png", "Printed map detail"],
-      ["../assets/projects/3dtrails/06-bdaa68104368.png", "Large-format trail-map installation"],
-      ["../assets/projects/3dtrails/07-9196dd9bfd43.png", "Three-foot Appalachian Trail map"]
-    ],
+    media: [],
     links: [
       ["Visit 3DTrails", "https://3d-trails.com"]
     ],
@@ -404,7 +403,7 @@ const projectCatalog = {
     title: "Rotary RF PCB Manufacturing System",
     eyebrow: "Special-Purpose Machinery",
     lede: "A robust coating system for developing high-permeability RF PCB materials at substantially larger scale and lower cost.",
-    hero: "../assets/projects/rotary-rf-pcb-manufacturing/01-cd3e1ce61825.png",
+    hero: "../assets/projects/rotary-rf-pcb-manufacturing/rotarypcb.png",
     heroAlt: "Rotary RF PCB coating system CAD rendering",
     tags: ["Machine design", "Thermal control", "Sheet metal", "System integration"],
     facts: [
@@ -602,17 +601,7 @@ const addParagraphs = (container, paragraphs) => {
   paragraphs.forEach((copy) => container.append(el("p", "", copy)));
 };
 
-const createFigure = (media, className = "") => {
-  const figure = el("figure", `archive-media ${className}`.trim());
-  const image = el("img");
-  image.src = media[0];
-  image.alt = media[1];
-  image.loading = "lazy";
-  figure.append(image, el("figcaption", "", media[1]));
-  return figure;
-};
-
-const createLink = ([label, href], className = "archive-action") => {
+const createLink = ([label, href], className = "project-action") => {
   const link = el("a", className, label);
   link.href = href;
   link.target = "_blank";
@@ -623,19 +612,19 @@ const createLink = ([label, href], className = "archive-action") => {
 const moreProjectCards = {
   fx10: {
     href: "fx10.html",
-    thumb: "../assets/projects/fx10/FX10-Metal-Gear-on-Printbed.jpg",
+    thumb: "../assets/projects/fx10/fx10 thumbnail.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
-    alt: "Metal gear printed on the Markforged FX10",
+    alt: "Markforged FX10 metal printhead thumbnail",
     meta: "Product Development",
-    title: "Markforged FX10",
+    title: "Markforged FX10 Metal Printhead",
     summary: "Next-generation swappable metal printhead developed from initial R&D through EVT.",
     company: "Markforged"
   },
   harpy: {
     href: "harpy.html",
-    thumb: "../assets/projects/harpy/harpy-front.png",
+    thumb: "../assets/projects/harpy/harpy leg.png",
     thumbClass: "harpy-thumb",
-    alt: "Harpy thruster-assisted bipedal robot",
+    alt: "Harpy leg actuator assembly",
     meta: "Robotics Research",
     title: "Harpy Bipedal Robot",
     summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
@@ -663,7 +652,7 @@ const moreProjectCards = {
   },
   "3dtrails": {
     href: "3dtrails.html",
-    thumb: "../assets/projects/3dtrails/01-d52419b917b1.jpg",
+    thumb: "../assets/projects/3dtrails/angledScene3sq.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Printed topographic trail map",
     meta: "Digital Fabrication",
@@ -889,6 +878,14 @@ const renderFx10CaseStudy = () => {
   split.append(challenges, impact);
   root.append(split);
 
+  const changeoverBanner = el("section", "fx10-image-banner");
+  const changeoverImage = el("img");
+  changeoverImage.src = "../assets/projects/fx10/FX10-Printhead-Changeover-Closeup.jpg";
+  changeoverImage.alt = "FX10 printhead changeover closeup";
+  changeoverImage.loading = "lazy";
+  changeoverBanner.append(changeoverImage);
+  root.append(changeoverBanner);
+
   const outcome = el("section", "fx10-section fx10-outcome-section");
   outcome.append(
     el("p", "fx10-section-kicker", "Outcome"),
@@ -898,7 +895,120 @@ const renderFx10CaseStudy = () => {
   renderMoreProjects();
 };
 
-const renderCaseStudyProject = () => {
+const createCaseStudyImage = (src, alt, caption, className = "") => {
+  const figure = el("figure", `co-parts-figure ${className}`.trim());
+  const image = el("img");
+  image.src = src;
+  image.alt = alt;
+  image.loading = "lazy";
+  figure.append(image, el("figcaption", "", caption));
+  return figure;
+};
+
+const createYoutubeFigure = (embed, caption, className = "") => {
+  const figure = el("figure", `fx10-overview-video ${className}`.trim());
+  const iframe = el("iframe");
+  const embedUrl = new URL(embed.src);
+  embedUrl.searchParams.set("origin", window.location.origin);
+  iframe.src = embedUrl.href;
+  iframe.title = embed.title;
+  iframe.loading = "lazy";
+  iframe.setAttribute("frameborder", "0");
+  iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  iframe.allowFullscreen = true;
+  figure.append(iframe, el("figcaption", "", caption || embed.title));
+  return figure;
+};
+
+const renderCoPartsCaseStudy = () => {
+  document.title = `${project.title} | Peter Kelly`;
+  document.body.classList.add("fx10-case-study");
+  root.closest(".project-main")?.classList.add("fx10-project-main");
+
+  const hero = el("section", "fx10-hero");
+  const heroCopy = el("div", "fx10-hero-copy");
+  heroCopy.append(
+    el("p", "fx10-eyebrow", project.eyebrow),
+    el("h1", "", project.title),
+    el("p", "fx10-lede", project.lede)
+  );
+  const tags = el("div", "fx10-tags");
+  project.tags.forEach((tag) => tags.append(el("span", "", tag)));
+  heroCopy.append(tags);
+  const stats = el("div", "fx10-stats");
+  project.facts.forEach(([value, label]) => {
+    const stat = el("div", "fx10-stat");
+    stat.append(el("span", "fx10-stat-icon", ""), el("strong", "", value), el("small", "", label));
+    stats.append(stat);
+  });
+  heroCopy.append(stats);
+
+  const heroMedia = el("div", "fx10-hero-media");
+  const heroImage = el("img");
+  heroImage.src = project.hero;
+  heroImage.alt = project.heroAlt;
+  heroImage.loading = "eager";
+  heroMedia.append(heroImage);
+  hero.append(heroCopy, heroMedia);
+  root.append(hero);
+
+  const overview = el("section", "fx10-overview-section fx10-section co-parts-overview-section");
+  const overviewCopy = el("div", "fx10-overview-copy");
+  overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
+  addParagraphs(overviewCopy, project.overview);
+  overview.append(
+    overviewCopy,
+    createCaseStudyImage(
+      "../assets/projects/co-parts/separate parts.jpg",
+      "Separate printed co-parts before assembly",
+      "Example co-parts",
+      "co-parts-overview-image"
+    ),
+    createYoutubeFigure(project.embed, project.embed.title, "co-parts-overview-video")
+  );
+  root.append(overview);
+
+  const process = el("section", "fx10-section co-parts-process-section");
+  const processCopy = el("div", "fx10-design-copy fx10-generic-design-copy co-parts-process-copy");
+  processCopy.append(el("p", "fx10-section-kicker", "Process"));
+  addParagraphs(processCopy, project.sections[0].body);
+  process.append(
+    processCopy,
+    createCaseStudyImage(
+      "../assets/projects/co-parts/load case.png",
+      "Mounting plate load case with fixed bolts and applied pin force",
+      "Load case of the mounting plate example part, where the blue bolts represent how it is fixed to the ground and the green pin represents where force is applied",
+      "co-parts-load-case"
+    ),
+    createCaseStudyImage(
+      "../assets/projects/co-parts/co-part assembly.png",
+      "Monolithic mounting plate, assembled co-part, and co-part assembly strategy",
+      "(a) Monolithic plastic mounting plate part (b) assembled co-part (c) assembly strategy",
+      "co-parts-assembly"
+    )
+  );
+  root.append(process);
+
+  const outcome = el("section", "fx10-section co-parts-outcome-section");
+  const outcomeCopy = el("div", "fx10-outcome-section co-parts-outcome-copy");
+  outcomeCopy.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
+  const actions = el("div", "project-actions");
+  project.links?.forEach((link) => actions.append(createLink(link)));
+  outcomeCopy.append(actions);
+  outcome.append(
+    outcomeCopy,
+    createCaseStudyImage(
+      "../assets/projects/co-parts/co-part load.png",
+      "Co-part load testing results and failed samples",
+      "(a) Load vs extension curves for the control, single plane fiber and continuous carbon fiber reinforced co-parts, photographs of (b) monolithicplastic mounting plate after failure, which delaminated between layers in areas of low cross-sectional area, (c) CFR Orientation 1 mounting plate afterfailure, which cracked in two locations along layer lines, (d) continuous carbon fiber reinforced co-part mounting plate after failure, where one of the co-parts pulled through the other",
+      "co-parts-load-results"
+    )
+  );
+  root.append(outcome);
+};
+
+const renderStandardProject = () => {
   document.title = `${project.title} | Peter Kelly`;
   document.body.classList.add("fx10-case-study");
   root.closest(".project-main")?.classList.add("fx10-project-main");
@@ -977,7 +1087,31 @@ const renderCaseStudyProject = () => {
     designCopy.append(el("h2", "", section.title));
     addParagraphs(designCopy, section.body || []);
     design.append(designCopy);
+    if (section.figure) {
+      const figure = el("figure", "fx10-overview-video standard-section-figure");
+      const image = el("img");
+      image.src = section.figure.src;
+      image.alt = section.figure.alt || section.figure.caption || "";
+      image.loading = "lazy";
+      figure.append(image);
+      if (section.figure.caption) figure.append(el("figcaption", "", section.figure.caption));
+      design.append(figure);
+    }
     root.append(design);
+
+    if (section.bannerVideo) {
+      const videoBanner = el("section", "fx10-image-banner standard-video-banner");
+      const video = el("video");
+      video.src = section.bannerVideo.src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", section.bannerVideo.label || "");
+      videoBanner.append(video);
+      root.append(videoBanner);
+    }
   });
 
   if (project.media?.length) {
@@ -1038,121 +1172,21 @@ const renderCaseStudyProject = () => {
   const outcome = el("section", "fx10-section fx10-outcome-section");
   outcome.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
   if (project.links?.length || project.source) {
-    const actions = el("div", "archive-actions");
+    const actions = el("div", "project-actions");
     project.links?.forEach((link) => actions.append(createLink(link)));
-    if (project.source) actions.append(createLink(["View original archive", project.source], "archive-action archive-action-secondary"));
+    if (project.source) actions.append(createLink(["View original page", project.source], "project-action project-action-secondary"));
     outcome.append(actions);
   }
   root.append(outcome);
   if (key === "finefeatures") renderMoreProjects();
 };
 
-const fx10StyleProjects = new Set(["px100", "finefeatures", "co-parts", "harpy"]);
-
 if (!root || !project) {
   if (root) root.append(el("p", "lede", "Project data could not be loaded."));
 } else if (key === "fx10") {
   renderFx10CaseStudy();
-} else if (fx10StyleProjects.has(key)) {
-  renderCaseStudyProject();
+} else if (key === "co-parts") {
+  renderCoPartsCaseStudy();
 } else {
-  document.title = `${project.title} | Peter Kelly`;
-
-  const hero = el("section", "archive-project-hero");
-  const heroCopy = el("div", "archive-project-hero-copy");
-  heroCopy.append(
-    el("p", "eyebrow", project.eyebrow),
-    el("h1", "", project.title),
-    el("p", "lede", project.lede)
-  );
-
-  const tags = el("div", "archive-tags");
-  project.tags.forEach((tag) => tags.append(el("span", "", tag)));
-  heroCopy.append(tags);
-
-  const heroFigure = createFigure([project.hero, project.heroAlt], "archive-hero-media");
-  heroFigure.querySelector("img").loading = "eager";
-  hero.append(heroCopy, heroFigure);
-  root.append(hero);
-
-  const facts = el("div", "archive-facts");
-  project.facts.forEach(([value, label]) => {
-    const item = el("div");
-    item.append(el("strong", "", value), el("span", "", label));
-    facts.append(item);
-  });
-  root.append(facts);
-
-  const overview = el("section", "archive-overview");
-  const overviewHeading = el("div", "archive-section-heading");
-  overviewHeading.append(el("p", "section-kicker", "Overview"), el("h2", "", "The project"));
-  const overviewCopy = el("div", "archive-copy");
-  addParagraphs(overviewCopy, project.overview);
-  overview.append(overviewHeading, overviewCopy);
-  root.append(overview);
-
-  project.sections.forEach((section, index) => {
-    const sectionNode = el("section", `archive-story ${index % 2 ? "archive-story-reverse" : ""}`.trim());
-    const number = el("span", "archive-story-number", String(index + 1).padStart(2, "0"));
-    const copy = el("div", "archive-story-copy");
-    copy.append(el("p", "section-kicker", section.kicker), el("h2", "", section.title));
-    addParagraphs(copy, section.body);
-    sectionNode.append(number, copy);
-    root.append(sectionNode);
-  });
-
-  if (project.media?.length) {
-    const gallery = el("section", "archive-gallery-section");
-    const heading = el("div", "archive-gallery-heading");
-    heading.append(el("p", "section-kicker", "Project Gallery"), el("h2", "", "Design and development"));
-    const grid = el("div", "archive-gallery");
-    project.media.forEach((media) => grid.append(createFigure(media)));
-    gallery.append(heading, grid);
-    root.append(gallery);
-  }
-
-  if (project.videos?.length || project.embed) {
-    const videoSection = el("section", "archive-video-section");
-    const heading = el("div", "archive-gallery-heading");
-    heading.append(el("p", "section-kicker", "In Motion"), el("h2", "", "Prototype and process"));
-    const grid = el("div", "archive-video-grid");
-
-    project.videos?.forEach(([src, poster, caption]) => {
-      const figure = el("figure", "archive-media archive-video");
-      const video = el("video");
-      video.controls = true;
-      video.playsInline = true;
-      video.preload = "metadata";
-      video.poster = poster;
-      const source = el("source");
-      source.src = src;
-      source.type = "video/mp4";
-      video.append(source);
-      figure.append(video, el("figcaption", "", caption));
-      grid.append(figure);
-    });
-
-    if (project.embed) {
-      const figure = el("figure", "archive-media archive-video");
-      const iframe = el("iframe");
-      iframe.src = project.embed.src;
-      iframe.title = project.embed.title;
-      iframe.loading = "lazy";
-      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframe.allowFullscreen = true;
-      figure.append(iframe, el("figcaption", "", project.embed.title));
-      grid.append(figure);
-    }
-
-    videoSection.append(heading, grid);
-    root.append(videoSection);
-  }
-
-  const outcome = el("section", "archive-outcome");
-  outcome.append(el("p", "section-kicker", "Outcome"), el("h2", "", "What the work delivered"), el("p", "", project.outcome));
-  const actions = el("div", "archive-actions");
-  project.links?.forEach((link) => actions.append(createLink(link)));
-  actions.append(createLink(["View original archive", project.source], "archive-action archive-action-secondary"));
-  outcome.append(actions);
-  root.append(outcome);
+  renderStandardProject();
 }
