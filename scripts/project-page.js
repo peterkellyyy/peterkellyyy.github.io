@@ -136,7 +136,7 @@ const projectCatalog = {
     source: "https://peterkellyyy.wixsite.com/peterkelly/co-parts"
   },
   harpy: {
-    title: "Harpy Bipedal Robot",
+    title: "Legged Robotics Research",
     eyebrow: "Robotics Research Platform",
     lede: "A super-lightweight bipedal robot built to explore thruster-assisted locomotion, dynamic balance, and movement in reduced gravity.",
     hero: "../assets/projects/harpy/harpy leg.png",
@@ -152,10 +152,19 @@ const projectCatalog = {
       "Harpy was conceived as a hardware platform for developing complex control algorithms for thruster-assisted bipedal locomotion. The twin electric ducted fans can augment balance, improve walking stability, and add impulse for jumping over obstacles.",
       "The platform also creates a practical way to study legged locomotion in reduced-gravity conditions. By using controlled thrust to offset a portion of the robot's weight, experiments can approximate lower effective gravity without changing the leg mechanism."
     ],
+    overviewMedia: {
+      type: "video",
+      src: "../assets/projects/harpy/harpyTurn.webm",
+      caption: "Harpy turning simulation",
+      aspectRatio: "1 / 1",
+      background: "#ffffff",
+      autoplay: false,
+      loop: false,
+      playOnceOnView: true
+    },
     sections: [
       {
         kicker: "Architecture",
-        title: "Mass was treated as a system-level constraint.",
         body: [
           "Nearly every design decision was driven by the need to minimize weight while preserving stiffness and energy density. Carbon-fiber tubes, sandwich plates, composite 3D printing, and embedded bearings and carbon plates reduced part count while keeping the load paths direct.",
           "Lightweight brushless motors are paired with compact Harmonic Drive component sets. The resulting actuators package high reduction and torque density into composite housings shaped around the robot rather than around conventional gearbox geometry."
@@ -163,7 +172,6 @@ const projectCatalog = {
       },
       {
         kicker: "Actuator Design",
-        title: "Compact transmission, integrated structure",
         body: [
           "The actuator housing carries bearings, transmission components, motor, and output structure in a tightly integrated assembly. Composite FDM enabled geometry that would be costly to machine while still supporting embedded high-load components."
         ],
@@ -174,31 +182,33 @@ const projectCatalog = {
         }
       },
       {
-        kicker: "Parametric Optimization",
-        title: "Designing around center of mass and inertia",
+        kicker: "Simulation",
         body: [
           "A parametric model in Rhino and Grasshopper exposed actuator, thruster, drive, heatsink, battery, and geometry locations to an evolutionary solver. The solver compared each candidate against target center-of-mass and moment-of-inertia values.",
           "Because hardware changes could be folded back into the model, the workflow remained useful as batteries, sensors, cameras, and other components evolved."
-        ]
+        ],
+        inlineVideo: {
+          src: "../assets/projects/harpy/harpySimscapeJump.webm",
+          label: "Harpy Simscape jump simulation",
+          caption: "Simulation of Harpy jumping with thruster forces ranging from 0 to 30 N",
+          aspectRatio: "1440 / 868",
+          background: "#ffffff"
+        }
       },
       {
         kicker: "Hardware Validation",
-        title: "From simulation to a restrained leg test",
         body: [
           "A t-slot fixture was designed for controlled drop and hop testing. The simplified single-leg setup isolated the sagittal mechanism while preserving the thruster actuator and EDF, making it possible to measure how assisted thrust changed required joint torque and jump performance."
         ]
       }
     ],
     outcome: "This work established the hardware architecture for Harpy: a compact experimental platform where structure, actuation, mass distribution, simulation, and testing were developed as one system.",
+    galleryLabel: "Additional Views",
     media: [
-      ["../assets/projects/harpy/harpy-back.png", "Rear packaging view showing actuation, electronics, and thrust hardware"],
-      ["../assets/projects/harpy/harpy-detail-01.jpg", "Parametric mass-property model and inertia visualization"],
-      ["../assets/projects/harpy/harpy-simulation.jpg", "Jump simulation with increasing thruster force"],
-      ["../assets/projects/harpy/harpy-test-fixture.jpg", "Leg and actuated EDF test fixture"],
-      ["../assets/projects/harpy/harpy-detail-02.jpg", "Leg mechanism during fixture testing"]
+      ["../assets/projects/harpy/harpy-back.png", "Rear packaging view showing actuation, electronics, and thrust hardware"]
     ],
     videos: [
-      ["../assets/projects/harpy/leg-test.mp4", "../assets/projects/harpy/harpy-test-fixture.jpg", "Leg jumping with and without thruster assistance"]
+      ["../assets/projects/harpy/leg-test.mp4", "../assets/projects/harpy/harpy-back.png", "Leg jumping with and without thruster assistance"]
     ],
     links: [
       ["Read the related thesis", "https://web.archive.org/web/20220826032004id_/https://repository.library.northeastern.edu/files/neu:bz60w8418/fulltext.pdf"]
@@ -259,55 +269,8 @@ const projectCatalog = {
     ],
     source: "https://peterkellyyy.wixsite.com/peterkelly/finefeatures"
   },
-  "husky-carbon": {
-    title: "Husky Carbon",
-    eyebrow: "Multi-modal Robotics Research",
-    lede: "A lightweight legged platform designed to morph into a quadrotor configuration for combined ground and aerial mobility.",
-    hero: "../assets/projects/husky-carbon/01-0be0e19d0e5e.png",
-    heroAlt: "Husky Carbon lightweight quadruped robot",
-    tags: ["Legged robotics", "Carbon composites", "Actuator reliability", "Electrical integration"],
-    facts: [
-      ["4 legs", "Morphing robot platform"],
-      ["CF", "Tubes, plates, and embedded structure"],
-      ["PCB", "Integrated motor-drive connections"],
-      ["Mobile", "Indoor and outdoor gantry"]
-    ],
-    overview: [
-      "Husky Carbon is a research platform for a multi-modal legged-aerial robot, combining robust ground locomotion with a concept for morphing into a quadrotor.",
-      "The structure minimizes weight through carbon-fiber tubes and plates, including composite members embedded directly into printed parts to reduce metal fasteners."
-    ],
-    sections: [
-      {
-        kicker: "System Improvements",
-        title: "Making an experimental robot easier to operate",
-        body: [
-          "I redesigned the electrical architecture around a PCB that mounts directly to the motor drives and consolidates encoder, EtherCAT, and USB-debug connections.",
-          "I also revised machined actuator components to reduce wear and improve reliability, limiting downtime caused by maintenance."
-        ]
-      },
-      {
-        kicker: "Test Infrastructure",
-        title: "A gantry that could leave the lab",
-        body: [
-          "A lightweight aluminum support gantry was designed and fabricated for both benchtop testing and mobile use. It can clamp to a table or mount on wheels, allowing the robot to be tested indoors or outside without changing the support architecture."
-        ]
-      }
-    ],
-    outcome: "The mechanical and electrical updates increased reliability and simplified debugging while preserving the low mass required by the multi-modal research concept.",
-    media: [
-      ["../assets/projects/husky-carbon/02-ec01a23d3dee.jpg", "Reverse view of the Husky Carbon platform"],
-      ["../assets/projects/husky-carbon/04-a8f5de47d6dc.png", "Motor-drive interface PCB used on Husky Carbon and Harpy"]
-    ],
-    videos: [
-      ["../assets/projects/husky-carbon/video-1.mp4", "../assets/projects/husky-carbon/03-370191220621.jpg", "Husky Carbon hardware demonstration"]
-    ],
-    links: [
-      ["Read the related paper", "https://arxiv.org/pdf/2104.05834"]
-    ],
-    source: "https://peterkellyyy.wixsite.com/peterkelly/husky-carbon"
-  },
   aerobat: {
-    title: "Aerobat",
+    title: "Flapping Wing Robotics Research",
     eyebrow: "Bio-inspired Robotics",
     lede: "Flexible and articulated wing mechanisms for a biomimetic flapping robot inspired by the Egyptian fruit bat.",
     hero: "../assets/projects/aerobat/01-b89eff569b16.png",
@@ -384,7 +347,7 @@ const projectCatalog = {
         title: "Scaling a personal workflow into a small business",
         body: [
           "The process supports both catalog designs and custom commissions. Large maps are divided into aligned printable sections while preserving continuous terrain and route geometry.",
-          "Projects have included museum installations and a five-foot John Muir Trail map created for the John Muir Trail Conservancy."
+          "Commissions have included museum installations and a five-foot John Muir Trail map created for the John Muir Trail Conservancy."
         ],
         bannerVideo: {
           src: "../assets/projects/3dtrails/gliderroute.webm",
@@ -442,6 +405,131 @@ const projectCatalog = {
     ],
     source: "https://peterkellyyy.wixsite.com/peterkelly/rotary-rf-pcb-manufacturing"
   },
+  "morse-corp": {
+    title: "MORSE Corp. Mechanical Engineering Co-op",
+    eyebrow: "Mechanical Engineering Co-op",
+    lede: "Mechanical design, rapid prototyping, integration, and test support for advanced engineering programs.",
+    hero: "../assets/jobs/MORSE Corp/Parafoils.png",
+    heroAlt: "Parafoils in flight during MORSE Corp engineering work",
+    tags: ["Mechanical design", "Rapid prototyping", "Integration", "Test support"],
+    facts: [
+      ["Jan-Jul", "2019 co-op term"],
+      ["MORSE", "Advanced engineering programs"],
+      ["CAD", "Design and documentation support"],
+      ["Build/Test", "Prototype hardware support"]
+    ],
+    overview: [
+      "At MORSE Corp, I supported mechanical engineering work for advanced engineering programs that needed practical design execution, rapid prototyping, and hardware iteration.",
+      "The role emphasized moving quickly from design intent to physical prototypes while keeping fabrication, integration, and test needs visible throughout the process."
+    ],
+    overviewMedia: {
+      src: "../assets/jobs/MORSE Corp/parafoil vertical.jpg",
+      caption: "Parafoil test hardware"
+    },
+    sections: [
+      {
+        kicker: "Design Support",
+        title: "Turning program needs into buildable hardware",
+        body: [
+          "I supported CAD development, mechanical documentation, and design updates for prototype hardware. The work required balancing speed with enough structure for parts to be fabricated, assembled, and evaluated by a broader technical team.",
+          "Because many tasks were tied to active engineering programs, I focused on clear interfaces, accessible hardware, and practical build paths rather than one-off concept models."
+        ]
+      },
+      {
+        kicker: "Prototype Integration",
+        title: "Keeping fabrication and testing connected",
+        body: [
+          "I helped bridge design, rapid prototyping, and test activities so hardware could move through build cycles cleanly. That included thinking through assembly access, supplier constraints, and how prototype parts would be handled during integration.",
+          "This co-op also produced the rotary RF PCB manufacturing system featured elsewhere in the portfolio, a larger machine-design project completed during the same term."
+        ]
+      }
+    ],
+    outcome: "The co-op strengthened my ability to deliver practical mechanical hardware in fast-moving engineering environments, especially where design, fabrication, and testing had to stay tightly connected.",
+    media: [],
+    links: [
+      ["View rotary RF PCB system", "rotary-rf-pcb-manufacturing.html"]
+    ]
+  },
+  irobot: {
+    title: "iRobot R&D Robotics Engineering Co-op",
+    eyebrow: "R&D Robotics Engineering Co-op",
+    lede: "Prototype mechanism design and test hardware support for consumer robotics research and development.",
+    hero: "../assets/jobs/iRobot/s9.webp",
+    heroAlt: "iRobot robot vacuum",
+    tags: ["Robotics R&D", "Mechanism design", "Prototype hardware", "Testing"],
+    facts: [
+      ["Jan-Jul", "2018 co-op term"],
+      ["R&D", "Consumer robotics"],
+      ["Mechanisms", "Prototype design support"],
+      ["Testing", "Hardware evaluation"]
+    ],
+    overview: [
+      "At iRobot, I worked in an R&D robotics co-op role supporting prototype mechanisms and test hardware for consumer robot development.",
+      "The work sat close to the physical behavior of robotic products: how mechanisms package into compact systems, how prototypes survive repeated testing, and how design changes can be evaluated quickly."
+    ],
+    sections: [
+      {
+        kicker: "Prototype Mechanisms",
+        title: "Designing for compact robotic products",
+        body: [
+          "I supported mechanism and prototype hardware development for consumer robotics R&D. The work required attention to packaging, motion, durability, and service access inside small electromechanical assemblies.",
+          "Design iteration focused on getting useful hardware into test quickly while preserving enough fidelity to reveal real mechanical behavior."
+        ]
+      },
+      {
+        kicker: "Testing",
+        title: "Learning from hardware instead of speculation",
+        body: [
+          "Prototype testing helped expose performance limits, assembly details, and reliability questions that are difficult to resolve in CAD alone.",
+          "That experience shaped how I approach later robotics work: build enough to learn, test early, and keep design decisions grounded in physical evidence."
+        ]
+      }
+    ],
+    outcome: "The co-op deepened my hands-on robotics development experience and gave me early exposure to R&D cycles for high-volume consumer robotic hardware.",
+    media: []
+  },
+  sikorsky: {
+    title: "Sikorsky Propulsion Engineering Co-op",
+    eyebrow: "Propulsion Engineering Co-op",
+    lede: "Propulsion-system mechanical engineering support through design analysis, documentation, and hardware evaluation.",
+    hero: "../assets/jobs/Sikorsky/mh60.jpg",
+    heroAlt: "Sikorsky MH-60 helicopter",
+    tags: ["Aerospace", "Propulsion systems", "Design analysis", "Documentation"],
+    facts: [
+      ["Jan-Aug", "2017 co-op term"],
+      ["Propulsion", "Aerospace systems"],
+      ["Analysis", "Engineering support"],
+      ["Hardware", "Evaluation and documentation"]
+    ],
+    overview: [
+      "At Sikorsky Aircraft, I supported propulsion-system mechanical engineering through analysis, documentation, and hardware evaluation work.",
+      "The role introduced me to the rigor of aerospace engineering environments, where documentation quality, traceability, and careful review are as important as the mechanical design itself."
+    ],
+    overviewMedia: {
+      src: "../assets/jobs/Sikorsky/stratfordfactory.jpg",
+      caption: "Sikorsky Stratford factory"
+    },
+    sections: [
+      {
+        kicker: "Engineering Support",
+        title: "Working inside a high-rigor aerospace process",
+        body: [
+          "I supported propulsion engineering tasks that required careful documentation, design review, and coordination with established mechanical systems.",
+          "The work reinforced the importance of precise communication, configuration awareness, and disciplined follow-through when engineering decisions affect complex aircraft hardware."
+        ]
+      },
+      {
+        kicker: "Hardware Evaluation",
+        title: "Connecting analysis to physical systems",
+        body: [
+          "Hardware evaluation and supporting analysis helped connect engineering documentation to real propulsion-system components and constraints.",
+          "That early exposure to large, safety-critical mechanical systems became a useful foundation for later robotics and production-hardware work."
+        ]
+      }
+    ],
+    outcome: "The co-op built a foundation in disciplined mechanical engineering practice, especially around documentation, review, and physical hardware evaluation in aerospace systems.",
+    media: []
+  },
   "asthma-inhaler-assistive-device": {
     title: "Asthma Inhaler Assistive Device",
     eyebrow: "Assistive Mechatronics",
@@ -466,7 +554,14 @@ const projectCatalog = {
         body: [
           "Compression testing showed that a linear servo could provide the force required to actuate the inhaler more reliably than a solenoid. A flexible printed valve at the servo tip keeps the upper casing sealed until the inhaler fires.",
           "A ported pressure sensor detects inhalation through the mouthpiece. Pressure builds while the casing is sealed, then the opening vents as the medication is released, coordinating airflow and dose timing without a hand-operated button."
-        ]
+        ],
+        inlineVideo: {
+          src: "../assets/projects/asthma-inhaler-assistive-device/inhalerMechanism.webm",
+          label: "Inhaler assistive device mechanism animation",
+          caption: "Inhaler actuation mechanism",
+          aspectRatio: "960 / 742",
+          placement: "aside"
+        }
       },
       {
         kicker: "Electronics",
@@ -481,7 +576,6 @@ const projectCatalog = {
     media: [
       ["../assets/projects/asthma-inhaler-assistive-device/02-04a2a8df6013.png", "Rear view and caregiver controls"],
       ["../assets/projects/asthma-inhaler-assistive-device/03-50163ec88682.png", "Exploded modular architecture"],
-      ["../assets/projects/asthma-inhaler-assistive-device/04-4ff1de3e15ce.jpg", "Upper-casing vent operation during actuation"],
       ["../assets/projects/asthma-inhaler-assistive-device/05-77055ef20fae.png", "Section view of the electronics module"],
       ["../assets/projects/asthma-inhaler-assistive-device/06-03771f7ed6ce.png", "Custom PCB layout"],
       ["../assets/projects/asthma-inhaler-assistive-device/07-5522deb01194.png", "Assembled PCB rendering"],
@@ -508,6 +602,12 @@ const projectCatalog = {
     overview: [
       "The dispenser was designed for a cat to operate by placing a paw into the chute. A human sets the minimum interval between treats, fills the hinged reservoir, and leaves the interaction to the animal."
     ],
+    overviewMedia: {
+      type: "video",
+      src: "../assets/projects/cat-treat-dispenser/frank.webm",
+      caption: "The treat dispenser with my test subject, Frank",
+      aspectRatio: "1080 / 1400"
+    },
     sections: [
       {
         kicker: "Mechanism",
@@ -601,6 +701,23 @@ const addParagraphs = (container, paragraphs) => {
   paragraphs.forEach((copy) => container.append(el("p", "", copy)));
 };
 
+const applyMediaPresentation = (video, media = {}) => {
+  if (media.aspectRatio) video.style.setProperty("--media-aspect", media.aspectRatio);
+  if (media.background) video.style.setProperty("--media-bg", media.background);
+};
+
+const playOnceOnView = (video) => {
+  if (!("IntersectionObserver" in window)) return;
+  const observer = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    if (!entry?.isIntersecting || video.dataset.playedOnce === "true") return;
+    video.dataset.playedOnce = "true";
+    video.play().catch(() => {});
+    observer.disconnect();
+  }, { threshold: 0.42 });
+  observer.observe(video);
+};
+
 const createLink = ([label, href], className = "project-action") => {
   const link = el("a", className, label);
   link.href = href;
@@ -616,9 +733,40 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Markforged FX10 metal printhead thumbnail",
     meta: "Product Development",
-    date: "Jun 2022 - May 2024",
+    date: "Jun 2022 - Aug 2024",
     title: "Markforged FX10 Metal Printhead",
     summary: "Next-generation swappable metal printhead developed from initial R&D through EVT.",
+    company: "Markforged"
+  },
+  px100: {
+    href: "px100.html",
+    thumb: "../assets/projects/px100/PX100-Webpage-Header-Image-Full-Printer-2364x2364.png",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Markforged PX100 binder jet printer",
+    date: "Jan 2024 - Aug 2024",
+    title: "Markforged PX100",
+    summary: "US lab buildout, process knowledge transfer, commissioning, and system validation.",
+    company: "Markforged"
+  },
+  finefeatures: {
+    href: "finefeatures.html",
+    thumb: "../assets/projects/finefeatures/04-665a4d8e0c6c.png",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Metal X Fine Features sample parts",
+    date: "Oct 2021 - Jul 2023",
+    title: "Metal X Fine Features",
+    summary: "Qualified copper and stainless profiles for finer, stronger, more accurate metal parts.",
+    company: "Markforged"
+  },
+  "co-parts": {
+    href: "co-parts.html",
+    thumb: "../assets/projects/co-parts/01-e66ed0c40c37.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Continuous-fiber reinforced co-part assembly",
+    meta: "Published Research",
+    date: "Jan 2023 - May 2023",
+    title: "Continuous-Fiber Co-parts",
+    summary: "Interlocking printed components optimized for reinforcement across multiple load planes.",
     company: "Markforged"
   },
   harpy: {
@@ -627,21 +775,61 @@ const moreProjectCards = {
     thumbClass: "harpy-thumb",
     alt: "Harpy leg actuator assembly",
     meta: "Robotics Research",
-    date: "Jan 2020 - Apr 2021",
-    title: "Harpy Bipedal Robot",
+    date: "May 2020 - May 2021",
+    title: "Legged Robotics Research",
     summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
     company: "NEU SiliconSynapse Lab"
   },
-  "co-parts": {
-    href: "co-parts.html",
-    thumb: "../assets/projects/co-parts/01-e66ed0c40c37.jpg",
+  aerobat: {
+    href: "aerobat.html",
+    thumb: "../assets/projects/aerobat/01-b89eff569b16.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
-    alt: "Continuous-fiber reinforced co-part assembly",
-    meta: "Published Research",
-    date: "Jan 2022 - May 2023",
-    title: "Continuous-Fiber Co-parts",
-    summary: "Interlocking printed components optimized for reinforcement across multiple load planes.",
-    company: "Markforged"
+    alt: "Aerobat biomimetic flapping robot",
+    meta: "Bio-inspired Robotics",
+    date: "Jan 2020 - Sep 2020",
+    title: "Flapping Wing Robotics Research",
+    summary: "Parametric, flexible wing mechanisms inspired by the flight of fruit bats.",
+    company: "NEU SiliconSynapse Lab"
+  },
+  "rotary-rf-pcb-manufacturing": {
+    href: "rotary-rf-pcb-manufacturing.html",
+    thumb: "../assets/projects/rotary-rf-pcb-manufacturing/rotarypcb.png",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Rotary RF PCB material coating system",
+    date: "Nov 2018 - Apr 2019",
+    title: "Rotary RF PCB System",
+    summary: "Large-format heated coating machine delivered at less than half the prior-system cost.",
+    company: "MORSE Corp"
+  },
+  "morse-corp": {
+    href: "morse-corp.html",
+    thumb: "../assets/jobs/MORSE Corp/Parafoils.png",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Parafoils in flight during MORSE Corp engineering work",
+    date: "Jan 2019 - Jul 2019",
+    title: "MORSE Corp. Mechanical Engineering Co-op",
+    summary: "Mechanical design, prototyping, integration, and testing support for advanced engineering programs.",
+    company: "MORSE Corp"
+  },
+  irobot: {
+    href: "irobot.html",
+    thumb: "../assets/jobs/iRobot/s9.webp",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "iRobot robot vacuum",
+    date: "Jan 2018 - Jul 2018",
+    title: "iRobot R&D Robotics Engineering Co-op",
+    summary: "Prototype mechanisms and test hardware for consumer robotics R&D.",
+    company: "iRobot"
+  },
+  sikorsky: {
+    href: "sikorsky.html",
+    thumb: "../assets/jobs/Sikorsky/mh60.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Sikorsky MH-60 helicopter",
+    date: "Jan 2017 - Aug 2017",
+    title: "Sikorsky Propulsion Engineering Co-op",
+    summary: "Propulsion-system engineering support across analysis, documentation, and hardware evaluation.",
+    company: "Sikorsky Aircraft"
   },
   "asthma-inhaler-assistive-device": {
     href: "asthma-inhaler-assistive-device.html",
@@ -660,25 +848,49 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Printed topographic trail map",
     meta: "Digital Fabrication",
-    date: "Jan 2024 - Present",
+    date: "Dec 2022 - Present",
     title: "3DTrails",
     summary: "Geospatial data transformed into multicolor printed trail maps and custom installations.",
     company: "Personal Project"
   },
-  aerobat: {
-    href: "aerobat.html",
-    thumb: "../assets/projects/aerobat/01-b89eff569b16.png",
+  "audio-variometer": {
+    href: "audio-variometer.html",
+    thumb: "../assets/projects/audio-variometer/01-bf35d4888dbe.png",
     thumbClass: "portfolio-thumb",
-    alt: "Aerobat biomimetic flapping robot",
-    meta: "Bio-inspired Robotics",
-    date: "Jan 2020 - Jul 2020",
-    title: "Aerobat",
-    summary: "Parametric, flexible wing mechanisms inspired by the flight of fruit bats.",
-    company: "NEU SiliconSynapse Lab"
+    alt: "Portable audio variometer",
+    date: "Jan 2019 - Mar 2019",
+    title: "Audio Variometer",
+    summary: "Compact barometric instrument translating climb and sink rate into audible guidance.",
+    company: "Personal Project"
+  },
+  "cat-treat-dispenser": {
+    href: "cat-treat-dispenser.html",
+    thumb: "../assets/projects/cat-treat-dispenser/treatdispenser.jpg",
+    thumbClass: "portfolio-thumb",
+    alt: "Cat-operated treat dispenser",
+    date: "Jun 2019 - Jul 2019",
+    title: "Cat Treat Dispenser",
+    summary: "Animal-operated dispenser with sensing, stepper actuation, and a compact printed enclosure.",
+    company: "Personal Project"
   }
 };
 
-const moreProjectPriority = ["fx10", "harpy", "co-parts", "asthma-inhaler-assistive-device", "3dtrails", "aerobat"];
+const moreProjectPriority = [
+  "fx10",
+  "px100",
+  "co-parts",
+  "3dtrails",
+  "finefeatures",
+  "harpy",
+  "aerobat",
+  "asthma-inhaler-assistive-device",
+  "cat-treat-dispenser",
+  "morse-corp",
+  "audio-variometer",
+  "rotary-rf-pcb-manufacturing",
+  "irobot",
+  "sikorsky"
+];
 
 const createMoreProjectCard = (card) => {
   const link = el("a", "project-link more-project-card");
@@ -702,15 +914,15 @@ const createMoreProjectCard = (card) => {
 
 const createReturnProjectsCard = () => {
   const link = el("a", "project-link more-project-return");
-  link.href = "../index.html#projects";
+  link.href = "../index.html#portfolio";
   const icon = el("img", "more-project-return-icon");
   icon.src = "../icons/circle-arrow-right.svg";
   icon.alt = "";
   icon.setAttribute("aria-hidden", "true");
   link.append(
     icon,
-    el("h3", "project-title", "Return to Projects"),
-    el("p", "project-summary", "Head back to the full project grid.")
+    el("h3", "project-title", "Return to Portfolio"),
+    el("p", "project-summary", "Head back to the full portfolio grid.")
   );
   return link;
 };
@@ -757,7 +969,7 @@ const renderFx10CaseStudy = () => {
   });
   heroCopy.append(stats);
 
-  const heroMedia = el("div", "fx10-hero-media");
+  const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
   heroImage.src = project.hero;
   heroImage.alt = project.heroAlt;
@@ -950,7 +1162,7 @@ const renderCoPartsCaseStudy = () => {
   });
   heroCopy.append(stats);
 
-  const heroMedia = el("div", "fx10-hero-media");
+  const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
   heroImage.src = project.hero;
   heroImage.alt = project.heroAlt;
@@ -1012,6 +1224,7 @@ const renderCoPartsCaseStudy = () => {
     )
   );
   root.append(outcome);
+  renderMoreProjects();
 };
 
 const renderStandardProject = () => {
@@ -1039,7 +1252,7 @@ const renderStandardProject = () => {
   });
   heroCopy.append(stats);
 
-  const heroMedia = el("div", "fx10-hero-media");
+  const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
   heroImage.src = project.hero;
   heroImage.alt = project.heroAlt;
@@ -1059,13 +1272,15 @@ const renderStandardProject = () => {
     if (project.overviewMedia.type === "video") {
       const video = el("video", "fx10-glance-video");
       video.src = project.overviewMedia.src;
-      video.autoplay = true;
-      video.loop = true;
+      video.autoplay = project.overviewMedia.autoplay !== false && !project.overviewMedia.playOnceOnView;
+      video.loop = project.overviewMedia.loop !== false && !project.overviewMedia.playOnceOnView;
       video.muted = true;
       video.playsInline = true;
       video.preload = "metadata";
       video.setAttribute("aria-label", project.overviewMedia.caption || "");
+      applyMediaPresentation(video, project.overviewMedia);
       glance.append(video);
+      if (project.overviewMedia.playOnceOnView) playOnceOnView(video);
     } else {
       const glanceImage = el("img");
       glanceImage.src = project.overviewMedia.src;
@@ -1090,7 +1305,7 @@ const renderStandardProject = () => {
     const design = el("section", "fx10-section fx10-design-section");
     design.append(el("p", "fx10-section-kicker", section.kicker));
     const designCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
-    designCopy.append(el("h2", "", section.title));
+    if (section.title) designCopy.append(el("h2", "", section.title));
     addParagraphs(designCopy, section.body || []);
     design.append(designCopy);
     if (section.figure) {
@@ -1102,6 +1317,26 @@ const renderStandardProject = () => {
       figure.append(image);
       if (section.figure.caption) figure.append(el("figcaption", "", section.figure.caption));
       design.append(figure);
+    }
+    if (section.inlineVideo) {
+      const figure = el("figure", "fx10-overview-video standard-section-video");
+      const video = el("video");
+      video.src = section.inlineVideo.src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", section.inlineVideo.label || section.inlineVideo.caption || "");
+      applyMediaPresentation(video, section.inlineVideo);
+      figure.append(video);
+      if (section.inlineVideo.caption) figure.append(el("figcaption", "", section.inlineVideo.caption));
+      if (section.inlineVideo.placement === "aside") {
+        design.classList.add("fx10-design-section-with-media");
+        design.append(figure);
+      } else {
+        design.append(figure);
+      }
     }
     root.append(design);
 
@@ -1122,7 +1357,7 @@ const renderStandardProject = () => {
 
   if (project.media?.length) {
     const gallery = el("section", "fx10-section fx10-gallery-section");
-    gallery.append(el("p", "fx10-section-kicker", "Design"));
+    gallery.append(el("p", "fx10-section-kicker", project.galleryLabel || "Design"));
     const highlightGrid = el("div", "fx10-highlight-grid");
     project.media.forEach(([src, caption]) => {
       const card = el("article", "fx10-highlight-card");
@@ -1184,11 +1419,11 @@ const renderStandardProject = () => {
     outcome.append(actions);
   }
   root.append(outcome);
-  if (key === "finefeatures") renderMoreProjects();
+  renderMoreProjects();
 };
 
 if (!root || !project) {
-  if (root) root.append(el("p", "lede", "Project data could not be loaded."));
+  if (root) root.append(el("p", "lede", "Portfolio item data could not be loaded."));
 } else if (key === "fx10") {
   renderFx10CaseStudy();
 } else if (key === "co-parts") {

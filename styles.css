@@ -530,7 +530,7 @@ p {
   padding-top: 68px;
 }
 
-#projects {
+#portfolio {
   padding-top: 36px;
 }
 
@@ -984,7 +984,7 @@ p {
 }
 
 .project-title {
-  font-size: 1.05rem;
+  font-size: 0.945rem;
   font-weight: 800;
   margin: 0 16px 8px;
 }
@@ -1609,7 +1609,7 @@ p {
 
 .fx10-hero h1 {
   color: #ffffff;
-  font-size: clamp(3.1rem, 6vw, 5.7rem);
+  font-size: clamp(2.17rem, 4.2vw, 3.99rem);
   line-height: 0.98;
   margin-bottom: 22px;
   max-width: 560px;
@@ -1715,6 +1715,22 @@ p {
   width: 100%;
 }
 
+.fx10-hero-media.logo-hero-media {
+  opacity: 0.9;
+}
+
+.fx10-hero-media.logo-hero-media img {
+  background: #ffffff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: auto;
+  max-height: min(320px, 48vw);
+  max-width: min(520px, 54vw);
+  object-fit: contain;
+  padding: clamp(28px, 4vw, 52px);
+  width: min(520px, 54vw);
+}
+
 .fx10-section {
   border-top: 1px solid var(--line);
   box-sizing: border-box;
@@ -1771,8 +1787,8 @@ p {
 }
 
 .fx10-glance-video {
-  aspect-ratio: 1080 / 1400;
-  background: #0c0f14;
+  aspect-ratio: var(--media-aspect, 1080 / 1400);
+  background: var(--media-bg, #0c0f14);
   border-radius: 8px;
   display: block;
   max-height: 520px;
@@ -1807,13 +1823,32 @@ p {
 }
 
 .fx10-overview-video video {
-  aspect-ratio: 16 / 9;
-  background: #0c0f14;
+  aspect-ratio: var(--media-aspect, 16 / 9);
+  background: var(--media-bg, #0c0f14);
   border-radius: 8px;
   display: block;
   height: auto;
   object-fit: contain;
   width: 100%;
+}
+
+.standard-section-video {
+  width: 100%;
+}
+
+.fx10-design-section-with-media {
+  align-items: center;
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+}
+
+.fx10-design-section-with-media .fx10-section-kicker {
+  grid-column: 1 / -1;
+}
+
+.fx10-design-section-with-media .standard-section-video {
+  margin: 0;
 }
 
 .fx10-overview-video figcaption {
@@ -3066,6 +3101,14 @@ p {
     padding: 0;
   }
 
+  .fx10-hero-media.logo-hero-media img {
+    max-height: 280px;
+    max-width: min(420px, 76vw);
+    object-fit: contain;
+    padding: clamp(24px, 6vw, 42px);
+    width: min(420px, 76vw);
+  }
+
   .fx10-overview-section,
   .fx10-split,
   .co-parts-process-section,
@@ -3108,6 +3151,10 @@ p {
 
   .fx10-design-copy {
     max-width: 100%;
+  }
+
+  .fx10-design-section-with-media {
+    grid-template-columns: 1fr;
   }
 
   .fx10-highlight-grid {
@@ -3252,7 +3299,7 @@ p {
   }
 
   .fx10-hero h1 {
-    font-size: 3.1rem;
+    font-size: 2.17rem;
   }
 
   .fx10-stats {
