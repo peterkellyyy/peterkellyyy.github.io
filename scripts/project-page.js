@@ -188,11 +188,12 @@ const projectCatalog = {
           "Because hardware changes could be folded back into the model, the workflow remained useful as batteries, sensors, cameras, and other components evolved."
         ],
         inlineVideo: {
-          src: "../assets/projects/harpy/harpySimscapeJump.webm",
+          src: "../assets/projects/harpy/harpySimscapeJump.mp4",
           label: "Harpy Simscape jump simulation",
           caption: "Simulation of Harpy jumping with thruster forces ranging from 0 to 30 N",
-          aspectRatio: "1440 / 868",
-          background: "#ffffff"
+          aspectRatio: "auto",
+          background: "#ffffff",
+          fit: "contain"
         }
       },
       {
@@ -547,40 +548,89 @@ const projectCatalog = {
       "This capstone project created an assistive device for people with limited dexterity and strength. It positions and actuates a standard asthma inhaler while also tracking remaining doses, sleeping automatically to conserve power, and providing a manual backup for a caregiver.",
       "The system is divided into a sealed upper casing, a removable electronics module, and interchangeable handles that can be adapted to an individual user's needs."
     ],
-    sections: [
-      {
-        kicker: "Breath Actuation",
-        title: "Timing the dose mechanically and electronically",
-        body: [
-          "Compression testing showed that a linear servo could provide the force required to actuate the inhaler more reliably than a solenoid. A flexible printed valve at the servo tip keeps the upper casing sealed until the inhaler fires.",
-          "A ported pressure sensor detects inhalation through the mouthpiece. Pressure builds while the casing is sealed, then the opening vents as the medication is released, coordinating airflow and dose timing without a hand-operated button."
-        ],
-        inlineVideo: {
-          src: "../assets/projects/asthma-inhaler-assistive-device/inhalerMechanism.webm",
-          label: "Inhaler assistive device mechanism animation",
-          caption: "Inhaler actuation mechanism",
-          aspectRatio: "960 / 742",
-          placement: "aside"
+    overviewMedia: {
+      type: "imagePair",
+      images: [
+        {
+          src: "../assets/projects/asthma-inhaler-assistive-device/inhaler.png",
+          alt: "Asthma inhaler assistive device"
+        },
+        {
+          src: "../assets/projects/asthma-inhaler-assistive-device/inhaler-transparent.png",
+          alt: "Transparent view of asthma inhaler assistive device"
         }
+      ]
+    },
+    featureBreakdown: [
+      {
+        title: "Upper Casing",
+        image: "../assets/projects/asthma-inhaler-assistive-device/casing.png",
+        alt: "Upper casing module for asthma inhaler assistive device",
+        bullets: [
+          "Linear servo actuates inhaler when pressure difference is detected inside mouthpiece",
+          "Top button allows aide to administer inhaler in the case battery is not charged",
+          "Upper casing remains completely sealed until dose from inhaler is being administered, saving lung capacity of the user and timing",
+          "Removable acrylic back plate allows standard asthma inhaler to be inserted"
+        ]
       },
       {
-        kicker: "Electronics",
-        title: "A modular controller built around the user's routine",
-        body: [
-          "A custom PCB carries an Arduino Pro Micro, pressure sensing, and capacitive-touch circuitry. An OLED provides instructions and dose count, while an external LED, power switch, charging port, and recessed service button support caregivers.",
-          "Copper strips inside the handle wake the device when gripped. A spring contact lets handles be exchanged without reconnecting wires, and sleep modes extend the 2400 mAh battery beyond one week."
+        title: "Electronics Module",
+        image: "../assets/projects/asthma-inhaler-assistive-device/electronics-module.png",
+        alt: "Electronics module for asthma inhaler assistive device",
+        bullets: [
+          "Custom PCB with Arduino Pro Micro, ported pressure sensor, and capacitive touch sensor",
+          "OLED display acts as dosage counter and displays instructions to aide",
+          "Low battery warning LED, hard on/off switch, and button to activate \"inhaler swap mode\"",
+          "Rechargeable through external micro-USB port"
+        ]
+      },
+      {
+        title: "Handle",
+        image: "../assets/projects/asthma-inhaler-assistive-device/handle.png",
+        alt: "Interchangeable handle for asthma inhaler assistive device",
+        bullets: [
+          "Completely modular and swappable to accommodate different users' preferences",
+          "Copper strips inside handle act as capacitive touch surfaces to automatically wake device out of sleep mode after being gripped by user",
+          "Additional length makes positioning device much easier for users with limited motor abilities",
+          "Polyethylene cover enhances grip of handle"
         ]
       }
     ],
+    designSpread: {
+      intro: [
+        "The primary tasks I led in this project were the software and electrical design, 3D printing of components, conceptual design of the device, and the management of tasks and overall timeline of the project. One of the first objectives was to identify the actuation method of the inhaler. I was initially between a solenoid and a linear servo, but after conducting compression testing with a standard inhaler, the group and I decided that a linear servo would be the best solution since a solenoid cannot provide a sufficient amount of force to reliably actuate an inhaler. Linear servos are much slower, but I found a reliable, mechanical solution to this problem. By sealing the upper casing of the device and attaching a flexible 3D-printed part to the tip of the linear servo, the upper casing can be unsealed during the actuation of the inhaler and sealed again when the servo retracts through vents on the side of the upper casing. This allows the user to save their breath, and perfectly times the inhaler dose since the user builds up some pressure by sucking through the mouthpiece. The vaporized medicine is then automatically breathed into the lungs when air starts flowing through the vents.",
+        "The method of triggering the actuator I chose was a ported pressure sensor, which connects to a silicone tube and a hole in the mouthpiece of the outer casing. This allows the user to be able to actuate their inhaler without worrying about a button or any fine motor movements. Also, in order to make the 2400 mAh lithium ion battery last over one week without being recharged, the microcontroller by default puts the system into a sleep mode, dramatically extending battery life. In order to wake up the device without the user having to worry about a button or switch, there is a capacitive touch sensor on the PCB that connects to copper strips mounted in the handle. Even through the polyethylene grip and 3D printed material, the change in capacitance from a human hand gripping the handle can be sensed 100% of the time. The bridge between the electronics module and handle is formed by a conductive spring in the handle and a copper pad on the bottom of the electronics module. This ensures that handles can be swapped without needing to manually connect any wires."
+      ],
+      sideFigures: [
+        {
+          type: "video",
+          src: "../assets/projects/asthma-inhaler-assistive-device/inhalerMechanism.webm",
+          caption: "Unsealing of upper casing vents during inhaler actuation",
+          aspectRatio: "960 / 742"
+        },
+        {
+          src: "../assets/projects/asthma-inhaler-assistive-device/05-77055ef20fae.png",
+          alt: "Section view of inhaler electronics module",
+          caption: "Section view of inhaler electronics module"
+        }
+      ],
+      pcbIntro: "The PCB was designed in Autodesk EAGLE and is mounted into slots in the electronics module. Components like the OLED display, button, and LED are connected through external wires and connectors. The lithium ion battery is boosted from 3.7 V to 5 V in order to run the linear servo with a boost board that doubles as a charger, and connects to the external micro-USB input.",
+      pcbFigures: [
+        {
+          src: "../assets/projects/asthma-inhaler-assistive-device/06-03771f7ed6ce.png",
+          alt: "2D PCB layout for asthma inhaler assistive device"
+        },
+        {
+          src: "../assets/projects/asthma-inhaler-assistive-device/07-5522deb01194.png",
+          alt: "3D render of assembled asthma inhaler assistive device PCB"
+        }
+      ],
+      pcbCaption: "2D unassembled and 3D render of assembled PCB",
+      outro: "The low battery warning LED is illuminated once the battery voltage drops below 3.2 V, alerting the user to charge the device as soon as possible. Pressing the \"inhaler swap mode\" pushbutton retracts the linear servo and displays a set of instructions on the OLED display for an aide to remove the back cover and replace the inhaler. Once the button is pressed again, the dosage counter is reset and the linear servo returns to its original position. The button is partially recessed in order to prevent unintentional activation. The hard on/off switch physically disconnects the battery from the microcontroller. This is to be used by an aide if the device needs to be off for an extended period of time."
+    },
+    sections: [],
     outcome: "The project participant independently picked up and actuated the final device using breath control. The design won Northeastern's Most Technically Complete capstone award and tied for Biggest Potential Impact.",
-    media: [
-      ["../assets/projects/asthma-inhaler-assistive-device/02-04a2a8df6013.png", "Rear view and caregiver controls"],
-      ["../assets/projects/asthma-inhaler-assistive-device/03-50163ec88682.png", "Exploded modular architecture"],
-      ["../assets/projects/asthma-inhaler-assistive-device/05-77055ef20fae.png", "Section view of the electronics module"],
-      ["../assets/projects/asthma-inhaler-assistive-device/06-03771f7ed6ce.png", "Custom PCB layout"],
-      ["../assets/projects/asthma-inhaler-assistive-device/07-5522deb01194.png", "Assembled PCB rendering"],
-      ["../assets/projects/asthma-inhaler-assistive-device/08-89ee8b55e6ca.png", "External controls for a caregiver"]
-    ],
+    media: [],
     videos: [
       ["../assets/projects/asthma-inhaler-assistive-device/video-1.mp4", "../assets/projects/asthma-inhaler-assistive-device/09-a2f903f51220.jpg", "Prototype wake, automatic actuation, and dose-counter demonstration"]
     ],
@@ -590,7 +640,7 @@ const projectCatalog = {
     title: "Cat Treat Dispenser",
     eyebrow: "Embedded Product Design",
     lede: "A cat-operated dispenser combining proximity sensing, a flexible feed paddle, compact electronics, and a four-part printed enclosure.",
-    hero: "../assets/projects/cat-treat-dispenser/01-9f1928ae94a8.png",
+    hero: "../assets/projects/cat-treat-dispenser/treatdispenser.jpg",
     heroAlt: "Cat treat dispenser assembly",
     tags: ["Arduino", "Stepper drive", "Proximity sensing", "Desktop FDM"],
     facts: [
@@ -600,7 +650,7 @@ const projectCatalog = {
       ["Minutes", "Time required for the cat to learn it"]
     ],
     overview: [
-      "The dispenser was designed for a cat to operate by placing a paw into the chute. A human sets the minimum interval between treats, fills the hinged reservoir, and leaves the interaction to the animal."
+      "This device is intended to be controlled by a cat (specifically the one that lives in my apartment), which can be trained to put its paw into the chute in exchange for a treat. Most cat food/treats can be loaded into the chute using the hinged lid and be left to the cat to decide when it wants a treat once it figures out how to control the device. A timer to limit how often a treat can be dispensed can be controlled by the human user."
     ],
     overviewMedia: {
       type: "video",
@@ -610,33 +660,33 @@ const projectCatalog = {
     },
     sections: [
       {
-        kicker: "Mechanism",
-        title: "Sensing a paw and metering irregular treats",
+        kicker: "Design",
         body: [
-          "A proximity sensor detects the paw and an Arduino Feather commands a stepper motor. A flexible paddle advances a small amount of food while tolerating the irregular shape of different treats.",
-          "An OLED and single button provide timer and status controls. The enclosure was split into four sections to fit a 120 by 120 mm print bed and assembled with press fits, threaded features, hardware, and adhesive."
-        ]
-      },
-      {
-        kicker: "Field Test",
-        title: "A successful user test with one unexpected failure mode",
-        body: [
-          "The motor noise was initially startling, but the cat learned the interaction within minutes. Once comfortable, he began reaching far enough into the chute to block the falling treats.",
-          "A second revision would use a fully vertical outlet that keeps the paw away from the dispensing path."
+          "The treat dispenser uses a proximity sensor to detect the presence of the paw in addition to a stepper motor and flexible paddle that dispenses the treats. There is a small screen that displays information in addition to a button for basic controls, such as how often a treat can be dispensed. The program runs on an Arduino Feather microcontroller and is powered by a micro-USB cable. The OLED display was programmed using the U8glib graphics library. All parts for this project were 3D printed on a Monoprice Select Mini, which has a relatively small 120 x 120 mm print bed. The major challenge was having to split the design into four print in small sections and fasten everything together. I used a combination of press fits, fasteners, threaded holes, and Loctite gel glue to make everything securely fit together."
+        ],
+        figures: [
+          {
+            src: "../assets/projects/cat-treat-dispenser/treat-dispenser-render.png",
+            alt: "Cat treat dispenser rendering"
+          },
+          {
+            src: "../assets/projects/cat-treat-dispenser/treat-dispenser-sectoin.png",
+            alt: "Cat treat dispenser section view"
+          }
         ]
       }
     ],
-    outcome: "The prototype successfully demonstrated animal-initiated dispensing and surfaced a clear geometric improvement for the next version.",
-    media: [
-      ["../assets/projects/cat-treat-dispenser/02-2d25a1051368.png", "Treat-dispenser mechanism and enclosure"],
-      ["../assets/projects/cat-treat-dispenser/03-1bcdeaef09a2.jpg", "Printed dispenser prototype"],
-      ["../assets/projects/cat-treat-dispenser/04-64b220ea38be.jpg", "Flexible dispensing paddle"],
-      ["../assets/projects/cat-treat-dispenser/05-691a53347e00.jpg", "Completed cat treat dispenser"]
+    outcome: "My biggest fear was that Frank, the cat, would be too afraid of the noise made by the stepper motor to interact with the treat dispenser. However, once he realized there was food inside, he put his nose into the chute and was rewarded with a few treats. Although the noise of the motor scared him a bit at first, he quickly figured out if he put his paw near the proximity sensor the same result would occur. Within a few minutes he had learned how to operate the device. The biggest issue I discovered was that after the cat became comfortable with the device, he would become a bit aggressive and shove his paw as far as he could up the chute, blocking the treats from fully coming out, causing the chute to clog. If I were to make a second revision of this I'd ensure that the treats could not be blocked by making the chute completely vertical instead of sloped.",
+    videoAfterOutcome: true,
+    hideSourceAction: true,
+    videos: [
+      {
+        src: "../assets/projects/cat-treat-dispenser/cat_treat_dispenser.mp4",
+        caption: "Cat treat dispenser demonstration",
+        aspectRatio: "16 / 9",
+        fit: "contain"
+      }
     ],
-    embed: {
-      src: "https://player.vimeo.com/video/361144485?title=0&byline=0&portrait=0",
-      title: "Cat treat dispenser demonstration"
-    },
     source: "https://peterkellyyy.wixsite.com/peterkelly/cat-treat-dispenser"
   },
   "audio-variometer": {
@@ -678,10 +728,14 @@ const projectCatalog = {
       ["../assets/projects/audio-variometer/03-e5a00260916c.jpg", "Breadboard electronics prototype"],
       ["../assets/projects/audio-variometer/04-8f5016c8c01b.jpg", "Completed portable variometer"]
     ],
-    embed: {
-      src: "https://player.vimeo.com/video/343786780?title=0&byline=0&portrait=0",
-      title: "Audio and visual variometer demonstration"
-    },
+    videos: [
+      {
+        src: "../assets/projects/audio-variometer/audio_visual_variometer.mp4",
+        caption: "Audio and visual variometer demonstration",
+        aspectRatio: "16 / 9",
+        fit: "contain"
+      }
+    ],
     source: "https://peterkellyyy.wixsite.com/peterkelly/audio-variometer"
   }
 };
@@ -704,6 +758,7 @@ const addParagraphs = (container, paragraphs) => {
 const applyMediaPresentation = (video, media = {}) => {
   if (media.aspectRatio) video.style.setProperty("--media-aspect", media.aspectRatio);
   if (media.background) video.style.setProperty("--media-bg", media.background);
+  if (media.fit) video.style.setProperty("--media-fit", media.fit);
 };
 
 const playOnceOnView = (video) => {
@@ -833,7 +888,7 @@ const moreProjectCards = {
   },
   "asthma-inhaler-assistive-device": {
     href: "asthma-inhaler-assistive-device.html",
-    thumb: "../assets/projects/asthma-inhaler-assistive-device/01-6375d08b0e61.png",
+    thumb: "../assets/projects/asthma-inhaler-assistive-device/09-a2f903f51220.jpg",
     thumbClass: "portfolio-thumb",
     alt: "Breath-triggered asthma inhaler assistive device",
     meta: "Assistive Mechatronics",
@@ -1281,6 +1336,16 @@ const renderStandardProject = () => {
       applyMediaPresentation(video, project.overviewMedia);
       glance.append(video);
       if (project.overviewMedia.playOnceOnView) playOnceOnView(video);
+    } else if (project.overviewMedia.type === "imagePair") {
+      const pair = el("div", "fx10-glance-image-pair");
+      project.overviewMedia.images.forEach((imageData) => {
+        const image = el("img");
+        image.src = imageData.src;
+        image.alt = imageData.alt || project.overviewMedia.caption || "";
+        image.loading = "lazy";
+        pair.append(image);
+      });
+      glance.append(pair);
     } else {
       const glanceImage = el("img");
       glanceImage.src = project.overviewMedia.src;
@@ -1301,6 +1366,85 @@ const renderStandardProject = () => {
   }
   root.append(overview);
 
+  if (project.featureBreakdown?.length) {
+    const breakdown = el("section", "fx10-section module-breakdown-section");
+    project.featureBreakdown.forEach((item) => {
+      const row = el("article", "module-breakdown-row");
+      const image = el("img", "module-breakdown-image");
+      image.src = item.image;
+      image.alt = item.alt || item.title;
+      image.loading = "lazy";
+      const copy = el("div", "module-breakdown-copy");
+      copy.append(el("h2", "", item.title));
+      const list = el("ul", "module-breakdown-list");
+      item.bullets.forEach((bullet) => list.append(el("li", "", bullet)));
+      copy.append(list);
+      row.append(image, copy);
+      breakdown.append(row);
+    });
+    root.append(breakdown);
+  }
+
+  if (project.designSpread) {
+    const designSpread = el("section", "fx10-section asthma-design-spread");
+    designSpread.append(el("p", "fx10-section-kicker", "Design"));
+
+    const topGrid = el("div", "asthma-design-top");
+    const introCopy = el("div", "asthma-design-copy");
+    addParagraphs(introCopy, project.designSpread.intro || []);
+    const sideFigures = el("div", "asthma-design-side-figures");
+    project.designSpread.sideFigures?.forEach((figureData) => {
+      const figure = el("figure", "asthma-design-figure");
+      if (figureData.type === "video") {
+        const video = el("video");
+        video.src = figureData.src;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.setAttribute("aria-label", figureData.caption || "");
+        applyMediaPresentation(video, figureData);
+        figure.append(video);
+      } else {
+        const image = el("img");
+        image.src = figureData.src;
+        image.alt = figureData.alt || figureData.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+      }
+      if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+      sideFigures.append(figure);
+    });
+    topGrid.append(introCopy, sideFigures);
+    designSpread.append(topGrid);
+
+    if (project.designSpread.pcbIntro) {
+      designSpread.append(el("p", "asthma-design-copy asthma-design-wide-copy", project.designSpread.pcbIntro));
+    }
+
+    if (project.designSpread.pcbFigures?.length) {
+      const pcbFigure = el("figure", "asthma-pcb-figure");
+      const pcbGrid = el("div", "asthma-pcb-grid");
+      project.designSpread.pcbFigures.forEach((figureData) => {
+        const image = el("img");
+        image.src = figureData.src;
+        image.alt = figureData.alt || project.designSpread.pcbCaption || "";
+        image.loading = "lazy";
+        pcbGrid.append(image);
+      });
+      pcbFigure.append(pcbGrid);
+      if (project.designSpread.pcbCaption) pcbFigure.append(el("figcaption", "", project.designSpread.pcbCaption));
+      designSpread.append(pcbFigure);
+    }
+
+    if (project.designSpread.outro) {
+      designSpread.append(el("p", "asthma-design-copy asthma-design-wide-copy", project.designSpread.outro));
+    }
+
+    root.append(designSpread);
+  }
+
   project.sections?.forEach((section) => {
     const design = el("section", "fx10-section fx10-design-section");
     design.append(el("p", "fx10-section-kicker", section.kicker));
@@ -1317,6 +1461,20 @@ const renderStandardProject = () => {
       figure.append(image);
       if (section.figure.caption) figure.append(el("figcaption", "", section.figure.caption));
       design.append(figure);
+    }
+    if (section.figures?.length) {
+      const figurePair = el("div", "standard-section-figure-pair");
+      section.figures.forEach((figureData) => {
+        const figure = el("figure", "standard-section-paired-figure");
+        const image = el("img");
+        image.src = figureData.src;
+        image.alt = figureData.alt || figureData.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+        if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+        figurePair.append(figure);
+      });
+      design.append(figurePair);
     }
     if (section.inlineVideo) {
       const figure = el("figure", "fx10-overview-video standard-section-video");
@@ -1372,23 +1530,25 @@ const renderStandardProject = () => {
     root.append(gallery);
   }
 
-  if (project.videos?.length || project.embed) {
-    const videoSection = el("section", "fx10-section fx10-launch-video-section");
-    videoSection.append(el("p", "fx10-section-kicker", "In Motion"));
-
-    project.videos?.forEach(([src, poster, caption]) => {
-      const figure = el("figure", "fx10-overview-video");
+  const appendVideoContent = (container) => {
+    project.videos?.forEach((entry) => {
+      const videoData = Array.isArray(entry)
+        ? { src: entry[0], poster: entry[1], caption: entry[2] }
+        : entry;
+      const figure = el("figure", "fx10-overview-video local-video-player");
       const video = el("video");
       video.controls = true;
       video.playsInline = true;
       video.preload = "metadata";
-      video.poster = poster;
+      if (videoData.poster) video.poster = videoData.poster;
+      applyMediaPresentation(video, videoData);
+      video.setAttribute("aria-label", videoData.label || videoData.caption || "");
       const source = el("source");
-      source.src = src;
+      source.src = videoData.src;
       source.type = "video/mp4";
       video.append(source);
-      figure.append(video, el("figcaption", "", caption));
-      videoSection.append(figure);
+      figure.append(video, el("figcaption", "", videoData.caption));
+      container.append(figure);
     });
 
     if (project.embed) {
@@ -1404,18 +1564,28 @@ const renderStandardProject = () => {
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.allowFullscreen = true;
       figure.append(iframe, el("figcaption", "", project.embed.title));
-      videoSection.append(figure);
+      container.append(figure);
     }
+  };
+
+  const appendVideoSection = () => {
+    if (!project.videos?.length && !project.embed) return;
+    const videoSection = el("section", "fx10-section fx10-launch-video-section");
+    videoSection.append(el("p", "fx10-section-kicker", "In Motion"));
+    appendVideoContent(videoSection);
 
     root.append(videoSection);
-  }
+  };
+
+  if (!project.videoAfterOutcome) appendVideoSection();
 
   const outcome = el("section", "fx10-section fx10-outcome-section");
   outcome.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
-  if (project.links?.length || project.source) {
+  if (project.videoAfterOutcome) appendVideoContent(outcome);
+  if (project.links?.length || (project.source && !project.hideSourceAction)) {
     const actions = el("div", "project-actions");
     project.links?.forEach((link) => actions.append(createLink(link)));
-    if (project.source) actions.append(createLink(["View original page", project.source], "project-action project-action-secondary"));
+    if (project.source && !project.hideSourceAction) actions.append(createLink(["View original page", project.source], "project-action project-action-secondary"));
     outcome.append(actions);
   }
   root.append(outcome);
