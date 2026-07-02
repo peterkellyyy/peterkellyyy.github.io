@@ -806,7 +806,7 @@ const moreProjectCards = {
   finefeatures: {
     href: "finefeatures.html",
     thumb: "../assets/projects/finefeatures/04-665a4d8e0c6c.png",
-    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover finefeatures-thumb-lower",
     alt: "Metal X Fine Features sample parts",
     date: "Oct 2021 - Jul 2023",
     title: "Metal X Fine Features",
@@ -827,7 +827,7 @@ const moreProjectCards = {
   harpy: {
     href: "harpy.html",
     thumb: "../assets/projects/harpy/harpy leg.png",
-    thumbClass: "harpy-thumb",
+    thumbClass: "harpy-thumb harpy-thumb-upper",
     alt: "Harpy leg actuator assembly",
     meta: "Robotics Research",
     date: "May 2020 - May 2021",
@@ -837,8 +837,8 @@ const moreProjectCards = {
   },
   aerobat: {
     href: "aerobat.html",
-    thumb: "../assets/projects/aerobat/01-b89eff569b16.png",
-    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    thumb: "../assets/projects/aerobat/wing-still.png",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover aerobat-thumb-lower",
     alt: "Aerobat biomimetic flapping robot",
     meta: "Bio-inspired Robotics",
     date: "Jan 2020 - Sep 2020",
@@ -888,11 +888,11 @@ const moreProjectCards = {
   },
   "asthma-inhaler-assistive-device": {
     href: "asthma-inhaler-assistive-device.html",
-    thumb: "../assets/projects/asthma-inhaler-assistive-device/09-a2f903f51220.jpg",
-    thumbClass: "portfolio-thumb",
+    thumb: "../assets/projects/asthma-inhaler-assistive-device/inhaler-desktop.png",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Breath-triggered asthma inhaler assistive device",
     meta: "Assistive Mechatronics",
-    date: "Sep 2019 - Dec 2019",
+    date: "Jul 2019 - Dec 2019",
     title: "Inhaler Assistive Device",
     summary: "Award-winning breath-triggered device designed for users with limited motor ability.",
     company: "Northeastern University"

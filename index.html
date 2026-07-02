@@ -18,7 +18,7 @@
     </script>
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body id="top">
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <div class="nav-brand">
@@ -162,7 +162,7 @@
           </a>
 
           <a class="project-link" href="projects/finefeatures.html">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Metal X Fine Features thumbnail">
+            <figure class="thumb portfolio-thumb portfolio-thumb-cover finefeatures-thumb-lower" aria-label="Metal X Fine Features thumbnail">
               <img src="assets/projects/finefeatures/04-665a4d8e0c6c.png" alt="Metal X Fine Features sample parts" loading="lazy">
             </figure>
             <p class="project-date">Oct 2021 - Jul 2023</p>
@@ -172,7 +172,7 @@
           </a>
 
           <a class="project-link" href="projects/harpy.html">
-            <figure class="thumb harpy-thumb" aria-label="Harpy bipedal robot thumbnail">
+            <figure class="thumb harpy-thumb harpy-thumb-upper" aria-label="Harpy bipedal robot thumbnail">
               <img src="assets/projects/harpy/harpy leg.png" alt="Harpy leg actuator assembly" loading="lazy">
             </figure>
             <p class="project-date">May 2020 - May 2021</p>
@@ -182,8 +182,8 @@
           </a>
 
           <a class="project-link" href="projects/aerobat.html">
-            <figure class="thumb portfolio-thumb" aria-label="Aerobat thumbnail">
-              <img src="assets/projects/aerobat/01-b89eff569b16.png" alt="Aerobat biomimetic flapping robot" loading="lazy">
+            <figure class="thumb portfolio-thumb portfolio-thumb-cover aerobat-thumb-lower" aria-label="Aerobat thumbnail">
+              <img src="assets/projects/aerobat/wing-still.png" alt="Aerobat biomimetic flapping robot" loading="lazy">
             </figure>
             <p class="project-date">Jan 2020 - Sep 2020</p>
             <h3 class="project-title">Flapping Wing Robotics Research</h3>
@@ -192,10 +192,10 @@
           </a>
 
           <a class="project-link" href="projects/asthma-inhaler-assistive-device.html">
-            <figure class="thumb portfolio-thumb" aria-label="Asthma inhaler assistive device thumbnail">
-              <img src="assets/projects/asthma-inhaler-assistive-device/09-a2f903f51220.jpg" alt="Breath-triggered asthma inhaler assistive device" loading="lazy">
+            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Asthma inhaler assistive device thumbnail">
+              <img src="assets/projects/asthma-inhaler-assistive-device/inhaler-desktop.png" alt="Breath-triggered asthma inhaler assistive device" loading="lazy">
             </figure>
-            <p class="project-date">Sep 2019 - Dec 2019</p>
+            <p class="project-date">Jul 2019 - Dec 2019</p>
             <h3 class="project-title">Inhaler Assistive Device</h3>
             <p class="project-summary">Award-winning breath-triggered device designed for users with limited motor ability.</p>
             <span class="project-company">Northeastern University</span>
@@ -302,7 +302,6 @@
       <section class="section contact-section" id="contact">
         <div class="contact-section-head">
           <p class="section-label">Contact</p>
-          <h2>Let&rsquo;s build.</h2>
           <p>I&rsquo;m open to discussing robotics engineering, R&amp;D collaborations, and hardware opportunities.</p>
         </div>
         <div class="contact-section-links">
@@ -333,15 +332,45 @@
 
     <footer class="site-footer">
       <div class="footer-inner">
-        <div class="footer-brand">
-          <span>Peter Kelly</span>
-          <p>Robotics mechanical engineer building practical, production-ready hardware.</p>
+        <div class="footer-main">
+          <div class="footer-brand">
+            <span>Peter Kelly</span>
+            <strong>Robotics Mechanical Engineer</strong>
+            <p>Designing and building robotic systems from concept to deployment. Focused on performance, reliability, and real-world impact.</p>
+          </div>
+          <nav class="footer-column footer-links" aria-label="Footer navigation">
+            <h2>Explore</h2>
+            <a href="#about">About Me</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#experience">Experience</a>
+          </nav>
+          <div class="footer-column footer-connect" aria-label="Footer contact">
+            <h2>Connect</h2>
+            <a href="mailto:peterkellyyy@gmail.com">
+              <img src="icons/mail.svg" alt="">
+              <span>peterkellyyy@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer">
+              <img src="icons/linkedin-2.svg" alt="">
+              <span>linkedin.com/in/peterkellyy</span>
+            </a>
+            <span>
+              <img src="icons/map-pin.svg" alt="">
+              <span>Boston, MA</span>
+            </span>
+          </div>
+          <a class="footer-resume" href="mailto:peterkellyyy@gmail.com?subject=Resume%20request" aria-label="Request Peter Kelly resume by email">
+            <span class="footer-resume-icon" aria-hidden="true"><img src="icons/file-down.svg" alt=""></span>
+            <span>
+              <strong>Request Resume</strong>
+              <span>PDF</span>
+            </span>
+            <img src="icons/arrow-right.svg" alt="">
+          </a>
         </div>
-        <div class="footer-links" aria-label="Footer navigation">
-          <a href="#about">About Me</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Peter Kelly</p>
+          <a href="#top">Back to top <img src="icons/arrow-up.svg" alt=""></a>
         </div>
       </div>
     </footer>
