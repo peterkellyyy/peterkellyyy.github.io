@@ -280,6 +280,10 @@ svg {
   width: 22px;
 }
 
+.banner-button-arrow-icon {
+  filter: brightness(0) invert(1);
+}
+
 .banner-button:hover,
 .banner-button:focus-visible {
   transform: translateY(-2px);
@@ -393,7 +397,7 @@ svg {
 .about-copy h2 {
   color: #111827;
   display: block;
-  font-size: clamp(1.72rem, 2.84vw, 2.42rem);
+  font-size: clamp(1.462rem, 2.414vw, 2.057rem);
   line-height: 1.08;
   margin: 0 0 22px;
   max-width: 560px;
@@ -441,11 +445,11 @@ svg {
   border: 0;
   border-radius: 0;
   display: inline-grid;
-  gap: 10px;
+  gap: 12px;
   grid-template-columns: 34px max-content;
   justify-content: center;
   justify-self: center;
-  min-width: 0;
+  min-width: 78%;
   padding: 0;
   position: relative;
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
@@ -582,7 +586,7 @@ p {
 
 .contact-section {
   padding-bottom: 76px;
-  padding-top: 58px;
+  padding-top: 34px;
 }
 
 .contact-section-head {
@@ -698,6 +702,55 @@ a.contact-panel:focus-visible {
   color: var(--muted);
   margin-bottom: 0;
   max-width: 440px;
+}
+
+.about-section {
+  padding-bottom: 42px;
+  padding-top: 58px;
+}
+
+.about-section-layout {
+  align-items: start;
+  display: grid;
+  gap: clamp(28px, 5vw, 64px);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+}
+
+.about-section-copy {
+  color: #44505d;
+  font-size: 1.08rem;
+  line-height: 1.72;
+  max-width: 720px;
+}
+
+.about-section-copy p {
+  margin: 0;
+}
+
+.about-section-copy p + p {
+  margin-top: 18px;
+}
+
+.about-section-figure {
+  margin: 0;
+}
+
+.about-section-figure img {
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-section-figure figcaption {
+  color: #5b6675;
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 10px;
+  text-align: center;
 }
 
 /* -- Experience / Logo Row -- */
@@ -2801,6 +2854,19 @@ p.asthma-design-copy {
 @media (max-width: 860px) {
   .video-banner {
     min-height: 560px;
+  }
+
+  .about-section-layout {
+    align-items: start;
+    grid-template-columns: 1fr;
+  }
+
+  .about-section-copy {
+    max-width: none;
+  }
+
+  .about-section-figure {
+    max-width: 520px;
   }
 
   .banner-video {
