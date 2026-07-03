@@ -101,8 +101,8 @@ const projectCatalog = {
       ["2023", "Journal publication"]
     ],
     overview: [
-      "Markforged printers can print with both a discontinuously reinforced base material and a variety of continuous fiber reinforcement, including carbon fiber. Continuous reinforcement provides a significant improvement, as typical engineering plastics (for example, nylon) will have tensile yield strength near 40MPa in the printed plane where the inlaid continuous carbon fiber will have up to 800MPa yield strength – nearly a 20-fold improvement. However, the composite strength is limited to the XY plane in which the fiber is laid. Consequently, the parts are limited to the strength of their parent plastic in the Z direction – a strength already reduced by the anisotropy inherent to the FFF additive manufacturing process.",
-      "The co-part methodology separates features with conflicting load planes into interlocking components. Each component is printed in the orientation best suited to its own loads, then assembled into one functional part."
+      "Markforged printers combine reinforced base materials with continuous fibers like carbon fiber, enabling up to a 20x strength increase in the print plane. The limitation is that fiber strength is mostly constrained to the XY plane, while Z-direction strength remains governed by weaker FFF layer bonding.",
+      "To help solve this issue, I developed a “co-part” process to overcome print-orientation tradeoffs. By splitting difficult geometries into separately optimized co-parts, each feature could be printed in its strongest orientation with improved fiber alignment, then assembled into a higher-performance final part. This process also works with standard non-continously reinforced parts, but much more significant gains can be maid with continous reinforcement."
     ],
     sections: [
       {
@@ -650,7 +650,17 @@ const projectCatalog = {
       ["Minutes", "Time required for the cat to learn it"]
     ],
     overview: [
-      "This device is intended to be controlled by a cat (specifically the one that lives in my apartment), which can be trained to put its paw into the chute in exchange for a treat. Most cat food/treats can be loaded into the chute using the hinged lid and be left to the cat to decide when it wants a treat once it figures out how to control the device. A timer to limit how often a treat can be dispensed can be controlled by the human user."
+      "This device is intended to be controlled by a cat (specifically my roommate's cat), which can be trained to put its paw into the chute in exchange for a treat. Most cat food/treats can be loaded into the chute using the hinged lid and be left to the cat to decide when it wants a treat once it figures out how to control the device. A timer to limit how often a treat can be dispensed can be controlled by the human user.",
+      {
+        parts: [
+          "This was an early introduction to integrating sensors, buttons, screens, microcontrollers, and stepper motors into 3D printed parts for me back in 2019. It was also a fun and unique experiment since the end user is not a human, but instead an animal. I was lucky to have such a smart and attentive cat to test out my project. This work directly led to the success I had with my undergraduate capstone project, where I used similar electrical hardware and made my first PCB design for an ",
+          {
+            text: "asthma inhaler assistive device",
+            href: "asthma-inhaler-assistive-device.html"
+          },
+          "."
+        ]
+      }
     ],
     overviewMedia: {
       type: "video",
@@ -667,11 +677,13 @@ const projectCatalog = {
         figures: [
           {
             src: "../assets/projects/cat-treat-dispenser/treat-dispenser-render.png",
-            alt: "Cat treat dispenser rendering"
+            alt: "Cat treat dispenser rendering",
+            caption: "Render of cat feeder design"
           },
           {
             src: "../assets/projects/cat-treat-dispenser/treat-dispenser-sectoin.png",
-            alt: "Cat treat dispenser section view"
+            alt: "Cat treat dispenser section view",
+            caption: "Section view of cat feeder design"
           }
         ]
       }
@@ -682,6 +694,7 @@ const projectCatalog = {
     videos: [
       {
         src: "../assets/projects/cat-treat-dispenser/cat_treat_dispenser.mp4",
+        poster: "../assets/projects/cat-treat-dispenser/cat-treat-dispenser-poster-8s.png",
         caption: "Cat treat dispenser demonstration",
         aspectRatio: "16 / 9",
         fit: "contain"
@@ -752,7 +765,25 @@ const el = (tag, className, text) => {
 };
 
 const addParagraphs = (container, paragraphs) => {
-  paragraphs.forEach((copy) => container.append(el("p", "", copy)));
+  paragraphs.forEach((copy) => {
+    if (typeof copy === "string") {
+      container.append(el("p", "", copy));
+      return;
+    }
+
+    const paragraph = el("p");
+    copy.parts?.forEach((part) => {
+      if (typeof part === "string") {
+        paragraph.append(document.createTextNode(part));
+        return;
+      }
+
+      const link = el("a", "", part.text);
+      link.href = part.href;
+      paragraph.append(link);
+    });
+    container.append(paragraph);
+  });
 };
 
 const applyMediaPresentation = (video, media = {}) => {
@@ -947,6 +978,11 @@ const moreProjectPriority = [
   "sikorsky"
 ];
 
+const appendHeroDate = (container) => {
+  const date = moreProjectCards[key]?.date;
+  if (date) container.append(el("p", "fx10-project-date", date));
+};
+
 const createMoreProjectCard = (card) => {
   const link = el("a", "project-link more-project-card");
   link.href = card.href;
@@ -1003,26 +1039,14 @@ const renderFx10CaseStudy = () => {
   const heroCopy = el("div", "fx10-hero-copy");
   heroCopy.append(
     el("p", "fx10-eyebrow", "Markforged"),
-    el("h1", "", "FX10 Metal Print Head"),
-    el("p", "fx10-lede", "Next-generation metal printhead enabling high-performance 17-4 PH stainless steel and copper printing for the Markforged FX10 platform.")
+    el("h1", "", "FX10 Metal Print Head")
   );
+  appendHeroDate(heroCopy);
+  heroCopy.append(el("p", "fx10-lede", "Next-generation metal printhead enabling high-performance 17-4 PH stainless steel and copper printing for the Markforged FX10 platform."));
 
   const tags = el("div", "fx10-tags");
   ["Mechanical Design", "Additive Manufacturing", "Electromechanical"].forEach((tag) => tags.append(el("span", "", tag)));
   heroCopy.append(tags);
-
-  const stats = el("div", "fx10-stats");
-  [
-    ["12+", "Months Development"],
-    ["2", "Materials Supported"],
-    ["Modular", "Swappable Architecture"],
-    ["EVT", "May 2024"]
-  ].forEach(([value, label]) => {
-    const stat = el("div", "fx10-stat");
-    stat.append(el("span", "fx10-stat-icon", ""), el("strong", "", value), el("small", "", label));
-    stats.append(stat);
-  });
-  heroCopy.append(stats);
 
   const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
@@ -1048,8 +1072,7 @@ const renderFx10CaseStudy = () => {
 
   overviewCopy.append(
     overviewIntro,
-    overviewDevelopment,
-    el("p", "", "As the program matured, I developed and released subsystem designs, part drawings, manufacturing fixtures, and work instructions to support builds and validation. I worked closely with electrical, software, materials, manufacturing, and print test teams to integrate the metal printhead into the FX10 platform, debug system-level issues, and advance the design from exploratory R&D into an production ready architecture.")
+    overviewDevelopment
   );
 
   const glance = el("figure", "fx10-glance");
@@ -1062,7 +1085,6 @@ const renderFx10CaseStudy = () => {
   root.append(overview);
 
   const launchVideo = el("section", "fx10-section fx10-launch-video-section");
-  launchVideo.append(el("p", "fx10-section-kicker", "Launch Video"));
   const overviewVideo = el("figure", "fx10-overview-video");
   const iframe = el("iframe");
   const embedUrl = new URL(project.embed.src);
@@ -1090,6 +1112,7 @@ const renderFx10CaseStudy = () => {
     el("p", "", "If unit-to-unit variation could be limited with a new extruder design and calibration procedure"),
     el("p", "", "Using a combination of print testing with stock Metal X print heads, and modified \"Frankenstein\" print heads, I answered all three questions, giving the engineering team the necessary confidence to proceed with the first print head prototype."),
     el("p", "", "After the R&D phase, I laid out the initial architecture of the print head and collaborated with an electrical engineer to design the first prototype for internal testing, owning the 3D CAD and 2D part drawings. During the build process, I also developed the manufacturing work instructions and documented design issues."),
+    el("p", "", "As the program matured, I developed and released subsystem designs, part drawings, manufacturing fixtures, and work instructions to support builds and validation. I worked closely with electrical, software, materials, manufacturing, and print test teams to integrate the metal printhead into the FX10 platform, debug system-level issues, and advance the design from exploratory R&D into an production ready architecture."),
     el("p", "", "As the metal print head team grew and the design later went through a second prototype before proceeding to the EVT design and test phase, I continued to lead the design of various subsystems, create 2D part and assembly drawings, and own validation testing deliverables.")
   );
   design.append(designCopy);
@@ -1203,19 +1226,13 @@ const renderCoPartsCaseStudy = () => {
   const heroCopy = el("div", "fx10-hero-copy");
   heroCopy.append(
     el("p", "fx10-eyebrow", project.eyebrow),
-    el("h1", "", project.title),
-    el("p", "fx10-lede", project.lede)
+    el("h1", "", project.title)
   );
+  appendHeroDate(heroCopy);
+  heroCopy.append(el("p", "fx10-lede", project.lede));
   const tags = el("div", "fx10-tags");
   project.tags.forEach((tag) => tags.append(el("span", "", tag)));
   heroCopy.append(tags);
-  const stats = el("div", "fx10-stats");
-  project.facts.forEach(([value, label]) => {
-    const stat = el("div", "fx10-stat");
-    stat.append(el("span", "fx10-stat-icon", ""), el("strong", "", value), el("small", "", label));
-    stats.append(stat);
-  });
-  heroCopy.append(stats);
 
   const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
@@ -1233,9 +1250,9 @@ const renderCoPartsCaseStudy = () => {
   overview.append(
     overviewCopy,
     createCaseStudyImage(
-      "../assets/projects/co-parts/separate parts.jpg",
-      "Separate printed co-parts before assembly",
-      "Example co-parts",
+      "../assets/projects/co-parts/co-part assembly.png",
+      "Monolithic mounting plate, assembled co-part, and co-part assembly strategy",
+      "(a) Monolithic plastic mounting plate part (b) assembled co-part (c) assembly strategy",
       "co-parts-overview-image"
     ),
     createYoutubeFigure(project.embed, project.embed.title, "co-parts-overview-video")
@@ -1291,21 +1308,14 @@ const renderStandardProject = () => {
   const heroCopy = el("div", "fx10-hero-copy");
   heroCopy.append(
     el("p", "fx10-eyebrow", project.eyebrow),
-    el("h1", "", project.title),
-    el("p", "fx10-lede", project.lede)
+    el("h1", "", project.title)
   );
+  appendHeroDate(heroCopy);
+  heroCopy.append(el("p", "fx10-lede", project.lede));
 
   const tags = el("div", "fx10-tags");
   project.tags?.forEach((tag) => tags.append(el("span", "", tag)));
   heroCopy.append(tags);
-
-  const stats = el("div", "fx10-stats");
-  project.facts?.forEach(([value, label]) => {
-    const stat = el("div", "fx10-stat");
-    stat.append(el("span", "fx10-stat-icon", ""), el("strong", "", value), el("small", "", label));
-    stats.append(stat);
-  });
-  heroCopy.append(stats);
 
   const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
@@ -1536,6 +1546,7 @@ const renderStandardProject = () => {
         ? { src: entry[0], poster: entry[1], caption: entry[2] }
         : entry;
       const figure = el("figure", "fx10-overview-video local-video-player");
+      const videoShell = el("div", "local-video-shell");
       const video = el("video");
       video.controls = true;
       video.playsInline = true;
@@ -1547,7 +1558,17 @@ const renderStandardProject = () => {
       source.src = videoData.src;
       source.type = "video/mp4";
       video.append(source);
-      figure.append(video, el("figcaption", "", videoData.caption));
+      const playButton = el("button", "local-video-play-button");
+      playButton.type = "button";
+      playButton.setAttribute("aria-label", `Play ${videoData.caption || "video"}`);
+      playButton.append(el("span", "local-video-play-icon", ""));
+      playButton.addEventListener("click", () => {
+        video.play().catch(() => {});
+      });
+      video.addEventListener("play", () => figure.classList.add("is-video-started"));
+      video.addEventListener("ended", () => figure.classList.remove("is-video-started"));
+      videoShell.append(video, playButton);
+      figure.append(videoShell, el("figcaption", "", videoData.caption));
       container.append(figure);
     });
 

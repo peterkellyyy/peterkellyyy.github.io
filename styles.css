@@ -13,6 +13,8 @@
   --signal-blue-soft: #eaf2ff;
   --signal-green-soft: #eaf8f3;
   --max: 1240px;
+  --project-body-size: 1.078rem;
+  --project-body-line: 1.76;
 }
 
 * {
@@ -61,6 +63,34 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.fx10-overview-copy a,
+.fx10-design-copy a,
+.fx10-outcome-section a,
+.asthma-design-copy a,
+.module-breakdown-copy a {
+  color: var(--signal-blue);
+  font-weight: 800;
+  text-decoration: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.fx10-overview-copy a:hover,
+.fx10-overview-copy a:focus-visible,
+.fx10-design-copy a:hover,
+.fx10-design-copy a:focus-visible,
+.fx10-outcome-section a:hover,
+.fx10-outcome-section a:focus-visible,
+.asthma-design-copy a:hover,
+.asthma-design-copy a:focus-visible,
+.module-breakdown-copy a:hover,
+.module-breakdown-copy a:focus-visible {
+  color: #0f4faf;
+  text-decoration: underline;
+  outline: none;
 }
 
 img,
@@ -385,11 +415,24 @@ svg {
 .summary-contact {
   align-items: center;
   border-top: 1px solid var(--line);
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
+  justify-content: center;
+  position: relative;
   padding-top: 16px;
   max-width: 100%;
+}
+
+.summary-contact::after {
+  background: #e6ebf1;
+  content: "";
+  height: calc(100% - 16px);
+  left: 50%;
+  position: absolute;
+  top: 16px;
+  transform: translateX(-50%);
+  width: 1px;
 }
 
 .contact-card {
@@ -399,15 +442,18 @@ svg {
   border-radius: 0;
   display: inline-grid;
   gap: 10px;
-  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-columns: 34px max-content;
+  justify-content: center;
+  justify-self: center;
   min-width: 0;
-  padding: 0 18px 0 0;
+  padding: 0;
+  position: relative;
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  z-index: 1;
 }
 
 .contact-card + .contact-card {
-  border-left: 1px solid #e6ebf1;
-  padding-left: 18px;
+  border-left: 0;
 }
 
 .contact-card:hover,
@@ -585,6 +631,10 @@ p {
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
+.contact-panel > span:last-child {
+  min-width: 0;
+}
+
 a.contact-panel:hover,
 a.contact-panel:focus-visible {
   border-color: #c8d0da;
@@ -633,6 +683,7 @@ a.contact-panel:focus-visible {
   font-size: 1.08rem;
   font-weight: 800;
   line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .section-head {
@@ -1894,6 +1945,15 @@ a.contact-panel:focus-visible {
   max-width: 520px;
 }
 
+.fx10-project-date {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
 .fx10-tags {
   display: flex;
   flex-wrap: wrap;
@@ -2022,17 +2082,13 @@ a.contact-panel:focus-visible {
 
 .fx10-overview-copy p:not(.fx10-section-kicker) {
   color: #435065;
-  font-size: 1.078rem;
-  line-height: 1.72;
+  font-size: var(--project-body-size);
+  line-height: var(--project-body-line);
   max-width: 100%;
 }
 
 .fx10-overview-copy a {
-  color: var(--signal-blue);
-  font-weight: 800;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+  text-shadow: 0 1px 0 #ffffff;
 }
 
 .fx10-glance {
@@ -2105,6 +2161,11 @@ a.contact-panel:focus-visible {
   overflow: visible;
 }
 
+.fx10-launch-video-section {
+  border-top: 0;
+  padding-top: 0;
+}
+
 .fx10-overview-video iframe {
   aspect-ratio: 16 / 9;
   background: #0c0f14;
@@ -2130,8 +2191,55 @@ a.contact-panel:focus-visible {
   width: 100%;
 }
 
+.local-video-shell {
+  position: relative;
+}
+
 .local-video-player video {
   object-fit: var(--media-fit, contain);
+}
+
+.local-video-play-button {
+  align-items: center;
+  appearance: none;
+  background: rgba(12, 15, 20, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  height: clamp(72px, 9vw, 104px);
+  justify-content: center;
+  left: 50%;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease, opacity 160ms ease;
+  width: clamp(72px, 9vw, 104px);
+}
+
+.local-video-play-button:hover,
+.local-video-play-button:focus-visible {
+  background: rgba(12, 15, 20, 0.86);
+  border-color: rgba(255, 255, 255, 0.76);
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.local-video-play-icon {
+  border-bottom: clamp(14px, 1.8vw, 20px) solid transparent;
+  border-left: clamp(22px, 2.7vw, 31px) solid currentColor;
+  border-top: clamp(14px, 1.8vw, 20px) solid transparent;
+  display: block;
+  height: 0;
+  margin-left: 6px;
+  width: 0;
+}
+
+.local-video-player.is-video-started .local-video-play-button {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .fx10-overview-video.local-video-player figcaption {
@@ -2198,8 +2306,8 @@ a.contact-panel:focus-visible {
 
 .fx10-design-copy {
   color: #435065;
-  font-size: 1.078rem;
-  line-height: 1.76;
+  font-size: var(--project-body-size);
+  line-height: var(--project-body-line);
   max-width: 100%;
 }
 
@@ -2323,8 +2431,8 @@ a.contact-panel:focus-visible {
 
 .module-breakdown-list {
   color: #435065;
-  font-size: clamp(0.902rem, 1.056vw, 1.012rem);
-  line-height: 1.72;
+  font-size: var(--project-body-size);
+  line-height: var(--project-body-line);
   margin: 0;
   padding-left: 22px;
 }
@@ -2342,8 +2450,8 @@ a.contact-panel:focus-visible {
 
 .asthma-design-copy {
   color: #435065;
-  font-size: 1.078rem;
-  line-height: 1.76;
+  font-size: var(--project-body-size);
+  line-height: var(--project-body-line);
 }
 
 .asthma-design-copy p,
@@ -2409,8 +2517,8 @@ p.asthma-design-copy {
 
 .fx10-outcome-section p:not(.fx10-section-kicker) {
   color: #435065;
-  font-size: 1.155rem;
-  line-height: 1.72;
+  font-size: var(--project-body-size);
+  line-height: var(--project-body-line);
   margin: 0;
   max-width: 100%;
 }
@@ -2621,12 +2729,15 @@ p.asthma-design-copy {
   font-size: 0.82rem;
   font-weight: 800;
   padding: 10px 15px;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.project-action:hover {
+.project-action:hover,
+.project-action:focus-visible {
   background: var(--signal-blue);
   border-color: var(--signal-blue);
+  outline: none;
+  transform: translateY(-2px);
 }
 
 .project-action-secondary {
@@ -2634,7 +2745,8 @@ p.asthma-design-copy {
   color: var(--ink);
 }
 
-.project-action-secondary:hover {
+.project-action-secondary:hover,
+.project-action-secondary:focus-visible {
   color: var(--paper);
 }
 
@@ -2738,20 +2850,70 @@ p.asthma-design-copy {
 
 @media (max-width: 1080px) {
   .personal-summary {
+    justify-items: center;
     gap: 34px;
     grid-template-columns: 1fr;
   }
 
   .about-copy {
-    max-width: 680px;
+    max-width: 100%;
+    text-align: left;
+    width: 100%;
+  }
+
+  .about-copy h2 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 960px;
+    text-align: center;
+  }
+
+  .about-copy > p:not(.section-label) {
+    max-width: 960px;
   }
 
   .about-pillars {
     max-width: 760px;
+    width: 100%;
   }
 
   .summary-contact {
     border-top: 0;
+    display: grid;
+    gap: clamp(46px, 8vw, 92px);
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: fit-content;
+  }
+
+  .contact-card {
+    gap: 14px;
+    grid-template-columns: 44px minmax(0, max-content);
+    justify-content: center;
+    padding: 0;
+    width: auto;
+  }
+
+  .contact-icon,
+  .contact-icon img {
+    height: 44px;
+    width: 44px;
+  }
+
+  .contact-card strong {
+    font-size: 0.8rem;
+  }
+
+  .contact-card span span {
+    font-size: 0.86rem;
+  }
+
+  .contact-card span span {
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .contact-card + .contact-card {
@@ -2759,7 +2921,64 @@ p.asthma-design-copy {
   }
 }
 
+@media (max-width: 1200px) {
+  .contact-section-head {
+    text-align: center;
+  }
+
+  .contact-section-head > p:not(.section-label) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 760px;
+  }
+
+  .contact-section-links {
+    grid-template-columns: minmax(0, 430px);
+    justify-content: center;
+  }
+
+  .contact-panel {
+    grid-template-columns: 62px minmax(0, max-content);
+    justify-content: center;
+    text-align: left;
+  }
+
+  .contact-panel span span {
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+}
+
 @media (max-width: 760px) {
+  .summary-contact {
+    gap: 24px;
+    grid-template-columns: 1fr;
+    width: min(100%, 420px);
+  }
+
+  .summary-contact::after {
+    content: none;
+  }
+
+  .contact-card {
+    grid-template-columns: 52px minmax(0, max-content);
+    width: 100%;
+  }
+
+  .contact-icon,
+  .contact-icon img {
+    height: 52px;
+    width: 52px;
+  }
+
+  .contact-card strong {
+    font-size: 0.84rem;
+  }
+
+  .contact-card span span {
+    font-size: 0.92rem;
+  }
+
   .about-pillars {
     gap: 24px;
     grid-template-columns: 1fr;
@@ -2804,7 +3023,7 @@ p.asthma-design-copy {
     box-shadow: none;
     max-width: none;
     padding: 0;
-    text-align: left;
+    text-align: center;
     text-shadow: none;
     width: 100%;
   }
@@ -2961,13 +3180,14 @@ p.asthma-design-copy {
 
   .summary-contact {
     align-items: center;
+    display: flex;
     flex-direction: column;
     margin-top: 22px;
     text-align: center;
   }
 
   .contact-card {
-    grid-template-columns: 42px minmax(0, auto);
+    grid-template-columns: 52px minmax(0, auto);
     justify-content: center;
     padding: 0;
     width: auto;
@@ -3709,8 +3929,8 @@ p.asthma-design-copy {
   }
 
   .module-breakdown-list {
-    font-size: 0.902rem;
-    line-height: 1.72;
+    font-size: var(--project-body-size);
+    line-height: var(--project-body-line);
     padding-left: 18px;
   }
 
@@ -3719,7 +3939,7 @@ p.asthma-design-copy {
   }
 
   .asthma-design-copy {
-    font-size: 1.078rem;
+    font-size: var(--project-body-size);
   }
 
   .asthma-design-copy p + p {
