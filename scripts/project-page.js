@@ -138,10 +138,10 @@ const projectCatalog = {
   harpy: {
     title: "Legged Robotics Research",
     eyebrow: "Robotics Research Platform",
-    lede: "A super-lightweight bipedal robot built to explore thruster-assisted locomotion, dynamic balance, and movement in reduced gravity.",
+    lede: "A lightweight thruster-assisted bipedal robot developed as my master's thesis hardware platform.",
     hero: "../assets/projects/harpy/harpy leg.png",
     heroAlt: "Harpy leg actuator assembly",
-    tags: ["Mechanical design", "Actuation", "Simulation", "Hardware testing"],
+    tags: ["Mechanical design", "Composite fabrication", "Actuation", "Simulation", "Testing"],
     facts: [
       ["6", "Leg actuators"],
       ["2", "Thruster actuators"],
@@ -149,8 +149,8 @@ const projectCatalog = {
       ["CF", "Composite structure"]
     ],
     overview: [
-      "Harpy was conceived as a hardware platform for developing complex control algorithms for thruster-assisted bipedal locomotion. The twin electric ducted fans can augment balance, improve walking stability, and add impulse for jumping over obstacles.",
-      "The platform also creates a practical way to study legged locomotion in reduced-gravity conditions. By using controlled thrust to offset a portion of the robot's weight, experiments can approximate lower effective gravity without changing the leg mechanism."
+      "Harpy was my master's thesis project at Northeastern's SiliconSynapse Lab: a bipedal robot with six leg actuators, two vectoring thruster actuators, and two electric ducted fans. The platform was designed to support research in thruster-assisted legged locomotion, where thrust can help stabilize balance, soften impacts, and increase jump performance.",
+      "My work covered the electromechanical architecture of the robot: actuator selection and packaging, composite 3D printed housings, carbon-fiber leg structures, embedded fabrication methods, thruster integration, electrical layout, simulation, and physical leg testing."
     ],
     overviewMedia: {
       type: "video",
@@ -160,33 +160,92 @@ const projectCatalog = {
       background: "#ffffff",
       autoplay: false,
       loop: false,
-      playOnceOnView: true
+      playOnceOnView: true,
     },
     sections: [
       {
-        kicker: "Architecture",
+        kicker: "System Architecture",
         body: [
-          "Nearly every design decision was driven by the need to minimize weight while preserving stiffness and energy density. Carbon-fiber tubes, sandwich plates, composite 3D printing, and embedded bearings and carbon plates reduced part count while keeping the load paths direct.",
-          "Lightweight brushless motors are paired with compact Harmonic Drive component sets. The resulting actuators package high reduction and torque density into composite housings shaped around the robot rather than around conventional gearbox geometry."
-        ]
-      },
-      {
-        kicker: "Actuator Design",
-        body: [
-          "The actuator housing carries bearings, transmission components, motor, and output structure in a tightly integrated assembly. Composite FDM enabled geometry that would be costly to machine while still supporting embedded high-load components."
+          "The robot architecture connected a MATLAB/Speedgoat real-time control stack to a Nucleo microcontroller, Elmo Gold Twitter motor drives, brushless leg actuators, ESCs, and the electric ducted fans. I designed the mechanical packaging around that architecture so the robot could stay light while leaving the controls team a practical research platform."
         ],
-        figure: {
-          src: "../assets/projects/harpy/actuator-exploded.png",
-          alt: "Exploded view of the Harpy actuator architecture",
-          caption: "Exploded view of the Harpy actuator architecture"
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/robotArchitecture.png",
+          alt: "Harpy robot electrical and control architecture",
+          caption: "Electrical and control architecture used for Harpy testing"
         }
       },
       {
-        kicker: "Simulation",
+        kicker: "Leg Design",
         body: [
-          "A parametric model in Rhino and Grasshopper exposed actuator, thruster, drive, heatsink, battery, and geometry locations to an evolutionary solver. The solver compared each candidate against target center-of-mass and moment-of-inertia values.",
-          "Because hardware changes could be folded back into the model, the workflow remained useful as batteries, sensors, cameras, and other components evolved."
+          "The leg layout used a pantograph-style mechanism with sagittal hip, frontal hip, and knee actuation. I designed the carbon-fiber tube and plate structure, pelvis interface, knee assembly, and adjustable shock absorber so drop, hop, and trajectory tests could be performed on hardware before the full robot was complete."
         ],
+        figure: {
+          src: "../assets/projects/harpy/harpyLegDOF.png",
+          alt: "Harpy leg degrees of freedom",
+          caption: "Leg degrees of freedom and thruster placement"
+        }
+      },
+      {
+        kicker: "Actuation and Fabrication",
+        body: [
+          "I selected compact Harmonic Drive component sets and lightweight brushless motors for the leg joints, then designed integrated actuator housings around bearings, motor mounting, transmission support, and output structure. Composite FDM made it possible to create high-complexity housings while keeping mass low.",
+          "A major part of the work was fabrication strategy. Bearings, carbon-fiber plates, and other load-carrying components were embedded into printed parts during the build process, allowing printed geometry to locate and support stiffer structural elements instead of relying on plastic alone."
+        ],
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/actuator-exploded.png",
+          alt: "Exploded view of the Harpy actuator architecture",
+          caption: "Exploded leg joint actuator architecture"
+        },
+        figures: [
+          {
+            src: "../assets/projects/harpy/legJointSection.png",
+            alt: "Section view of the Harpy leg joint actuator",
+            caption: "Section view of the compact harmonic-drive leg joint actuator"
+          }
+        ]
+      },
+      {
+        kicker: "Embedded Composite Printing",
+        body: [
+          "For the thruster and leg actuator housings, I used a composite print-and-pause process to capture stiffer structural components inside the printed geometry. This let the printed parts provide complex alignment and packaging features while carbon-fiber and bearing elements carried the high loads."
+        ],
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/embedThruster.png",
+          alt: "Embedded fabrication process for Harpy thruster actuator housing",
+          caption: "Embedded composite-printing process used for high-load actuator housings"
+        }
+      },
+      {
+        kicker: "Thrusters and Electronics",
+        body: [
+          "Harpy used electric ducted fans rather than propellers so the thrust system could be compact, protected, and easier to integrate near the robot body. I designed the vectoring thruster actuator that steers each EDF, reusing actuator concepts from the leg joints where possible to reduce complexity.",
+          "I also designed support electronics, including a motor-drive interface PCB and amplifier PCB, and packaged the drives, ESCs, heatsinks, and wiring so the system could be assembled, tested, and serviced."
+        ],
+        figures: [
+          {
+            src: "../assets/projects/harpy/edfActuator.jpg",
+            alt: "Harpy electric ducted fan thruster actuator assembly",
+            caption: "Vectoring electric ducted fan actuator assembly"
+          },
+          {
+            src: "../assets/projects/harpy/ampPCB.png",
+            alt: "Harpy amplifier PCB",
+            caption: "Amplifier PCB used in the Harpy electronics stack"
+          }
+        ]
+      },
+      {
+        kicker: "Simulation",
+        className: "harpy-simulation-section",
+        body: [
+          "Before building the complete robot, I created a MATLAB Simscape Multibody model to estimate joint torque requirements and compare how shock absorber stiffness and thruster force affected falls and hops. The simulation showed how passive compliance and thrust could reduce peak actuator loads during impact.",
+          "The model was used to compare drop cases with different thruster forces and shock absorber stiffnesses, then to evaluate commanded hop trajectories before committing to hardware tests."
+        ],
+        asideFigure: {
+          src: "../assets/projects/harpy/harpyThrusterPlot.png",
+          alt: "Harpy drop simulation plots comparing thruster force",
+          caption: "Drop simulation comparing joint loads across thruster force levels"
+        },
         inlineVideo: {
           src: "../assets/projects/harpy/harpySimscapeJump.mp4",
           label: "Harpy Simscape jump simulation",
@@ -197,23 +256,29 @@ const projectCatalog = {
         }
       },
       {
-        kicker: "Hardware Validation",
+        kicker: "Testing",
         body: [
-          "A t-slot fixture was designed for controlled drop and hop testing. The simplified single-leg setup isolated the sagittal mechanism while preserving the thruster actuator and EDF, making it possible to measure how assisted thrust changed required joint torque and jump performance."
-        ]
+          "I designed a T-slot single-leg test fixture with an 80 cm linear rail so the leg could be drop-tested and commanded through hops while isolating the most demanding sagittal-plane mechanism.",
+          "The test setup preserved the thruster actuator and EDF above the leg, making it possible to compare assisted and unassisted behavior. Tests included a 55 cm fall, a 16 cm hop, and high-speed foot motion of 10 cm per cycle at 13 Hz."
+        ],
+        inlineVideo: {
+          src: "../assets/projects/harpy/leg-test.mp4",
+          poster: "../assets/projects/harpy/harpy-back.png",
+          label: "Harpy leg test video",
+          caption: "Leg jumping with and without thruster assistance",
+          aspectRatio: "auto",
+          background: "#ffffff",
+          fit: "contain",
+          controls: true
+        }
       }
     ],
-    outcome: "This work established the hardware architecture for Harpy: a compact experimental platform where structure, actuation, mass distribution, simulation, and testing were developed as one system.",
-    galleryLabel: "Additional Views",
-    media: [
-      ["../assets/projects/harpy/harpy-back.png", "Rear packaging view showing actuation, electronics, and thrust hardware"]
-    ],
-    videos: [
-      ["../assets/projects/harpy/leg-test.mp4", "../assets/projects/harpy/harpy-back.png", "Leg jumping with and without thruster assistance"]
-    ],
+    outcome: "The thesis established Harpy's core hardware architecture and validated the most demanding leg subsystem through simulation and physical testing. The work turned the robot from a research concept into a buildable platform with defined actuation, fabrication, electronics, simulation, and test methods.",
+    media: [],
     links: [
       ["Read the related thesis", "https://web.archive.org/web/20220826032004id_/https://repository.library.northeastern.edu/files/neu:bz60w8418/fulltext.pdf"]
     ],
+    hideSourceAction: true,
     source: "https://peterkellyyy.wixsite.com/peterkelly/harpy"
   },
   finefeatures: {
@@ -367,9 +432,9 @@ const projectCatalog = {
     title: "Soaring",
     eyebrow: "Aviation",
     lede: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
-    hero: "../assets/about/glider.jpg",
+    hero: "../assets/projects/soaring/asw19.jpg",
     heroAlt: "ASW-19B glider in flight",
-    heroClass: "portfolio-thumb-cover",
+    heroClass: "portfolio-thumb-cover soaring-hero-media",
     tags: ["Sailplanes", "Aviation", "Mentorship", "Cross-country flying"],
     overview: [
       "Soaring has been a long-running personal pursuit since 2013. Flying sailplanes combines weather reading, energy management, decision-making, and a particular kind of hands-on mechanical intuition that has shaped how I think about engineering and risk."
@@ -971,7 +1036,7 @@ const moreProjectCards = {
   },
   soaring: {
     href: "soaring.html",
-    thumb: "../assets/about/glider.jpg",
+    thumb: "../assets/projects/soaring/asw19.jpg",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "ASW-19B glider in flight",
     meta: "Aviation",
@@ -1004,19 +1069,19 @@ const moreProjectCards = {
 
 const moreProjectPriority = [
   "fx10",
-  "px100",
-  "co-parts",
-  "3dtrails",
-  "finefeatures",
   "harpy",
+  "co-parts",
+  "finefeatures",
+  "px100",
+  "3dtrails",
   "aerobat",
   "asthma-inhaler-assistive-device",
   "cat-treat-dispenser",
-  "morse-corp",
-  "audio-variometer",
   "rotary-rf-pcb-manufacturing",
+  "morse-corp",
   "irobot",
   "sikorsky",
+  "audio-variometer",
   "soaring"
 ];
 
@@ -1375,8 +1440,36 @@ const renderStandardProject = () => {
   overview.append(overviewCopy);
 
   if (project.overviewMedia) {
-    const glance = el("figure", "fx10-glance");
-    if (project.overviewMedia.type === "video") {
+    const glance = el(project.overviewMedia.type === "mediaGrid" ? "div" : "figure", "fx10-glance");
+    if (project.overviewMedia.type === "mediaGrid") {
+      const mediaGrid = el("div", "overview-media-grid");
+      project.overviewMedia.items.forEach((mediaData) => {
+        const mediaItem = el("figure", "overview-media-item");
+        if (mediaData.type === "video") {
+          const video = el("video");
+          video.src = mediaData.src;
+          video.autoplay = mediaData.autoplay !== false && !mediaData.playOnceOnView;
+          video.loop = mediaData.loop !== false && !mediaData.playOnceOnView;
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = "metadata";
+          video.setAttribute("aria-label", mediaData.caption || "");
+          applyMediaPresentation(video, mediaData);
+          mediaItem.append(video);
+          if (mediaData.playOnceOnView) playOnceOnView(video);
+        } else {
+          const image = el("img");
+          image.src = mediaData.src;
+          image.alt = mediaData.alt || mediaData.caption || "";
+          image.loading = "lazy";
+          applyMediaPresentation(image, mediaData);
+          mediaItem.append(image);
+        }
+        if (mediaData.caption) mediaItem.append(el("figcaption", "", mediaData.caption));
+        mediaGrid.append(mediaItem);
+      });
+      glance.append(mediaGrid);
+    } else if (project.overviewMedia.type === "video") {
       const video = el("video", "fx10-glance-video");
       video.src = project.overviewMedia.src;
       video.autoplay = project.overviewMedia.autoplay !== false && !project.overviewMedia.playOnceOnView;
@@ -1406,6 +1499,20 @@ const renderStandardProject = () => {
       glance.append(glanceImage);
     }
     if (project.overviewMedia.caption) glance.append(el("figcaption", "", project.overviewMedia.caption));
+    if (project.overviewMedia.figures?.length) {
+      const figurePair = el("div", "standard-section-figure-pair overview-supplemental-figures");
+      project.overviewMedia.figures.forEach((figureData) => {
+        const figure = el("figure", "standard-section-paired-figure");
+        const image = el("img");
+        image.src = figureData.src;
+        image.alt = figureData.alt || figureData.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+        if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+        figurePair.append(figure);
+      });
+      glance.append(figurePair);
+    }
     overview.append(glance);
   } else if (project.media?.[0]) {
     const glance = el("figure", "fx10-glance");
@@ -1498,12 +1605,23 @@ const renderStandardProject = () => {
   }
 
   project.sections?.forEach((section) => {
-    const design = el("section", "fx10-section fx10-design-section");
+    const design = el("section", `fx10-section fx10-design-section ${section.className || ""}`.trim());
     design.append(el("p", "fx10-section-kicker", section.kicker));
     const designCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
     if (section.title) designCopy.append(el("h2", "", section.title));
     addParagraphs(designCopy, section.body || []);
     design.append(designCopy);
+    if (section.asideFigure) {
+      const figure = el("figure", "standard-section-paired-figure standard-section-aside-figure");
+      const image = el("img");
+      image.src = section.asideFigure.src;
+      image.alt = section.asideFigure.alt || section.asideFigure.caption || "";
+      image.loading = "lazy";
+      figure.append(image);
+      if (section.asideFigure.caption) figure.append(el("figcaption", "", section.asideFigure.caption));
+      design.classList.add("fx10-design-section-with-media");
+      design.append(figure);
+    }
     if (section.figure) {
       const figure = el("figure", "fx10-overview-video standard-section-figure");
       const image = el("img");
@@ -1512,6 +1630,16 @@ const renderStandardProject = () => {
       image.loading = "lazy";
       figure.append(image);
       if (section.figure.caption) figure.append(el("figcaption", "", section.figure.caption));
+      design.append(figure);
+    }
+    if (section.fullWidthFigure) {
+      const figure = el("figure", "fx10-overview-video standard-section-figure standard-section-full-figure");
+      const image = el("img");
+      image.src = section.fullWidthFigure.src;
+      image.alt = section.fullWidthFigure.alt || section.fullWidthFigure.caption || "";
+      image.loading = "lazy";
+      figure.append(image);
+      if (section.fullWidthFigure.caption) figure.append(el("figcaption", "", section.fullWidthFigure.caption));
       design.append(figure);
     }
     if (section.figures?.length) {
@@ -1532,11 +1660,13 @@ const renderStandardProject = () => {
       const figure = el("figure", "fx10-overview-video standard-section-video");
       const video = el("video");
       video.src = section.inlineVideo.src;
-      video.autoplay = true;
-      video.loop = true;
+      video.autoplay = !section.inlineVideo.controls;
+      video.loop = !section.inlineVideo.controls;
       video.muted = true;
       video.playsInline = true;
       video.preload = "metadata";
+      video.controls = !!section.inlineVideo.controls;
+      if (section.inlineVideo.poster) video.poster = section.inlineVideo.poster;
       video.setAttribute("aria-label", section.inlineVideo.label || section.inlineVideo.caption || "");
       applyMediaPresentation(video, section.inlineVideo);
       figure.append(video);
@@ -1645,6 +1775,20 @@ const renderStandardProject = () => {
   const outcome = el("section", "fx10-section fx10-outcome-section");
   outcome.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
   if (project.videoAfterOutcome) appendVideoContent(outcome);
+  if (project.outcomeFigures?.length) {
+    const figurePair = el("div", "standard-section-figure-pair outcome-supplemental-figures");
+    project.outcomeFigures.forEach((figureData) => {
+      const figure = el("figure", "standard-section-paired-figure");
+      const image = el("img");
+      image.src = figureData.src;
+      image.alt = figureData.alt || figureData.caption || "";
+      image.loading = "lazy";
+      figure.append(image);
+      if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+      figurePair.append(figure);
+    });
+    outcome.append(figurePair);
+  }
   if (project.links?.length || (project.source && !project.hideSourceAction)) {
     const actions = el("div", "project-actions");
     project.links?.forEach((link) => actions.append(createLink(link)));
