@@ -1961,8 +1961,18 @@ a.contact-panel:focus-visible {
 
 .fx10-hero-copy {
   align-self: center;
-  max-width: 560px;
+  backdrop-filter: blur(12px) saturate(118%);
+  background: rgba(12, 15, 20, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.16),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.2),
+    0 24px 64px rgba(0, 0, 0, 0.28);
+  max-width: 620px;
+  padding: clamp(30px, 4vw, 48px);
   position: relative;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
   z-index: 2;
 }
 
@@ -2011,7 +2021,7 @@ a.contact-panel:focus-visible {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 44px;
+  margin-bottom: 0;
 }
 
 .fx10-tags span,
@@ -3949,6 +3959,7 @@ p.asthma-design-copy {
 
   .fx10-hero-copy {
     max-width: 680px;
+    padding: clamp(28px, 5vw, 44px);
   }
 
   .fx10-hero-media {
@@ -4223,12 +4234,52 @@ p.asthma-design-copy {
   }
 
   .fx10-hero {
-    padding-left: 18px;
-    padding-right: 18px;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 24px;
+  }
+
+  .fx10-hero-copy {
+    backdrop-filter: none;
+    background: transparent;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: none;
+    grid-row: 1;
+    padding: 0 18px;
+    text-shadow: none;
+  }
+
+  .fx10-eyebrow {
+    color: var(--signal-blue);
   }
 
   .fx10-hero h1 {
+    color: var(--ink);
     font-size: 2.17rem;
+  }
+
+  .fx10-lede {
+    color: var(--muted);
+    display: none;
+  }
+
+  .fx10-project-date {
+    color: #4b5563;
+  }
+
+  .fx10-tags span {
+    background: #eef4ff;
+    border-color: #d7e5fb;
+    color: #1f5fbf;
+  }
+
+  .fx10-tags {
+    margin-bottom: 24px;
   }
 
   .fx10-stats {
@@ -4236,8 +4287,13 @@ p.asthma-design-copy {
   }
 
   .fx10-section {
+    border-top: 0;
     padding: 36px 0;
     width: calc(100% - 36px);
+  }
+
+  .fx10-overview-section {
+    padding-top: 7px;
   }
 
   .fx10-process-video-section {
@@ -4270,8 +4326,20 @@ p.asthma-design-copy {
   }
 
   .fx10-hero-media {
+    aspect-ratio: 16 / 9;
+    grid-row: 2;
+    height: auto;
+    inset: auto;
     margin: 0;
     min-height: 0;
+    opacity: 1;
+    position: relative;
+    width: 100%;
+  }
+
+  .fx10-hero-media img {
+    object-fit: cover;
+    width: 100%;
   }
 
   .fx10-highlight-card img {
