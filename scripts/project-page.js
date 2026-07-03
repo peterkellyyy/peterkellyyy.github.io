@@ -363,6 +363,36 @@ const projectCatalog = {
     ],
     source: "https://peterkellyyy.wixsite.com/peterkelly/3dtrails"
   },
+  soaring: {
+    title: "Soaring",
+    eyebrow: "Aviation",
+    lede: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
+    hero: "../assets/about/glider.jpg",
+    heroAlt: "ASW-19B glider in flight",
+    heroClass: "portfolio-thumb-cover",
+    tags: ["Sailplanes", "Aviation", "Mentorship", "Cross-country flying"],
+    overview: [
+      "Soaring has been a long-running personal pursuit since 2013. Flying sailplanes combines weather reading, energy management, decision-making, and a particular kind of hands-on mechanical intuition that has shaped how I think about engineering and risk."
+    ],
+    sections: [
+      {
+        kicker: "Flight",
+        title: "Finding lift without an engine",
+        body: [
+          "Sailplane flying is built around reading the sky, understanding terrain and wind, and making careful decisions with limited energy. It rewards preparation, patience, and constant attention to what the aircraft and atmosphere are telling you."
+        ]
+      },
+      {
+        kicker: "Community",
+        title: "Sharing aviation with curious people",
+        body: [
+          "One of my favorite parts of soaring is sharing flight and aviation with people who are brave enough to climb into an airplane without an engine. It is a rare mix of adventure, technical curiosity, and trust."
+        ]
+      }
+    ],
+    outcome: "Soaring remains one of the clearest through-lines in my life outside engineering: a way to stay close to flight, weather, craft, and people who love learning difficult things.",
+    media: []
+  },
   "rotary-rf-pcb-manufacturing": {
     title: "Rotary RF PCB Manufacturing System",
     eyebrow: "Special-Purpose Machinery",
@@ -934,9 +964,20 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Printed topographic trail map",
     meta: "Digital Fabrication",
-    date: "Dec 2022 - Present",
+    date: "January 2026 - June 2026",
     title: "3DTrails",
     summary: "Geospatial data transformed into multicolor printed trail maps and custom installations.",
+    company: "Personal Project"
+  },
+  soaring: {
+    href: "soaring.html",
+    thumb: "../assets/about/glider.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "ASW-19B glider in flight",
+    meta: "Aviation",
+    date: "July 2013 - Present",
+    title: "Soaring",
+    summary: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
     company: "Personal Project"
   },
   "audio-variometer": {
@@ -975,7 +1016,8 @@ const moreProjectPriority = [
   "audio-variometer",
   "rotary-rf-pcb-manufacturing",
   "irobot",
-  "sikorsky"
+  "sikorsky",
+  "soaring"
 ];
 
 const appendHeroDate = (container) => {
