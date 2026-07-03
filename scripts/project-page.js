@@ -964,7 +964,7 @@ const moreProjectCards = {
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Printed topographic trail map",
     meta: "Digital Fabrication",
-    date: "January 2026 - June 2026",
+    date: "Dec 2022 - Present",
     title: "3DTrails",
     summary: "Geospatial data transformed into multicolor printed trail maps and custom installations.",
     company: "Personal Project"
