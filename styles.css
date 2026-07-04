@@ -4619,3 +4619,170 @@ a.ed-contact-card:hover { transform:translateY(-3px); box-shadow:0 16px 34px rgb
 #experience .tl-milestone[data-event-key="bachelors"] .tl-milestone-icon {
   filter: brightness(0) saturate(100%) invert(28%) sepia(38%) saturate(1200%) hue-rotate(120deg) brightness(92%) contrast(88%);
 }
+
+/* =====================================================================
+   EDITORIAL RE-SKIN — PROJECT CASE-STUDY PAGES  (2026)
+   Re-skins the existing case-study body (fx10-*, standard-*, more-*)
+   to the editorial homepage palette + typography without touching the
+   render markup in scripts/project-page.js. Scoped to body[data-project]
+   so it never affects the homepage.
+   Tokens: paper #fffdf8 · band #f2ece1 · line #e7ded0/#ddd4c5
+           ink #1b1917 · muted #726c61 · accent #146357 (teal)
+           serif "Newsreader" · mono "JetBrains Mono"
+   ===================================================================== */
+
+/* -- Eyebrows / section kickers -> mono teal -- */
+body[data-project] .fx10-section-kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #146357;
+  font-weight: 500;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  border-left: 2px solid #146357;
+  padding-left: 12px;
+}
+body[data-project] .fx10-eyebrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #7fd0bd;
+  font-weight: 500;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+}
+
+/* -- Headings -> Newsreader serif -- */
+body[data-project] .fx10-hero h1,
+body[data-project] .fx10-design-copy h2,
+body[data-project] .fx10-highlight-card h3,
+body[data-project] .fx10-list-item h3,
+body[data-project] .module-breakdown-copy h2,
+body[data-project] .project-title {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* -- Body links -> teal, editorial weight -- */
+body[data-project] .fx10-overview-copy a,
+body[data-project] .fx10-design-copy a,
+body[data-project] .fx10-outcome-section a,
+body[data-project] .asthma-design-copy a,
+body[data-project] .module-breakdown-copy a {
+  color: #146357;
+  font-weight: 600;
+}
+body[data-project] .fx10-overview-copy a:hover,
+body[data-project] .fx10-overview-copy a:focus-visible,
+body[data-project] .fx10-design-copy a:hover,
+body[data-project] .fx10-design-copy a:focus-visible,
+body[data-project] .fx10-outcome-section a:hover,
+body[data-project] .fx10-outcome-section a:focus-visible,
+body[data-project] .asthma-design-copy a:hover,
+body[data-project] .asthma-design-copy a:focus-visible,
+body[data-project] .module-breakdown-copy a:hover,
+body[data-project] .module-breakdown-copy a:focus-visible {
+  color: #0f4f45;
+}
+
+/* -- Accent recolors: bullet markers, list/check icons -- */
+body[data-project] .fx10-design-copy p:nth-child(2)::before,
+body[data-project] .fx10-design-copy p:nth-child(3)::before,
+body[data-project] .fx10-design-copy p:nth-child(4)::before {
+  color: #146357;
+}
+body[data-project] .fx10-list-icon,
+body[data-project] .fx10-check-icon {
+  border-color: #146357;
+}
+body[data-project] .fx10-list-icon::after {
+  background: #146357;
+}
+body[data-project] .fx10-check-icon::after {
+  border-bottom-color: #146357;
+  border-right-color: #146357;
+}
+
+/* -- Outcome / secondary action buttons -> editorial teal pills -- */
+body[data-project] .project-action {
+  background: #146357;
+  border: 1px solid #146357;
+  border-radius: 999px;
+  color: #fffdf8;
+  font-weight: 600;
+}
+body[data-project] .project-action:hover,
+body[data-project] .project-action:focus-visible {
+  background: #0f4f45;
+  border-color: #0f4f45;
+  transform: translateY(-2px);
+}
+body[data-project] .project-action-secondary {
+  background: transparent;
+  color: #146357;
+}
+body[data-project] .project-action-secondary:hover,
+body[data-project] .project-action-secondary:focus-visible {
+  background: #146357;
+  color: #fffdf8;
+}
+
+/* -- "More projects" cards -> editorial portfolio cards -- */
+body[data-project] .project-link {
+  background: #fffdf8;
+  border: 1px solid #e7ded0;
+  border-radius: 4px;
+  box-shadow: none;
+}
+body[data-project] .project-link:hover,
+body[data-project] .project-link:focus-visible {
+  border-color: #146357;
+  box-shadow: 0 20px 44px rgba(10, 12, 16, 0.14);
+}
+body[data-project] .project-date {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #726c61;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0;
+}
+body[data-project] .project-title {
+  font-size: 1.06rem;
+  color: #1b1917;
+}
+body[data-project] .project-summary {
+  color: #726c61;
+}
+body[data-project] .project-company {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #146357;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+}
+body[data-project] .more-project-return {
+  background: #fffdf8;
+  border-color: #e7ded0;
+}
+body[data-project] .more-project-return .project-title {
+  color: #146357;
+}
+body[data-project] .more-project-return-icon {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(38%) saturate(1200%) hue-rotate(120deg) brightness(92%) contrast(88%);
+}
+
+/* Mobile hero flattens to a light background (see @media max-width:620px
+   above); keep the editorial eyebrow + tags readable/on-theme there. */
+@media (max-width: 620px) {
+  body[data-project] .fx10-eyebrow {
+    color: #146357;
+  }
+  body[data-project] .fx10-tags span {
+    background: #eef4f1;
+    border-color: #cfe4dd;
+    color: #146357;
+  }
+}
