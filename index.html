@@ -18,7 +18,7 @@
     <meta name="description" content="Robotics mechanical engineering portfolio with selected product development, analysis, and prototyping work.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script>
       if (window.location.hash) {
         document.documentElement.classList.add("hash-anchor-pending");
@@ -27,258 +27,259 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body id="top">
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary navigation">
-        <div class="nav-brand">
-          <a href="#" class="brand-name">Peter Kelly</a>
-          <span class="brand-title">Robotics Mechanical Engineer</span>
+    <!-- ============ Editorial header ============ -->
+    <header class="ed-header">
+      <nav class="ed-nav" aria-label="Primary navigation">
+        <div class="ed-brand">
+          <a href="#top" class="ed-brand-name">Peter Kelly</a>
+          <span class="ed-brand-title">Robotics Mechanical Engineer</span>
         </div>
-        <div class="nav-links">
-          <a href="#portfolio">Portfolio</a>
+        <div class="ed-nav-links">
+          <a href="#portfolio">Work</a>
           <a href="#experience">Experience</a>
-          <a href="#about">About Me</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="video-banner" aria-label="Peter Kelly introduction">
-        <video class="banner-video" autoplay muted loop playsinline preload="metadata">
+      <!-- ============ Video hero ============ -->
+      <section class="ed-hero" aria-label="Peter Kelly introduction">
+        <video class="ed-hero-video" autoplay muted loop playsinline preload="metadata">
           <source src="videos/banner.webm" type="video/webm">
         </video>
-        <div class="banner-overlay">
-          <div class="banner-content">
-            <h1>Peter Kelly</h1>
-            <p class="banner-lede">Robotics Mechanical Engineer</p>
-            <div class="banner-actions" aria-label="Hero actions">
-              <a class="banner-button banner-button-primary" href="#portfolio">
-                <span>View Portfolio</span>
-                <img class="banner-button-icon banner-button-arrow-icon" src="icons/arrow-right.svg" alt="" aria-hidden="true">
-              </a>
-            </div>
+        <div class="ed-hero-scrim"></div>
+        <div class="ed-hero-inner">
+          <h1 class="ed-hero-title">Building the hardware behind intelligent robotics.</h1>
+          <p class="ed-hero-lede">Principal R&amp;D Mechanical Engineer taking robotic manipulation, robot-learning, and automation hardware from early concept to production.</p>
+          <div class="ed-hero-actions">
+            <a class="ed-btn ed-btn-primary" href="#portfolio">
+              <span>View Portfolio</span>
+              <img src="icons/arrow-right.svg" alt="" aria-hidden="true">
+            </a>
+            <a class="ed-btn ed-btn-ghost" href="#contact">Get in touch</a>
           </div>
         </div>
       </section>
 
-      <section class="hero" id="intro">
-        <div class="hero-inner">
-          <div class="personal-summary">
-            <div class="about-copy">
-              <h2>Building the hardware behind intelligent, real-world robotics.</h2>
-              <p>I’m a Principal R&D Mechanical Engineer at Berkshire Grey specializing in robotics hardware, based in Boston, Massachusetts. I design, build, and deploy systems for robotic manipulation, robot learning, and real-world automation, taking complex hardware from early R&D to production.</p>
-              <div class="summary-contact">
-                <a class="contact-card" href="mailto:peterkellyyy@gmail.com" aria-label="Email Peter Kelly">
-                  <span class="contact-icon" aria-hidden="true"><img src="icons/mail.svg" alt=""></span>
-                  <span>
-                    <strong>Email</strong>
-                    <span>peterkellyyy@gmail.com</span>
-                  </span>
-                </a>
-                <a class="contact-card" href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer" aria-label="Peter Kelly on LinkedIn">
-                  <span class="contact-icon contact-icon-linkedin" aria-hidden="true"><img src="icons/linkedin.svg" alt=""></span>
-                  <span>
-                    <strong>LinkedIn</strong>
-                    <span>linkedin.com/in/peterkellyy</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="about-pillars" aria-label="Engineering strengths">
-              <article class="about-pillar">
-                <span class="about-pillar-icon about-pillar-icon-robot" aria-hidden="true"><img src="icons/bot.svg" alt=""></span>
-                <div>
-                  <h3>6+ years in robotics</h3>
-                  <p>Led the design of hardware across robotic grippers, robotic pick cells, consumer robots, legged robotics research, autonomous parafoils, and industrial 3D printers.</p>
-                </div>
-              </article>
-              <article class="about-pillar">
-                <span class="about-pillar-icon about-pillar-icon-tools" aria-hidden="true"><img src="icons/brain-circuit.svg" alt=""></span>
-                <div>
-                  <h3>Robot data infrastructure</h3>
-                  <p>I design the hardware that feeds robot learning: human data acquisition and robot evaluation cells, teleoperation hardware, and more.</p>
-                </div>
-              </article>
-              <article class="about-pillar">
-                <span class="about-pillar-icon about-pillar-icon-impact" aria-hidden="true"><img src="icons/package-check.svg" alt=""></span>
-                <div>
-                  <h3>From R&D to production</h3>
-                  <p>I take ambiguous concepts through design, build, validation, commissioning, and deployment in production-like robotics environments.</p>
-                </div>
-              </article>
-              <article class="about-pillar">
-                <span class="about-pillar-icon about-pillar-icon-workflow" aria-hidden="true"><img src="icons/workflow.svg" alt=""></span>
-                <div>
-                  <h3>Hardware lead</h3>
-                  <p>I lead across mechanical, electrical, software, test, supply chain, and operations teams to ship complex robotic systems on aggressive timelines.</p>
-                </div>
-              </article>
-            </div>
+      <!-- ============ Profile + pillars ============ -->
+      <section class="ed-section ed-intro" id="intro">
+        <div class="ed-intro-copy">
+          <span class="ed-eyebrow">Profile</span>
+          <h2 class="ed-display">I design, build, and deploy real-world robotic systems.</h2>
+          <p class="ed-lead">Based in Boston, I work across robotic manipulation, robot learning, and industrial automation — taking complex hardware from ambiguous R&amp;D concepts through design, validation, and production deployment.</p>
+          <div class="ed-intro-contact">
+            <a class="ed-contact-inline" href="mailto:peterkellyyy@gmail.com" aria-label="Email Peter Kelly">
+              <img src="icons/mail.svg" alt="">
+              <span>
+                <strong>Email</strong>
+                <span>peterkellyyy@gmail.com</span>
+              </span>
+            </a>
+            <a class="ed-contact-inline" href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer" aria-label="Peter Kelly on LinkedIn">
+              <img src="icons/linkedin.svg" alt="">
+              <span>
+                <strong>LinkedIn</strong>
+                <span>/in/peterkellyy</span>
+              </span>
+            </a>
           </div>
         </div>
-      </section>
-
-      <section class="section" id="portfolio">
-
-        <div class="section-head centered">
-          <h2 class="section-label">Portfolio</h2>
-        </div>
-
-        <div class="project-grid" data-portfolio-grid>
-          <a class="project-link" href="projects/fx10.html" data-project-card="fx10">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Markforged FX10 thumbnail">
-              <img src="assets/projects/fx10/fx10 thumbnail.png" alt="Markforged FX10 metal printhead thumbnail" loading="lazy">
-            </figure>
-            <p class="project-date">Jun 2022 - Aug 2024</p>
-            <h3 class="project-title">Markforged FX10 Metal Printhead</h3>
-            <p class="project-summary">Next-generation swappable metal printhead developed from initial R&amp;D through EVT.</p>
-            <span class="project-company">Markforged</span>
-          </a>
-
-          <a class="project-link" href="projects/px100.html" data-project-card="px100">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Markforged PX100 thumbnail">
-              <img src="assets/projects/px100/PX100-Webpage-Header-Image-Full-Printer-2364x2364.png" alt="Markforged PX100 binder jet printer" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2024 - Aug 2024</p>
-            <h3 class="project-title">Markforged PX100</h3>
-            <p class="project-summary">US lab buildout, process knowledge transfer, commissioning, and system validation.</p>
-            <span class="project-company">Markforged</span>
-          </a>
-
-          <a class="project-link" href="projects/co-parts.html" data-project-card="co-parts">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Continuous-fiber co-parts thumbnail">
-              <img src="assets/projects/co-parts/01-e66ed0c40c37.jpg" alt="Continuous-fiber reinforced co-part assembly" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2023 - May 2023</p>
-            <h3 class="project-title">Continuous-Fiber Co-parts</h3>
-            <p class="project-summary">Interlocking printed components optimized for reinforcement across multiple load planes.</p>
-            <span class="project-company">Markforged</span>
-          </a>
-
-          <a class="project-link" href="projects/3dtrails.html" data-project-card="3dtrails">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="3DTrails thumbnail">
-              <img src="assets/projects/3dtrails/angledScene3sq.png" alt="Printed topographic trail map" loading="lazy">
-            </figure>
-            <p class="project-date">Dec 2022 - Present</p>
-            <h3 class="project-title">3DTrails</h3>
-            <p class="project-summary">Geospatial data transformed into multicolor printed trail maps and custom installations.</p>
-            <span class="project-company">Personal Project</span>
-          </a>
-
-          <a class="project-link" href="projects/finefeatures.html" data-project-card="finefeatures">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover finefeatures-thumb-lower" aria-label="Metal X Fine Features thumbnail">
-              <img src="assets/projects/finefeatures/04-665a4d8e0c6c.png" alt="Metal X Fine Features sample parts" loading="lazy">
-            </figure>
-            <p class="project-date">Oct 2021 - Jul 2023</p>
-            <h3 class="project-title">Metal X Fine Features</h3>
-            <p class="project-summary">Qualified copper and stainless profiles for finer, stronger, more accurate metal parts.</p>
-            <span class="project-company">Markforged</span>
-          </a>
-
-          <a class="project-link" href="projects/harpy.html" data-project-card="harpy">
-            <figure class="thumb harpy-thumb harpy-thumb-upper" aria-label="Harpy bipedal robot thumbnail">
-              <img src="assets/projects/harpy/harpy leg.png" alt="Harpy leg actuator assembly" loading="lazy">
-            </figure>
-            <p class="project-date">May 2020 - May 2021</p>
-            <h3 class="project-title">Legged Robotics Research</h3>
-            <p class="project-summary">Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.</p>
-            <span class="project-company">NEU SiliconSynapse Lab</span>
-          </a>
-
-          <a class="project-link" href="projects/aerobat.html" data-project-card="aerobat">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover aerobat-thumb-lower" aria-label="Aerobat thumbnail">
-              <img src="assets/projects/aerobat/wing-still.png" alt="Aerobat biomimetic flapping robot" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2020 - Sep 2020</p>
-            <h3 class="project-title">Flapping Wing Robotics Research</h3>
-            <p class="project-summary">Parametric, flexible wing mechanisms inspired by the flight of fruit bats.</p>
-            <span class="project-company">NEU SiliconSynapse Lab</span>
-          </a>
-
-          <a class="project-link" href="projects/asthma-inhaler-assistive-device.html" data-project-card="asthma-inhaler-assistive-device">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Asthma inhaler assistive device thumbnail">
-              <img src="assets/projects/asthma-inhaler-assistive-device/inhaler-desktop.png" alt="Breath-triggered asthma inhaler assistive device" loading="lazy">
-            </figure>
-            <p class="project-date">Jul 2019 - Dec 2019</p>
-            <h3 class="project-title">Inhaler Assistive Device</h3>
-            <p class="project-summary">Award-winning breath-triggered device designed for users with limited motor ability.</p>
-            <span class="project-company">Northeastern University</span>
-          </a>
-
-          <a class="project-link" href="projects/cat-treat-dispenser.html" data-project-card="cat-treat-dispenser">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Cat treat dispenser thumbnail">
-              <img src="assets/projects/cat-treat-dispenser/treatdispenser.jpg" alt="Cat-operated treat dispenser" loading="lazy">
-            </figure>
-            <p class="project-date">Jun 2019 - Jul 2019</p>
-            <h3 class="project-title">Cat Treat Dispenser</h3>
-            <p class="project-summary">Animal-operated dispenser with sensing, stepper actuation, and a compact printed enclosure.</p>
-            <span class="project-company">Personal Project</span>
-          </a>
-
-          <a class="project-link" href="projects/morse-corp.html" data-project-card="morse-corp">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="MORSE Corp co-op thumbnail">
-              <img src="assets/jobs/MORSE Corp/Parafoils.png" alt="Parafoils in flight during MORSE Corp engineering work" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2019 - Jul 2019</p>
-            <h3 class="project-title">MORSE Corp. Mechanical Engineering Co-op</h3>
-            <p class="project-summary">Mechanical design, prototyping, integration, and testing support for advanced engineering programs.</p>
-            <span class="project-company">MORSE Corp</span>
-          </a>
-
-          <a class="project-link" href="projects/audio-variometer.html" data-project-card="audio-variometer">
-            <figure class="thumb portfolio-thumb" aria-label="Audio variometer thumbnail">
-              <img src="assets/projects/audio-variometer/01-bf35d4888dbe.png" alt="Portable audio variometer" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2019 - Mar 2019</p>
-            <h3 class="project-title">Audio Variometer</h3>
-            <p class="project-summary">Compact barometric instrument translating climb and sink rate into audible guidance.</p>
-            <span class="project-company">Personal Project</span>
-          </a>
-
-          <a class="project-link" href="projects/rotary-rf-pcb-manufacturing.html" data-project-card="rotary-rf-pcb-manufacturing">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Rotary RF PCB manufacturing system thumbnail">
-              <img src="assets/projects/rotary-rf-pcb-manufacturing/rotarypcb.png" alt="Rotary RF PCB material coating system" loading="lazy">
-            </figure>
-            <p class="project-date">Nov 2018 - Apr 2019</p>
-            <h3 class="project-title">Rotary RF PCB System</h3>
-            <p class="project-summary">Large-format heated coating machine delivered at less than half the prior-system cost.</p>
-            <span class="project-company">MORSE Corp</span>
-          </a>
-
-          <a class="project-link" href="projects/irobot.html" data-project-card="irobot">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="iRobot R&D co-op thumbnail">
-              <img src="assets/jobs/iRobot/s9.webp" alt="iRobot robot vacuum" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2018 - Jul 2018</p>
-            <h3 class="project-title">iRobot R&amp;D Robotics Engineering Co-op</h3>
-            <p class="project-summary">Prototype mechanisms and test hardware for consumer robotics R&amp;D.</p>
-            <span class="project-company">iRobot</span>
-          </a>
-
-          <a class="project-link" href="projects/sikorsky.html" data-project-card="sikorsky">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Sikorsky propulsion co-op thumbnail">
-              <img src="assets/jobs/Sikorsky/mh60.jpg" alt="Sikorsky MH-60 helicopter" loading="lazy">
-            </figure>
-            <p class="project-date">Jan 2017 - Aug 2017</p>
-            <h3 class="project-title">Sikorsky Propulsion Engineering Co-op</h3>
-            <p class="project-summary">Propulsion-system engineering support across analysis, documentation, and hardware evaluation.</p>
-            <span class="project-company">Sikorsky Aircraft</span>
-          </a>
-
-          <a class="project-link" href="projects/soaring.html" data-project-card="soaring">
-            <figure class="thumb portfolio-thumb portfolio-thumb-cover" aria-label="Soaring thumbnail">
-              <img src="assets/projects/soaring/asw19.jpg" alt="ASW-19B glider in flight" loading="lazy">
-            </figure>
-            <p class="project-date">July 2013 - Present</p>
-            <h3 class="project-title">Soaring</h3>
-            <p class="project-summary">Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.</p>
-            <span class="project-company">Personal Project</span>
-          </a>
+        <div class="ed-pillars" aria-label="Engineering strengths">
+          <article class="ed-pillar">
+            <img src="icons/bot.svg" alt="">
+            <h3>6+ years in robotics</h3>
+            <p>Grippers, pick cells, consumer robots, legged research, autonomous parafoils, and industrial 3D printers.</p>
+          </article>
+          <article class="ed-pillar">
+            <img src="icons/brain-circuit.svg" alt="">
+            <h3>Robot data infrastructure</h3>
+            <p>Hardware that feeds robot learning: human data acquisition, evaluation cells, and teleoperation rigs.</p>
+          </article>
+          <article class="ed-pillar">
+            <img src="icons/package-check.svg" alt="">
+            <h3>From R&amp;D to production</h3>
+            <p>Ambiguous concepts through design, build, validation, commissioning, and deployment.</p>
+          </article>
+          <article class="ed-pillar">
+            <img src="icons/workflow.svg" alt="">
+            <h3>Hardware lead</h3>
+            <p>Leading mechanical, electrical, software, test, and supply-chain teams on aggressive timelines.</p>
+          </article>
         </div>
       </section>
 
+      <!-- ============ Portfolio ============ -->
+      <section class="ed-section ed-portfolio" id="portfolio">
+        <div class="ed-portfolio-head">
+          <div>
+            <span class="ed-eyebrow">Selected Work</span>
+            <h2 class="ed-display ed-portfolio-title">Portfolio</h2>
+          </div>
+          <span class="ed-portfolio-count">15 projects</span>
+        </div>
+
+        <div class="ed-project-grid" data-portfolio-grid>
+          <a class="ed-project" href="projects/fx10.html" data-project-card="fx10">
+            <span class="ed-project-media"><img src="assets/projects/fx10/fx10 thumbnail.png" alt="Markforged FX10 metal printhead thumbnail" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Markforged</span>
+              <span class="ed-project-title">Markforged FX10 Metal Printhead</span>
+              <span class="ed-project-summary">Next-generation swappable metal printhead developed from initial R&amp;D through EVT.</span>
+              <span class="ed-project-date">Jun 2022 – Aug 2024</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/px100.html" data-project-card="px100">
+            <span class="ed-project-media"><img src="assets/projects/px100/PX100-Webpage-Header-Image-Full-Printer-2364x2364.png" alt="Markforged PX100 binder jet printer" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Markforged</span>
+              <span class="ed-project-title">Markforged PX100</span>
+              <span class="ed-project-summary">US lab buildout, process knowledge transfer, commissioning, and system validation.</span>
+              <span class="ed-project-date">Jan 2024 – Aug 2024</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/co-parts.html" data-project-card="co-parts">
+            <span class="ed-project-media"><img src="assets/projects/co-parts/01-e66ed0c40c37.jpg" alt="Continuous-fiber reinforced co-part assembly" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Markforged</span>
+              <span class="ed-project-title">Continuous-Fiber Co-parts</span>
+              <span class="ed-project-summary">Interlocking printed components optimized for reinforcement across multiple load planes.</span>
+              <span class="ed-project-date">Jan 2023 – May 2023</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/3dtrails.html" data-project-card="3dtrails">
+            <span class="ed-project-media"><img src="assets/projects/3dtrails/angledScene3sq.png" alt="Printed topographic trail map" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Personal Project</span>
+              <span class="ed-project-title">3DTrails</span>
+              <span class="ed-project-summary">Geospatial data transformed into multicolor printed trail maps and custom installations.</span>
+              <span class="ed-project-date">Dec 2022 – Present</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/finefeatures.html" data-project-card="finefeatures">
+            <span class="ed-project-media"><img src="assets/projects/finefeatures/04-665a4d8e0c6c.png" alt="Metal X Fine Features sample parts" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Markforged</span>
+              <span class="ed-project-title">Metal X Fine Features</span>
+              <span class="ed-project-summary">Qualified copper and stainless profiles for finer, stronger, more accurate metal parts.</span>
+              <span class="ed-project-date">Oct 2021 – Jul 2023</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/harpy.html" data-project-card="harpy">
+            <span class="ed-project-media"><img src="assets/projects/harpy/harpy leg.png" alt="Harpy leg actuator assembly" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">NEU SiliconSynapse Lab</span>
+              <span class="ed-project-title">Legged Robotics Research</span>
+              <span class="ed-project-summary">Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.</span>
+              <span class="ed-project-date">May 2020 – May 2021</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/aerobat.html" data-project-card="aerobat">
+            <span class="ed-project-media"><img src="assets/projects/aerobat/wing-still.png" alt="Aerobat biomimetic flapping robot" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">NEU SiliconSynapse Lab</span>
+              <span class="ed-project-title">Flapping Wing Robotics Research</span>
+              <span class="ed-project-summary">Parametric, flexible wing mechanisms inspired by the flight of fruit bats.</span>
+              <span class="ed-project-date">Jan 2020 – Sep 2020</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/asthma-inhaler-assistive-device.html" data-project-card="asthma-inhaler-assistive-device">
+            <span class="ed-project-media"><img src="assets/projects/asthma-inhaler-assistive-device/inhaler-desktop.png" alt="Breath-triggered asthma inhaler assistive device" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Northeastern University</span>
+              <span class="ed-project-title">Inhaler Assistive Device</span>
+              <span class="ed-project-summary">Award-winning breath-triggered device designed for users with limited motor ability.</span>
+              <span class="ed-project-date">Jul 2019 – Dec 2019</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/cat-treat-dispenser.html" data-project-card="cat-treat-dispenser">
+            <span class="ed-project-media"><img src="assets/projects/cat-treat-dispenser/treatdispenser.jpg" alt="Cat-operated treat dispenser" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Personal Project</span>
+              <span class="ed-project-title">Cat Treat Dispenser</span>
+              <span class="ed-project-summary">Animal-operated dispenser with sensing, stepper actuation, and a compact printed enclosure.</span>
+              <span class="ed-project-date">Jun 2019 – Jul 2019</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/morse-corp.html" data-project-card="morse-corp">
+            <span class="ed-project-media"><img src="assets/jobs/MORSE Corp/Parafoils.png" alt="Parafoils in flight during MORSE Corp engineering work" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">MORSE Corp</span>
+              <span class="ed-project-title">MORSE Corp. Mechanical Engineering Co-op</span>
+              <span class="ed-project-summary">Mechanical design, prototyping, integration, and testing support for advanced engineering programs.</span>
+              <span class="ed-project-date">Jan 2019 – Jul 2019</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/audio-variometer.html" data-project-card="audio-variometer">
+            <span class="ed-project-media"><img src="assets/projects/audio-variometer/01-bf35d4888dbe.png" alt="Portable audio variometer" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Personal Project</span>
+              <span class="ed-project-title">Audio Variometer</span>
+              <span class="ed-project-summary">Compact barometric instrument translating climb and sink rate into audible guidance.</span>
+              <span class="ed-project-date">Jan 2019 – Mar 2019</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/rotary-rf-pcb-manufacturing.html" data-project-card="rotary-rf-pcb-manufacturing">
+            <span class="ed-project-media"><img src="assets/projects/rotary-rf-pcb-manufacturing/rotarypcb.png" alt="Rotary RF PCB material coating system" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">MORSE Corp</span>
+              <span class="ed-project-title">Rotary RF PCB System</span>
+              <span class="ed-project-summary">Large-format heated coating machine delivered at less than half the prior-system cost.</span>
+              <span class="ed-project-date">Nov 2018 – Apr 2019</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/irobot.html" data-project-card="irobot">
+            <span class="ed-project-media"><img src="assets/jobs/iRobot/s9.webp" alt="iRobot robot vacuum" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">iRobot</span>
+              <span class="ed-project-title">iRobot R&amp;D Robotics Engineering Co-op</span>
+              <span class="ed-project-summary">Prototype mechanisms and test hardware for consumer robotics R&amp;D.</span>
+              <span class="ed-project-date">Jan 2018 – Jul 2018</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/sikorsky.html" data-project-card="sikorsky">
+            <span class="ed-project-media"><img src="assets/jobs/Sikorsky/mh60.jpg" alt="Sikorsky MH-60 helicopter" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Sikorsky Aircraft</span>
+              <span class="ed-project-title">Sikorsky Propulsion Engineering Co-op</span>
+              <span class="ed-project-summary">Propulsion-system engineering support across analysis, documentation, and hardware evaluation.</span>
+              <span class="ed-project-date">Jan 2017 – Aug 2017</span>
+            </span>
+          </a>
+
+          <a class="ed-project" href="projects/soaring.html" data-project-card="soaring">
+            <span class="ed-project-media"><img src="assets/projects/soaring/asw19.jpg" alt="ASW-19B glider in flight" loading="lazy"></span>
+            <span class="ed-project-body">
+              <span class="ed-project-company">Personal Project</span>
+              <span class="ed-project-title">Soaring</span>
+              <span class="ed-project-summary">Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.</span>
+              <span class="ed-project-date">Jul 2013 – Present</span>
+            </span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ Experience / timeline — PRESERVED EXACTLY ============ -->
       <div class="experience-inner" id="experience">
-        <h2 class="section-label experience-title">Experience</h2>
+        <div class="ed-exp-head">
+          <span class="ed-eyebrow">Experience</span>
+          <h2 class="ed-display ed-exp-title">6+ years of building robotics hardware.</h2>
+          <p class="ed-exp-intro">A living timeline of roles, patents, publications, and degrees — from enrolling at Northeastern to leading robotics R&amp;D today. Select a logo to isolate one company, or open any role for the detail behind it.</p>
+        </div>
         <div class="logo-grid-row">
           <button class="logo-item" type="button" data-timeline-group="berkshire-grey" title="Berkshire Grey">
             <img src="logos/Berkshire Grey.png" alt="Berkshire Grey logo">
@@ -313,96 +314,78 @@
         </div>
       </div>
 
-      <section class="section about-section" id="about">
-        <div class="section-head">
-          <h2 class="section-label">About Me</h2>
+      <!-- ============ About ============ -->
+      <section class="ed-section ed-about" id="about">
+        <div class="ed-about-copy">
+          <span class="ed-eyebrow">About</span>
+          <h2 class="ed-display">Off the clock, I&rsquo;m usually in the air.</h2>
+          <p>My favorite hobby is flying sailplanes — and sharing my love of flight with anyone brave enough to hop into an airplane without an engine.</p>
+          <p>When I&rsquo;m not flying, I&rsquo;m drawn to things that get me outside or keep my hands busy: wilderness backpacking, fingerstyle acoustic guitar, music production, photography, and 3D-printing topographic maps through my side project, 3DTrails.</p>
         </div>
-        <div class="about-section-layout">
-          <div class="about-section-copy">
-            <p>My favorite hobby is to fly sailplanes and sharing my love for flight and aviation with anyone brave enough to hop into an airplane without an engine with me. My other interests outside engineering include wilderness backpacking, fingerstyle acoustic guitar, music production, 3D printing topographic maps, and photography.</p>
-            <p>When I’m not flying, I’m usually drawn toward things that get me outside, keep my hands busy, or give me a reason to make something. I love wilderness backpacking, fingerstyle acoustic guitar, music production, photography, and creating 3D-printed topographic maps through my side project, 3DTrails.</p>
-            <p>Placeholder</p>
-          </div>
-          <figure class="about-section-figure">
-            <img src="assets/about/glider.jpg" alt="Glider in flight">
-            <figcaption>Flying an ASW-19B glider over the Wachusett Reservoir</figcaption>
-          </figure>
-        </div>
+        <figure class="ed-about-figure">
+          <img src="assets/about/glider.jpg" alt="Flying an ASW-19B glider over the Wachusett Reservoir">
+          <figcaption>ASW-19B over the Wachusett Reservoir</figcaption>
+        </figure>
       </section>
 
-      <section class="section contact-section" id="contact">
-        <div class="contact-section-head">
-          <p class="section-label">Contact</p>
-          <p>I&rsquo;m open to discussing robotics engineering, R&amp;D collaborations, and hardware opportunities.</p>
-        </div>
-        <div class="contact-section-links">
-          <a class="contact-panel" href="mailto:peterkellyyy@gmail.com" aria-label="Email Peter Kelly">
-            <span class="contact-panel-icon" aria-hidden="true"><img src="icons/mail.svg" alt=""></span>
+      <!-- ============ Contact ============ -->
+      <section class="ed-contact-band" id="contact">
+       <div class="ed-section ed-contact">
+        <span class="ed-eyebrow">Contact</span>
+        <h2 class="ed-display ed-contact-title">Let&rsquo;s build something.</h2>
+        <p class="ed-contact-lede">Open to discussing robotics engineering, R&amp;D collaborations, and hardware opportunities.</p>
+        <div class="ed-contact-grid">
+          <a class="ed-contact-card" href="mailto:peterkellyyy@gmail.com" aria-label="Email Peter Kelly">
+            <span class="ed-contact-card-icon"><img src="icons/mail.svg" alt=""></span>
             <span>
               <strong>Email</strong>
               <span>peterkellyyy@gmail.com</span>
             </span>
           </a>
-          <a class="contact-panel" href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer" aria-label="Peter Kelly on LinkedIn">
-            <span class="contact-panel-icon contact-panel-icon-linkedin" aria-hidden="true"><img src="icons/linkedin.svg" alt=""></span>
+          <a class="ed-contact-card" href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer" aria-label="Peter Kelly on LinkedIn">
+            <span class="ed-contact-card-icon"><img src="icons/linkedin.svg" alt=""></span>
             <span>
               <strong>LinkedIn</strong>
-              <span>linkedin.com/in/peterkellyy</span>
+              <span>/in/peterkellyy</span>
             </span>
           </a>
-          <div class="contact-panel" aria-label="Peter Kelly location">
-            <span class="contact-panel-icon" aria-hidden="true"><img src="icons/map-pin.svg" alt=""></span>
+          <div class="ed-contact-card">
+            <span class="ed-contact-card-icon"><img src="icons/map-pin.svg" alt=""></span>
             <span>
               <strong>Location</strong>
               <span>Boston, MA</span>
             </span>
           </div>
         </div>
+       </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-main">
-          <div class="footer-brand">
-            <span>Peter Kelly</span>
-            <strong>Robotics Mechanical Engineer</strong>
-            <p>Designing and building robotic systems from concept to deployment. Focused on performance, reliability, and real-world impact.</p>
-          </div>
-          <nav class="footer-column footer-links" aria-label="Footer navigation">
-            <h2>Explore</h2>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#experience">Experience</a>
-            <a href="#about">About Me</a>
-          </nav>
-          <div class="footer-column footer-connect" aria-label="Footer contact">
-            <h2>Connect</h2>
-            <a href="mailto:peterkellyyy@gmail.com">
-              <img src="icons/mail.svg" alt="">
-              <span>peterkellyyy@gmail.com</span>
-            </a>
-            <a href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer">
-              <img src="icons/linkedin-2.svg" alt="">
-              <span>linkedin.com/in/peterkellyy</span>
-            </a>
-            <span>
-              <img src="icons/map-pin.svg" alt="">
-              <span>Boston, MA</span>
-            </span>
-          </div>
-          <a class="footer-resume" href="mailto:peterkellyyy@gmail.com?subject=Resume%20request" aria-label="Request Peter Kelly resume by email">
-            <span class="footer-resume-icon" aria-hidden="true"><img src="icons/file-down.svg" alt=""></span>
-            <span>
-              <strong>Request Resume</strong>
-              <span>PDF</span>
-            </span>
-            <img src="icons/arrow-right.svg" alt="">
-          </a>
+    <!-- ============ Footer ============ -->
+    <footer class="ed-footer">
+      <div class="ed-footer-inner">
+        <div class="ed-footer-brand">
+          <span class="ed-footer-name">Peter Kelly</span>
+          <strong>Robotics Mechanical Engineer</strong>
+          <p>Designing and building robotic systems from concept to deployment.</p>
         </div>
-        <div class="footer-bottom">
-          <p>&copy; 2026 Peter Kelly</p>
-          <a href="#top">Back to top <img src="icons/arrow-up.svg" alt=""></a>
-        </div>
+        <nav class="ed-footer-col" aria-label="Footer navigation">
+          <h2>Explore</h2>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#experience">Experience</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <nav class="ed-footer-col" aria-label="Footer contact">
+          <h2>Connect</h2>
+          <a href="mailto:peterkellyyy@gmail.com">peterkellyyy@gmail.com</a>
+          <a href="https://www.linkedin.com/in/peterkellyy/" target="_blank" rel="noopener noreferrer">/in/peterkellyy</a>
+          <span>Boston, MA</span>
+        </nav>
+      </div>
+      <div class="ed-footer-bottom">
+        <p>&copy; 2026 Peter Kelly</p>
+        <a href="#top">Back to top <img src="icons/arrow-up.svg" alt=""></a>
       </div>
     </footer>
     <script src="scripts/portfolio-order.js"></script>
