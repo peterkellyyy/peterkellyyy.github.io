@@ -179,7 +179,7 @@ const projectCatalog = {
         body: [
           "The leg layout used a pantograph-style mechanism with sagittal hip, frontal hip, and knee actuation. I designed the carbon-fiber tube and plate structure, pelvis interface, knee assembly, and adjustable shock absorber so drop, hop, and trajectory tests could be performed on hardware before the full robot was complete."
         ],
-        figure: {
+        asideFigure: {
           src: "../assets/projects/harpy/harpyLegDOF.png",
           alt: "Harpy leg degrees of freedom",
           caption: "Leg degrees of freedom and thruster placement"
@@ -189,26 +189,14 @@ const projectCatalog = {
         kicker: "Actuation and Fabrication",
         body: [
           "I selected compact Harmonic Drive component sets and lightweight brushless motors for the leg joints, then designed integrated actuator housings around bearings, motor mounting, transmission support, and output structure. Composite FDM made it possible to create high-complexity housings while keeping mass low.",
-          "A major part of the work was fabrication strategy. Bearings, carbon-fiber plates, and other load-carrying components were embedded into printed parts during the build process, allowing printed geometry to locate and support stiffer structural elements instead of relying on plastic alone."
+          "A major part of the work was fabrication strategy. Bearings, carbon-fiber plates, and other load-carrying components were embedded into printed parts during the build process, allowing printed geometry to locate and support stiffer structural elements instead of relying on plastic alone.",
+          "For the thruster and leg actuator housings, I used a composite print-and-pause process to capture stiffer structural components inside the printed geometry. This let the printed parts provide complex alignment and packaging features while carbon-fiber and bearing elements carried the high loads."
         ],
-        fullWidthFigure: {
+        figure: {
           src: "../assets/projects/harpy/actuator-exploded.png",
           alt: "Exploded view of the Harpy actuator architecture",
           caption: "Exploded leg joint actuator architecture"
         },
-        figures: [
-          {
-            src: "../assets/projects/harpy/legJointSection.png",
-            alt: "Section view of the Harpy leg joint actuator",
-            caption: "Section view of the compact harmonic-drive leg joint actuator"
-          }
-        ]
-      },
-      {
-        kicker: "Embedded Composite Printing",
-        body: [
-          "For the thruster and leg actuator housings, I used a composite print-and-pause process to capture stiffer structural components inside the printed geometry. This let the printed parts provide complex alignment and packaging features while carbon-fiber and bearing elements carried the high loads."
-        ],
         fullWidthFigure: {
           src: "../assets/projects/harpy/embedThruster.png",
           alt: "Embedded fabrication process for Harpy thruster actuator housing",
@@ -385,7 +373,7 @@ const projectCatalog = {
   },
   "3dtrails": {
     title: "3DTrails",
-    eyebrow: "Digital Fabrication",
+    eyebrow: "Side business",
     lede: "Topographic trail maps that combine geospatial data, sculpted paths, multicolor printing, and a small direct-to-customer business.",
     hero: "../assets/projects/3dtrails/01-d52419b917b1.jpg",
     heroAlt: "Three-dimensional printed topographic trail map",
@@ -430,7 +418,7 @@ const projectCatalog = {
   },
   soaring: {
     title: "Soaring",
-    eyebrow: "Aviation",
+    eyebrow: "Hobby",
     lede: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
     hero: "../assets/projects/soaring/asw19.jpg",
     heroAlt: "ASW-19B glider in flight",
@@ -503,7 +491,7 @@ const projectCatalog = {
   },
   "morse-corp": {
     title: "MORSE Corp. Mechanical Engineering Co-op",
-    eyebrow: "Mechanical Engineering Co-op",
+    eyebrow: "Co-op",
     lede: "Mechanical design, rapid prototyping, integration, and test support for advanced engineering programs.",
     hero: "../assets/jobs/MORSE Corp/Parafoils.png",
     heroAlt: "Parafoils in flight during MORSE Corp engineering work",
@@ -548,7 +536,7 @@ const projectCatalog = {
   },
   irobot: {
     title: "iRobot R&D Robotics Engineering Co-op",
-    eyebrow: "R&D Robotics Engineering Co-op",
+    eyebrow: "Co-op",
     lede: "Prototype mechanism design and test hardware support for consumer robotics research and development.",
     hero: "../assets/jobs/iRobot/s9.webp",
     heroAlt: "iRobot robot vacuum",
@@ -586,7 +574,7 @@ const projectCatalog = {
   },
   sikorsky: {
     title: "Sikorsky Propulsion Engineering Co-op",
-    eyebrow: "Propulsion Engineering Co-op",
+    eyebrow: "Co-op",
     lede: "Propulsion-system mechanical engineering support through design analysis, documentation, and hardware evaluation.",
     hero: "../assets/jobs/Sikorsky/mh60.jpg",
     heroAlt: "Sikorsky MH-60 helicopter",
@@ -628,7 +616,7 @@ const projectCatalog = {
   },
   "asthma-inhaler-assistive-device": {
     title: "Asthma Inhaler Assistive Device",
-    eyebrow: "Assistive Mechatronics",
+    eyebrow: "Capstone project",
     lede: "A breath-triggered, modular inhaler device designed with a user with cerebral palsy to enable independent positioning and actuation.",
     hero: "../assets/projects/asthma-inhaler-assistive-device/01-6375d08b0e61.png",
     heroAlt: "Asthma inhaler assistive device",
@@ -1213,10 +1201,16 @@ const renderFx10CaseStudy = () => {
   design.append(el("p", "fx10-section-kicker", "Design"));
   const designCopy = el("div", "fx10-design-copy");
   designCopy.append(
-    el("p", "", "Before starting to lay out the architecture of Markforged's next-gen metal printhead, I set out to answer three major questions:"),
-    el("p", "", "Whether a heatsink Peltier cooler is required with Markforged \"V2\" metal filaments"),
-    el("p", "", "Required hot zone length for 2x overall print speed"),
-    el("p", "", "If unit-to-unit variation could be limited with a new extruder design and calibration procedure"),
+    el("p", "", "Before starting to lay out the architecture of Markforged's next-gen metal printhead, I set out to answer three major questions:")
+  );
+  const questions = el("ol", "fx10-questions");
+  [
+    "Whether a heatsink Peltier cooler is required with Markforged \"V2\" metal filaments",
+    "Required hot-zone length to achieve 2x overall print speed",
+    "Whether unit-to-unit variation could be limited with a new extruder design and calibration procedure"
+  ].forEach((q) => questions.append(el("li", "", q)));
+  designCopy.append(
+    questions,
     el("p", "", "Using a combination of print testing with stock Metal X print heads, and modified \"Frankenstein\" print heads, I answered all three questions, giving the engineering team the necessary confidence to proceed with the first print head prototype."),
     el("p", "", "After the R&D phase, I laid out the initial architecture of the print head and collaborated with an electrical engineer to design the first prototype for internal testing, owning the 3D CAD and 2D part drawings. During the build process, I also developed the manufacturing work instructions and documented design issues."),
     el("p", "", "As the program matured, I developed and released subsystem designs, part drawings, manufacturing fixtures, and work instructions to support builds and validation. I worked closely with electrical, software, materials, manufacturing, and print test teams to integrate the metal printhead into the FX10 platform, debug system-level issues, and advance the design from exploratory R&D into an production ready architecture."),

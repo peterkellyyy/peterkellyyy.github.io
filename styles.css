@@ -1933,7 +1933,7 @@ a.contact-panel:focus-visible {
 
 /* FX10 case study */
 .fx10-case-study {
-  background: #ffffff;
+  background: #f2ece1;
 }
 
 .fx10-project-main {
@@ -2140,7 +2140,7 @@ a.contact-panel:focus-visible {
 
 .fx10-overview-section {
   align-items: start;
-  background: #ffffff;
+  background: #f2ece1;
   display: grid;
   column-gap: clamp(24px, 4vw, 56px);
   grid-template-columns: minmax(460px, 1.08fr) minmax(330px, 0.92fr);
@@ -2427,7 +2427,7 @@ a.contact-panel:focus-visible {
 }
 
 .standard-section-figure img {
-  background: #ffffff;
+  background: transparent;
   border-radius: 8px;
   display: block;
   height: auto;
@@ -2453,6 +2453,11 @@ a.contact-panel:focus-visible {
   grid-column: 1 / -1;
 }
 
+/* Blend the white-background simulation plot into the beige page */
+.harpy-simulation-section .standard-section-aside-figure img {
+  mix-blend-mode: multiply;
+}
+
 .overview-media-grid {
   display: grid;
   gap: 16px;
@@ -2465,7 +2470,7 @@ a.contact-panel:focus-visible {
 .overview-media-item img,
 .overview-media-item video {
   aspect-ratio: var(--media-aspect, auto);
-  background: var(--media-bg, #ffffff);
+  background: var(--media-bg, transparent);
   border-radius: 8px;
   display: block;
   height: auto;
@@ -2499,7 +2504,7 @@ a.contact-panel:focus-visible {
 }
 
 .standard-section-paired-figure img {
-  background: #ffffff;
+  background: transparent;
   border-radius: 8px;
   display: block;
   height: clamp(260px, 31vw, 430px);
@@ -2598,7 +2603,7 @@ p.asthma-design-copy {
 
 .asthma-design-figure img,
 .asthma-design-figure video {
-  background: #ffffff;
+  background: transparent;
   display: block;
   margin: 0 auto;
   max-height: 270px;
@@ -2686,7 +2691,7 @@ p.asthma-design-copy {
 }
 
 .co-parts-figure img {
-  background: #ffffff;
+  background: transparent;
   border-radius: 8px;
   display: block;
   height: auto;
@@ -2870,7 +2875,7 @@ p.asthma-design-copy {
 }
 
 .portfolio-thumb {
-  background: #ffffff;
+  background: transparent;
 }
 
 .portfolio-thumb img {
@@ -4785,4 +4790,63 @@ body[data-project] .more-project-return-icon {
     border-color: #cfe4dd;
     color: #146357;
   }
+}
+
+/* -- FX10 R&D questions -> numbered editorial callout -- */
+/* Questions now render as <ol class="fx10-questions">; neutralize the
+   legacy nth-child bold+bullet treatment that would otherwise land on the
+   following body paragraphs of the FX10 design section. */
+body[data-project] .fx10-design-copy:not(.fx10-generic-design-copy) p::before {
+  content: none;
+}
+body[data-project] .fx10-design-copy:not(.fx10-generic-design-copy) p {
+  color: #435065;
+  font-weight: 400;
+}
+body[data-project] .fx10-questions {
+  list-style: none;
+  counter-reset: q;
+  margin: 24px 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+body[data-project] .fx10-questions li {
+  counter-increment: q;
+  position: relative;
+  padding: 16px 20px 16px 58px;
+  background: #fffdf8;
+  border: 1px solid #e7ded0;
+  border-left: 2px solid #146357;
+  border-radius: 6px;
+  color: #1b1917;
+  font-weight: 600;
+  line-height: 1.45;
+}
+body[data-project] .fx10-questions li::before {
+  content: counter(q, decimal-leading-zero);
+  position: absolute;
+  left: 20px;
+  top: 17px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #146357;
+}
+
+/* -- Remove the hairline divider beneath the hero -- */
+body[data-project] .fx10-overview-section {
+  border-top: 0;
+}
+
+/* -- Challenges / Impact on a contrasting band (rhythm) -- */
+body[data-project] .fx10-split {
+  background: #eae2d4;
+  border-top: 1px solid #ddd4c5;
+  border-bottom: 1px solid #ddd4c5;
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(40px, 6vw, 64px) max(24px, calc((100vw - 1080px) / 2));
 }
