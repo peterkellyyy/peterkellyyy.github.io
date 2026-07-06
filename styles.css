@@ -666,7 +666,9 @@ a.contact-panel:focus-visible {
 }
 
 .contact-panel-icon-linkedin img {
-  filter: none;
+  filter: brightness(0) saturate(100%);
+  height: 48px;
+  width: 48px;
 }
 
 .contact-panel strong,
@@ -2456,6 +2458,17 @@ a.contact-panel:focus-visible {
 /* Blend the white-background simulation plot into the beige page */
 .harpy-simulation-section .standard-section-aside-figure img {
   mix-blend-mode: multiply;
+}
+
+/* Closing jump animation renders full-width at its natural 16:9 ratio */
+body[data-project="harpy"] .outcome-supplemental-figures img {
+  height: auto;
+}
+
+/* Shock-absorber figure sits at half width, centered */
+body[data-project="harpy"] .standard-section-full-figure img[src*="shockAbsorber"] {
+  margin-inline: auto;
+  width: 50%;
 }
 
 .overview-media-grid {
@@ -4438,6 +4451,7 @@ body { background: #f2ece1; color: #1b1917; }
 .ed-contact-inline:last-child { padding-left:22px; }
 .ed-contact-inline:hover { color:#146357; }
 .ed-contact-inline img { width:22px; height:22px; }
+.ed-contact-inline .ed-linkedin-icon { filter:brightness(0) saturate(100%); height:31px; width:31px; }
 .ed-contact-inline strong { display:block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.6rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#726c61; }
 .ed-contact-inline span > span { display:block; font-size:0.86rem; font-weight:600; margin-top:3px; }
 .ed-pillars { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#ddd4c5; border:1px solid #ddd4c5; }
@@ -4482,6 +4496,7 @@ body { background: #f2ece1; color: #1b1917; }
 a.ed-contact-card:hover { transform:translateY(-3px); box-shadow:0 16px 34px rgba(10,12,16,0.12); }
 .ed-contact-card-icon { display:inline-flex; align-items:center; justify-content:center; width:54px; height:54px; border-radius:8px; background:#dcebe6; flex-shrink:0; }
 .ed-contact-card-icon img { width:26px; height:26px; }
+.ed-contact-card-icon .ed-linkedin-icon { filter:brightness(0) saturate(100%); height:36px; width:36px; }
 .ed-contact-card strong { display:block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; color:#726c61; margin-bottom:6px; }
 .ed-contact-card span > span { display:block; font-size:0.96rem; font-weight:600; color:#1b1917; }
 

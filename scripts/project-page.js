@@ -1,4 +1,43 @@
 const projectCatalog = {
+  "berkshire-grey": {
+    title: "Robotic Manipulation R&D",
+    eyebrow: "Berkshire Grey",
+    lede: "R&D mechanical engineering for robotic manipulation, end effectors, robot data infrastructure, and production-ready automation hardware.",
+    hero: "../assets/jobs/Berkshire Grey/carouselai.jpg",
+    heroAlt: "Berkshire Grey robotic manipulation cell",
+    heroClass: "portfolio-thumb-cover",
+    tags: ["Robotic manipulation", "End effectors", "Hardware R&D", "Automation"],
+    facts: [
+      ["2024-present", "Berkshire Grey"],
+      ["Principal", "Mechanical R&D engineer"],
+      ["Robotics", "Manipulation hardware"],
+      ["R&D", "Concept through validation"]
+    ],
+    overview: [
+      "At Berkshire Grey, I work on mechanical R&D for robotic manipulation systems and the hardware that supports embodied intelligence in industrial automation.",
+      "The role sits at the intersection of mechanism design, end-effector development, robot data infrastructure, evaluation hardware, and production-minded implementation."
+    ],
+    sections: [
+      {
+        kicker: "Hardware R&D",
+        title: "Building mechanisms for intelligent automation",
+        body: [
+          "My work focuses on robotic hardware that has to operate reliably in real automation environments: mechanisms, end effectors, fixtures, and supporting equipment that connect robot behavior to physical objects.",
+          "That means moving from ambiguous requirements into practical designs that can be built, tested, iterated, and handed off with enough structure for broader engineering teams to use."
+        ]
+      },
+      {
+        kicker: "Validation",
+        title: "Keeping design decisions grounded in robot performance",
+        body: [
+          "I support hardware development through prototyping, evaluation, and refinement so mechanical decisions are tied to observed robot behavior rather than isolated CAD assumptions.",
+          "The work builds on my earlier robotics and production-hardware experience, with an emphasis on making experimental systems robust enough to produce useful data and scale toward deployment."
+        ]
+      }
+    ],
+    outcome: "The role extends my robotics hardware work into high-performance manipulation systems, where mechanical design, robot learning, data collection, validation, and production readiness all have to reinforce each other.",
+    media: []
+  },
   fx10: {
     title: "Markforged FX10",
     eyebrow: "Production Additive Manufacturing",
@@ -164,17 +203,6 @@ const projectCatalog = {
     },
     sections: [
       {
-        kicker: "System Architecture",
-        body: [
-          "The robot architecture connected a MATLAB/Speedgoat real-time control stack to a Nucleo microcontroller, Elmo Gold Twitter motor drives, brushless leg actuators, ESCs, and the electric ducted fans. I designed the mechanical packaging around that architecture so the robot could stay light while leaving the controls team a practical research platform."
-        ],
-        fullWidthFigure: {
-          src: "../assets/projects/harpy/robotArchitecture.png",
-          alt: "Harpy robot electrical and control architecture",
-          caption: "Electrical and control architecture used for Harpy testing"
-        }
-      },
-      {
         kicker: "Leg Design",
         body: [
           "The leg layout used a pantograph-style mechanism with sagittal hip, frontal hip, and knee actuation. I designed the carbon-fiber tube and plate structure, pelvis interface, knee assembly, and adjustable shock absorber so drop, hop, and trajectory tests could be performed on hardware before the full robot was complete."
@@ -183,6 +211,11 @@ const projectCatalog = {
           src: "../assets/projects/harpy/harpyLegDOF.png",
           alt: "Harpy leg degrees of freedom",
           caption: "Leg degrees of freedom and thruster placement"
+        },
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/shockAbsorber.png",
+          alt: "Harpy adjustable leg shock absorber",
+          caption: "Adjustable leg shock absorber"
         }
       },
       {
@@ -244,6 +277,17 @@ const projectCatalog = {
         }
       },
       {
+        kicker: "System Architecture",
+        body: [
+          "The robot architecture connected a MATLAB/Speedgoat real-time control stack to a Nucleo microcontroller, Elmo Gold Twitter motor drives, brushless leg actuators, ESCs, and the electric ducted fans. I designed the mechanical packaging around that architecture so the robot could stay light while leaving the controls team a practical research platform."
+        ],
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/robotArchitecture.png",
+          alt: "Harpy robot electrical and control architecture",
+          caption: "Electrical and control architecture used for Harpy testing"
+        }
+      },
+      {
         kicker: "Testing",
         body: [
           "I designed a T-slot single-leg test fixture with an 80 cm linear rail so the leg could be drop-tested and commanded through hops while isolating the most demanding sagittal-plane mechanism.",
@@ -263,8 +307,12 @@ const projectCatalog = {
     ],
     outcome: "The thesis established Harpy's core hardware architecture and validated the most demanding leg subsystem through simulation and physical testing. The work turned the robot from a research concept into a buildable platform with defined actuation, fabrication, electronics, simulation, and test methods.",
     media: [],
-    links: [
-      ["Read the related thesis", "https://web.archive.org/web/20220826032004id_/https://repository.library.northeastern.edu/files/neu:bz60w8418/fulltext.pdf"]
+    outcomeFigures: [
+      {
+        src: "../assets/projects/harpy/harpyjump.gif",
+        alt: "Harpy jump simulation animation",
+        caption: "Harpy jump animation"
+      }
     ],
     hideSourceAction: true,
     source: "https://peterkellyyy.wixsite.com/peterkelly/harpy"
@@ -896,6 +944,17 @@ const createLink = ([label, href], className = "project-action") => {
 };
 
 const moreProjectCards = {
+  "berkshire-grey": {
+    href: "berkshire-grey.html",
+    thumb: "../assets/jobs/Berkshire Grey/carouselai.jpg",
+    thumbClass: "portfolio-thumb portfolio-thumb-cover",
+    alt: "Berkshire Grey robotic manipulation cell",
+    meta: "Robotics R&D",
+    date: "Oct 2024 - Present",
+    title: "Robotic Manipulation R&D",
+    summary: "End effectors, robot data infrastructure, and production-ready hardware for intelligent automation.",
+    company: "Berkshire Grey"
+  },
   fx10: {
     href: "fx10.html",
     thumb: "../assets/projects/fx10/fx10 thumbnail.png",
@@ -1056,6 +1115,7 @@ const moreProjectCards = {
 };
 
 const moreProjectPriority = [
+  "berkshire-grey",
   "fx10",
   "harpy",
   "co-parts",
