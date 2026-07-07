@@ -666,7 +666,9 @@ a.contact-panel:focus-visible {
 }
 
 .contact-panel-icon-linkedin img {
-  filter: none;
+  filter: brightness(0) saturate(100%);
+  height: 48px;
+  width: 48px;
 }
 
 .contact-panel strong,
@@ -1933,7 +1935,7 @@ a.contact-panel:focus-visible {
 
 /* FX10 case study */
 .fx10-case-study {
-  background: #ffffff;
+  background: #f2ece1;
 }
 
 .fx10-project-main {
@@ -2140,7 +2142,7 @@ a.contact-panel:focus-visible {
 
 .fx10-overview-section {
   align-items: start;
-  background: #ffffff;
+  background: #f2ece1;
   display: grid;
   column-gap: clamp(24px, 4vw, 56px);
   grid-template-columns: minmax(460px, 1.08fr) minmax(330px, 0.92fr);
@@ -2173,6 +2175,7 @@ a.contact-panel:focus-visible {
 }
 
 .fx10-glance img {
+  border-radius: 8px;
   display: block;
   height: clamp(390px, 36vw, 520px);
   max-height: none;
@@ -2259,48 +2262,89 @@ a.contact-panel:focus-visible {
 }
 
 .local-video-shell {
+  border-radius: 10px;
+  overflow: hidden;
   position: relative;
 }
 
 .local-video-player video {
+  accent-color: var(--signal-blue);
+  border-radius: 10px;
   object-fit: var(--media-fit, contain);
+}
+
+/* Soft vignette so the play button stays legible over light or busy footage */
+.local-video-shell::after {
+  background: radial-gradient(circle at center, rgba(8, 12, 20, 0.34) 0%, rgba(8, 12, 20, 0.12) 42%, transparent 68%);
+  content: "";
+  inset: 0;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 240ms ease;
+  z-index: 1;
+}
+
+.local-video-player.is-video-started .local-video-shell::after {
+  opacity: 0;
 }
 
 .local-video-play-button {
   align-items: center;
   appearance: none;
-  background: rgba(12, 15, 20, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: linear-gradient(155deg, #146357 0%, #0f4f45 100%);
+  border: 0;
   border-radius: 50%;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 10px 26px rgba(24, 26, 31, 0.24), 0 0 0 5px rgba(255, 255, 255, 0.14);
   color: #ffffff;
   cursor: pointer;
   display: flex;
-  height: clamp(72px, 9vw, 104px);
+  height: clamp(76px, 9vw, 108px);
   justify-content: center;
   left: 50%;
   padding: 0;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease, opacity 160ms ease;
-  width: clamp(72px, 9vw, 104px);
+  transition: background 180ms ease, box-shadow 220ms ease, transform 180ms ease, opacity 200ms ease;
+  width: clamp(76px, 9vw, 108px);
+  z-index: 2;
+  animation: local-video-pulse 4.2s ease-in-out infinite;
 }
 
 .local-video-play-button:hover,
 .local-video-play-button:focus-visible {
-  background: rgba(12, 15, 20, 0.86);
-  border-color: rgba(255, 255, 255, 0.76);
-  transform: translate(-50%, -50%) scale(1.04);
+  animation: none;
+  background: linear-gradient(155deg, #1a7768 0%, #146357 100%);
+  box-shadow: 0 14px 32px rgba(24, 26, 31, 0.3), 0 0 0 7px rgba(255, 255, 255, 0.18);
+  outline: none;
+  transform: translate(-50%, -50%) scale(1.045);
+}
+
+@keyframes local-video-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 26px rgba(24, 26, 31, 0.24), 0 0 0 0 rgba(20, 99, 87, 0.22);
+  }
+  50% {
+    box-shadow: 0 10px 26px rgba(24, 26, 31, 0.24), 0 0 0 8px rgba(20, 99, 87, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .local-video-play-button {
+    animation: none;
+  }
 }
 
 .local-video-play-icon {
-  border-bottom: clamp(14px, 1.8vw, 20px) solid transparent;
-  border-left: clamp(22px, 2.7vw, 31px) solid currentColor;
-  border-top: clamp(14px, 1.8vw, 20px) solid transparent;
+  border-bottom: clamp(13px, 1.7vw, 19px) solid transparent;
+  border-left: clamp(21px, 2.6vw, 30px) solid currentColor;
+  border-top: clamp(13px, 1.7vw, 19px) solid transparent;
   display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
   height: 0;
-  margin-left: 6px;
+  margin-left: 7px;
   width: 0;
 }
 
@@ -2427,7 +2471,7 @@ a.contact-panel:focus-visible {
 }
 
 .standard-section-figure img {
-  background: #ffffff;
+  background: transparent;
   border-radius: 8px;
   display: block;
   height: auto;
@@ -2438,6 +2482,11 @@ a.contact-panel:focus-visible {
 .standard-section-full-figure {
   grid-column: 1 / -1;
   width: 100%;
+}
+
+/* Body copy placed between a figure and the following full-width figure */
+.standard-section-after-figure-copy {
+  margin-top: 22px;
 }
 
 .standard-section-aside-figure img {
@@ -2453,6 +2502,31 @@ a.contact-panel:focus-visible {
   grid-column: 1 / -1;
 }
 
+.harpy-simulation-section .standard-section-video video {
+  background: transparent;
+}
+
+/* Blend the white-background simulation plot into the beige page */
+.harpy-simulation-section .standard-section-aside-figure img {
+  mix-blend-mode: multiply;
+}
+
+/* Closing jump animation renders full-width at its natural 16:9 ratio */
+body[data-project="harpy"] .outcome-supplemental-figures img {
+  height: auto;
+}
+
+/* Shock-absorber figure sits centered, enlarged 30% over the prior half width */
+body[data-project="harpy"] .standard-section-full-figure img[src*="shockAbsorber"] {
+  margin-inline: auto;
+  width: 65%;
+}
+
+/* Testing section: fixture video sits beside the copy, leg-test video spans full width */
+.harpy-testing-section .standard-section-video:not(.standard-section-aside-video) {
+  grid-column: 1 / -1;
+}
+
 .overview-media-grid {
   display: grid;
   gap: 16px;
@@ -2465,7 +2539,7 @@ a.contact-panel:focus-visible {
 .overview-media-item img,
 .overview-media-item video {
   aspect-ratio: var(--media-aspect, auto);
-  background: var(--media-bg, #ffffff);
+  background: var(--media-bg, transparent);
   border-radius: 8px;
   display: block;
   height: auto;
@@ -2499,7 +2573,7 @@ a.contact-panel:focus-visible {
 }
 
 .standard-section-paired-figure img {
-  background: #ffffff;
+  background: transparent;
   border-radius: 8px;
   display: block;
   height: clamp(260px, 31vw, 430px);
@@ -2598,7 +2672,7 @@ p.asthma-design-copy {
 
 .asthma-design-figure img,
 .asthma-design-figure video {
-  background: #ffffff;
+  background: transparent;
   display: block;
   margin: 0 auto;
   max-height: 270px;
@@ -2686,7 +2760,7 @@ p.asthma-design-copy {
 }
 
 .co-parts-figure img {
-  background: #ffffff;
+  background: transparent;
   border-radius: 8px;
   display: block;
   height: auto;
@@ -2870,7 +2944,7 @@ p.asthma-design-copy {
 }
 
 .portfolio-thumb {
-  background: #ffffff;
+  background: transparent;
 }
 
 .portfolio-thumb img {
@@ -4374,4 +4448,486 @@ p.asthma-design-copy {
     animation: none;
     transition: none;
   }
+}
+
+
+
+/* =====================================================================
+   EDITORIAL REDESIGN LAYER  (2026)
+   Appended last so it overrides the legacy homepage styling.
+   The Experience/timeline block (.experience-inner, .logo-*, .timeline-*)
+   keeps its original rules above — do not restyle it here.
+   ===================================================================== */
+
+body { background: #f2ece1; color: #1b1917; }
+::selection { background: #146357; color: #fff; }
+
+.ed-eyebrow { display:inline-block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:#146357; }
+.ed-display { font-family:"Newsreader",Georgia,serif; font-weight:600; letter-spacing:-0.01em; color:#1b1917; }
+
+/* Header */
+.ed-header { position:sticky; top:0; z-index:90; background:color-mix(in srgb,#f2ece1 88%,transparent); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid #ddd4c5; }
+.ed-nav { display:flex; align-items:center; justify-content:space-between; max-width:1240px; margin:0 auto; min-height:72px; padding:0 28px; }
+.ed-brand { display:flex; flex-direction:column; }
+.ed-brand-name { font-family:"Newsreader",Georgia,serif; font-size:1.3rem; font-weight:600; letter-spacing:-0.01em; color:#1b1917; text-decoration:none; }
+.ed-brand-title { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:#146357; margin-top:2px; }
+.ed-nav-links { display:flex; align-items:center; gap:30px; }
+.ed-nav-links a { font-size:0.9rem; font-weight:500; color:#726c61; text-decoration:none; transition:color 0.18s ease; }
+.ed-nav-links a:hover { color:#146357; }
+.ed-nav-cta { display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:999px; background:#146357; color:#fff !important; font-weight:600; font-size:0.86rem; }
+.ed-nav-cta:hover { filter:brightness(0.94); }
+
+/* Hero */
+.ed-hero { position:relative; width:100%; min-height:clamp(520px,64vh,740px); overflow:hidden; background:#0d0f13; }
+.ed-hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.6; }
+.ed-hero-scrim { position:absolute; inset:0; background:linear-gradient(90deg,rgba(8,9,12,0.82) 0%,rgba(8,9,12,0.45) 48%,rgba(8,9,12,0.12) 100%),linear-gradient(0deg,rgba(8,9,12,0.7) 0%,transparent 44%); }
+.ed-hero-inner { position:relative; z-index:2; max-width:1240px; margin:0 auto; padding:120px 28px clamp(48px,7vw,88px); min-height:clamp(520px,64vh,740px); display:flex; flex-direction:column; justify-content:flex-end; }
+.ed-hero-eyebrow { display:inline-flex; align-items:center; gap:12px; margin-bottom:24px; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.82); }
+.ed-hero-rule { width:34px; height:2px; background:#2a9c86; }
+.ed-hero-title { font-family:"Newsreader",Georgia,serif; font-weight:600; font-size:clamp(3rem,7.6vw,6.4rem); line-height:0.98; letter-spacing:-0.02em; color:#fff; margin:0 0 22px; max-width:16ch; }
+.ed-hero-lede { font-size:clamp(1.02rem,1.5vw,1.26rem); line-height:1.55; color:rgba(255,255,255,0.86); max-width:54ch; margin:0 0 34px; }
+.ed-hero-actions { display:flex; flex-wrap:wrap; gap:14px; }
+.ed-btn { display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; font-weight:600; font-size:0.92rem; text-decoration:none; transition:transform 0.18s ease,filter 0.18s ease,background 0.18s ease; }
+.ed-btn-primary { background:#146357; color:#fff; }
+.ed-btn-primary img { width:18px; height:18px; filter:brightness(0) invert(1); }
+.ed-btn-primary:hover { transform:translateY(-2px); filter:brightness(0.95); }
+.ed-btn-ghost { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3); color:#fff; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+.ed-btn-ghost:hover { background:rgba(255,255,255,0.18); }
+
+/* Section shell */
+.ed-section { max-width:1240px; margin:0 auto; padding:clamp(40px,5.6vw,70px) 28px; }
+
+/* Intro / pillars */
+.ed-intro { display:grid; grid-template-columns:minmax(0,0.92fr) minmax(0,1fr); gap:clamp(40px,6vw,88px); align-items:start; padding-bottom:clamp(22px,3.5vw,40px); }
+.ed-intro-copy .ed-display { font-size:clamp(2rem,4vw,3.1rem); line-height:1.05; margin:16px 0 22px; }
+.ed-lead { font-size:1.08rem; line-height:1.72; color:#726c61; margin:0 0 28px; max-width:46ch; }
+.ed-intro-contact { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid #ddd4c5; }
+.ed-contact-inline { display:flex; align-items:center; gap:12px; padding:18px 0; text-decoration:none; color:#1b1917; transition:color 0.18s ease; }
+.ed-contact-inline:first-child { border-right:1px solid #ddd4c5; padding-right:18px; }
+.ed-contact-inline:last-child { padding-left:22px; }
+.ed-contact-inline:hover { color:#146357; }
+.ed-contact-inline img { width:22px; height:22px; }
+.ed-contact-inline .ed-linkedin-icon { filter:brightness(0) saturate(100%); height:31px; width:31px; }
+.ed-contact-inline strong { display:block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.6rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#726c61; }
+.ed-contact-inline span > span { display:block; font-size:0.86rem; font-weight:600; margin-top:3px; }
+.ed-pillars { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#ddd4c5; border:1px solid #ddd4c5; }
+.ed-pillar { background:#f2ece1; padding:26px 24px; display:flex; flex-direction:column; gap:14px; }
+.ed-pillar img { width:30px; height:30px; }
+.ed-pillar h3 { font-family:"Newsreader",Georgia,serif; font-weight:600; font-size:1.12rem; line-height:1.2; color:#1b1917; margin:0; }
+.ed-pillar p { font-size:0.88rem; line-height:1.6; color:#726c61; margin:0; }
+
+/* Portfolio */
+.ed-portfolio-head { display:flex; align-items:flex-end; justify-content:space-between; border-bottom:1px solid #1b1917; padding-bottom:18px; margin-bottom:40px; }
+.ed-portfolio-title { font-size:clamp(2rem,4vw,3.1rem); line-height:1.05; margin:12px 0 0; }
+.ed-portfolio-count { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.82rem; color:#726c61; }
+.ed-project-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.ed-project { display:flex; flex-direction:column; background:#fffdf8; border:1px solid #e7ded0; border-radius:4px; overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.24s ease,box-shadow 0.24s ease,border-color 0.24s ease; }
+.ed-project:hover { transform:translateY(-4px); box-shadow:0 20px 44px rgba(10,12,16,0.14); border-color:#146357; }
+.ed-project-media { position:relative; display:block; aspect-ratio:4/3; overflow:hidden; background:#fff; }
+.ed-project-media img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.ed-project-body { display:flex; flex-direction:column; flex:1; padding:18px 18px 20px; }
+.ed-project-company { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; color:#146357; margin-bottom:10px; }
+.ed-project-title { font-family:"Newsreader",Georgia,serif; font-weight:600; font-size:1.2rem; line-height:1.18; color:#1b1917; margin:0 0 8px; }
+.ed-project-summary { font-size:0.86rem; line-height:1.55; color:#726c61; margin:0 0 16px; }
+.ed-project-date { margin-top:auto; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.68rem; color:#726c61; }
+
+/* Experience band spacing (timeline internals untouched) */
+.experience-inner { padding-top:clamp(34px,4.2vw,56px); padding-bottom:clamp(34px,4.2vw,56px); }
+
+/* About */
+.ed-about { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,400px); gap:clamp(36px,5vw,72px); align-items:center; }
+.ed-about-copy .ed-display { font-size:clamp(2rem,4vw,3.1rem); line-height:1.05; margin:16px 0 24px; }
+.ed-about-copy p { font-size:1.06rem; line-height:1.74; color:#726c61; margin:0 0 18px; max-width:54ch; }
+.ed-about-copy p:last-child { margin-bottom:0; }
+.ed-about-figure { margin:0; }
+.ed-about-figure img { aspect-ratio:4/5; width:100%; object-fit:cover; border-radius:6px; }
+.ed-about-figure figcaption { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.66rem; color:#726c61; text-align:center; margin-top:12px; letter-spacing:0.04em; }
+
+/* Contact */
+.ed-contact-band { background:#eae2d4; border-top:1px solid #ddd4c5; }
+.ed-contact-title { font-size:clamp(2rem,4vw,3.1rem); line-height:1.05; letter-spacing:-0.01em; margin:16px 0 16px; }
+.ed-contact-lede { font-size:1.1rem; line-height:1.6; color:#726c61; max-width:50ch; margin:0 0 40px; }
+.ed-contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.ed-contact-card { display:flex; align-items:center; gap:18px; background:#fffdf8; border:1px solid #e7ded0; border-radius:8px; padding:24px; text-decoration:none; color:inherit; transition:transform 0.2s ease,box-shadow 0.2s ease; }
+a.ed-contact-card:hover { transform:translateY(-3px); box-shadow:0 16px 34px rgba(10,12,16,0.12); }
+.ed-contact-card-icon { display:inline-flex; align-items:center; justify-content:center; width:54px; height:54px; border-radius:8px; background:#dcebe6; flex-shrink:0; }
+.ed-contact-card-icon img { width:26px; height:26px; }
+.ed-contact-card-icon .ed-linkedin-icon { filter:brightness(0) saturate(100%); height:36px; width:36px; }
+.ed-contact-card strong { display:block; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; color:#726c61; margin-bottom:6px; }
+.ed-contact-card span > span { display:block; font-size:0.96rem; font-weight:600; color:#1b1917; }
+
+/* Footer */
+.ed-footer { background:#1b1917; color:#f2ece1; }
+.ed-footer-inner { max-width:1240px; margin:0 auto; padding:clamp(48px,6vw,72px) 28px 32px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; }
+.ed-footer-name { font-family:"Newsreader",Georgia,serif; font-size:1.5rem; font-weight:600; display:block; margin-bottom:4px; }
+.ed-footer-brand strong { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:#2a9c86; font-weight:500; }
+.ed-footer-brand p { font-size:0.9rem; line-height:1.6; color:color-mix(in srgb,#f2ece1 62%,transparent); margin:18px 0 0; max-width:40ch; }
+.ed-footer-col { display:flex; flex-direction:column; gap:12px; }
+.ed-footer-col h2 { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.62rem; letter-spacing:0.14em; text-transform:uppercase; color:color-mix(in srgb,#f2ece1 55%,transparent); margin:0 0 4px; font-weight:500; }
+.ed-footer-col a, .ed-footer-col span { font-size:0.92rem; color:#f2ece1; text-decoration:none; transition:color 0.18s ease; }
+.ed-footer-col a:hover { color:#2a9c86; }
+.ed-footer-col span { color:color-mix(in srgb,#f2ece1 62%,transparent); }
+.ed-footer-bottom { max-width:1240px; margin:0 auto; padding:20px 28px; border-top:1px solid color-mix(in srgb,#f2ece1 16%,transparent); display:flex; justify-content:space-between; align-items:center; font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.72rem; color:color-mix(in srgb,#f2ece1 55%,transparent); }
+.ed-footer-bottom a { color:inherit; text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+.ed-footer-bottom a:hover { color:#2a9c86; }
+.ed-footer-bottom img { width:14px; height:14px; filter:brightness(0) invert(1); opacity:0.6; }
+
+/* Responsive */
+@media (max-width:900px){
+  .ed-intro, .ed-about { grid-template-columns:1fr; }
+  .ed-project-grid { grid-template-columns:repeat(2,1fr); }
+  .ed-contact-grid { grid-template-columns:1fr; }
+  .ed-footer-inner { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:640px){
+  .ed-nav-links { gap:16px; }
+  .ed-nav-links a:not(.ed-nav-cta) { display:none; }
+  .ed-pillars, .ed-project-grid { grid-template-columns:1fr; }
+  .ed-intro-contact { grid-template-columns:1fr; }
+  .ed-contact-inline:first-child { border-right:0; border-bottom:1px solid #ddd4c5; padding-right:0; }
+  .ed-contact-inline:last-child { padding-left:0; }
+  .ed-footer-inner { grid-template-columns:1fr; }
+}
+
+
+/* =====================================================================
+   EDITORIAL TIMELINE THEME  (2026)
+   Re-skins the preserved timeline to the editorial palette without
+   changing its markup or behavior. Scoped to #experience so it wins
+   by specificity + source order over the legacy timeline rules.
+   Tokens: paper #fffdf8 · line #ddd4c5 · accent #146357 (teal)
+           ink #1b1917 · muted #726c61 · band #f2ece1
+   Leader (trace) palette: patent teal · publication ochre · thesis rust
+   ===================================================================== */
+
+#experience {
+  --paper: #fffdf8;
+  --line: #ddd4c5;
+  --accent: #146357;
+  --ink: #1b1917;
+  --muted: #726c61;
+  --soft: #efe7d9;
+}
+
+/* "EXPERIENCE" heading -> editorial eyebrow */
+#experience .experience-title.section-label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #146357;
+}
+
+/* Section framing header */
+.ed-exp-head { margin: 0 0 clamp(28px, 3.4vw, 44px); }
+.ed-exp-title { font-size: clamp(2rem,4vw,3.1rem); line-height: 1.05; letter-spacing: -0.01em; margin: 16px 0 20px; max-width: none; }
+.ed-exp-intro { font-size: 1.06rem; line-height: 1.7; color: #726c61; margin: 0; max-width: 62ch; }
+
+/* Year markers: kill the white knockout, use mono */
+#experience .tl-year {
+  background: #f2ece1;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: #726c61;
+}
+
+/* Serif headings inside cards */
+#experience .tl-job-company,
+#experience .tl-m-label,
+#experience .tl-milestone-document .tl-m-label,
+#experience .tl-m-school {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+/* Mono microtype: dates, years, type tags */
+#experience .tl-job-date,
+#experience .tl-m-year,
+#experience .tl-m-type {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+#experience .tl-job-date,
+#experience .tl-m-type {
+  text-transform: uppercase;
+}
+
+/* Role title stays sans for legibility, softened weight */
+#experience .tl-job-title {
+  font-weight: 600;
+}
+
+/* "Present" badge -> teal */
+#experience .tl-job-present {
+  background: rgba(20, 99, 87, 0.12);
+  border-color: rgba(20, 99, 87, 0.35);
+  color: #146357;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-weight: 600;
+}
+
+/* Card hover outline in the warm accent */
+#experience .tl-job-content:hover,
+#experience .tl-job-content:focus-within {
+  border-color: #146357;
+  box-shadow: 0 6px 22px rgba(24, 26, 31, 0.12);
+}
+
+/* -------- Leaders (traces) recolored to the editorial family -------- */
+#experience .tl-milestone-patent      { --trace-color: #146357; } /* teal  */
+#experience .tl-milestone-publication { --trace-color: #a9762a; } /* ochre */
+#experience .tl-milestone-thesis      { --trace-color: #9c5b3b; } /* rust  */
+
+.timeline-scroll .tl-trace-patent      { stroke: #146357; }
+.timeline-scroll .tl-trace-publication { stroke: #a9762a; }
+.timeline-scroll .tl-trace-thesis      { stroke: #9c5b3b; }
+.timeline-scroll .tl-trace-event       { stroke: #ddd4c5; }
+.timeline-scroll .tl-trace-dot         { fill: #fffdf8; }
+
+/* Document-card hover tint follows its (now warm) trace color already */
+
+/* Education icons tinted to the accent (brand logos left untouched) */
+#experience .tl-milestone[data-event-key="masters"] .tl-milestone-icon,
+#experience .tl-milestone[data-event-key="bachelors"] .tl-milestone-icon {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(38%) saturate(1200%) hue-rotate(120deg) brightness(92%) contrast(88%);
+}
+
+/* =====================================================================
+   EDITORIAL RE-SKIN — PROJECT CASE-STUDY PAGES  (2026)
+   Re-skins the existing case-study body (fx10-*, standard-*, more-*)
+   to the editorial homepage palette + typography without touching the
+   render markup in scripts/project-page.js. Scoped to body[data-project]
+   so it never affects the homepage.
+   Tokens: paper #fffdf8 · band #f2ece1 · line #e7ded0/#ddd4c5
+           ink #1b1917 · muted #726c61 · accent #146357 (teal)
+           serif "Newsreader" · mono "JetBrains Mono"
+   ===================================================================== */
+
+/* -- Eyebrows / section kickers -> mono teal -- */
+body[data-project] .fx10-section-kicker {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #146357;
+  font-weight: 500;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  border-left: 2px solid #146357;
+  padding-left: 12px;
+}
+body[data-project] .fx10-eyebrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #7fd0bd;
+  font-weight: 500;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+}
+
+/* -- Headings -> Newsreader serif -- */
+body[data-project] .fx10-hero h1,
+body[data-project] .fx10-design-copy h2,
+body[data-project] .fx10-highlight-card h3,
+body[data-project] .fx10-list-item h3,
+body[data-project] .module-breakdown-copy h2,
+body[data-project] .project-title {
+  font-family: "Newsreader", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* -- Body links -> teal, editorial weight -- */
+body[data-project] .fx10-overview-copy a,
+body[data-project] .fx10-design-copy a,
+body[data-project] .fx10-outcome-section a,
+body[data-project] .asthma-design-copy a,
+body[data-project] .module-breakdown-copy a {
+  color: #146357;
+  font-weight: 600;
+}
+body[data-project] .fx10-overview-copy a:hover,
+body[data-project] .fx10-overview-copy a:focus-visible,
+body[data-project] .fx10-design-copy a:hover,
+body[data-project] .fx10-design-copy a:focus-visible,
+body[data-project] .fx10-outcome-section a:hover,
+body[data-project] .fx10-outcome-section a:focus-visible,
+body[data-project] .asthma-design-copy a:hover,
+body[data-project] .asthma-design-copy a:focus-visible,
+body[data-project] .module-breakdown-copy a:hover,
+body[data-project] .module-breakdown-copy a:focus-visible {
+  color: #0f4f45;
+}
+
+/* -- Accent recolors: bullet markers, list/check icons -- */
+body[data-project] .fx10-design-copy p:nth-child(2)::before,
+body[data-project] .fx10-design-copy p:nth-child(3)::before,
+body[data-project] .fx10-design-copy p:nth-child(4)::before {
+  color: #146357;
+}
+body[data-project] .fx10-list-icon,
+body[data-project] .fx10-check-icon {
+  border-color: #146357;
+}
+body[data-project] .fx10-list-icon::after {
+  background: #146357;
+}
+body[data-project] .fx10-check-icon::after {
+  border-bottom-color: #146357;
+  border-right-color: #146357;
+}
+
+/* -- Outcome / secondary action buttons -> editorial teal pills -- */
+body[data-project] .project-action {
+  background: #146357;
+  border: 1px solid #146357;
+  border-radius: 999px;
+  color: #fffdf8;
+  font-weight: 600;
+}
+body[data-project] .project-action:hover,
+body[data-project] .project-action:focus-visible {
+  background: #0f4f45;
+  border-color: #0f4f45;
+  transform: translateY(-2px);
+}
+body[data-project] .project-action-secondary {
+  background: transparent;
+  color: #146357;
+}
+body[data-project] .project-action-secondary:hover,
+body[data-project] .project-action-secondary:focus-visible {
+  background: #146357;
+  color: #fffdf8;
+}
+
+/* -- "More projects" cards -> editorial portfolio cards -- */
+body[data-project] .project-link {
+  background: #fffdf8;
+  border: 1px solid #e7ded0;
+  border-radius: 4px;
+  box-shadow: none;
+}
+body[data-project] .project-link:hover,
+body[data-project] .project-link:focus-visible {
+  border-color: #146357;
+  box-shadow: 0 20px 44px rgba(10, 12, 16, 0.14);
+}
+body[data-project] .project-date {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  color: #726c61;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0;
+}
+body[data-project] .project-title {
+  font-size: 1.06rem;
+  color: #1b1917;
+}
+body[data-project] .project-summary {
+  color: #726c61;
+}
+body[data-project] .project-company {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #146357;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0;
+}
+body[data-project] .more-project-return {
+  background: #fffdf8;
+  border-color: #e7ded0;
+}
+body[data-project] .more-project-return .project-title {
+  color: #146357;
+}
+body[data-project] .more-project-return-icon {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(38%) saturate(1200%) hue-rotate(120deg) brightness(92%) contrast(88%);
+}
+
+/* Mobile hero flattens to a light background (see @media max-width:620px
+   above); keep the editorial eyebrow + tags readable/on-theme there. */
+@media (max-width: 620px) {
+  body[data-project] .fx10-eyebrow {
+    color: #146357;
+  }
+  body[data-project] .fx10-tags span {
+    background: #eef4f1;
+    border-color: #cfe4dd;
+    color: #146357;
+  }
+}
+
+/* -- FX10 R&D questions -> numbered editorial callout -- */
+/* Questions now render as <ol class="fx10-questions">; neutralize the
+   legacy nth-child bold+bullet treatment that would otherwise land on the
+   following body paragraphs of the FX10 design section. */
+body[data-project] .fx10-design-copy:not(.fx10-generic-design-copy) p::before {
+  content: none;
+}
+body[data-project] .fx10-design-copy:not(.fx10-generic-design-copy) p {
+  color: #435065;
+  font-weight: 400;
+}
+body[data-project] .fx10-questions {
+  list-style: none;
+  counter-reset: q;
+  margin: 24px 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+body[data-project] .fx10-questions li {
+  counter-increment: q;
+  position: relative;
+  padding: 16px 20px 16px 58px;
+  background: #fffdf8;
+  border: 1px solid #e7ded0;
+  border-left: 2px solid #146357;
+  border-radius: 6px;
+  color: #1b1917;
+  font-weight: 600;
+  line-height: 1.45;
+}
+body[data-project] .fx10-questions li::before {
+  content: counter(q, decimal-leading-zero);
+  position: absolute;
+  left: 20px;
+  top: 17px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #146357;
+}
+
+/* -- Remove the hairline divider beneath the hero -- */
+body[data-project] .fx10-overview-section {
+  border-top: 0;
+}
+
+body[data-project="harpy"] .fx10-overview-section {
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-project="harpy"] .fx10-overview-section .fx10-glance {
+  margin-inline: auto;
+  width: min(80%, 864px);
+}
+
+/* -- Challenges / Impact on a contrasting band (rhythm) -- */
+body[data-project] .fx10-split {
+  background: #eae2d4;
+  border-top: 1px solid #ddd4c5;
+  border-bottom: 1px solid #ddd4c5;
+  max-width: none;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: clamp(40px, 6vw, 64px) max(24px, calc((100vw - 1080px) / 2));
 }

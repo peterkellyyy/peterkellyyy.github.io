@@ -1,4 +1,5 @@
 const portfolioOrder = [
+  "berkshire-grey",
   "fx10",
   "harpy",
   "co-parts",
