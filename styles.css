@@ -2175,6 +2175,7 @@ a.contact-panel:focus-visible {
 }
 
 .fx10-glance img {
+  border-radius: 8px;
   display: block;
   height: clamp(390px, 36vw, 520px);
   max-height: none;
@@ -2261,48 +2262,89 @@ a.contact-panel:focus-visible {
 }
 
 .local-video-shell {
+  border-radius: 10px;
+  overflow: hidden;
   position: relative;
 }
 
 .local-video-player video {
+  accent-color: var(--signal-blue);
+  border-radius: 10px;
   object-fit: var(--media-fit, contain);
+}
+
+/* Soft vignette so the play button stays legible over light or busy footage */
+.local-video-shell::after {
+  background: radial-gradient(circle at center, rgba(8, 12, 20, 0.34) 0%, rgba(8, 12, 20, 0.12) 42%, transparent 68%);
+  content: "";
+  inset: 0;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 240ms ease;
+  z-index: 1;
+}
+
+.local-video-player.is-video-started .local-video-shell::after {
+  opacity: 0;
 }
 
 .local-video-play-button {
   align-items: center;
   appearance: none;
-  background: rgba(12, 15, 20, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  background: linear-gradient(155deg, #146357 0%, #0f4f45 100%);
+  border: 0;
   border-radius: 50%;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 10px 26px rgba(24, 26, 31, 0.24), 0 0 0 5px rgba(255, 255, 255, 0.14);
   color: #ffffff;
   cursor: pointer;
   display: flex;
-  height: clamp(72px, 9vw, 104px);
+  height: clamp(76px, 9vw, 108px);
   justify-content: center;
   left: 50%;
   padding: 0;
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease, opacity 160ms ease;
-  width: clamp(72px, 9vw, 104px);
+  transition: background 180ms ease, box-shadow 220ms ease, transform 180ms ease, opacity 200ms ease;
+  width: clamp(76px, 9vw, 108px);
+  z-index: 2;
+  animation: local-video-pulse 4.2s ease-in-out infinite;
 }
 
 .local-video-play-button:hover,
 .local-video-play-button:focus-visible {
-  background: rgba(12, 15, 20, 0.86);
-  border-color: rgba(255, 255, 255, 0.76);
-  transform: translate(-50%, -50%) scale(1.04);
+  animation: none;
+  background: linear-gradient(155deg, #1a7768 0%, #146357 100%);
+  box-shadow: 0 14px 32px rgba(24, 26, 31, 0.3), 0 0 0 7px rgba(255, 255, 255, 0.18);
+  outline: none;
+  transform: translate(-50%, -50%) scale(1.045);
+}
+
+@keyframes local-video-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 26px rgba(24, 26, 31, 0.24), 0 0 0 0 rgba(20, 99, 87, 0.22);
+  }
+  50% {
+    box-shadow: 0 10px 26px rgba(24, 26, 31, 0.24), 0 0 0 8px rgba(20, 99, 87, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .local-video-play-button {
+    animation: none;
+  }
 }
 
 .local-video-play-icon {
-  border-bottom: clamp(14px, 1.8vw, 20px) solid transparent;
-  border-left: clamp(22px, 2.7vw, 31px) solid currentColor;
-  border-top: clamp(14px, 1.8vw, 20px) solid transparent;
+  border-bottom: clamp(13px, 1.7vw, 19px) solid transparent;
+  border-left: clamp(21px, 2.6vw, 30px) solid currentColor;
+  border-top: clamp(13px, 1.7vw, 19px) solid transparent;
   display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28));
   height: 0;
-  margin-left: 6px;
+  margin-left: 7px;
   width: 0;
 }
 
@@ -2442,6 +2484,11 @@ a.contact-panel:focus-visible {
   width: 100%;
 }
 
+/* Body copy placed between a figure and the following full-width figure */
+.standard-section-after-figure-copy {
+  margin-top: 22px;
+}
+
 .standard-section-aside-figure img {
   height: auto;
 }
@@ -2455,6 +2502,10 @@ a.contact-panel:focus-visible {
   grid-column: 1 / -1;
 }
 
+.harpy-simulation-section .standard-section-video video {
+  background: transparent;
+}
+
 /* Blend the white-background simulation plot into the beige page */
 .harpy-simulation-section .standard-section-aside-figure img {
   mix-blend-mode: multiply;
@@ -2465,10 +2516,15 @@ body[data-project="harpy"] .outcome-supplemental-figures img {
   height: auto;
 }
 
-/* Shock-absorber figure sits at half width, centered */
+/* Shock-absorber figure sits centered, enlarged 30% over the prior half width */
 body[data-project="harpy"] .standard-section-full-figure img[src*="shockAbsorber"] {
   margin-inline: auto;
-  width: 50%;
+  width: 65%;
+}
+
+/* Testing section: fixture video sits beside the copy, leg-test video spans full width */
+.harpy-testing-section .standard-section-video:not(.standard-section-aside-video) {
+  grid-column: 1 / -1;
 }
 
 .overview-media-grid {
@@ -4852,6 +4908,16 @@ body[data-project] .fx10-questions li::before {
 /* -- Remove the hairline divider beneath the hero -- */
 body[data-project] .fx10-overview-section {
   border-top: 0;
+}
+
+body[data-project="harpy"] .fx10-overview-section {
+  display: flex;
+  flex-direction: column;
+}
+
+body[data-project="harpy"] .fx10-overview-section .fx10-glance {
+  margin-inline: auto;
+  width: min(80%, 864px);
 }
 
 /* -- Challenges / Impact on a contrasting band (rhythm) -- */
