@@ -2581,6 +2581,10 @@ body[data-project="harpy"] .standard-section-full-figure img[src*="shockAbsorber
   width: 100%;
 }
 
+.co-parts-testing-section .standard-section-paired-figure img {
+  height: clamp(312px, 37.2vw, 516px);
+}
+
 .standard-section-paired-figure figcaption {
   color: #5b6675;
   font-size: 0.86rem;
@@ -2716,10 +2720,41 @@ p.asthma-design-copy {
   max-width: 100%;
 }
 
+.fx10-outcome-with-image {
+  align-items: center;
+  display: grid;
+  gap: clamp(24px, 4vw, 52px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+}
+
+.fx10-outcome-figure {
+  margin: 0;
+}
+
+.fx10-outcome-figure img {
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+
+.fx10-outcome-figure figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
 .fx10-highlight-grid {
   display: grid;
   gap: 0;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fx10-printhead-grid {
+  margin: clamp(18px, 3vw, 30px) 0;
 }
 
 .fx10-highlight-card {
@@ -2789,16 +2824,78 @@ p.asthma-design-copy {
 .co-parts-process-section {
   border-top: 1px solid var(--line);
   display: grid;
-  gap: 34px 48px;
-  grid-template-columns: minmax(420px, 1fr) minmax(360px, 0.92fr);
+  gap: 24px;
+  grid-template-columns: 1fr;
 }
 
 .co-parts-process-copy {
   align-self: start;
+  max-width: 100%;
 }
 
-.co-parts-load-case {
-  align-self: start;
+.co-parts-break-pair {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 18px 0 20px;
+}
+
+.co-parts-break img {
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+
+.co-parts-break figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.co-parts-process-video {
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.co-parts-process-video-figure {
+  margin: 0;
+}
+
+.co-parts-process-video-figure figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.co-parts-process-flow {
+  align-items: center;
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+}
+
+.co-parts-flow-copy {
+  max-width: 100%;
+}
+
+.co-parts-flowchart {
+  justify-self: center;
+  margin: 0;
+  max-width: min(100%, 520px);
+}
+
+.co-parts-flowchart img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
 }
 
 .co-parts-assembly {
@@ -2817,6 +2914,10 @@ p.asthma-design-copy {
 .co-parts-outcome-copy {
   border-top: 0;
   padding: 0;
+}
+
+.co-parts-outcome-copy p:not(.fx10-section-kicker) + p:not(.fx10-section-kicker) {
+  margin-top: 18px;
 }
 
 .co-parts-load-results {
@@ -3592,7 +3693,7 @@ p.asthma-design-copy {
 .timeline-scroll .tl-milestone-content {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
   margin-left: auto;
   max-width: 315px;
@@ -3769,7 +3870,7 @@ p.asthma-design-copy {
   align-items: flex-start;
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
   cursor: pointer;
   gap: 14px;
@@ -3933,7 +4034,7 @@ p.asthma-design-copy {
 
   .timeline-scroll .tl-job-content,
   .timeline-scroll .tl-milestone-content {
-    border-radius: 6px;
+    border-radius: 4px;
     box-shadow: 0 3px 12px rgba(24, 26, 31, 0.08);
   }
 
@@ -4198,6 +4299,18 @@ p.asthma-design-copy {
     padding-right: 0;
   }
 
+  .co-parts-break-pair {
+    gap: 14px;
+  }
+
+  .co-parts-process-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .fx10-outcome-with-image {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 @media (max-width: 620px) {
@@ -4308,7 +4421,7 @@ p.asthma-design-copy {
   }
 
   .fx10-hero {
-    background: #ffffff;
+    background: #f2ece1;
     display: grid;
     grid-template-columns: 1fr;
     min-height: 0;
@@ -4541,7 +4654,7 @@ body { background: #f2ece1; color: #1b1917; }
 .ed-about-copy p:last-child { margin-bottom:0; }
 .ed-about-figure { margin:0; }
 .ed-about-figure img { aspect-ratio:4/5; width:100%; object-fit:cover; border-radius:6px; }
-.ed-about-figure figcaption { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.66rem; color:#726c61; text-align:center; margin-top:12px; letter-spacing:0.04em; }
+.ed-about-figure figcaption { color:#5b6675; font-size:0.86rem; font-style:italic; line-height:1.4; margin-top:10px; text-align:center; }
 
 /* Contact */
 .ed-contact-band { background:#eae2d4; border-top:1px solid #ddd4c5; }
@@ -4779,17 +4892,34 @@ body[data-project] .fx10-check-icon::after {
 
 /* -- Outcome / secondary action buttons -> editorial teal pills -- */
 body[data-project] .project-action {
+  align-items: center;
   background: #146357;
   border: 1px solid #146357;
   border-radius: 999px;
   color: #fffdf8;
+  display: inline-flex;
   font-weight: 600;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 42px;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-shadow: none;
+}
+body[data-project] .fx10-outcome-section .project-action {
+  color: #fffdf8;
 }
 body[data-project] .project-action:hover,
 body[data-project] .project-action:focus-visible {
   background: #0f4f45;
   border-color: #0f4f45;
+  color: #fffdf8;
+  text-decoration: none;
   transform: translateY(-2px);
+}
+body[data-project] .fx10-outcome-section .project-action:hover,
+body[data-project] .fx10-outcome-section .project-action:focus-visible {
+  color: #fffdf8;
 }
 body[data-project] .project-action-secondary {
   background: transparent;
@@ -4850,7 +4980,7 @@ body[data-project] .more-project-return-icon {
   filter: brightness(0) saturate(100%) invert(28%) sepia(38%) saturate(1200%) hue-rotate(120deg) brightness(92%) contrast(88%);
 }
 
-/* Mobile hero flattens to a light background (see @media max-width:620px
+/* Mobile hero flattens to the warm page background (see @media max-width:620px
    above); keep the editorial eyebrow + tags readable/on-theme there. */
 @media (max-width: 620px) {
   body[data-project] .fx10-eyebrow {
