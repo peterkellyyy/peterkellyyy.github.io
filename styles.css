@@ -1952,13 +1952,13 @@ a.contact-panel:focus-visible {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
-  margin: 0 calc(50% - 50vw);
+  margin: 0;
   max-width: none;
   min-height: clamp(540px, 55vw, 740px);
   overflow: hidden;
-  padding: clamp(48px, 7vw, 92px) max(24px, calc((100vw - var(--max)) / 2 + 24px));
+  padding: clamp(48px, 7vw, 92px) max(24px, calc((100% - var(--max)) / 2 + 24px));
   position: relative;
-  width: 100vw;
+  width: 100%;
 }
 
 .fx10-hero-copy {
@@ -2489,6 +2489,30 @@ a.contact-panel:focus-visible {
   margin-top: 22px;
 }
 
+.project-logo-strip {
+  align-items: center;
+  display: grid;
+  gap: clamp(18px, 3vw, 28px);
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 28px;
+  width: 100%;
+}
+
+.project-logo-strip img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.standard-section-bottom-aside {
+  align-items: center;
+  display: grid;
+  gap: clamp(22px, 4vw, 42px);
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+  margin-top: 22px;
+}
+
 .standard-section-aside-figure img {
   height: auto;
 }
@@ -2579,6 +2603,10 @@ body[data-project="harpy"] .standard-section-full-figure img[src*="shockAbsorber
   height: clamp(260px, 31vw, 430px);
   object-fit: contain;
   width: 100%;
+}
+
+.co-parts-testing-section .standard-section-paired-figure img {
+  height: clamp(312px, 37.2vw, 516px);
 }
 
 .standard-section-paired-figure figcaption {
@@ -2716,10 +2744,41 @@ p.asthma-design-copy {
   max-width: 100%;
 }
 
+.fx10-outcome-with-image {
+  align-items: center;
+  display: grid;
+  gap: clamp(24px, 4vw, 52px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+}
+
+.fx10-outcome-figure {
+  margin: 0;
+}
+
+.fx10-outcome-figure img {
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+
+.fx10-outcome-figure figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
 .fx10-highlight-grid {
   display: grid;
   gap: 0;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fx10-printhead-grid {
+  margin: clamp(18px, 3vw, 30px) 0;
 }
 
 .fx10-highlight-card {
@@ -2789,16 +2848,78 @@ p.asthma-design-copy {
 .co-parts-process-section {
   border-top: 1px solid var(--line);
   display: grid;
-  gap: 34px 48px;
-  grid-template-columns: minmax(420px, 1fr) minmax(360px, 0.92fr);
+  gap: 24px;
+  grid-template-columns: 1fr;
 }
 
 .co-parts-process-copy {
   align-self: start;
+  max-width: 100%;
 }
 
-.co-parts-load-case {
-  align-self: start;
+.co-parts-break-pair {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 18px 0 20px;
+}
+
+.co-parts-break img {
+  height: auto;
+  object-fit: contain;
+  width: 100%;
+}
+
+.co-parts-break figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.co-parts-process-video {
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.co-parts-process-video-figure {
+  margin: 0;
+}
+
+.co-parts-process-video-figure figcaption {
+  color: #5b6675;
+  font-size: 0.86rem;
+  font-style: italic;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.co-parts-process-flow {
+  align-items: center;
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+}
+
+.co-parts-flow-copy {
+  max-width: 100%;
+}
+
+.co-parts-flowchart {
+  justify-self: center;
+  margin: 0;
+  max-width: min(100%, 520px);
+}
+
+.co-parts-flowchart img {
+  display: block;
+  height: auto;
+  object-fit: contain;
+  width: 100%;
 }
 
 .co-parts-assembly {
@@ -2817,6 +2938,10 @@ p.asthma-design-copy {
 .co-parts-outcome-copy {
   border-top: 0;
   padding: 0;
+}
+
+.co-parts-outcome-copy p:not(.fx10-section-kicker) + p:not(.fx10-section-kicker) {
+  margin-top: 18px;
 }
 
 .co-parts-load-results {
@@ -3592,7 +3717,7 @@ p.asthma-design-copy {
 .timeline-scroll .tl-milestone-content {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
   margin-left: auto;
   max-width: 315px;
@@ -3769,7 +3894,7 @@ p.asthma-design-copy {
   align-items: flex-start;
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 18px rgba(24, 26, 31, 0.06);
   cursor: pointer;
   gap: 14px;
@@ -3933,7 +4058,7 @@ p.asthma-design-copy {
 
   .timeline-scroll .tl-job-content,
   .timeline-scroll .tl-milestone-content {
-    border-radius: 6px;
+    border-radius: 4px;
     box-shadow: 0 3px 12px rgba(24, 26, 31, 0.08);
   }
 
@@ -4113,6 +4238,10 @@ p.asthma-design-copy {
     grid-template-columns: 1fr;
   }
 
+  .standard-section-bottom-aside {
+    grid-template-columns: 1fr;
+  }
+
   .standard-section-figure-pair {
     grid-template-columns: 1fr;
   }
@@ -4196,6 +4325,18 @@ p.asthma-design-copy {
     border-right: 0;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .co-parts-break-pair {
+    gap: 14px;
+  }
+
+  .co-parts-process-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .fx10-outcome-with-image {
+    grid-template-columns: 1fr;
   }
 
 }
@@ -4308,7 +4449,7 @@ p.asthma-design-copy {
   }
 
   .fx10-hero {
-    background: #ffffff;
+    background: #f2ece1;
     display: grid;
     grid-template-columns: 1fr;
     min-height: 0;
@@ -4541,7 +4682,7 @@ body { background: #f2ece1; color: #1b1917; }
 .ed-about-copy p:last-child { margin-bottom:0; }
 .ed-about-figure { margin:0; }
 .ed-about-figure img { aspect-ratio:4/5; width:100%; object-fit:cover; border-radius:6px; }
-.ed-about-figure figcaption { font-family:"JetBrains Mono",ui-monospace,monospace; font-size:0.66rem; color:#726c61; text-align:center; margin-top:12px; letter-spacing:0.04em; }
+.ed-about-figure figcaption { color:#5b6675; font-size:0.86rem; font-style:italic; line-height:1.4; margin-top:10px; text-align:center; }
 
 /* Contact */
 .ed-contact-band { background:#eae2d4; border-top:1px solid #ddd4c5; }
@@ -4779,17 +4920,34 @@ body[data-project] .fx10-check-icon::after {
 
 /* -- Outcome / secondary action buttons -> editorial teal pills -- */
 body[data-project] .project-action {
+  align-items: center;
   background: #146357;
   border: 1px solid #146357;
   border-radius: 999px;
   color: #fffdf8;
+  display: inline-flex;
   font-weight: 600;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 42px;
+  padding: 10px 20px;
+  text-decoration: none;
+  text-shadow: none;
+}
+body[data-project] .fx10-outcome-section .project-action {
+  color: #fffdf8;
 }
 body[data-project] .project-action:hover,
 body[data-project] .project-action:focus-visible {
   background: #0f4f45;
   border-color: #0f4f45;
+  color: #fffdf8;
+  text-decoration: none;
   transform: translateY(-2px);
+}
+body[data-project] .fx10-outcome-section .project-action:hover,
+body[data-project] .fx10-outcome-section .project-action:focus-visible {
+  color: #fffdf8;
 }
 body[data-project] .project-action-secondary {
   background: transparent;
@@ -4850,7 +5008,7 @@ body[data-project] .more-project-return-icon {
   filter: brightness(0) saturate(100%) invert(28%) sepia(38%) saturate(1200%) hue-rotate(120deg) brightness(92%) contrast(88%);
 }
 
-/* Mobile hero flattens to a light background (see @media max-width:620px
+/* Mobile hero flattens to the warm page background (see @media max-width:620px
    above); keep the editorial eyebrow + tags readable/on-theme there. */
 @media (max-width: 620px) {
   body[data-project] .fx10-eyebrow {
@@ -4918,6 +5076,242 @@ body[data-project="harpy"] .fx10-overview-section {
 body[data-project="harpy"] .fx10-overview-section .fx10-glance {
   margin-inline: auto;
   width: min(80%, 864px);
+}
+
+body[data-project="finefeatures"] .fx10-glance-video {
+  aspect-ratio: 1080 / 1400;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  width: min(100%, 400px);
+}
+
+body[data-project="soaring"] .fx10-gallery-section .fx10-highlight-grid {
+  gap: clamp(18px, 2.5vw, 28px);
+}
+
+body[data-project="soaring"] .fx10-highlight-card {
+  padding: 0;
+}
+
+body[data-project="soaring"] .fx10-highlight-card img {
+  border-radius: 8px;
+  height: clamp(260px, 28vw, 420px);
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+body[data-project="soaring"] .fx10-highlight-card h3 {
+  color: #5b6675;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+/* -- WeGlide flight embed -- */
+.fx10-flight-section .fx10-design-copy {
+  margin-bottom: 24px;
+}
+
+.project-flight-embed {
+  margin: 0;
+}
+
+.project-flight-embed-frame {
+  background: #ffffff;
+  border: 1px solid #ddd4c5;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(24, 26, 31, 0.08);
+  overflow: hidden;
+}
+
+.project-flight-embed-frame iframe {
+  display: block;
+  height: clamp(440px, 62vh, 600px);
+  width: 100%;
+}
+
+/* -- Gallery: click-to-expand trigger with hover zoom hint -- */
+body[data-project] .fx10-gallery-media {
+  background: none;
+  border: 0;
+  border-radius: 8px;
+  cursor: zoom-in;
+  display: block;
+  margin: 0 0 12px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+body[data-project] .fx10-gallery-media img {
+  display: block;
+  margin: 0;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  width: 100%;
+}
+
+body[data-project] .fx10-gallery-media:hover img,
+body[data-project] .fx10-gallery-media:focus-visible img {
+  transform: scale(1.06);
+}
+
+body[data-project] .fx10-gallery-media:focus-visible {
+  outline: 2px solid #146357;
+  outline-offset: 3px;
+}
+
+.fx10-zoom-hint {
+  align-items: center;
+  background: rgba(24, 26, 31, 0.55);
+  border-radius: 999px;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  transform: translateY(-6px) scale(0.9);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  width: 40px;
+}
+
+.fx10-gallery-media::after {
+  background: linear-gradient(to top, rgba(24, 26, 31, 0.22), rgba(24, 26, 31, 0));
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.28s ease;
+}
+
+.fx10-gallery-media:hover::after,
+.fx10-gallery-media:focus-visible::after {
+  opacity: 1;
+}
+
+.fx10-zoom-hint {
+  overflow: hidden;
+}
+
+body[data-project] .fx10-gallery-media .fx10-zoom-hint img {
+  filter: invert(1);
+  height: 20px;
+  object-fit: contain;
+  width: 20px;
+}
+
+.fx10-gallery-media:hover .fx10-zoom-hint,
+.fx10-gallery-media:focus-visible .fx10-zoom-hint {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* -- Lightbox: partial-fullscreen image overlay -- */
+body.fx10-lightbox-open {
+  overflow: hidden;
+}
+
+.fx10-lightbox {
+  align-items: center;
+  background: rgba(20, 18, 16, 0.82);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 0;
+  padding: clamp(20px, 5vw, 64px);
+  position: fixed;
+  visibility: hidden;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+}
+
+.fx10-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.28s ease;
+}
+
+.fx10-lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-width: min(1100px, 92vw);
+  position: relative;
+  transform: scale(0.94) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.fx10-lightbox.is-open .fx10-lightbox-figure {
+  transform: scale(1) translateY(0);
+}
+
+.fx10-lightbox-image {
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto;
+  max-height: 82vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+body[data-project] .fx10-lightbox-caption {
+  color: rgba(255, 253, 248, 0.9);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.fx10-lightbox-close {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 0;
+  border-radius: 999px;
+  color: #fffdf8;
+  cursor: pointer;
+  display: flex;
+  font-size: 26px;
+  height: 42px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  right: -6px;
+  top: -52px;
+  transition: background 0.2s ease;
+  width: 42px;
+}
+
+.fx10-lightbox-close:hover,
+.fx10-lightbox-close:focus-visible {
+  background: rgba(255, 255, 255, 0.28);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-project] .fx10-gallery-media img,
+  .fx10-zoom-hint,
+  .fx10-gallery-media::after,
+  .fx10-lightbox,
+  .fx10-lightbox-figure {
+    transition: none;
+  }
+  .fx10-lightbox-figure {
+    transform: none;
+  }
 }
 
 /* -- Challenges / Impact on a contrasting band (rhythm) -- */

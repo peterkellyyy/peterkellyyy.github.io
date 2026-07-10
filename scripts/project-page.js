@@ -7,12 +7,6 @@ const projectCatalog = {
     heroAlt: "Berkshire Grey robotic manipulation cell",
     heroClass: "portfolio-thumb-cover",
     tags: ["Robotic manipulation", "End effectors", "Hardware R&D", "Automation"],
-    facts: [
-      ["2024-present", "Berkshire Grey"],
-      ["Principal", "Mechanical R&D engineer"],
-      ["Robotics", "Manipulation hardware"],
-      ["R&D", "Concept through validation"]
-    ],
     overview: [
       "At Berkshire Grey, I work on mechanical R&D for robotic manipulation systems and the hardware that supports embodied intelligence in industrial automation.",
       "The role sits at the intersection of mechanism design, end-effector development, robot data infrastructure, evaluation hardware, and production-minded implementation."
@@ -39,55 +33,161 @@ const projectCatalog = {
     media: []
   },
   fx10: {
-    title: "Markforged FX10",
-    eyebrow: "Production Additive Manufacturing",
-    lede: "R&D and product development for the FX10's swappable metal printhead, from initial feasibility work through engineering validation.",
+    title: "FX10 Metal Print Head",
+    eyebrow: "Markforged",
+    lede: "Next-generation metal printhead enabling high-performance 17-4 PH stainless steel and copper printing for the Markforged FX10 platform.",
     hero: "../assets/projects/fx10/FX10-hero.png",
     heroAlt: "Markforged FX10 platform with metal printhead",
-    tags: ["Printhead architecture", "Metal FFF", "Validation", "Manufacturing"],
-    facts: [
-      ["2x", "Metal X print speed"],
-      ["3", "Core R&D questions resolved"],
-      ["EVT", "Reached May 2024"],
-      ["2025", "Began shipping"]
-    ],
-    overview: [
-      "The FX10 was designed as a modular printer capable of processing both continuous-fiber composites and bound-metal filaments. Those material systems impose very different thermal, extrusion, sensing, and service requirements, making a robust swappable printhead central to the product architecture.",
-      "I led the initial R&D for the metal printhead beginning in June 2022, drawing on prior Metal X process-development work and carrying the concept through architecture, prototypes, documentation, subsystem design, and validation."
-    ],
-    overviewMedia: {
-      src: "../assets/projects/fx10/fx10-metal-printhead-square.png",
-      caption: "FX10 metal printhead"
-    },
-    sections: [
-      {
-        kicker: "Feasibility",
-        title: "Answering the questions that shaped the architecture",
-        body: [
-          "The first phase established whether a Peltier-cooled heatsink was required with second-generation metal filaments, the hot-zone length needed to double print speed, and whether a new extruder and calibration procedure could reduce unit-to-unit variation.",
-          "Stock Metal X printheads and modified development assemblies were used to isolate those variables. The results gave the broader engineering team enough confidence to proceed with the first dedicated prototype."
-        ]
-      },
-      {
-        kicker: "Development",
-        title: "From first layout to engineering validation",
-        body: [
-          "I created the initial mechanical architecture, owned the 3D CAD and part drawings, and partnered with electrical engineering on the first internal prototype. During the build I also authored manufacturing work instructions and tracked design issues.",
-          "As the team expanded, I continued leading subsystem design, assembly documentation, and validation deliverables through a second prototype and the EVT program."
-        ]
-      }
-    ],
-    outcome: "The final printhead produces metal parts at roughly twice the speed of the Metal X with improved print quality, lower unit-to-unit variation, automatic material changeover, and richer telemetry for debugging and failure detection.",
-    media: [
-      ["../assets/projects/fx10/02-def065ceee78.png", "FX10 metal printhead with lower shroud and top cover removed"],
-      ["../assets/projects/fx10/03-7b0f59b15173.png", "FX10 metal printhead with the front-plane PCB removed"],
-      ["../assets/projects/fx10/04-0e40ee111a89.png", "Development Metal X printhead used to test new extruder architectures"]
-    ],
+    tags: ["Mechanical Design", "Additive Manufacturing", "Electromechanical"],
     embed: {
       src: "https://www.youtube.com/embed/_lQjlBVkTAo",
       title: "FX10 metal kit shipping announcement"
     },
-    source: "https://peterkellyyy.wixsite.com/peterkelly/fx10"
+    blocks: [
+      {
+        sectionClass: "fx10-overview-section fx10-section",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-overview-copy",
+            kicker: "Overview",
+            paragraphs: [
+              "From the beginning of the program, the FX10 was conceived as a modular additive manufacturing platform capable of printing both composite and metal filaments. Because those material systems place distinct demands on thermal control, extruder requirements, filament routing, and flow behavior, the printhead required a swappable architecture.",
+              {
+                parts: [
+                  "Beginning in June 2022, I leveraged my prior Metal X and ",
+                  { text: "fine-feature process development", href: "finefeatures.html" },
+                  " experience to lead the initial R&D of the FX10 metal printhead and carry the architecture through engineering validation. I owned the printhead architecture from early feasibility through EVT, translating process and material requirements into mechanical design decisions across the heater block, heat sink, extruder, and filament routing system."
+                ]
+              }
+            ]
+          },
+          {
+            kind: "imageFigure",
+            figureClass: "fx10-glance",
+            src: "../assets/projects/fx10/fx10-metal-printhead-square.png",
+            alt: "Markforged FX10 metal printhead",
+            caption: "FX10 metal print head"
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section fx10-launch-video-section",
+        parts: [
+          {
+            kind: "youtube",
+            figureClass: "fx10-overview-video",
+            iframeTitle: "YouTube video player",
+            sized: true,
+            caption: "FX10 metal print head shipping announcement video"
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section fx10-design-section",
+        kicker: "Design",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-design-copy",
+            paragraphs: [
+              "Before starting to lay out the architecture of Markforged's next-gen metal printhead, I focused the initial R&D around thermal control, hot-zone length, extruder consistency, and calibration.",
+              "Using a combination of print testing with stock Metal X print heads, and modified \"Frankenstein\" print heads, I answered all three questions, giving the engineering team the necessary confidence to proceed with the first print head prototype.",
+              "After the R&D phase, I laid out the initial architecture of the print head and collaborated with an electrical engineer to design the first prototype for internal testing, owning the 3D CAD and 2D part drawings. During the build process, I also developed the manufacturing work instructions and documented design issues."
+            ]
+          },
+          {
+            kind: "grid",
+            gridClass: "fx10-highlight-grid fx10-printhead-grid",
+            cards: [
+              ["../assets/projects/fx10/01-b94fac15ce02.png", "FX10 Metal Print Head", "Compact modular architecture with integrated cooling and electronics enclosure."],
+              ["../assets/projects/fx10/02-def065ceee78.png", "Lower Shroud and Top Cover Removed", "Internal architecture revealing PCB, heat sink stack, quick-disconnects, and modular subassemblies for serviceability."],
+              ["../assets/projects/fx10/03-7b0f59b15173.png", "Front Plane PCB Removed", "Drive system, filament path components, and structural framework exposed for design review."]
+            ]
+          },
+          {
+            kind: "copy",
+            copyClass: "fx10-design-copy fx10-generic-design-copy fx10-design-followup",
+            paragraphs: [
+              "As the program matured, I developed and released subsystem designs, part drawings, manufacturing fixtures, and work instructions to support builds and validation. I worked closely with electrical, software, materials, manufacturing, and print test teams to integrate the metal printhead into the FX10 platform, debug system-level issues, and advance the design from exploratory R&D into an production ready architecture.",
+              "As the metal print head team grew and the design later went through a second prototype before proceeding to the EVT design and test phase, I continued to lead the design of various subsystems, create 2D part and assembly drawings, and own validation testing deliverables."
+            ]
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section fx10-process-video-section",
+        parts: [
+          {
+            kind: "video",
+            videoClass: "fx10-process-video",
+            src: "../assets/projects/fx10/FX10-metal-process.webm",
+            ariaLabel: "FX10 metal printing process video"
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-split fx10-section",
+        parts: [
+          {
+            kind: "splitPanel",
+            panelClass: "fx10-list-panel",
+            kicker: "Key Challenges",
+            itemClass: "fx10-list-item",
+            iconClass: "fx10-list-icon",
+            items: [
+              { title: "Material Differences", copy: "Balanced thermal, mechanical, and flow requirements across composite and metal printing." },
+              { title: "Swappable Architecture", copy: "Developed a repeatable docking and electrical interface to enable quick head swaps." },
+              { title: "Thermal Management", copy: "Engineered heat dissipation for consistent performance with high-temperature metals." },
+              { title: "Serviceability", copy: "Designed modular subassemblies for rapid maintenance and replacement." }
+            ]
+          },
+          {
+            kind: "splitPanel",
+            panelClass: "fx10-list-panel",
+            kicker: "Impact",
+            itemClass: "fx10-impact-item",
+            iconClass: "fx10-check-icon",
+            items: [
+              { copy: "Enabled metal printing on the FX10 platform with 17-4 PH stainless steel and copper." },
+              { copy: "Delivered next-generation printhead hardware to EVT in May 2024." },
+              { copy: "Laid groundwork for future material expansion and performance improvements." },
+              { copy: "Strengthened Markforged's industrial metal additive manufacturing platform." }
+            ]
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-image-banner",
+        parts: [
+          {
+            kind: "image",
+            src: "../assets/projects/fx10/FX10-Printhead-Changeover-Closeup.jpg",
+            alt: "FX10 printhead changeover closeup"
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section fx10-outcome-section fx10-outcome-with-image",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-outcome-copy",
+            kicker: "Outcome",
+            paragraphs: [
+              "This work helped establish the FX10 as a true multi-material platform rather than a single-material printer, enabling the same machine architecture to support both continuous-fiber composite printing and metal filament printing through a robust, serviceable, and swappable printhead system."
+            ]
+          },
+          {
+            kind: "imageFigure",
+            figureClass: "fx10-outcome-figure",
+            src: "../assets/projects/fx10/fx10-dark.jpg",
+            alt: "FX10 3D printer",
+            caption: "FX10 3D printer"
+          }
+        ]
+      }
+    ]
   },
   px100: {
     title: "Markforged PX100",
@@ -96,12 +196,6 @@ const projectCatalog = {
     hero: "../assets/projects/px100/01-864df172f280.jpg",
     heroAlt: "Markforged PX100 metal binder jet printer",
     tags: ["Lab buildout", "Binder jetting", "System validation", "Operations"],
-    facts: [
-      ["3 weeks", "Technical training in Sweden"],
-      ["2", "Customer systems shipped in Q2 2024"],
-      ["1st", "PX100 installation outside Sweden"],
-      ["US", "R&D and validation hub"]
-    ],
     overview: [
       "The PX100 is a metal binder jet printer developed by Markforged Sweden, formerly Digital Metal. I was responsible for developing binder-jet expertise in the United States and building and managing a dedicated PX100 laboratory at Markforged's Waltham headquarters."
     ],
@@ -137,46 +231,144 @@ const projectCatalog = {
     hero: "../assets/projects/co-parts/01-e66ed0c40c37.jpg",
     heroAlt: "Continuous-fiber reinforced co-part assembly",
     tags: ["Composite FFF", "Design methodology", "Mechanical testing", "Published research"],
-    facts: [
-      ["20x", "Potential fiber-to-nylon strength ratio"],
-      ["87%+", "Best comparison load retained"],
-      ["80k", "Technical video views"],
-      ["2023", "Journal publication"]
-    ],
-    overview: [
-      "Markforged printers combine reinforced base materials with continuous fibers like carbon fiber, enabling up to a 20x strength increase in the print plane. The limitation is that fiber strength is mostly constrained to the XY plane, while Z-direction strength remains governed by weaker FFF layer bonding.",
-      "To help solve this issue, I developed a “co-part” process to overcome print-orientation tradeoffs. By splitting difficult geometries into separately optimized co-parts, each feature could be printed in its strongest orientation with improved fiber alignment, then assembled into a higher-performance final part. This process also works with standard non-continously reinforced parts, but much more significant gains can be maid with continous reinforcement."
-    ],
-    sections: [
-      {
-        kicker: "Process",
-        body: [
-          "A tent-pole mounting plate provided a clear test case: four bolts secure the plate while a central pin applies load in a direction that cannot be optimally reinforced with one continuous-fiber print orientation.",
-          "The geometry was separated into two co-parts using Boolean subtraction. Both were printed with continuous carbon fiber aligned to their primary loads and assembled with an arbor press."
-        ]
-      },
-      {
-        kicker: "Communication",
-        body: [
-          "The work became a peer-reviewed Rapid Prototyping Journal paper, a Markforged technical article, and an educational video for which I wrote the script and presented the process.",
-          "The video reached more than 80,000 views and became the company's strongest organic driver of YouTube views and subscribers at the time."
-        ]
-      }
-    ],
-    outcome: "The reinforced co-part retained more than 87% of the maximum load of the next-best monolithic continuous-fiber design while enabling reinforcement in otherwise incompatible planes.",
-    media: [
-      ["../assets/projects/co-parts/02-c472f6eb6285.png", "Mounting-plate load case with fixed bolts and central applied force"],
-      ["../assets/projects/co-parts/03-d21249ca0d41.png", "Monolithic part, assembled co-part, and assembly strategy"],
-      ["../assets/projects/co-parts/04-572035ac8eb8.png", "Load-extension results and failure modes"]
-    ],
     embed: {
       src: "https://www.youtube.com/embed/VljE9VG1s-s",
       title: "How to improve Z strength with multi-part prints"
     },
-    links: [
-      ["Read the journal paper", "https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf"]
-    ],
-    source: "https://peterkellyyy.wixsite.com/peterkelly/co-parts"
+    blocks: [
+      {
+        sectionClass: "fx10-overview-section fx10-section co-parts-overview-section",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-overview-copy",
+            kicker: "Overview",
+            paragraphs: [
+              "Markforged printers combine a chopped-carbon-fiber nylon base material with inlaid continuous carbon fiber, raising in-plane yield strength from roughly 40 MPa to up to 800 MPa, nearly a 20x improvement. The limitation is that fiber can only be routed in the XY print plane, so Z-direction strength remains governed by the weaker bonding between FFF layers. When a part has features whose ideal print orientations conflict, a single build orientation unavoidably compromises the final part.",
+              "To overcome this, I developed a co-part methodology, published in the Rapid Prototyping Journal with two Markforged colleagues. Conflicting features are functionally separated into co-parts by Boolean subtraction, printed simultaneously in their ideal orientations with continuous fiber aligned to each primary load, and then assembled into a composite part. The strategy runs on standard three-axis FFF printers with no hardware modifications, and fiber-reinforced co-part assemblies held up to 6.4x the ultimate load of equivalent plastic-only parts."
+            ]
+          },
+          {
+            kind: "imageFigure",
+            figureClass: "co-parts-figure co-parts-overview-image",
+            src: "../assets/projects/co-parts/co-part assembly.png",
+            alt: "Monolithic mounting plate, assembled co-part, and co-part assembly strategy",
+            caption: "(a) Monolithic plastic mounting plate part (b) assembled co-part (c) assembly strategy"
+          },
+          {
+            kind: "youtube",
+            figureClass: "fx10-overview-video co-parts-overview-video",
+            caption: "The educational video I wrote and presented on the co-part process, which reached over 80,000 views"
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section co-parts-process-section",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-design-copy fx10-generic-design-copy co-parts-process-copy",
+            kicker: "Process",
+            paragraphs: [
+              "Candidate parts are those with competing feature optimizations: perpendicular cylindrical features, thin protrusions that do not lie in a common plane, high-aspect-ratio features, or loads applied across printed layers. A tent-pole mounting plate provided a clear test case. Four bolts secure the plate to the ground while the central boss is loaded perpendicular to the mounting surface, a direction that cannot be optimally reinforced with one continuous-fiber print orientation.",
+              {
+                figureGroup: {
+                  groupClass: "co-parts-break-pair",
+                  figures: [
+                    { figureClass: "co-parts-figure co-parts-break", src: "../assets/projects/co-parts/break1.png", alt: "Printed mounting plate co-parts before assembly", caption: "The mounting plate separated into two co-parts" },
+                    { figureClass: "co-parts-figure co-parts-break", src: "../assets/projects/co-parts/break2.png", alt: "Mounting plate co-part interface detail", caption: "The co-part interface, where load pulls one part against the other" }
+                  ]
+                }
+              },
+              "The geometry was separated into two co-parts using Boolean subtraction, and each was printed in its strongest orientation with continuous carbon fiber aligned to its primary load. Load transfer between the co-parts drove the interface design: the parts are arranged so that applied load attempts to pull one co-part through the other, seating a flared base against a fiber-reinforced pocket. Printed with zero gap allowance, the co-parts were press-fit together with an arbor press. Adhesives or dovetail-style joinery can be used instead when loads act in multiple directions."
+            ]
+          },
+          {
+            kind: "contentPair",
+            pairClass: "co-parts-process-flow",
+            parts: [
+              {
+                kind: "copy",
+                copyClass: "fx10-design-copy fx10-generic-design-copy co-parts-flow-copy",
+                paragraphs: [
+                  "The decomposition follows a repeatable workflow. First, select the build orientation that places the largest critical features in the XY plane, where printed strength is highest and continuous fiber can be routed. Next, identify critical features left with poor local orientation, such as loading across layer lines, and separate them into co-parts in CAD, detailing only the mating interface before the Boolean operation.",
+                  "Each co-part is then individually oriented in the slicer and reinforced with continuous fiber along its principal load path. Finally, the collection of co-parts is printed in a single build and assembled by press fitting. Because only the interface geometry changes, the process can be iterated quickly. Small unit-test prints of just the interface are an efficient way to tune the fit for a particular printer and material."
+                ]
+              },
+              {
+                kind: "imageFigure",
+                figureClass: "co-parts-figure co-parts-flowchart",
+                src: "../assets/projects/co-parts/co-part-flowchart.png",
+                alt: "Flowchart of the co-part decomposition process",
+                caption: "Co-part decomposition flowchart"
+              }
+            ]
+          },
+          {
+            kind: "video",
+            figureClass: "co-parts-process-video-figure",
+            videoClass: "co-parts-process-video",
+            src: "../assets/projects/co-parts/example part.webm",
+            ariaLabel: "Co-part example assembly animation",
+            caption: "Separating a mounting plate into co-parts using Solidworks"
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section fx10-design-section co-parts-testing-section",
+        kicker: "Testing",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-design-copy fx10-generic-design-copy",
+            paragraphs: [
+              "Each demonstration part was printed in up to four strategies: a monolithic plastic control, plastic-only co-parts, single-plane continuous fiber reinforcement, and fiber-reinforced co-parts. Three samples were tested per cohort, dried for 48 hours under vacuum before testing to control for environmental variability.",
+              "All samples were loaded to failure on an Instron 3369 with a 50 kN load cell, using custom fixtures designed so the applied forces mimicked each part's real-world use case. Beyond the two full parts, three unit tests isolated common weak features that are often forced into poor print orientations by the rest of a part: a snap-fit clip, a cylindrical post, and a loop."
+            ]
+          },
+          {
+            kind: "figurePair",
+            figures: [
+              {
+                src: "../assets/projects/co-parts/copart-instron1.jpg",
+                alt: "Pole clip co-part assembly under tensile load in the Instron fixture",
+                caption: "Pole clip co-part assembly under tensile load in the Instron fixture"
+              },
+              {
+                src: "../assets/projects/co-parts/copart-instron2.jpg",
+                alt: "Mounting plate co-part fixtured for boss pull-through testing",
+                caption: "Mounting plate co-part fixtured for boss pull-through testing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        sectionClass: "fx10-section co-parts-outcome-section",
+        parts: [
+          {
+            kind: "copy",
+            copyClass: "fx10-outcome-section co-parts-outcome-copy",
+            kicker: "Outcome",
+            paragraphs: [
+              "Co-part assembly proved to be a practical way to sidestep FFF anisotropy without new printer hardware. Fiber-reinforced co-parts held up to 6.4x the ultimate load of equivalent plastic-only parts and enabled reinforcement in otherwise incompatible planes.",
+              "The work was published open-access in the Rapid Prototyping Journal. The same decomposition strategy can extend beyond strength to stiffness, accuracy, surface finish, and conductivity."
+            ],
+            actions: [
+              ["Read the journal paper", "https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf"],
+              ["Read the blog post", "https://markforged.com/resources/blog/using-co-part-assemblies-and-continuous-fibers-to-print-stronger-parts"]
+            ]
+          },
+          {
+            kind: "imageFigure",
+            figureClass: "co-parts-figure co-parts-load-results",
+            src: "../assets/projects/co-parts/co-part load.png",
+            alt: "Co-part load testing results and failed samples",
+            caption: "Load testing results and failed mounting plate samples"
+          }
+        ]
+      }
+    ]
   },
   harpy: {
     title: "Legged Robotics Research",
@@ -185,12 +377,6 @@ const projectCatalog = {
     hero: "../assets/projects/harpy/harpy leg.png",
     heroAlt: "Harpy leg actuator assembly",
     tags: ["Mechanical design", "Composite fabrication", "Actuation", "Simulation", "Testing"],
-    facts: [
-      ["8", "Brushless actuators"],
-      ["53 N", "Thrust per EDF"],
-      ["270 g", "Leg joint actuator"],
-      ["30:1", "Harmonic drives"]
-    ],
     overview: [
       "Harpy was my master's thesis project at Northeastern's SiliconSynapse Lab: a bipedal robot with six leg actuators, two vectoring thruster actuators, and two electric ducted fans. Inspired by the Jackson's Widowbird, which uses its wings and legs together to jump many times its body length, the platform was designed to support research in thruster-assisted legged locomotion, where thrust can help stabilize balance, soften impacts, and increase jump performance.",
       "My work covered the electromechanical architecture of the robot: actuator selection and packaging, composite 3D printed housings, carbon-fiber leg structures, embedded fabrication methods, thruster integration, electrical layout, simulation, and physical leg testing.",
@@ -237,27 +423,27 @@ const projectCatalog = {
           src: "../assets/projects/harpy/embedThruster.png",
           alt: "Embedded fabrication process for Harpy thruster actuator housing",
           caption: "Embedded composite-printing process used for high-load actuator housings"
+        },
+        bottomAsideBody: [
+          "I also designed support electronics, including a motor-drive interface PCB that provides EtherCAT, safe-torque-off, USB, and encoder connections for each motor drive, and packaged the drives, ESCs, heatsinks, and wiring so the system could be assembled, tested, and serviced."
+        ],
+        bottomAsideFigure: {
+          src: "../assets/projects/harpy/ampPCB.png",
+          alt: "Harpy amplifier PCB",
+          caption: "Amplifier PCB used in the Harpy electronics stack"
         }
       },
       {
-        kicker: "Thrusters and Electronics",
+        kicker: "Thrusters",
         body: [
           "Hitting a thrust-to-weight ratio above one required 68 N of total thrust. Propellers would have needed 25+ cm blade diameters — unsafe and impractical on a walking robot — and gas turbines were too heavy, hot, and slow to respond. I selected carbon-fiber Schuebeler EDFs instead, each producing 53 N from a housed 80 mm duct that keeps blades protected during ground operation.",
-          "For thrust vectoring, I chose gimballed thrusters over control flaps for their efficiency and far larger range of motion, and designed the actuator that steers each EDF by adapting the leg joint architecture with a smaller motor and harmonic drive. Two output bearings support the EDF coupling so the transmission sees pure torque despite sustained bending loads from the thrusters.",
-          "I also designed support electronics, including a motor-drive interface PCB that provides EtherCAT, safe-torque-off, USB, and encoder connections for each motor drive, and packaged the drives, ESCs, heatsinks, and wiring so the system could be assembled, tested, and serviced."
+          "For thrust vectoring, I chose gimballed thrusters over control flaps for their efficiency and far larger range of motion, and designed the actuator that steers each EDF by adapting the leg joint architecture with a smaller motor and harmonic drive. Two output bearings support the EDF coupling so the transmission sees pure torque despite sustained bending loads from the thrusters."
         ],
-        figures: [
-          {
-            src: "../assets/projects/harpy/edfActuator.jpg",
-            alt: "Harpy electric ducted fan thruster actuator assembly",
-            caption: "Vectoring electric ducted fan actuator assembly"
-          },
-          {
-            src: "../assets/projects/harpy/ampPCB.png",
-            alt: "Harpy amplifier PCB",
-            caption: "Amplifier PCB used in the Harpy electronics stack"
-          }
-        ]
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/upperBody.png",
+          alt: "Harpy upper body with electric ducted fan thrusters",
+          caption: "Harpy upper body with electric ducted fan thrusters"
+        }
       },
       {
         kicker: "Simulation",
@@ -339,7 +525,7 @@ const projectCatalog = {
       {
         src: "../assets/projects/harpy/harpyjump.gif",
         alt: "Harpy jump simulation animation",
-        caption: "Harpy jump animation"
+        caption: "Full Harpy robot being tested at Caltech"
       }
     ],
     hideSourceAction: true,
@@ -348,56 +534,98 @@ const projectCatalog = {
   finefeatures: {
     title: "Metal X Fine Features",
     eyebrow: "Metal Process Development",
-    lede: "Production print settings for finer detail, improved accuracy, smoother surfaces, and stronger metal parts.",
+    lede: "I led the development and qualification of production print profiles for finer, stronger, and more accurate copper and 17-4PH stainless steel parts.",
     hero: "../assets/projects/finefeatures/finefeatures-bg.png",
-    heroAlt: "Fine Features metal additive manufacturing background",
-    tags: ["Print process R&D", "Copper", "17-4PH stainless", "Qualification"],
-    facts: [
-      ["2", "Qualified material profiles"],
-      ["2023", "Copper and stainless launches"],
-      ["Multi-system", "Printer-to-furnace validation"],
-      ["Production", "Customer slicer settings"]
-    ],
+    heroAlt: "Fine-featured copper and stainless steel parts produced on the Markforged Metal X",
+    tags: ["Process R&D", "Metal FFF", "Copper", "17-4PH stainless", "Qualification"],
     overview: [
-      "Fine Features is a set of Metal X slicer settings released for copper and 17-4PH stainless steel. I led development and qualification of the profiles to improve surface finish, dimensional accuracy, minimum feature size, and interlaminar strength relative to the standard process."
+      "Fine Features is a pair of production-ready Metal X print profiles released through Eiger with no hardware changes. I led process development and qualification for pure copper and 17-4PH v2 stainless steel, taking the work from exploratory toolpaths through cross-system validation and customer release.",
+      "The profiles improved surface finish, dimensional accuracy, minimum feature size, and interlaminar strength relative to the standard process. The work connected hands-on printing, materials behavior, machine code, and software implementation across the complete print, debind, and sinter workflow."
     ],
     overviewMedia: {
       type: "video",
       src: "../assets/projects/finefeatures/finefeatures-demo.webm",
-      caption: "Fine Features process demonstration"
+      caption: "Fine Features process demonstration",
+      aspectRatio: "1080 / 1400",
+      background: "transparent",
+      fit: "contain"
     },
     sections: [
       {
-        kicker: "Exploration",
+        kicker: "Process Development",
         title: "Finding detail without sacrificing reliability",
         body: [
-          "The project began with smaller nozzle orifices, but particle-size variation created an unacceptable risk of flow restriction and clogging. In parallel, I varied nozzle temperature, print speed, cooling, extrusion width, and other process parameters.",
-          "Testing revealed that a carefully tuned profile using the production nozzle delivered much of the detail improvement without the lifetime penalty of a smaller orifice."
-        ]
+          "The intuitive first move was a smaller nozzle. I evaluated reduced orifices alongside nozzle temperature, print speed, cooling, extrusion width, and geometry-dependent offsets. Smaller nozzles sharpened detail, but particle-size variation introduced an unacceptable risk of restricted flow and clogging.",
+          "Testing showed that a carefully tuned profile using the production nozzle captured much of the detail improvement without the lifetime and reliability penalty of a smaller orifice. Purpose-built coupons and demanding parts exposed minimum holes, pins, walls, gaps, overhangs, and articulated geometry."
+        ],
+        asideFigure: {
+          src: "../assets/projects/finefeatures/05-327a1f4d9f29.png",
+          alt: "Copper feature test coupon held in tweezers",
+          caption: "Test coupon for holes, pins, slots, walls, and overhangs"
+        },
+        fullWidthFigure: {
+          src: "../assets/projects/finefeatures/02-d477f3d24f5e.png",
+          alt: "Metal X print head depositing an intricate articulated copper dragon",
+          caption: "Prototype profile printing an articulated copper dragon"
+        }
       },
       {
         kicker: "Qualification",
-        title: "Validating the entire powder-to-part chain",
+        title: "Validating the complete powder-to-part process",
         body: [
-          "Successful green parts still had to survive solvent debinding, sintering, and predictable shrinkage while maintaining target mechanical properties. Qualification therefore spanned multiple printers, material lots, debinders, and furnaces.",
-          "For several print issues I generated machine code directly to test prototype toolpaths, then worked with software engineering to turn those findings into customer-facing slicer parameters."
+          "A successful green part was only the beginning. The released profile had to survive solvent debinding, sintering, and predictable shrinkage while maintaining dimensional and mechanical targets. Qualification therefore spanned multiple printers, material lots, debinders, and furnaces.",
+          "For issues the production slicer could not yet express, I generated machine code directly to test prototype toolpaths. I then worked with software engineering to translate those findings into customer-facing Eiger parameters and repeatable qualification builds."
+        ],
+        asideFigure: {
+          src: "../assets/projects/finefeatures/03-7ed736fc7ae5.jpg",
+          alt: "Sintered articulated pure copper dragon held in a hand",
+          caption: "Detail retained after debinding and sintering"
+        },
+        fullWidthFigure: {
+          src: "../assets/projects/finefeatures/01-a4f12fd4b466.jpg",
+          alt: "Collection of small fine-featured 17-4PH stainless steel components beside a metric ruler",
+          caption: "Qualified 17-4PH geometry at useful production scale"
+        }
+      },
+      {
+        kicker: "Customer Release",
+        title: "One installed platform, two new material capabilities",
+        body: [
+          "Fine Features for pure copper launched in March 2023. In exchange for roughly 30% longer print time, it delivered smoother surfaces, improved dimensional accuracy, smaller feature sizes, and stronger layer-to-layer bonding without a special nozzle.",
+          "The 17-4PH v2 profile followed in July 2023. Its 0.085 mm post-sinter layer height improved fine parts that previously printed with defects and enabled small solid-infill geometry that had not been printable on the system."
+        ],
+        figures: [
+          {
+            src: "../assets/projects/finefeatures/06-5fca1d71ca0f.jpg",
+            alt: "Fine-featured pure copper radial heat sink",
+            caption: "Pure copper: thin radial fins and narrow channels"
+          },
+          {
+            src: "../assets/projects/finefeatures/10-78d55f234f78.jpg",
+            alt: "Small fine-featured 17-4PH stainless steel bracket beside a ruler",
+            caption: "17-4PH v2: compact bracket with thin ribs and small holes"
+          }
         ]
       }
     ],
-    outcome: "Fine Features launched for copper in March 2023 and for 17-4PH v2 stainless steel in July 2023, expanding customer applications and supporting new system sales.",
-    media: [
-      ["../assets/projects/finefeatures/02-d477f3d24f5e.png", "Flexible copper dragon printing with Fine Features settings"],
-      ["../assets/projects/finefeatures/03-7ed736fc7ae5.jpg", "Sintered copper articulated print"],
-      ["../assets/projects/finefeatures/04-665a4d8e0c6c.png", "Fine Features sample component"],
-      ["../assets/projects/finefeatures/05-327a1f4d9f29.png", "Fine-detail metal sample"],
-      ["../assets/projects/finefeatures/06-5fca1d71ca0f.jpg", "Production-quality Metal X sample"],
-      ["../assets/projects/finefeatures/07-ad8564cf98f7.jpg", "Metal X Fine Features application"],
-      ["../assets/projects/finefeatures/08-53c31dd3d713.jpg", "Fine-feature stainless component"],
-      ["../assets/projects/finefeatures/09-7f1b24bb1932.jpg", "Detailed sintered metal print"],
-      ["../assets/projects/finefeatures/10-78d55f234f78.jpg", "Fine-detail production sample"],
-      ["../assets/projects/finefeatures/11-09243e101f22.jpg", "Fine Features marketing sample"]
+    outcome: "Fine Features expanded what customers could make on Metal X hardware they already owned. The project moved from experimental process development to two released alloy profiles, demonstrating end-to-end ownership across print testing, failure analysis, qualification, and collaboration with materials, software, and product teams.",
+    outcomeFigures: [
+      {
+        src: "../assets/projects/finefeatures/08-53c31dd3d713.jpg",
+        alt: "Collection of intricate pure copper Fine Features parts",
+        caption: "Fine Features copper application set"
+      },
+      {
+        src: "../assets/projects/finefeatures/09-7f1b24bb1932.jpg",
+        alt: "Miniature stainless assembly beside a ruler",
+        caption: "Small articulated stainless assembly"
+      }
     ],
-    source: "https://peterkellyyy.wixsite.com/peterkelly/finefeatures"
+    links: [
+      ["Read the copper launch", "https://markforged.com/resources/blog/introducing-fine-features-for-pure-copper-on-the-metal-x"],
+      ["Read the 17-4PH launch", "https://markforged.com/resources/blog/introducing-fine-features-turbo-mode-for-17-4ph-stainless-steel"]
+    ],
+    hideSourceAction: true
   },
   aerobat: {
     title: "Flapping Wing Robotics Research",
@@ -406,12 +634,6 @@ const projectCatalog = {
     hero: "../assets/projects/aerobat/01-b89eff569b16.png",
     heroAlt: "Aerobat biomimetic flapping robot",
     tags: ["Mechanism design", "Parametric CAD", "PolyJet", "Biomimetics"],
-    facts: [
-      ["2D + 3D", "Wing mechanism concepts"],
-      ["Multi-material", "Rigid and flexible PolyJet parts"],
-      ["RA-L", "Published design work"],
-      ["Grasshopper", "Parametric linkage tuning"]
-    ],
     overview: [
       "Aerobat explores flapping flight as a safer alternative to rigid propellers in environments shared with people. My early work centered on the robot's mechanism design and central structure.",
       "The primary wing concept extends during the downstroke and retracts during the upstroke to produce net positive lift while using flexible, bio-inspired joints."
@@ -454,12 +676,6 @@ const projectCatalog = {
     hero: "../assets/projects/3dtrails/01-d52419b917b1.jpg",
     heroAlt: "Three-dimensional printed topographic trail map",
     tags: ["Blender", "GIS data", "Multicolor FDM", "Product design"],
-    facts: [
-      ["$15k+", "First-year revenue"],
-      ["6 ft", "Largest custom maps"],
-      ["~1 m", "High-resolution terrain data"],
-      ["2 stores", "Shopify and Etsy"]
-    ],
     overview: [
       "3DTrails began at the intersection of hiking, mapmaking, and 3D printing. The project turns recognizable long-distance trails and custom landscapes into physical topographic maps with contrasting route geometry."
     ],
@@ -495,32 +711,76 @@ const projectCatalog = {
   soaring: {
     title: "Soaring",
     eyebrow: "Hobby",
-    lede: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
-    hero: "../assets/projects/soaring/asw19.jpg",
-    heroAlt: "ASW-19B glider in flight",
+    lede: "Sailplane flying, thermal and ridge soaring, cross-country decision-making, club operations, and a lifelong love of flight.",
+    hero: "../assets/projects/soaring/PXL_20260628_160316457.jpg",
+    heroAlt: "View from a sailplane cockpit under summer cumulus clouds",
     heroClass: "portfolio-thumb-cover soaring-hero-media",
-    tags: ["Sailplanes", "Aviation", "Mentorship", "Cross-country flying"],
+    tags: ["150+ glider flights", "80 flight hours", "Thermal soaring", "Ridge soaring", "Cross-country flying"],
     overview: [
-      "Soaring has been a long-running personal pursuit since 2013. Flying sailplanes combines weather reading, energy management, decision-making, and a particular kind of hands-on mechanical intuition that has shaped how I think about engineering and risk."
+      "Soaring has been a long-running personal pursuit since 2013. I have flown more than 150 glider flights and spent over 80 hours in the air, including thermal and ridge soaring, flights longer than five hours, and climbs above 10,000 feet.",
+      "Flying sailplanes means finding lift without an engine: reading clouds, terrain, wind, and sink while constantly managing energy and options. That mix of patience, judgment, and tactile machine sense has shaped how I think about engineering, risk, and learning difficult things."
     ],
+    logoStrip: [
+      {
+        src: "../assets/projects/soaring/aca-logo.png",
+        alt: "Aero Club Albatross logo"
+      },
+      {
+        src: "../assets/projects/soaring/gbsc-logo.png",
+        alt: "Greater Boston Soaring Club logo"
+      }
+    ],
+    overviewMedia: {
+      src: "../assets/projects/soaring/PXL_20230903_141346021.MP.jpg",
+      caption: "ASW-19 in Franconia before a White Mountains ridge flight"
+    },
     sections: [
       {
         kicker: "Flight",
-        title: "Finding lift without an engine",
+        title: "Reading weather as usable energy",
         body: [
-          "Sailplane flying is built around reading the sky, understanding terrain and wind, and making careful decisions with limited energy. It rewards preparation, patience, and constant attention to what the aircraft and atmosphere are telling you."
-        ]
+          "A sailplane flight is a live optimization problem. Every decision depends on altitude, wind, terrain, landing options, cloud shape, sun angle, and what the aircraft is quietly telling you through sound and pressure.",
+          "That is what keeps the sport fascinating to me: the aircraft is simple and honest, but the atmosphere is never the same twice. Good flights come from preparation, restraint, and the ability to keep making calm decisions as conditions change."
+        ],
+        asideFigure: {
+          src: "../assets/projects/soaring/asw19.jpg",
+          alt: "ASW-19B glider in flight",
+          caption: "ASW-19B glider in flight"
+        }
       },
       {
-        kicker: "Community",
-        title: "Sharing aviation with curious people",
+        kicker: "Greater Boston Soaring Club",
+        title: "Flying, maintaining, and operating gliders",
         body: [
-          "One of my favorite parts of soaring is sharing flight and aviation with people who are brave enough to climb into an airplane without an engine. It is a rare mix of adventure, technical curiosity, and trust."
-        ]
+          "After moving to Boston, I began flying with the Greater Boston Soaring Club in Sterling, Massachusetts. I had my first solo ridge-soaring flight along Kinsman Ridge in the White Mountains during a glider encampment, and in July 2024 completed my silver-distance flight: a 50 km out-and-return cross-country task.",
+          "Outside the cockpit, I help the club with glider maintenance, refurbishment, assembly and disassembly, and flight-line operations. My long-term goal is to become a flight instructor so I can keep passing this strange, beautiful, very technical art to new pilots."
+        ],
+        fullWidthFigure: {
+          src: "../assets/projects/soaring/PXL_20230903_161103435.MP.jpg",
+          alt: "View from a glider cockpit ridge soaring in the White Mountains",
+          caption: "Solo ridge soaring along Kinsman Ridge in the White Mountains"
+        }
       }
     ],
     outcome: "Soaring remains one of the clearest through-lines in my life outside engineering: a way to stay close to flight, weather, craft, and people who love learning difficult things.",
-    media: []
+    flightEmbed: {
+      src: "https://www.weglide.org/embedded/flight/448659?baro=true&bbox=",
+      title: "Silver-distance flight on WeGlide",
+      body: [
+        "In July 2024 I completed my “silver distance” flight, which is a minimum 50 km out and return cross country flight. After 11 years of flying, I was a bit of a late bloomer to cross country flight, but now that I have the confidence to go out of range of my home airport, soaring has become much more rewarding and exciting."
+      ]
+    },
+    galleryLabel: "Gallery",
+    media: [
+      ["../assets/projects/soaring/PXL_20241005_181141339.MP.jpg", "Aerotow over New England on a clear thermal day"],
+      ["../assets/projects/soaring/PXL_20251005_202241658.jpg", "Cross-country view from the cockpit during an autumn soaring flight"],
+      ["../assets/projects/soaring/PXL_20260628_160316457.jpg", "Cloud streets and cumulus markers from the glider cockpit"],
+      ["../assets/projects/soaring/d09169_68014352c67e49b7839e4f75c047979c~mv2.avif", "After landing an SGS 1-34 in Franconia"],
+      ["../assets/projects/soaring/d09169_d4e0201c132c4cf587bc35ed216297de~mv2.avif", "Greater Boston Soaring Club runway"]
+    ],
+    links: [],
+    hideSourceAction: true,
+    source: "https://peterkellyyy.wixsite.com/peterkelly/soaring"
   },
   "rotary-rf-pcb-manufacturing": {
     title: "Rotary RF PCB Manufacturing System",
@@ -529,12 +789,6 @@ const projectCatalog = {
     hero: "../assets/projects/rotary-rf-pcb-manufacturing/rotarypcb.png",
     heroAlt: "Rotary RF PCB coating system CAD rendering",
     tags: ["Machine design", "Thermal control", "Sheet metal", "System integration"],
-    facts: [
-      ["4.3x", "Previous coating area"],
-      ["<50%", "Cost of prior systems"],
-      ["3 months", "Design through build"],
-      ["200 RPM", "Maximum plate speed"]
-    ],
     overview: [
       "At Winchester Technologies, I led the design and fabrication of RF PCB material manufacturing systems used to spray aqueous solutions onto heated, rotating substrates.",
       "The implemented machine increased usable substrate diameter from 12 to 25 inches while making the process easier to operate, service, and reproduce."
@@ -572,12 +826,6 @@ const projectCatalog = {
     hero: "../assets/jobs/MORSE Corp/Parafoils.png",
     heroAlt: "Parafoils in flight during MORSE Corp engineering work",
     tags: ["Mechanical design", "Rapid prototyping", "Integration", "Test support"],
-    facts: [
-      ["Jan-Jul", "2019 co-op term"],
-      ["MORSE", "Advanced engineering programs"],
-      ["CAD", "Design and documentation support"],
-      ["Build/Test", "Prototype hardware support"]
-    ],
     overview: [
       "At MORSE Corp, I supported mechanical engineering work for advanced engineering programs that needed practical design execution, rapid prototyping, and hardware iteration.",
       "The role emphasized moving quickly from design intent to physical prototypes while keeping fabrication, integration, and test needs visible throughout the process."
@@ -617,12 +865,6 @@ const projectCatalog = {
     hero: "../assets/jobs/iRobot/s9.webp",
     heroAlt: "iRobot robot vacuum",
     tags: ["Robotics R&D", "Mechanism design", "Prototype hardware", "Testing"],
-    facts: [
-      ["Jan-Jul", "2018 co-op term"],
-      ["R&D", "Consumer robotics"],
-      ["Mechanisms", "Prototype design support"],
-      ["Testing", "Hardware evaluation"]
-    ],
     overview: [
       "At iRobot, I worked in an R&D robotics co-op role supporting prototype mechanisms and test hardware for consumer robot development.",
       "The work sat close to the physical behavior of robotic products: how mechanisms package into compact systems, how prototypes survive repeated testing, and how design changes can be evaluated quickly."
@@ -655,12 +897,6 @@ const projectCatalog = {
     hero: "../assets/jobs/Sikorsky/mh60.jpg",
     heroAlt: "Sikorsky MH-60 helicopter",
     tags: ["Aerospace", "Propulsion systems", "Design analysis", "Documentation"],
-    facts: [
-      ["Jan-Aug", "2017 co-op term"],
-      ["Propulsion", "Aerospace systems"],
-      ["Analysis", "Engineering support"],
-      ["Hardware", "Evaluation and documentation"]
-    ],
     overview: [
       "At Sikorsky Aircraft, I supported propulsion-system mechanical engineering through analysis, documentation, and hardware evaluation work.",
       "The role introduced me to the rigor of aerospace engineering environments, where documentation quality, traceability, and careful review are as important as the mechanical design itself."
@@ -697,12 +933,6 @@ const projectCatalog = {
     hero: "../assets/projects/asthma-inhaler-assistive-device/01-6375d08b0e61.png",
     heroAlt: "Asthma inhaler assistive device",
     tags: ["Human-centered design", "Embedded electronics", "3D printing", "Capstone"],
-    facts: [
-      ["Award", "Most Technically Complete"],
-      ["2400 mAh", "Rechargeable battery"],
-      ["1+ week", "Target battery life"],
-      ["3 modules", "Casing, electronics, handle"]
-    ],
     overview: [
       "This capstone project created an assistive device for people with limited dexterity and strength. It positions and actuates a standard asthma inhaler while also tracking remaining doses, sleeping automatically to conserve power, and providing a manual backup for a caregiver.",
       "The system is divided into a sealed upper casing, a removable electronics module, and interchangeable handles that can be adapted to an individual user's needs."
@@ -802,12 +1032,6 @@ const projectCatalog = {
     hero: "../assets/projects/cat-treat-dispenser/treatdispenser.jpg",
     heroAlt: "Cat treat dispenser assembly",
     tags: ["Arduino", "Stepper drive", "Proximity sensing", "Desktop FDM"],
-    facts: [
-      ["120 mm", "Printer bed constraint"],
-      ["4", "Interlocking enclosure sections"],
-      ["OLED", "Timer and status interface"],
-      ["Minutes", "Time required for the cat to learn it"]
-    ],
     overview: [
       "This device is intended to be controlled by a cat (specifically my roommate's cat), which can be trained to put its paw into the chute in exchange for a treat. Most cat food/treats can be loaded into the chute using the hinged lid and be left to the cat to decide when it wants a treat once it figures out how to control the device. A timer to limit how often a treat can be dispensed can be controlled by the human user.",
       {
@@ -868,12 +1092,6 @@ const projectCatalog = {
     hero: "../assets/projects/audio-variometer/01-bf35d4888dbe.png",
     heroAlt: "Portable audio variometer with OLED display",
     tags: ["Arduino", "Barometric sensing", "Audio interface", "Compact packaging"],
-    facts: [
-      ["500 mAh", "Rechargeable LiPo"],
-      ["5 samples", "Rolling pressure average"],
-      ["USB", "Charging"],
-      ["OLED", "Altitude and vertical speed"]
-    ],
     overview: [
       "An audio variometer lets a glider pilot keep their eyes outside the cockpit while listening for changes in climb or sink rate. Commercial retrofits can be expensive, so this project explored a compact standalone alternative with both audible guidance and an OLED display."
     ],
@@ -990,13 +1208,53 @@ const createLink = ([label, href], className = "project-action") => {
   return link;
 };
 
+// Lazily-built singleton lightbox for expanding gallery images to a
+// partial-fullscreen overlay. Closes on backdrop click, the close button, or Escape.
+let lightbox = null;
+const openLightbox = (src, caption) => {
+  if (!lightbox) {
+    lightbox = el("div", "fx10-lightbox");
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    const figure = el("figure", "fx10-lightbox-figure");
+    const img = el("img", "fx10-lightbox-image");
+    const cap = el("figcaption", "fx10-lightbox-caption");
+    const closeBtn = el("button", "fx10-lightbox-close");
+    closeBtn.type = "button";
+    closeBtn.setAttribute("aria-label", "Close image");
+    closeBtn.textContent = "×";
+    figure.append(closeBtn, img, cap);
+    lightbox.append(figure);
+    lightbox._img = img;
+    lightbox._cap = cap;
+    const close = () => {
+      lightbox.classList.remove("is-open");
+      document.body.classList.remove("fx10-lightbox-open");
+    };
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox || event.target === closeBtn) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) close();
+    });
+    document.body.append(lightbox);
+  }
+  lightbox._img.src = src;
+  lightbox._img.alt = caption || "";
+  lightbox._cap.textContent = caption || "";
+  lightbox._cap.style.display = caption ? "" : "none";
+  document.body.classList.add("fx10-lightbox-open");
+  // force reflow so the open transition runs from the closed state
+  void lightbox.offsetWidth;
+  lightbox.classList.add("is-open");
+};
+
 const moreProjectCards = {
   "berkshire-grey": {
     href: "berkshire-grey.html",
     thumb: "../assets/jobs/Berkshire Grey/carouselai.jpg",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Berkshire Grey robotic manipulation cell",
-    meta: "Robotics R&D",
     date: "Oct 2024 - Present",
     title: "Robotic Manipulation R&D",
     summary: "End effectors, robot data infrastructure, and production-ready hardware for intelligent automation.",
@@ -1007,10 +1265,9 @@ const moreProjectCards = {
     thumb: "../assets/projects/fx10/fx10 thumbnail.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Markforged FX10 metal printhead thumbnail",
-    meta: "Product Development",
     date: "Jun 2022 - Aug 2024",
     title: "Markforged FX10 Metal Printhead",
-    summary: "Next-generation swappable metal printhead developed from initial R&D through EVT.",
+    summary: "Next-generation swappable metal printhead I developed from initial R&D through EVT.",
     company: "Markforged"
   },
   px100: {
@@ -1038,7 +1295,6 @@ const moreProjectCards = {
     thumb: "../assets/projects/co-parts/01-e66ed0c40c37.jpg",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Continuous-fiber reinforced co-part assembly",
-    meta: "Published Research",
     date: "Jan 2023 - May 2023",
     title: "Continuous-Fiber Co-parts",
     summary: "Interlocking printed components optimized for reinforcement across multiple load planes.",
@@ -1049,22 +1305,20 @@ const moreProjectCards = {
     thumb: "../assets/projects/harpy/harpy leg.png",
     thumbClass: "harpy-thumb harpy-thumb-upper",
     alt: "Harpy leg actuator assembly",
-    meta: "Robotics Research",
     date: "May 2020 - May 2021",
     title: "Legged Robotics Research",
     summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
-    company: "NEU SiliconSynapse Lab"
+    company: "SiliconSynapse Lab"
   },
   aerobat: {
     href: "aerobat.html",
     thumb: "../assets/projects/aerobat/wing-still.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover aerobat-thumb-lower",
     alt: "Aerobat biomimetic flapping robot",
-    meta: "Bio-inspired Robotics",
     date: "Jan 2020 - Sep 2020",
     title: "Flapping Wing Robotics Research",
     summary: "Parametric, flexible wing mechanisms inspired by the flight of fruit bats.",
-    company: "NEU SiliconSynapse Lab"
+    company: "SiliconSynapse Lab"
   },
   "rotary-rf-pcb-manufacturing": {
     href: "rotary-rf-pcb-manufacturing.html",
@@ -1074,7 +1328,7 @@ const moreProjectCards = {
     date: "Nov 2018 - Apr 2019",
     title: "Rotary RF PCB System",
     summary: "Large-format heated coating machine delivered at less than half the prior-system cost.",
-    company: "MORSE Corp"
+    company: "Winchester Technologies"
   },
   "morse-corp": {
     href: "morse-corp.html",
@@ -1111,7 +1365,6 @@ const moreProjectCards = {
     thumb: "../assets/projects/asthma-inhaler-assistive-device/inhaler-desktop.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Breath-triggered asthma inhaler assistive device",
-    meta: "Assistive Mechatronics",
     date: "Jul 2019 - Dec 2019",
     title: "Inhaler Assistive Device",
     summary: "Award-winning breath-triggered device designed for users with limited motor ability.",
@@ -1122,7 +1375,6 @@ const moreProjectCards = {
     thumb: "../assets/projects/3dtrails/angledScene3sq.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "Printed topographic trail map",
-    meta: "Digital Fabrication",
     date: "Dec 2022 - Present",
     title: "3DTrails",
     summary: "Geospatial data transformed into multicolor printed trail maps and custom installations.",
@@ -1133,7 +1385,6 @@ const moreProjectCards = {
     thumb: "../assets/projects/soaring/asw19.jpg",
     thumbClass: "portfolio-thumb portfolio-thumb-cover",
     alt: "ASW-19B glider in flight",
-    meta: "Aviation",
     date: "July 2013 - Present",
     title: "Soaring",
     summary: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
@@ -1233,199 +1484,150 @@ const renderMoreProjects = () => {
   root.append(section);
 };
 
-const renderFx10CaseStudy = () => {
-  document.title = "FX10 Metal Print Head | Peter Kelly";
-  document.body.classList.add("fx10-case-study");
-
-  const hero = el("section", "fx10-hero");
-  const heroCopy = el("div", "fx10-hero-copy");
-  heroCopy.append(
-    el("p", "fx10-eyebrow", "Markforged"),
-    el("h1", "", "FX10 Metal Print Head")
-  );
-  appendHeroDate(heroCopy);
-  heroCopy.append(el("p", "fx10-lede", "Next-generation metal printhead enabling high-performance 17-4 PH stainless steel and copper printing for the Markforged FX10 platform."));
-
-  const tags = el("div", "fx10-tags");
-  ["Mechanical Design", "Additive Manufacturing", "Electromechanical"].forEach((tag) => tags.append(el("span", "", tag)));
-  heroCopy.append(tags);
-
-  const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
-  const heroImage = el("img");
-  heroImage.src = project.hero;
-  heroImage.alt = project.heroAlt;
-  heroImage.loading = "eager";
-  heroMedia.append(heroImage);
-  hero.append(heroCopy, heroMedia);
-  root.append(hero);
-
-  const overview = el("section", "fx10-overview-section fx10-section");
-  const overviewCopy = el("div", "fx10-overview-copy");
-  overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
-
-  const overviewIntro = el("p", "", "From the beginning of the program, the FX10 was conceived as a modular additive manufacturing platform capable of printing both composite and metal filaments. Because those material systems place distinct demands on thermal control, extruder requirements, filament routing, and flow behavior, the printhead required a swappable architecture.");
-
-  const overviewDevelopment = el("p");
-  overviewDevelopment.append(
-    document.createTextNode("Beginning in June 2022, I leveraged my prior Metal X and "),
-    Object.assign(el("a", "", "fine-feature process development"), { href: "finefeatures.html" }),
-    document.createTextNode(" experience to lead the initial R&D of the FX10 metal printhead and carry the architecture through engineering validation. I owned the printhead architecture from early feasibility through EVT, translating process and material requirements into mechanical design decisions across the heater block, heat sink, extruder, and filament routing system.")
-  );
-
-  overviewCopy.append(
-    overviewIntro,
-    overviewDevelopment
-  );
-
-  const glance = el("figure", "fx10-glance");
-  const glanceImage = el("img");
-  glanceImage.src = "../assets/projects/fx10/fx10-metal-printhead-square.png";
-  glanceImage.alt = "Markforged FX10 metal printhead";
-  glanceImage.loading = "lazy";
-  glance.append(glanceImage, el("figcaption", "", "FX10 metal print head"));
-  overview.append(overviewCopy, glance);
-  root.append(overview);
-
-  const launchVideo = el("section", "fx10-section fx10-launch-video-section");
-  const overviewVideo = el("figure", "fx10-overview-video");
-  const iframe = el("iframe");
-  const embedUrl = new URL(project.embed.src);
-  embedUrl.searchParams.set("origin", window.location.origin);
-  iframe.src = embedUrl.href;
-  iframe.title = "YouTube video player";
-  iframe.width = "560";
-  iframe.height = "315";
-  iframe.loading = "lazy";
-  iframe.setAttribute("frameborder", "0");
-  iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-  iframe.allowFullscreen = true;
-  overviewVideo.append(iframe, el("figcaption", "", "FX10 metal print head shipping announcement video"));
-  launchVideo.append(overviewVideo);
-  root.append(launchVideo);
-
-  const design = el("section", "fx10-section fx10-design-section");
-  design.append(el("p", "fx10-section-kicker", "Design"));
-  const designCopy = el("div", "fx10-design-copy");
-  designCopy.append(
-    el("p", "", "Before starting to lay out the architecture of Markforged's next-gen metal printhead, I set out to answer three major questions:")
-  );
-  const questions = el("ol", "fx10-questions");
-  [
-    "Whether a heatsink Peltier cooler is required with Markforged \"V2\" metal filaments",
-    "Required hot-zone length to achieve 2x overall print speed",
-    "Whether unit-to-unit variation could be limited with a new extruder design and calibration procedure"
-  ].forEach((q) => questions.append(el("li", "", q)));
-  designCopy.append(
-    questions,
-    el("p", "", "Using a combination of print testing with stock Metal X print heads, and modified \"Frankenstein\" print heads, I answered all three questions, giving the engineering team the necessary confidence to proceed with the first print head prototype."),
-    el("p", "", "After the R&D phase, I laid out the initial architecture of the print head and collaborated with an electrical engineer to design the first prototype for internal testing, owning the 3D CAD and 2D part drawings. During the build process, I also developed the manufacturing work instructions and documented design issues."),
-    el("p", "", "As the program matured, I developed and released subsystem designs, part drawings, manufacturing fixtures, and work instructions to support builds and validation. I worked closely with electrical, software, materials, manufacturing, and print test teams to integrate the metal printhead into the FX10 platform, debug system-level issues, and advance the design from exploratory R&D into an production ready architecture."),
-    el("p", "", "As the metal print head team grew and the design later went through a second prototype before proceeding to the EVT design and test phase, I continued to lead the design of various subsystems, create 2D part and assembly drawings, and own validation testing deliverables.")
-  );
-  design.append(designCopy);
-  const highlightGrid = el("div", "fx10-highlight-grid");
-  [
-    ["../assets/projects/fx10/01-b94fac15ce02.png", "FX10 Metal Print Head", "Compact modular architecture with integrated cooling and electronics enclosure."],
-    ["../assets/projects/fx10/02-def065ceee78.png", "Lower Shroud and Top Cover Removed", "Internal architecture revealing PCB, heat sink stack, quick-disconnects, and modular subassemblies for serviceability."],
-    ["../assets/projects/fx10/03-7b0f59b15173.png", "Front Plane PCB Removed", "Drive system, filament path components, and structural framework exposed for design review."]
-  ].forEach(([src, title, copy]) => {
-    const card = el("article", "fx10-highlight-card");
-    const image = el("img");
-    image.src = src;
-    image.alt = title;
-    image.loading = "lazy";
-    card.append(image, el("h3", "", title), el("p", "", copy));
-    highlightGrid.append(card);
-  });
-  design.append(highlightGrid);
-  root.append(design);
-
-  const processVideoSection = el("section", "fx10-section fx10-process-video-section");
-  const processVideo = el("video", "fx10-process-video");
-  processVideo.src = "../assets/projects/fx10/FX10-metal-process.webm";
-  processVideo.autoplay = true;
-  processVideo.loop = true;
-  processVideo.muted = true;
-  processVideo.playsInline = true;
-  processVideo.preload = "metadata";
-  processVideo.setAttribute("aria-label", "FX10 metal printing process video");
-  processVideoSection.append(processVideo);
-  root.append(processVideoSection);
-
-  const split = el("section", "fx10-split fx10-section");
-  const challenges = el("div", "fx10-list-panel");
-  challenges.append(el("p", "fx10-section-kicker", "Key Challenges"));
-  [
-    ["Material Differences", "Balanced thermal, mechanical, and flow requirements across composite and metal printing."],
-    ["Swappable Architecture", "Developed a repeatable docking and electrical interface to enable quick head swaps."],
-    ["Thermal Management", "Engineered heat dissipation for consistent performance with high-temperature metals."],
-    ["Serviceability", "Designed modular subassemblies for rapid maintenance and replacement."]
-  ].forEach(([title, copy]) => {
-    const item = el("div", "fx10-list-item");
-    item.append(el("span", "fx10-list-icon", ""), el("h3", "", title), el("p", "", copy));
-    challenges.append(item);
-  });
-
-  const impact = el("div", "fx10-list-panel");
-  impact.append(el("p", "fx10-section-kicker", "Impact"));
-  [
-    "Enabled metal printing on the FX10 platform with 17-4 PH stainless steel and copper.",
-    "Delivered next-generation printhead hardware to EVT in May 2024.",
-    "Laid groundwork for future material expansion and performance improvements.",
-    "Strengthened Markforged's industrial metal additive manufacturing platform."
-  ].forEach((copy) => {
-    const item = el("div", "fx10-impact-item");
-    item.append(el("span", "fx10-check-icon", ""), el("p", "", copy));
-    impact.append(item);
-  });
-  split.append(challenges, impact);
-  root.append(split);
-
-  const changeoverBanner = el("section", "fx10-image-banner");
-  const changeoverImage = el("img");
-  changeoverImage.src = "../assets/projects/fx10/FX10-Printhead-Changeover-Closeup.jpg";
-  changeoverImage.alt = "FX10 printhead changeover closeup";
-  changeoverImage.loading = "lazy";
-  changeoverBanner.append(changeoverImage);
-  root.append(changeoverBanner);
-
-  const outcome = el("section", "fx10-section fx10-outcome-section");
-  outcome.append(
-    el("p", "fx10-section-kicker", "Outcome"),
-    el("p", "", "This work helped establish the FX10 as a true multi-material platform rather than a single-material printer, enabling the same machine architecture to support both continuous-fiber composite printing and metal filament printing through a robust, serviceable, and swappable printhead system.")
-  );
-  root.append(outcome);
-  renderMoreProjects();
+// Renders a project whose layout is described entirely by a `blocks` array in
+// the catalog. Each block is a <section>; each part inside it is a direct child
+// (copy column, figure, grid, video, etc.). This keeps bespoke case-study
+// layouts (FX10, co-parts) fully data-driven from projectCatalog.
+const buildBlockPart = (part) => {
+  switch (part.kind) {
+    case "copy": {
+      const copy = el("div", part.copyClass);
+      if (part.kicker) copy.append(el("p", "fx10-section-kicker", part.kicker));
+      // Entries are paragraphs (string / { parts }) or an inline figure
+      // ({ figure: {...} }), rendered in order so images can sit between paragraphs.
+      part.paragraphs?.forEach((entry) => {
+        if (entry && entry.figure) {
+          copy.append(buildBlockPart({ kind: "imageFigure", ...entry.figure }));
+        } else if (entry && entry.figureGroup) {
+          copy.append(buildBlockPart({ kind: "figureGroup", ...entry.figureGroup }));
+        } else {
+          addParagraphs(copy, [entry]);
+        }
+      });
+      if (part.actions) {
+        const actions = el("div", "project-actions");
+        part.actions.forEach((link) => actions.append(createLink(link)));
+        copy.append(actions);
+      }
+      return copy;
+    }
+    case "imageFigure": {
+      const figure = el("figure", part.figureClass);
+      const image = el("img");
+      image.src = part.src;
+      image.alt = part.alt;
+      image.loading = "lazy";
+      figure.append(image);
+      if (part.caption) figure.append(el("figcaption", "", part.caption));
+      return figure;
+    }
+    case "figureGroup": {
+      const group = el("div", part.groupClass);
+      part.figures?.forEach((figureData) => {
+        group.append(buildBlockPart({ kind: "imageFigure", ...figureData }));
+      });
+      return group;
+    }
+    case "youtube": {
+      const figure = el("figure", part.figureClass);
+      const iframe = el("iframe");
+      const embedUrl = new URL(project.embed.src);
+      embedUrl.searchParams.set("origin", window.location.origin);
+      iframe.src = embedUrl.href;
+      iframe.title = part.iframeTitle || project.embed.title;
+      if (part.sized) {
+        iframe.width = "560";
+        iframe.height = "315";
+      }
+      iframe.loading = "lazy";
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      figure.append(iframe, el("figcaption", "", part.caption || project.embed.title));
+      return figure;
+    }
+    case "video": {
+      const video = el("video", part.videoClass);
+      video.src = part.src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", part.ariaLabel || "");
+      if (part.caption || part.figureClass) {
+        const figure = el("figure", part.figureClass);
+        figure.append(video);
+        if (part.caption) figure.append(el("figcaption", "", part.caption));
+        return figure;
+      }
+      return video;
+    }
+    case "contentPair": {
+      const pair = el("div", part.pairClass);
+      part.parts?.forEach((childPart) => pair.append(buildBlockPart(childPart)));
+      return pair;
+    }
+    case "figurePair": {
+      const pair = el("div", "standard-section-figure-pair");
+      part.figures.forEach((figureData) => {
+        const figure = el("figure", "standard-section-paired-figure");
+        const image = el("img");
+        image.src = figureData.src;
+        image.alt = figureData.alt || figureData.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+        if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+        pair.append(figure);
+      });
+      return pair;
+    }
+    case "grid": {
+      const grid = el("div", part.gridClass);
+      part.cards.forEach(([src, title, copy]) => {
+        const card = el("article", "fx10-highlight-card");
+        const image = el("img");
+        image.src = src;
+        image.alt = title;
+        image.loading = "lazy";
+        card.append(image, el("h3", "", title), el("p", "", copy));
+        grid.append(card);
+      });
+      return grid;
+    }
+    case "splitPanel": {
+      const panel = el("div", part.panelClass);
+      panel.append(el("p", "fx10-section-kicker", part.kicker));
+      part.items.forEach((item) => {
+        const itemEl = el("div", part.itemClass);
+        itemEl.append(el("span", part.iconClass, ""));
+        if (item.title) itemEl.append(el("h3", "", item.title));
+        itemEl.append(el("p", "", item.copy));
+        panel.append(itemEl);
+      });
+      return panel;
+    }
+    case "image": {
+      const image = el("img");
+      image.src = part.src;
+      image.alt = part.alt;
+      image.loading = "lazy";
+      return image;
+    }
+    default:
+      return document.createComment(`unknown block part: ${part.kind}`);
+  }
 };
 
-const createCaseStudyImage = (src, alt, caption, className = "") => {
-  const figure = el("figure", `co-parts-figure ${className}`.trim());
-  const image = el("img");
-  image.src = src;
-  image.alt = alt;
-  image.loading = "lazy";
-  figure.append(image, el("figcaption", "", caption));
-  return figure;
+const buildBlockSection = (block) => {
+  const section = el("section", block.sectionClass);
+  if (block.kicker) section.append(el("p", "fx10-section-kicker", block.kicker));
+  block.parts.forEach((part) => section.append(buildBlockPart(part)));
+  return section;
 };
 
-const createYoutubeFigure = (embed, caption, className = "") => {
-  const figure = el("figure", `fx10-overview-video ${className}`.trim());
-  const iframe = el("iframe");
-  const embedUrl = new URL(embed.src);
-  embedUrl.searchParams.set("origin", window.location.origin);
-  iframe.src = embedUrl.href;
-  iframe.title = embed.title;
-  iframe.loading = "lazy";
-  iframe.setAttribute("frameborder", "0");
-  iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-  iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-  iframe.allowFullscreen = true;
-  figure.append(iframe, el("figcaption", "", caption || embed.title));
-  return figure;
-};
-
-const renderCoPartsCaseStudy = () => {
+const renderBlockProject = () => {
   document.title = `${project.title} | Peter Kelly`;
   document.body.classList.add("fx10-case-study");
   root.closest(".project-main")?.classList.add("fx10-project-main");
@@ -1438,8 +1640,9 @@ const renderCoPartsCaseStudy = () => {
   );
   appendHeroDate(heroCopy);
   heroCopy.append(el("p", "fx10-lede", project.lede));
+
   const tags = el("div", "fx10-tags");
-  project.tags.forEach((tag) => tags.append(el("span", "", tag)));
+  project.tags?.forEach((tag) => tags.append(el("span", "", tag)));
   heroCopy.append(tags);
 
   const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
@@ -1451,59 +1654,7 @@ const renderCoPartsCaseStudy = () => {
   hero.append(heroCopy, heroMedia);
   root.append(hero);
 
-  const overview = el("section", "fx10-overview-section fx10-section co-parts-overview-section");
-  const overviewCopy = el("div", "fx10-overview-copy");
-  overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
-  addParagraphs(overviewCopy, project.overview);
-  overview.append(
-    overviewCopy,
-    createCaseStudyImage(
-      "../assets/projects/co-parts/co-part assembly.png",
-      "Monolithic mounting plate, assembled co-part, and co-part assembly strategy",
-      "(a) Monolithic plastic mounting plate part (b) assembled co-part (c) assembly strategy",
-      "co-parts-overview-image"
-    ),
-    createYoutubeFigure(project.embed, project.embed.title, "co-parts-overview-video")
-  );
-  root.append(overview);
-
-  const process = el("section", "fx10-section co-parts-process-section");
-  const processCopy = el("div", "fx10-design-copy fx10-generic-design-copy co-parts-process-copy");
-  processCopy.append(el("p", "fx10-section-kicker", "Process"));
-  addParagraphs(processCopy, project.sections[0].body);
-  process.append(
-    processCopy,
-    createCaseStudyImage(
-      "../assets/projects/co-parts/load case.png",
-      "Mounting plate load case with fixed bolts and applied pin force",
-      "Load case of the mounting plate example part, where the blue bolts represent how it is fixed to the ground and the green pin represents where force is applied",
-      "co-parts-load-case"
-    ),
-    createCaseStudyImage(
-      "../assets/projects/co-parts/co-part assembly.png",
-      "Monolithic mounting plate, assembled co-part, and co-part assembly strategy",
-      "(a) Monolithic plastic mounting plate part (b) assembled co-part (c) assembly strategy",
-      "co-parts-assembly"
-    )
-  );
-  root.append(process);
-
-  const outcome = el("section", "fx10-section co-parts-outcome-section");
-  const outcomeCopy = el("div", "fx10-outcome-section co-parts-outcome-copy");
-  outcomeCopy.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
-  const actions = el("div", "project-actions");
-  project.links?.forEach((link) => actions.append(createLink(link)));
-  outcomeCopy.append(actions);
-  outcome.append(
-    outcomeCopy,
-    createCaseStudyImage(
-      "../assets/projects/co-parts/co-part load.png",
-      "Co-part load testing results and failed samples",
-      "(a) Load vs extension curves for the control, single plane fiber and continuous carbon fiber reinforced co-parts, photographs of (b) monolithicplastic mounting plate after failure, which delaminated between layers in areas of low cross-sectional area, (c) CFR Orientation 1 mounting plate afterfailure, which cracked in two locations along layer lines, (d) continuous carbon fiber reinforced co-part mounting plate after failure, where one of the co-parts pulled through the other",
-      "co-parts-load-results"
-    )
-  );
-  root.append(outcome);
+  project.blocks.forEach((block) => root.append(buildBlockSection(block)));
   renderMoreProjects();
 };
 
@@ -1538,6 +1689,17 @@ const renderStandardProject = () => {
   const overviewCopy = el("div", "fx10-overview-copy");
   overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
   addParagraphs(overviewCopy, project.overview || []);
+  if (project.logoStrip?.length) {
+    const logoStrip = el("div", "project-logo-strip");
+    project.logoStrip.forEach((logoData) => {
+      const logo = el("img");
+      logo.src = logoData.src;
+      logo.alt = logoData.alt || "";
+      logo.loading = "lazy";
+      logoStrip.append(logo);
+    });
+    overviewCopy.append(logoStrip);
+  }
   overview.append(overviewCopy);
 
   if (project.overviewMedia) {
@@ -1625,6 +1787,30 @@ const renderStandardProject = () => {
     overview.append(glance);
   }
   root.append(overview);
+
+  if (project.flightEmbed) {
+    const fe = project.flightEmbed;
+    const flightSection = el("section", "fx10-section fx10-flight-section");
+    flightSection.append(el("p", "fx10-section-kicker", fe.sectionLabel || "Cross country flying"));
+    if (fe.body?.length) {
+      const flightCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
+      addParagraphs(flightCopy, fe.body);
+      flightSection.append(flightCopy);
+    }
+    const figure = el("figure", "project-flight-embed");
+    const frame = el("div", "project-flight-embed-frame");
+    const iframe = el("iframe");
+    iframe.src = fe.src;
+    iframe.title = fe.title || "WeGlide flight";
+    iframe.loading = "lazy";
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    iframe.allowFullscreen = true;
+    frame.append(iframe);
+    figure.append(frame);
+    flightSection.append(figure);
+    root.append(flightSection);
+  }
 
   if (project.featureBreakdown?.length) {
     const breakdown = el("section", "fx10-section module-breakdown-section");
@@ -1770,6 +1956,25 @@ const renderStandardProject = () => {
       if (section.fullWidthFigure.caption) figure.append(el("figcaption", "", section.fullWidthFigure.caption));
       design.append(figure);
     }
+    if (section.bottomAsideBody?.length || section.bottomAsideFigure) {
+      const bottomAside = el("div", "standard-section-bottom-aside");
+      if (section.bottomAsideBody?.length) {
+        const bottomCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
+        addParagraphs(bottomCopy, section.bottomAsideBody);
+        bottomAside.append(bottomCopy);
+      }
+      if (section.bottomAsideFigure) {
+        const figure = el("figure", "standard-section-paired-figure standard-section-bottom-aside-figure");
+        const image = el("img");
+        image.src = section.bottomAsideFigure.src;
+        image.alt = section.bottomAsideFigure.alt || section.bottomAsideFigure.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+        if (section.bottomAsideFigure.caption) figure.append(el("figcaption", "", section.bottomAsideFigure.caption));
+        bottomAside.append(figure);
+      }
+      design.append(bottomAside);
+    }
     if (section.figures?.length) {
       const figurePair = el("div", "standard-section-figure-pair");
       section.figures.forEach((figureData) => {
@@ -1833,11 +2038,21 @@ const renderStandardProject = () => {
     const highlightGrid = el("div", "fx10-highlight-grid");
     project.media.forEach(([src, caption]) => {
       const card = el("article", "fx10-highlight-card");
+      const trigger = el("button", "fx10-gallery-media");
+      trigger.type = "button";
+      trigger.setAttribute("aria-label", caption ? `Expand image: ${caption}` : "Expand image");
       const image = el("img");
       image.src = src;
       image.alt = caption;
       image.loading = "lazy";
-      card.append(image, el("h3", "", caption));
+      const hint = el("span", "fx10-zoom-hint");
+      const hintIcon = el("img");
+      hintIcon.src = "../icons/expand.svg";
+      hintIcon.alt = "";
+      hint.append(hintIcon);
+      trigger.append(image, hint);
+      trigger.addEventListener("click", () => openLightbox(src, caption));
+      card.append(trigger, el("h3", "", caption));
       highlightGrid.append(card);
     });
     gallery.append(highlightGrid);
@@ -1922,10 +2137,8 @@ const renderStandardProject = () => {
 
 if (!root || !project) {
   if (root) root.append(el("p", "lede", "Portfolio item data could not be loaded."));
-} else if (key === "fx10") {
-  renderFx10CaseStudy();
-} else if (key === "co-parts") {
-  renderCoPartsCaseStudy();
+} else if (project.blocks) {
+  renderBlockProject();
 } else {
   renderStandardProject();
 }
