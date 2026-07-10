@@ -423,27 +423,27 @@ const projectCatalog = {
           src: "../assets/projects/harpy/embedThruster.png",
           alt: "Embedded fabrication process for Harpy thruster actuator housing",
           caption: "Embedded composite-printing process used for high-load actuator housings"
+        },
+        bottomAsideBody: [
+          "I also designed support electronics, including a motor-drive interface PCB that provides EtherCAT, safe-torque-off, USB, and encoder connections for each motor drive, and packaged the drives, ESCs, heatsinks, and wiring so the system could be assembled, tested, and serviced."
+        ],
+        bottomAsideFigure: {
+          src: "../assets/projects/harpy/ampPCB.png",
+          alt: "Harpy amplifier PCB",
+          caption: "Amplifier PCB used in the Harpy electronics stack"
         }
       },
       {
-        kicker: "Thrusters and Electronics",
+        kicker: "Thrusters",
         body: [
           "Hitting a thrust-to-weight ratio above one required 68 N of total thrust. Propellers would have needed 25+ cm blade diameters — unsafe and impractical on a walking robot — and gas turbines were too heavy, hot, and slow to respond. I selected carbon-fiber Schuebeler EDFs instead, each producing 53 N from a housed 80 mm duct that keeps blades protected during ground operation.",
-          "For thrust vectoring, I chose gimballed thrusters over control flaps for their efficiency and far larger range of motion, and designed the actuator that steers each EDF by adapting the leg joint architecture with a smaller motor and harmonic drive. Two output bearings support the EDF coupling so the transmission sees pure torque despite sustained bending loads from the thrusters.",
-          "I also designed support electronics, including a motor-drive interface PCB that provides EtherCAT, safe-torque-off, USB, and encoder connections for each motor drive, and packaged the drives, ESCs, heatsinks, and wiring so the system could be assembled, tested, and serviced."
+          "For thrust vectoring, I chose gimballed thrusters over control flaps for their efficiency and far larger range of motion, and designed the actuator that steers each EDF by adapting the leg joint architecture with a smaller motor and harmonic drive. Two output bearings support the EDF coupling so the transmission sees pure torque despite sustained bending loads from the thrusters."
         ],
-        figures: [
-          {
-            src: "../assets/projects/harpy/edfActuator.jpg",
-            alt: "Harpy electric ducted fan thruster actuator assembly",
-            caption: "Vectoring electric ducted fan actuator assembly"
-          },
-          {
-            src: "../assets/projects/harpy/ampPCB.png",
-            alt: "Harpy amplifier PCB",
-            caption: "Amplifier PCB used in the Harpy electronics stack"
-          }
-        ]
+        fullWidthFigure: {
+          src: "../assets/projects/harpy/upperBody.png",
+          alt: "Harpy upper body with electric ducted fan thrusters",
+          caption: "Harpy upper body with electric ducted fan thrusters"
+        }
       },
       {
         kicker: "Simulation",
@@ -525,7 +525,7 @@ const projectCatalog = {
       {
         src: "../assets/projects/harpy/harpyjump.gif",
         alt: "Harpy jump simulation animation",
-        caption: "Harpy jump animation"
+        caption: "Full Harpy robot being tested at Caltech"
       }
     ],
     hideSourceAction: true,
@@ -534,50 +534,98 @@ const projectCatalog = {
   finefeatures: {
     title: "Metal X Fine Features",
     eyebrow: "Metal Process Development",
-    lede: "Production print settings for finer detail, improved accuracy, smoother surfaces, and stronger metal parts.",
+    lede: "I led the development and qualification of production print profiles for finer, stronger, and more accurate copper and 17-4PH stainless steel parts.",
     hero: "../assets/projects/finefeatures/finefeatures-bg.png",
-    heroAlt: "Fine Features metal additive manufacturing background",
-    tags: ["Print process R&D", "Copper", "17-4PH stainless", "Qualification"],
+    heroAlt: "Fine-featured copper and stainless steel parts produced on the Markforged Metal X",
+    tags: ["Process R&D", "Metal FFF", "Copper", "17-4PH stainless", "Qualification"],
     overview: [
-      "Fine Features is a set of Metal X slicer settings released for copper and 17-4PH stainless steel. I led development and qualification of the profiles to improve surface finish, dimensional accuracy, minimum feature size, and interlaminar strength relative to the standard process."
+      "Fine Features is a pair of production-ready Metal X print profiles released through Eiger with no hardware changes. I led process development and qualification for pure copper and 17-4PH v2 stainless steel, taking the work from exploratory toolpaths through cross-system validation and customer release.",
+      "The profiles improved surface finish, dimensional accuracy, minimum feature size, and interlaminar strength relative to the standard process. The work connected hands-on printing, materials behavior, machine code, and software implementation across the complete print, debind, and sinter workflow."
     ],
     overviewMedia: {
       type: "video",
       src: "../assets/projects/finefeatures/finefeatures-demo.webm",
-      caption: "Fine Features process demonstration"
+      caption: "Fine Features process demonstration",
+      aspectRatio: "1080 / 1400",
+      background: "transparent",
+      fit: "contain"
     },
     sections: [
       {
-        kicker: "Exploration",
+        kicker: "Process Development",
         title: "Finding detail without sacrificing reliability",
         body: [
-          "The project began with smaller nozzle orifices, but particle-size variation created an unacceptable risk of flow restriction and clogging. In parallel, I varied nozzle temperature, print speed, cooling, extrusion width, and other process parameters.",
-          "Testing revealed that a carefully tuned profile using the production nozzle delivered much of the detail improvement without the lifetime penalty of a smaller orifice."
-        ]
+          "The intuitive first move was a smaller nozzle. I evaluated reduced orifices alongside nozzle temperature, print speed, cooling, extrusion width, and geometry-dependent offsets. Smaller nozzles sharpened detail, but particle-size variation introduced an unacceptable risk of restricted flow and clogging.",
+          "Testing showed that a carefully tuned profile using the production nozzle captured much of the detail improvement without the lifetime and reliability penalty of a smaller orifice. Purpose-built coupons and demanding parts exposed minimum holes, pins, walls, gaps, overhangs, and articulated geometry."
+        ],
+        asideFigure: {
+          src: "../assets/projects/finefeatures/05-327a1f4d9f29.png",
+          alt: "Copper feature test coupon held in tweezers",
+          caption: "Test coupon for holes, pins, slots, walls, and overhangs"
+        },
+        fullWidthFigure: {
+          src: "../assets/projects/finefeatures/02-d477f3d24f5e.png",
+          alt: "Metal X print head depositing an intricate articulated copper dragon",
+          caption: "Prototype profile printing an articulated copper dragon"
+        }
       },
       {
         kicker: "Qualification",
-        title: "Validating the entire powder-to-part chain",
+        title: "Validating the complete powder-to-part process",
         body: [
-          "Successful green parts still had to survive solvent debinding, sintering, and predictable shrinkage while maintaining target mechanical properties. Qualification therefore spanned multiple printers, material lots, debinders, and furnaces.",
-          "For several print issues I generated machine code directly to test prototype toolpaths, then worked with software engineering to turn those findings into customer-facing slicer parameters."
+          "A successful green part was only the beginning. The released profile had to survive solvent debinding, sintering, and predictable shrinkage while maintaining dimensional and mechanical targets. Qualification therefore spanned multiple printers, material lots, debinders, and furnaces.",
+          "For issues the production slicer could not yet express, I generated machine code directly to test prototype toolpaths. I then worked with software engineering to translate those findings into customer-facing Eiger parameters and repeatable qualification builds."
+        ],
+        asideFigure: {
+          src: "../assets/projects/finefeatures/03-7ed736fc7ae5.jpg",
+          alt: "Sintered articulated pure copper dragon held in a hand",
+          caption: "Detail retained after debinding and sintering"
+        },
+        fullWidthFigure: {
+          src: "../assets/projects/finefeatures/01-a4f12fd4b466.jpg",
+          alt: "Collection of small fine-featured 17-4PH stainless steel components beside a metric ruler",
+          caption: "Qualified 17-4PH geometry at useful production scale"
+        }
+      },
+      {
+        kicker: "Customer Release",
+        title: "One installed platform, two new material capabilities",
+        body: [
+          "Fine Features for pure copper launched in March 2023. In exchange for roughly 30% longer print time, it delivered smoother surfaces, improved dimensional accuracy, smaller feature sizes, and stronger layer-to-layer bonding without a special nozzle.",
+          "The 17-4PH v2 profile followed in July 2023. Its 0.085 mm post-sinter layer height improved fine parts that previously printed with defects and enabled small solid-infill geometry that had not been printable on the system."
+        ],
+        figures: [
+          {
+            src: "../assets/projects/finefeatures/06-5fca1d71ca0f.jpg",
+            alt: "Fine-featured pure copper radial heat sink",
+            caption: "Pure copper: thin radial fins and narrow channels"
+          },
+          {
+            src: "../assets/projects/finefeatures/10-78d55f234f78.jpg",
+            alt: "Small fine-featured 17-4PH stainless steel bracket beside a ruler",
+            caption: "17-4PH v2: compact bracket with thin ribs and small holes"
+          }
         ]
       }
     ],
-    outcome: "Fine Features launched for copper in March 2023 and for 17-4PH v2 stainless steel in July 2023, expanding customer applications and supporting new system sales.",
-    media: [
-      ["../assets/projects/finefeatures/02-d477f3d24f5e.png", "Flexible copper dragon printing with Fine Features settings"],
-      ["../assets/projects/finefeatures/03-7ed736fc7ae5.jpg", "Sintered copper articulated print"],
-      ["../assets/projects/finefeatures/04-665a4d8e0c6c.png", "Fine Features sample component"],
-      ["../assets/projects/finefeatures/05-327a1f4d9f29.png", "Fine-detail metal sample"],
-      ["../assets/projects/finefeatures/06-5fca1d71ca0f.jpg", "Production-quality Metal X sample"],
-      ["../assets/projects/finefeatures/07-ad8564cf98f7.jpg", "Metal X Fine Features application"],
-      ["../assets/projects/finefeatures/08-53c31dd3d713.jpg", "Fine-feature stainless component"],
-      ["../assets/projects/finefeatures/09-7f1b24bb1932.jpg", "Detailed sintered metal print"],
-      ["../assets/projects/finefeatures/10-78d55f234f78.jpg", "Fine-detail production sample"],
-      ["../assets/projects/finefeatures/11-09243e101f22.jpg", "Fine Features marketing sample"]
+    outcome: "Fine Features expanded what customers could make on Metal X hardware they already owned. The project moved from experimental process development to two released alloy profiles, demonstrating end-to-end ownership across print testing, failure analysis, qualification, and collaboration with materials, software, and product teams.",
+    outcomeFigures: [
+      {
+        src: "../assets/projects/finefeatures/08-53c31dd3d713.jpg",
+        alt: "Collection of intricate pure copper Fine Features parts",
+        caption: "Fine Features copper application set"
+      },
+      {
+        src: "../assets/projects/finefeatures/09-7f1b24bb1932.jpg",
+        alt: "Miniature stainless assembly beside a ruler",
+        caption: "Small articulated stainless assembly"
+      }
     ],
-    source: "https://peterkellyyy.wixsite.com/peterkelly/finefeatures"
+    links: [
+      ["Read the copper launch", "https://markforged.com/resources/blog/introducing-fine-features-for-pure-copper-on-the-metal-x"],
+      ["Read the 17-4PH launch", "https://markforged.com/resources/blog/introducing-fine-features-turbo-mode-for-17-4ph-stainless-steel"]
+    ],
+    hideSourceAction: true
   },
   aerobat: {
     title: "Flapping Wing Robotics Research",
@@ -663,32 +711,75 @@ const projectCatalog = {
   soaring: {
     title: "Soaring",
     eyebrow: "Hobby",
-    lede: "Sailplane flying, cross-country decision-making, aviation mentorship, and a lifelong love of flight.",
-    hero: "../assets/projects/soaring/asw19.jpg",
-    heroAlt: "ASW-19B glider in flight",
+    lede: "Sailplane flying, thermal and ridge soaring, cross-country decision-making, club operations, and a lifelong love of flight.",
+    hero: "../assets/projects/soaring/PXL_20260628_160316457.jpg",
+    heroAlt: "View from a sailplane cockpit under summer cumulus clouds",
     heroClass: "portfolio-thumb-cover soaring-hero-media",
-    tags: ["Sailplanes", "Aviation", "Mentorship", "Cross-country flying"],
+    tags: ["150+ glider flights", "80 flight hours", "Thermal soaring", "Ridge soaring", "Cross-country flying"],
     overview: [
-      "Soaring has been a long-running personal pursuit since 2013. Flying sailplanes combines weather reading, energy management, decision-making, and a particular kind of hands-on mechanical intuition that has shaped how I think about engineering and risk."
+      "Soaring has been a long-running personal pursuit since 2013. I have flown more than 150 glider flights and spent over 80 hours in the air, including thermal and ridge soaring, flights longer than five hours, and climbs above 10,000 feet.",
+      "Flying sailplanes means finding lift without an engine: reading clouds, terrain, wind, and sink while constantly managing energy and options. That mix of patience, judgment, and tactile machine sense has shaped how I think about engineering, risk, and learning difficult things."
     ],
+    logoStrip: [
+      {
+        src: "../assets/projects/soaring/aca-logo.png",
+        alt: "Aero Club Albatross logo"
+      },
+      {
+        src: "../assets/projects/soaring/gbsc-logo.png",
+        alt: "Greater Boston Soaring Club logo"
+      }
+    ],
+    overviewMedia: {
+      src: "../assets/projects/soaring/PXL_20230903_141346021.MP.jpg",
+      caption: "ASW-19 in Franconia before a White Mountains ridge flight"
+    },
     sections: [
       {
         kicker: "Flight",
-        title: "Finding lift without an engine",
+        title: "Reading weather as usable energy",
         body: [
-          "Sailplane flying is built around reading the sky, understanding terrain and wind, and making careful decisions with limited energy. It rewards preparation, patience, and constant attention to what the aircraft and atmosphere are telling you."
-        ]
+          "A sailplane flight is a live optimization problem. Every decision depends on altitude, wind, terrain, landing options, cloud shape, sun angle, and what the aircraft is quietly telling you through sound and pressure.",
+          "That is what keeps the sport fascinating to me: the aircraft is simple and honest, but the atmosphere is never the same twice. Good flights come from preparation, restraint, and the ability to keep making calm decisions as conditions change."
+        ],
+        asideFigure: {
+          src: "../assets/projects/soaring/asw19.jpg",
+          alt: "ASW-19B glider in flight",
+          caption: "ASW-19B glider in flight"
+        }
       },
       {
-        kicker: "Community",
-        title: "Sharing aviation with curious people",
+        kicker: "Greater Boston Soaring Club",
+        title: "Flying, maintaining, and operating gliders",
         body: [
-          "One of my favorite parts of soaring is sharing flight and aviation with people who are brave enough to climb into an airplane without an engine. It is a rare mix of adventure, technical curiosity, and trust."
-        ]
+          "After moving to Boston, I began flying with the Greater Boston Soaring Club in Sterling, Massachusetts. I had my first solo ridge-soaring flight along Kinsman Ridge in the White Mountains during a glider encampment, and in July 2024 completed my silver-distance flight: a 50 km out-and-return cross-country task.",
+          "Outside the cockpit, I help the club with glider maintenance, refurbishment, assembly and disassembly, and flight-line operations. My long-term goal is to become a flight instructor so I can keep passing this strange, beautiful, very technical art to new pilots."
+        ],
+        fullWidthFigure: {
+          src: "../assets/projects/soaring/PXL_20230903_161103435.MP.jpg",
+          alt: "View from a glider cockpit ridge soaring in the White Mountains",
+          caption: "Solo ridge soaring along Kinsman Ridge in the White Mountains"
+        }
       }
     ],
     outcome: "Soaring remains one of the clearest through-lines in my life outside engineering: a way to stay close to flight, weather, craft, and people who love learning difficult things.",
-    media: []
+    flightEmbed: {
+      src: "https://www.weglide.org/embedded/flight/448659?baro=true&bbox=",
+      title: "Silver-distance flight on WeGlide",
+      body: [
+        "In July 2024 I completed my “silver distance” flight, which is a minimum 50 km out and return cross country flight. After 11 years of flying, I was a bit of a late bloomer to cross country flight, but now that I have the confidence to go out of range of my home airport, soaring has become much more rewarding and exciting."
+      ]
+    },
+    galleryLabel: "Gallery",
+    media: [
+      ["../assets/projects/soaring/PXL_20241005_181141339.MP.jpg", "Aerotow over New England on a clear thermal day"],
+      ["../assets/projects/soaring/PXL_20251005_202241658.jpg", "Cross-country view from the cockpit during an autumn soaring flight"],
+      ["../assets/projects/soaring/PXL_20260628_160316457.jpg", "Cloud streets and cumulus markers from the glider cockpit"],
+      ["../assets/projects/soaring/d09169_68014352c67e49b7839e4f75c047979c~mv2.avif", "After landing an SGS 1-34 in Franconia"],
+      ["../assets/projects/soaring/d09169_d4e0201c132c4cf587bc35ed216297de~mv2.avif", "Greater Boston Soaring Club runway"]
+    ],
+    links: [],
+    source: "https://peterkellyyy.wixsite.com/peterkelly/soaring"
   },
   "rotary-rf-pcb-manufacturing": {
     title: "Rotary RF PCB Manufacturing System",
@@ -1114,6 +1205,47 @@ const createLink = ([label, href], className = "project-action") => {
   link.target = "_blank";
   link.rel = "noreferrer";
   return link;
+};
+
+// Lazily-built singleton lightbox for expanding gallery images to a
+// partial-fullscreen overlay. Closes on backdrop click, the close button, or Escape.
+let lightbox = null;
+const openLightbox = (src, caption) => {
+  if (!lightbox) {
+    lightbox = el("div", "fx10-lightbox");
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    const figure = el("figure", "fx10-lightbox-figure");
+    const img = el("img", "fx10-lightbox-image");
+    const cap = el("figcaption", "fx10-lightbox-caption");
+    const closeBtn = el("button", "fx10-lightbox-close");
+    closeBtn.type = "button";
+    closeBtn.setAttribute("aria-label", "Close image");
+    closeBtn.textContent = "×";
+    figure.append(closeBtn, img, cap);
+    lightbox.append(figure);
+    lightbox._img = img;
+    lightbox._cap = cap;
+    const close = () => {
+      lightbox.classList.remove("is-open");
+      document.body.classList.remove("fx10-lightbox-open");
+    };
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox || event.target === closeBtn) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) close();
+    });
+    document.body.append(lightbox);
+  }
+  lightbox._img.src = src;
+  lightbox._img.alt = caption || "";
+  lightbox._cap.textContent = caption || "";
+  lightbox._cap.style.display = caption ? "" : "none";
+  document.body.classList.add("fx10-lightbox-open");
+  // force reflow so the open transition runs from the closed state
+  void lightbox.offsetWidth;
+  lightbox.classList.add("is-open");
 };
 
 const moreProjectCards = {
@@ -1556,6 +1688,17 @@ const renderStandardProject = () => {
   const overviewCopy = el("div", "fx10-overview-copy");
   overviewCopy.append(el("p", "fx10-section-kicker", "Overview"));
   addParagraphs(overviewCopy, project.overview || []);
+  if (project.logoStrip?.length) {
+    const logoStrip = el("div", "project-logo-strip");
+    project.logoStrip.forEach((logoData) => {
+      const logo = el("img");
+      logo.src = logoData.src;
+      logo.alt = logoData.alt || "";
+      logo.loading = "lazy";
+      logoStrip.append(logo);
+    });
+    overviewCopy.append(logoStrip);
+  }
   overview.append(overviewCopy);
 
   if (project.overviewMedia) {
@@ -1643,6 +1786,30 @@ const renderStandardProject = () => {
     overview.append(glance);
   }
   root.append(overview);
+
+  if (project.flightEmbed) {
+    const fe = project.flightEmbed;
+    const flightSection = el("section", "fx10-section fx10-flight-section");
+    flightSection.append(el("p", "fx10-section-kicker", fe.sectionLabel || "Cross country flying"));
+    if (fe.body?.length) {
+      const flightCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
+      addParagraphs(flightCopy, fe.body);
+      flightSection.append(flightCopy);
+    }
+    const figure = el("figure", "project-flight-embed");
+    const frame = el("div", "project-flight-embed-frame");
+    const iframe = el("iframe");
+    iframe.src = fe.src;
+    iframe.title = fe.title || "WeGlide flight";
+    iframe.loading = "lazy";
+    iframe.setAttribute("frameborder", "0");
+    iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    iframe.allowFullscreen = true;
+    frame.append(iframe);
+    figure.append(frame);
+    flightSection.append(figure);
+    root.append(flightSection);
+  }
 
   if (project.featureBreakdown?.length) {
     const breakdown = el("section", "fx10-section module-breakdown-section");
@@ -1788,6 +1955,25 @@ const renderStandardProject = () => {
       if (section.fullWidthFigure.caption) figure.append(el("figcaption", "", section.fullWidthFigure.caption));
       design.append(figure);
     }
+    if (section.bottomAsideBody?.length || section.bottomAsideFigure) {
+      const bottomAside = el("div", "standard-section-bottom-aside");
+      if (section.bottomAsideBody?.length) {
+        const bottomCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
+        addParagraphs(bottomCopy, section.bottomAsideBody);
+        bottomAside.append(bottomCopy);
+      }
+      if (section.bottomAsideFigure) {
+        const figure = el("figure", "standard-section-paired-figure standard-section-bottom-aside-figure");
+        const image = el("img");
+        image.src = section.bottomAsideFigure.src;
+        image.alt = section.bottomAsideFigure.alt || section.bottomAsideFigure.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+        if (section.bottomAsideFigure.caption) figure.append(el("figcaption", "", section.bottomAsideFigure.caption));
+        bottomAside.append(figure);
+      }
+      design.append(bottomAside);
+    }
     if (section.figures?.length) {
       const figurePair = el("div", "standard-section-figure-pair");
       section.figures.forEach((figureData) => {
@@ -1851,11 +2037,21 @@ const renderStandardProject = () => {
     const highlightGrid = el("div", "fx10-highlight-grid");
     project.media.forEach(([src, caption]) => {
       const card = el("article", "fx10-highlight-card");
+      const trigger = el("button", "fx10-gallery-media");
+      trigger.type = "button";
+      trigger.setAttribute("aria-label", caption ? `Expand image: ${caption}` : "Expand image");
       const image = el("img");
       image.src = src;
       image.alt = caption;
       image.loading = "lazy";
-      card.append(image, el("h3", "", caption));
+      const hint = el("span", "fx10-zoom-hint");
+      const hintIcon = el("img");
+      hintIcon.src = "../icons/expand.svg";
+      hintIcon.alt = "";
+      hint.append(hintIcon);
+      trigger.append(image, hint);
+      trigger.addEventListener("click", () => openLightbox(src, caption));
+      card.append(trigger, el("h3", "", caption));
       highlightGrid.append(card);
     });
     gallery.append(highlightGrid);
