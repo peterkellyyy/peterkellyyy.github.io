@@ -779,6 +779,7 @@ const projectCatalog = {
       ["../assets/projects/soaring/d09169_d4e0201c132c4cf587bc35ed216297de~mv2.avif", "Greater Boston Soaring Club runway"]
     ],
     links: [],
+    hideSourceAction: true,
     source: "https://peterkellyyy.wixsite.com/peterkelly/soaring"
   },
   "rotary-rf-pcb-manufacturing": {

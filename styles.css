@@ -2112,7 +2112,7 @@ a.contact-panel:focus-visible {
 }
 
 .fx10-hero-media.soaring-hero-media img {
-  object-position: center center;
+  object-position: center bottom;
 }
 
 .fx10-hero-media.logo-hero-media {
@@ -5102,10 +5102,15 @@ body[data-project="soaring"] .fx10-highlight-card img {
 }
 
 body[data-project="soaring"] .fx10-highlight-card h3 {
-  color: #536073;
+  color: #5b6675;
+  font-family: inherit;
+  font-size: 0.86rem;
   font-style: italic;
-  font-weight: 500;
-  line-height: 1.45;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin: 10px 0 0;
+  text-align: center;
 }
 
 /* -- WeGlide flight embed -- */
@@ -5194,9 +5199,14 @@ body[data-project] .fx10-gallery-media:focus-visible {
   opacity: 1;
 }
 
-.fx10-zoom-hint img {
+.fx10-zoom-hint {
+  overflow: hidden;
+}
+
+body[data-project] .fx10-gallery-media .fx10-zoom-hint img {
   filter: invert(1);
   height: 20px;
+  object-fit: contain;
   width: 20px;
 }
 
