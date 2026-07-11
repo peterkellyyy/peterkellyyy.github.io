@@ -17,7 +17,14 @@ const portfolioOrder = [
   "soaring"
 ];
 
+const temporarilyHiddenPortfolioCards = new Set([
+  "morse-corp",
+  "irobot",
+  "sikorsky"
+]);
+
 const portfolioGrid = document.querySelector("[data-portfolio-grid]");
+const portfolioCount = document.querySelector("[data-portfolio-count]");
 
 if (portfolioGrid) {
   const cards = new Map(
@@ -30,10 +37,19 @@ if (portfolioGrid) {
   portfolioOrder.forEach((projectKey) => {
     const card = cards.get(projectKey);
     if (card) {
+      card.hidden = temporarilyHiddenPortfolioCards.has(projectKey);
       portfolioGrid.append(card);
       cards.delete(projectKey);
     }
   });
 
-  cards.forEach((card) => portfolioGrid.append(card));
+  cards.forEach((card) => {
+    card.hidden = temporarilyHiddenPortfolioCards.has(card.dataset.projectCard);
+    portfolioGrid.append(card);
+  });
+
+  if (portfolioCount) {
+    const visibleCount = portfolioGrid.querySelectorAll("[data-project-card]:not([hidden])").length;
+    portfolioCount.textContent = `${visibleCount} projects`;
+  }
 }

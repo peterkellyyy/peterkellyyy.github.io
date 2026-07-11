@@ -11,6 +11,13 @@ const projectCatalog = {
       "At Berkshire Grey, I work on mechanical R&D for robotic manipulation systems and the hardware that supports embodied intelligence in industrial automation.",
       "The role sits at the intersection of mechanism design, end-effector development, robot data infrastructure, evaluation hardware, and production-minded implementation."
     ],
+    overviewMedia: {
+      type: "video",
+      src: "../assets/jobs/Berkshire Grey/versa.webm",
+      caption: "VERSA robotic manipulation system",
+      aspectRatio: "1400 / 1080",
+      fit: "contain"
+    },
     sections: [
       {
         kicker: "Hardware R&D",
@@ -20,14 +27,7 @@ const projectCatalog = {
           "That means moving from ambiguous requirements into practical designs that can be built, tested, iterated, and handed off with enough structure for broader engineering teams to use."
         ]
       },
-      {
-        kicker: "Validation",
-        title: "Keeping design decisions grounded in robot performance",
-        body: [
-          "I support hardware development through prototyping, evaluation, and refinement so mechanical decisions are tied to observed robot behavior rather than isolated CAD assumptions.",
-          "The work builds on my earlier robotics and production-hardware experience, with an emphasis on making experimental systems robust enough to produce useful data and scale toward deployment."
-        ]
-      }
+
     ],
     outcome: "The role extends my robotics hardware work into high-performance manipulation systems, where mechanical design, robot learning, data collection, validation, and production readiness all have to reinforce each other.",
     media: []
@@ -371,12 +371,12 @@ const projectCatalog = {
     ]
   },
   harpy: {
-    title: "Legged Robotics Research",
+    title: "Thruster-assisted Legged Robot",
     eyebrow: "Robotics Research Platform",
     lede: "A lightweight thruster-assisted bipedal robot developed as my master's thesis hardware platform.",
     hero: "../assets/projects/harpy/harpy leg.png",
     heroAlt: "Harpy leg actuator assembly",
-    tags: ["Mechanical design", "Composite fabrication", "Actuation", "Simulation", "Testing"],
+    tags: ["Actuator design", "Composite 3D printing", "Multi-body simulation", "PCB design"],
     overview: [
       "Harpy was my master's thesis project at Northeastern's SiliconSynapse Lab: a bipedal robot with six leg actuators, two vectoring thruster actuators, and two electric ducted fans. Inspired by the Jackson's Widowbird, which uses its wings and legs together to jump many times its body length, the platform was designed to support research in thruster-assisted legged locomotion, where thrust can help stabilize balance, soften impacts, and increase jump performance.",
       "My work covered the electromechanical architecture of the robot: actuator selection and packaging, composite 3D printed housings, carbon-fiber leg structures, embedded fabrication methods, thruster integration, electrical layout, simulation, and physical leg testing.",
@@ -715,10 +715,9 @@ const projectCatalog = {
     hero: "../assets/projects/soaring/PXL_20260628_160316457.jpg",
     heroAlt: "View from a sailplane cockpit under summer cumulus clouds",
     heroClass: "portfolio-thumb-cover soaring-hero-media",
-    tags: ["150+ glider flights", "80 flight hours", "Thermal soaring", "Ridge soaring", "Cross-country flying"],
     overview: [
-      "Soaring has been a long-running personal pursuit since 2013. I have flown more than 150 glider flights and spent over 80 hours in the air, including thermal and ridge soaring, flights longer than five hours, and climbs above 10,000 feet.",
-      "Flying sailplanes means finding lift without an engine: reading clouds, terrain, wind, and sink while constantly managing energy and options. That mix of patience, judgment, and tactile machine sense has shaped how I think about engineering, risk, and learning difficult things."
+      "Soaring has been a long-running personal pursuit since 2013. I received by private pilot rating in 2025 and have since flown more than 150 glider flights and spent over 80 hours in the air, including thermal and ridge soaring, flights longer than five hours, and climbs above 10,000 feet.",
+      "Flying sailplanes means finding lift without an engine: reading clouds, terrain, wind, and sink while constantly managing energy and options. Soaring has shaped how I think about weather, managing risk, thinking under stress, and learning difficult things."
     ],
     logoStrip: [
       {
@@ -736,47 +735,37 @@ const projectCatalog = {
     },
     sections: [
       {
-        kicker: "Flight",
-        title: "Reading weather as usable energy",
+        kicker: "What is soaring?",
         body: [
           "A sailplane flight is a live optimization problem. Every decision depends on altitude, wind, terrain, landing options, cloud shape, sun angle, and what the aircraft is quietly telling you through sound and pressure.",
-          "That is what keeps the sport fascinating to me: the aircraft is simple and honest, but the atmosphere is never the same twice. Good flights come from preparation, restraint, and the ability to keep making calm decisions as conditions change."
+          "That is what keeps the sport fascinating to me: the aircraft is simple and honest, but the atmosphere is never the same twice. Good flights come from preparation, restraint, and the ability to keep making calm decisions as conditions change.",
+          "After moving to Boston, I began flying with the Greater Boston Soaring Club in Sterling, Massachusetts. I had my first solo ridge-soaring flight along Kinsman Ridge in the White Mountains during a glider encampment, and in July 2024 completed my silver-distance flight: a 50 km out-and-return cross-country task.",
+          "Outside the cockpit, I help the club with glider maintenance, assembly/disassembly, and flight-line operations. My long-term goal is to become a flight instructor so I can keep passing the art of soaring to new pilots."
         ],
         asideFigure: {
-          src: "../assets/projects/soaring/asw19.jpg",
-          alt: "ASW-19B glider in flight",
-          caption: "ASW-19B glider in flight"
-        }
-      },
-      {
-        kicker: "Greater Boston Soaring Club",
-        title: "Flying, maintaining, and operating gliders",
-        body: [
-          "After moving to Boston, I began flying with the Greater Boston Soaring Club in Sterling, Massachusetts. I had my first solo ridge-soaring flight along Kinsman Ridge in the White Mountains during a glider encampment, and in July 2024 completed my silver-distance flight: a 50 km out-and-return cross-country task.",
-          "Outside the cockpit, I help the club with glider maintenance, refurbishment, assembly and disassembly, and flight-line operations. My long-term goal is to become a flight instructor so I can keep passing this strange, beautiful, very technical art to new pilots."
-        ],
-        fullWidthFigure: {
-          src: "../assets/projects/soaring/PXL_20230903_161103435.MP.jpg",
-          alt: "View from a glider cockpit ridge soaring in the White Mountains",
-          caption: "Solo ridge soaring along Kinsman Ridge in the White Mountains"
-        }
+          src: "../assets/projects/soaring/tow.jpg",
+          alt: "Glider relocation flight on tow",
+          caption: "Getting towed from Pennsylvania to Vermont on a glider relocation flight",
+          figureClass: "fx10-glance soaring-flight-glance"
+        },
+        appendFlightEmbed: true
       }
     ],
-    outcome: "Soaring remains one of the clearest through-lines in my life outside engineering: a way to stay close to flight, weather, craft, and people who love learning difficult things.",
     flightEmbed: {
       src: "https://www.weglide.org/embedded/flight/448659?baro=true&bbox=",
       title: "Silver-distance flight on WeGlide",
       body: [
-        "In July 2024 I completed my “silver distance” flight, which is a minimum 50 km out and return cross country flight. After 11 years of flying, I was a bit of a late bloomer to cross country flight, but now that I have the confidence to go out of range of my home airport, soaring has become much more rewarding and exciting."
+        "In July 2024 I completed my “silver distance” flight, which is a minimum 50 km out and return cross country flight. I ended up flying roughly 80km in total from Sterling, MA to Orange, MA and back. This was the culmination of years of practicing thermalling, reading clouds and weather, and practicing navigation in simulators. After 11 years of flying, I was a bit of a late bloomer to cross country flight, but now that I have the confidence to go out of range of my home airport, soaring has become much more rewarding and exciting. My next goal is 300km flight."
       ]
     },
     galleryLabel: "Gallery",
     media: [
-      ["../assets/projects/soaring/PXL_20241005_181141339.MP.jpg", "Aerotow over New England on a clear thermal day"],
-      ["../assets/projects/soaring/PXL_20251005_202241658.jpg", "Cross-country view from the cockpit during an autumn soaring flight"],
+      ["../assets/projects/soaring/PXL_20230903_161103435.MP.jpg", "Flying next to Cannon Mountain ski area"],
+      ["../assets/projects/soaring/PXL_20241005_181141339.MP.jpg", "Sitting in the back seat of a club member's glider during an aerotow"],
+      ["../assets/projects/soaring/PXL_20251005_202241658.jpg", "View from the cockpit during an autumn soaring flight"],
       ["../assets/projects/soaring/PXL_20260628_160316457.jpg", "Cloud streets and cumulus markers from the glider cockpit"],
       ["../assets/projects/soaring/d09169_68014352c67e49b7839e4f75c047979c~mv2.avif", "After landing an SGS 1-34 in Franconia"],
-      ["../assets/projects/soaring/d09169_d4e0201c132c4cf587bc35ed216297de~mv2.avif", "Greater Boston Soaring Club runway"]
+      ["../assets/projects/soaring/d09169_d4e0201c132c4cf587bc35ed216297de~mv2.avif", "Flying along North and South Kinsman in the White Mountains"]
     ],
     links: [],
     hideSourceAction: true,
@@ -1126,6 +1115,7 @@ const projectCatalog = {
         fit: "contain"
       }
     ],
+    hideSourceAction: true,
     source: "https://peterkellyyy.wixsite.com/peterkelly/audio-variometer"
   }
 };
@@ -1211,7 +1201,23 @@ const createLink = ([label, href], className = "project-action") => {
 // Lazily-built singleton lightbox for expanding gallery images to a
 // partial-fullscreen overlay. Closes on backdrop click, the close button, or Escape.
 let lightbox = null;
-const openLightbox = (src, caption) => {
+const updateLightboxImage = () => {
+  const item = lightbox._items[lightbox._index];
+  if (!item) return;
+  const [src, caption] = item;
+  lightbox._img.src = src;
+  lightbox._img.alt = caption || "";
+  lightbox._cap.textContent = caption || "";
+  lightbox._cap.style.display = caption ? "" : "none";
+};
+
+const showLightboxImage = (offset) => {
+  if (!lightbox?._items?.length) return;
+  lightbox._index = (lightbox._index + offset + lightbox._items.length) % lightbox._items.length;
+  updateLightboxImage();
+};
+
+const openLightbox = (src, caption, items = [[src, caption]], index = 0) => {
   if (!lightbox) {
     lightbox = el("div", "fx10-lightbox");
     lightbox.setAttribute("role", "dialog");
@@ -1220,13 +1226,29 @@ const openLightbox = (src, caption) => {
     const img = el("img", "fx10-lightbox-image");
     const cap = el("figcaption", "fx10-lightbox-caption");
     const closeBtn = el("button", "fx10-lightbox-close");
+    const prevBtn = el("button", "fx10-lightbox-nav fx10-lightbox-prev");
+    const nextBtn = el("button", "fx10-lightbox-nav fx10-lightbox-next");
+    const prevIcon = el("img");
+    const nextIcon = el("img");
+    prevIcon.src = "../icons/chevron-left.svg";
+    nextIcon.src = "../icons/chevron-right.svg";
+    prevIcon.alt = "";
+    nextIcon.alt = "";
     closeBtn.type = "button";
+    prevBtn.type = "button";
+    nextBtn.type = "button";
     closeBtn.setAttribute("aria-label", "Close image");
+    prevBtn.setAttribute("aria-label", "Previous image");
+    nextBtn.setAttribute("aria-label", "Next image");
+    prevBtn.append(prevIcon);
+    nextBtn.append(nextIcon);
     closeBtn.textContent = "×";
-    figure.append(closeBtn, img, cap);
+    figure.append(closeBtn, prevBtn, img, nextBtn, cap);
     lightbox.append(figure);
     lightbox._img = img;
     lightbox._cap = cap;
+    lightbox._prev = prevBtn;
+    lightbox._next = nextBtn;
     const close = () => {
       lightbox.classList.remove("is-open");
       document.body.classList.remove("fx10-lightbox-open");
@@ -1234,15 +1256,21 @@ const openLightbox = (src, caption) => {
     lightbox.addEventListener("click", (event) => {
       if (event.target === lightbox || event.target === closeBtn) close();
     });
+    prevBtn.addEventListener("click", () => showLightboxImage(-1));
+    nextBtn.addEventListener("click", () => showLightboxImage(1));
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && lightbox.classList.contains("is-open")) close();
+      if (event.key === "ArrowLeft" && lightbox.classList.contains("is-open")) showLightboxImage(-1);
+      if (event.key === "ArrowRight" && lightbox.classList.contains("is-open")) showLightboxImage(1);
     });
     document.body.append(lightbox);
   }
-  lightbox._img.src = src;
-  lightbox._img.alt = caption || "";
-  lightbox._cap.textContent = caption || "";
-  lightbox._cap.style.display = caption ? "" : "none";
+  lightbox._items = items;
+  lightbox._index = index;
+  const canBrowse = items.length > 1;
+  lightbox._prev.hidden = !canBrowse;
+  lightbox._next.hidden = !canBrowse;
+  updateLightboxImage();
   document.body.classList.add("fx10-lightbox-open");
   // force reflow so the open transition runs from the closed state
   void lightbox.offsetWidth;
@@ -1306,7 +1334,7 @@ const moreProjectCards = {
     thumbClass: "harpy-thumb harpy-thumb-upper",
     alt: "Harpy leg actuator assembly",
     date: "May 2020 - May 2021",
-    title: "Legged Robotics Research",
+    title: "Thruster-assisted Legged Robot",
     summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
     company: "SiliconSynapse Lab"
   },
@@ -1641,9 +1669,11 @@ const renderBlockProject = () => {
   appendHeroDate(heroCopy);
   heroCopy.append(el("p", "fx10-lede", project.lede));
 
-  const tags = el("div", "fx10-tags");
-  project.tags?.forEach((tag) => tags.append(el("span", "", tag)));
-  heroCopy.append(tags);
+  if (project.tags?.length) {
+    const tags = el("div", "fx10-tags");
+    project.tags.forEach((tag) => tags.append(el("span", "", tag)));
+    heroCopy.append(tags);
+  }
 
   const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
@@ -1672,9 +1702,11 @@ const renderStandardProject = () => {
   appendHeroDate(heroCopy);
   heroCopy.append(el("p", "fx10-lede", project.lede));
 
-  const tags = el("div", "fx10-tags");
-  project.tags?.forEach((tag) => tags.append(el("span", "", tag)));
-  heroCopy.append(tags);
+  if (project.tags?.length) {
+    const tags = el("div", "fx10-tags");
+    project.tags.forEach((tag) => tags.append(el("span", "", tag)));
+    heroCopy.append(tags);
+  }
 
   const heroMedia = el("div", `fx10-hero-media ${project.heroClass || ""}`.trim());
   const heroImage = el("img");
@@ -1788,7 +1820,8 @@ const renderStandardProject = () => {
   }
   root.append(overview);
 
-  if (project.flightEmbed) {
+  const appendFlightEmbed = () => {
+    if (!project.flightEmbed) return;
     const fe = project.flightEmbed;
     const flightSection = el("section", "fx10-section fx10-flight-section");
     flightSection.append(el("p", "fx10-section-kicker", fe.sectionLabel || "Cross country flying"));
@@ -1810,7 +1843,7 @@ const renderStandardProject = () => {
     figure.append(frame);
     flightSection.append(figure);
     root.append(flightSection);
-  }
+  };
 
   if (project.featureBreakdown?.length) {
     const breakdown = el("section", "fx10-section module-breakdown-section");
@@ -1891,7 +1924,12 @@ const renderStandardProject = () => {
     root.append(designSpread);
   }
 
-  project.sections?.forEach((section) => {
+  const projectSections = project.sections ? [...project.sections] : [];
+  if (key === "harpy") {
+    projectSections.sort((a, b) => (b.kicker === "Actuation and Fabrication") - (a.kicker === "Actuation and Fabrication"));
+  }
+
+  projectSections.forEach((section) => {
     const design = el("section", `fx10-section fx10-design-section ${section.className || ""}`.trim());
     design.append(el("p", "fx10-section-kicker", section.kicker));
     const designCopy = el("div", "fx10-design-copy fx10-generic-design-copy");
@@ -1899,7 +1937,7 @@ const renderStandardProject = () => {
     addParagraphs(designCopy, section.body || []);
     design.append(designCopy);
     if (section.asideFigure) {
-      const figure = el("figure", "standard-section-paired-figure standard-section-aside-figure");
+      const figure = el("figure", `standard-section-paired-figure standard-section-aside-figure ${section.asideFigure.figureClass || ""}`.trim());
       const image = el("img");
       image.src = section.asideFigure.src;
       image.alt = section.asideFigure.alt || section.asideFigure.caption || "";
@@ -2016,6 +2054,7 @@ const renderStandardProject = () => {
       }
     }
     root.append(design);
+    if (section.appendFlightEmbed) appendFlightEmbed();
 
     if (section.bannerVideo) {
       const videoBanner = el("section", "fx10-image-banner standard-video-banner");
@@ -2036,7 +2075,7 @@ const renderStandardProject = () => {
     const gallery = el("section", "fx10-section fx10-gallery-section");
     gallery.append(el("p", "fx10-section-kicker", project.galleryLabel || "Design"));
     const highlightGrid = el("div", "fx10-highlight-grid");
-    project.media.forEach(([src, caption]) => {
+    project.media.forEach(([src, caption], index) => {
       const card = el("article", "fx10-highlight-card");
       const trigger = el("button", "fx10-gallery-media");
       trigger.type = "button";
@@ -2051,8 +2090,8 @@ const renderStandardProject = () => {
       hintIcon.alt = "";
       hint.append(hintIcon);
       trigger.append(image, hint);
-      trigger.addEventListener("click", () => openLightbox(src, caption));
-      card.append(trigger, el("h3", "", caption));
+      trigger.addEventListener("click", () => openLightbox(src, caption, project.media, index));
+      card.append(trigger, el("figcaption", "fx10-gallery-caption", caption));
       highlightGrid.append(card);
     });
     gallery.append(highlightGrid);
@@ -2108,30 +2147,32 @@ const renderStandardProject = () => {
 
   if (!project.videoAfterOutcome) appendVideoSection();
 
-  const outcome = el("section", "fx10-section fx10-outcome-section");
-  outcome.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
-  if (project.videoAfterOutcome) appendVideoContent(outcome);
-  if (project.outcomeFigures?.length) {
-    const figurePair = el("div", "standard-section-figure-pair outcome-supplemental-figures");
-    project.outcomeFigures.forEach((figureData) => {
-      const figure = el("figure", "standard-section-paired-figure");
-      const image = el("img");
-      image.src = figureData.src;
-      image.alt = figureData.alt || figureData.caption || "";
-      image.loading = "lazy";
-      figure.append(image);
-      if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
-      figurePair.append(figure);
-    });
-    outcome.append(figurePair);
+  if (project.outcome || project.videoAfterOutcome || project.outcomeFigures?.length || project.links?.length || (project.source && !project.hideSourceAction)) {
+    const outcome = el("section", "fx10-section fx10-outcome-section");
+    if (project.outcome) outcome.append(el("p", "fx10-section-kicker", "Outcome"), el("p", "", project.outcome));
+    if (project.videoAfterOutcome) appendVideoContent(outcome);
+    if (project.outcomeFigures?.length) {
+      const figurePair = el("div", "standard-section-figure-pair outcome-supplemental-figures");
+      project.outcomeFigures.forEach((figureData) => {
+        const figure = el("figure", "standard-section-paired-figure");
+        const image = el("img");
+        image.src = figureData.src;
+        image.alt = figureData.alt || figureData.caption || "";
+        image.loading = "lazy";
+        figure.append(image);
+        if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+        figurePair.append(figure);
+      });
+      outcome.append(figurePair);
+    }
+    if (project.links?.length || (project.source && !project.hideSourceAction)) {
+      const actions = el("div", "project-actions");
+      project.links?.forEach((link) => actions.append(createLink(link)));
+      if (project.source && !project.hideSourceAction) actions.append(createLink(["View original page", project.source], "project-action project-action-secondary"));
+      outcome.append(actions);
+    }
+    root.append(outcome);
   }
-  if (project.links?.length || (project.source && !project.hideSourceAction)) {
-    const actions = el("div", "project-actions");
-    project.links?.forEach((link) => actions.append(createLink(link)));
-    if (project.source && !project.hideSourceAction) actions.append(createLink(["View original page", project.source], "project-action project-action-secondary"));
-    outcome.append(actions);
-  }
-  root.append(outcome);
   renderMoreProjects();
 };
 
