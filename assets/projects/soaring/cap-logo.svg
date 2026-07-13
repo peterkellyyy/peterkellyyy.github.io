@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="444.5" height="444.5">
+<defs>
+<ellipse cx="222.5" cy="132" rx="18.2" ry="80.2" fill="#ce1126" id="blade"/>
+</defs>
+<circle cx="222.25" cy="222.25" r="222.25" fill="#003080"/>
+<path d="M30.42,333.75L222.25,1.5L414.08,333.75z" fill="#fff"/>
+<circle cx="222.25" cy="222.25" r="23" fill="#ce1126"/>
+<use xlink:href="#blade"/>
+<use xlink:href="#blade" transform="rotate(120 222.5 222.5)"/>
+<use xlink:href="#blade" transform="rotate(240 222.5 222.5)"/>
+</svg>

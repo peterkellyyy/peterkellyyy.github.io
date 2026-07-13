@@ -1,0 +1,10 @@
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local scratch space
+tmp/
+
+# Raw video source files (converted .webm/.mp4 versions are committed instead)
+assets/**/*.mov

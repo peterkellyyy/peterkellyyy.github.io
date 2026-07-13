@@ -1,32 +1,9 @@
-const portfolioOrder = [
-  "berkshire-grey",
-  "fx10",
-  "harpy",
-  "co-parts",
-  "finefeatures",
-  "px100",
-  "3dtrails",
-  "aerobat",
-  "asthma-inhaler-assistive-device",
-  "cat-treat-dispenser",
-  "rotary-rf-pcb-manufacturing",
-  "morse-corp",
-  "irobot",
-  "sikorsky",
-  "audio-variometer",
-  "soaring"
-];
-
-const temporarilyHiddenPortfolioCards = new Set([
-  "morse-corp",
-  "irobot",
-  "sikorsky"
-]);
-
+// Orders the homepage portfolio grid to match projectOrder and hides the
+// temporarily hidden cards. Data comes from project-data.js (loaded first).
 const portfolioGrid = document.querySelector("[data-portfolio-grid]");
 const portfolioCount = document.querySelector("[data-portfolio-count]");
 
-if (portfolioGrid) {
+if (portfolioGrid && typeof projectOrder !== "undefined") {
   const cards = new Map(
     [...portfolioGrid.querySelectorAll("[data-project-card]")].map((card) => [
       card.dataset.projectCard,
@@ -34,7 +11,7 @@ if (portfolioGrid) {
     ])
   );
 
-  portfolioOrder.forEach((projectKey) => {
+  projectOrder.forEach((projectKey) => {
     const card = cards.get(projectKey);
     if (card) {
       card.hidden = temporarilyHiddenPortfolioCards.has(projectKey);
