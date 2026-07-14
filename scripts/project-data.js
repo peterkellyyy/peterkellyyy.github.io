@@ -15,64 +15,63 @@ const projectCatalog = {
     hero: "../assets/jobs/Berkshire Grey/carouselai.jpg",
     heroAlt: "Berkshire Grey robotic manipulation cell",
     heroClass: "portfolio-thumb-cover",
-    tags: ["End effectors", "Robot-learning hardware", "Automated validation", "Cell deployment"],
+    tags: ["Robot-learning hardware", "End effectors", "Automated validation"],
     overview: [
-      "At Berkshire Grey, I lead mechanical R&D for robotic manipulation, spanning end effectors, Universal Manipulation Interface (UMI) data-acquisition hardware, automated validation systems, and bimanual robotic pick cells. I carry hardware from ambiguous research requirements through mechanism architecture, detailed CAD, fabrication, integration, validation, commissioning, and deployment.",
-      "Much of this work remains unreleased. The selected contributions below therefore focus on engineering decisions, system scope, and measurable outcomes while intentionally omitting proprietary geometry, internal test methods, and program details."
+      "At Berkshire Grey I lead mechanical R&D for robotic manipulation: end effectors for challenging SKUs, Universal Manipulation Interface (UMI) data collection hardware, automated validation fixtures, and bimanual pick cells. On each program I carry the hardware from ambiguous research requirements through mechanism architecture, detailed CAD, fabrication, integration, validation, and deployment.",
+      "Much of this work is unreleased. The write-ups below focus on engineering decisions, system scope, and measured outcomes, and deliberately omit proprietary geometry, internal test methods, and program details."
     ],
     overviewMedia: {
       type: "video",
       src: "../assets/jobs/Berkshire Grey/versa.webm",
-      caption: "Public Berkshire Grey footage illustrating the deployment environment; unreleased systems described below are not shown.",
+      caption: "Public Berkshire Grey footage of the deployment environment. The unreleased systems described below are not shown.",
       aspectRatio: "1400 / 1080",
       fit: "contain"
     },
     sections: [
       {
+        kicker: "Robot-Learning Hardware",
+        title: "Human demonstration collection at production scale",
+        body: [
+          "I architected, built, and deployed 11 ergonomic UMI grippers and the data acquisition cells around them, translating fast-changing research requirements into hardware that operators rely on all day, every day."
+        ],
+        bullets: [
+          "Integrated haptic feedback, tool balancing, 6-DoF OptiTrack pose tracking, onboard cameras, controls, and compute into complete operator-facing systems",
+          "Owned the full delivery path: cell layout, structure designs, cable routing, drawings, supplier coordination, build, commissioning, and deployment",
+          "The deployed fleet sustains collection of more than 70,000 robot-learning episodes per week"
+        ]
+      },
+      {
+        kicker: "Robot Cells",
+        title: "Seven bimanual cells in six months",
+        body: [
+          "I led mechanical design, hands-on build, and commissioning for seven bimanual robot-learning cells, taking each from layout to running hardware on a research timeline."
+        ],
+        bullets: [
+          "Owned structural and guarding design, fabrication drawings, supplier execution, cell integration, and deployment",
+          "Designed modular guarding and interfaces for assembly (DFA), cutting per-cell installation from multiple days to three to four hours",
+          "Delivered a gravity-compensated GELLO teleoperation arm, with matching URDF, in four days to unblock a fast-moving research need"
+        ]
+      },
+      {
         kicker: "End Effectors",
         title: "Mechanisms for difficult, variable SKUs",
         body: [
-          "I develop end effectors for object classes that defeat conventional fixed-geometry tooling, balancing grasp force and compliance against mass, reach, collision loads, cycle life, tolerances, and serviceability."
+          "I develop end effectors for object classes that conventional fixed-geometry tooling cannot handle, balancing grasp force and compliance against mass, reach, collision loads, cycle life, tolerances, and serviceability."
         ],
         bullets: [
           "Invented and validated pneumatic and pinch mechanisms for orientation-independent handling of books and shoeboxes, and for singulating folded garments from clutter without losing the fold",
-          "Owned mechanism architecture, detailed CAD, rapid fabrication, mechatronic integration, bench testing, failure analysis, and iterative refinement"
+          "Carried each mechanism through architecture, detailed CAD, rapid fabrication, mechatronic integration, bench testing, and failure analysis"
         ]
       },
       {
         kicker: "Validation",
         title: "Instrumented testing instead of subjective iteration",
         body: [
-          "I built automated test hardware that turns grasp performance and durability into repeatable data, allowing concepts to be compared quickly and regressions to be caught before robot-cell integration."
+          "I build automated test hardware that turns grasp performance and durability into repeatable data, so competing concepts are ranked by measurement and regressions are caught before robot-cell integration."
         ],
         bullets: [
-          "Designed a modular gripper evaluation fixture with linear actuators and swappable mechanisms that reset test SKUs between trials",
-          "Integrated load cells, machine vision, automated cycling, and Python analysis for unattended grasp-success testing",
-          "Used quantitative bench results to rank concepts, expose failure modes, and focus design effort before committing to full-system builds"
-        ]
-      },
-      {
-        kicker: "Robot-Learning Hardware",
-        title: "Human data acquisition at operational scale",
-        body: [
-          "I architected, built, and deployed 11 ergonomic UMI grippers and data-acquisition cells, translating fast-changing research needs into reliable systems for daily operation."
-        ],
-        bullets: [
-          "Integrated haptic feedback, tool balancing, 6-DOF OptiTrack tracking, controls, compute, and onboard cameras into complete operator-facing systems",
-          "Owned cell layouts, guarding, cable management, major subassemblies, hardware interfaces, drawings, supplier coordination, build, commissioning, and deployment",
-          "Enabled collection of more than 70,000 robot-learning episodes per week across the deployed hardware"
-        ]
-      },
-      {
-        kicker: "Robot Cells",
-        title: "Rapid buildout of bimanual manipulation systems",
-        body: [
-          "I led mechanical design, hands-on build, and commissioning for eight bimanual robot-learning cells delivered in six months."
-        ],
-        bullets: [
-          "Owned structural and guarding design, fabrication drawings, supplier execution, cell integration, and deployment",
-          "Applied DFA to modular guarding and interfaces, reducing installation from multiple days to approximately three to four hours",
-          "Delivered a gravity-compensated GELLO teleoperation arm and URDF in four days to unblock a fast-moving research need"
+          "Designed a modular gripper-evaluation fixture with linear actuators, load cells, swappable mechanisms, and automatic reset of test SKUs between trials",
+          "Used the resulting data to rank concepts, expose failure modes, and focus design effort before committing to full system builds"
         ]
       }
     ],
@@ -268,7 +267,7 @@ const projectCatalog = {
   "co-parts": {
     hero: "../assets/projects/co-parts/01-e66ed0c40c37.jpg",
     heroAlt: "Continuous-fiber reinforced co-part assembly",
-    tags: ["Composite FFF", "Design methodology", "Mechanical testing", "Published research"],
+    tags: ["Composite design", "Process development", "Mechanical testing"],
     embed: {
       src: "https://www.youtube.com/embed/VljE9VG1s-s",
       title: "How to improve Z strength with multi-part prints"
@@ -282,8 +281,8 @@ const projectCatalog = {
             copyClass: "fx10-overview-copy",
             kicker: "Overview",
             paragraphs: [
-              "Markforged printers combine a chopped-carbon-fiber nylon base material with inlaid continuous carbon fiber, raising in-plane yield strength from roughly 40 MPa to up to 800 MPa, nearly a 20x improvement. The limitation is that fiber can only be routed in the XY print plane, so Z-direction strength remains governed by the weaker bonding between FFF layers. When a part has features whose ideal print orientations conflict, a single build orientation unavoidably compromises the final part.",
-              "To overcome this, I developed a co-part methodology, published in the Rapid Prototyping Journal with two Markforged colleagues. Conflicting features are functionally separated into co-parts by Boolean subtraction, printed simultaneously in their ideal orientations with continuous fiber aligned to each primary load, and then assembled into a composite part. The strategy runs on standard three-axis FFF printers with no hardware modifications, and fiber-reinforced co-part assemblies held up to 6.4x the ultimate load of equivalent plastic-only parts."
+              "Continuous carbon fiber can make an FFF part exceptionally strong in the print plane, but it cannot reinforce features oriented through the layers. Parts with critical loads in multiple directions therefore force a compromise: orient one feature well and leave another dependent on weaker interlayer bonds.",
+              "I developed and experimentally validated a co-part design method to remove that constraint. A monolithic model is decomposed into interlocking components, each component is printed in the orientation best suited to its primary load, and the assembly transfers load across reinforced interfaces. The method works on standard three-axis printers without hardware changes, increased ultimate load by as much as 6.4× over equivalent plastic-only parts, and was published with two colleagues in the Rapid Prototyping Journal."
             ]
           },
           {
@@ -291,12 +290,12 @@ const projectCatalog = {
             figureClass: "co-parts-figure co-parts-overview-image",
             src: "../assets/projects/co-parts/co-part assembly.png",
             alt: "Monolithic mounting plate, assembled co-part, and co-part assembly strategy",
-            caption: "(a) Monolithic plastic mounting plate part (b) assembled co-part (c) assembly strategy"
+            caption: "From monolithic part to an assembly reinforced across perpendicular load planes"
           },
           {
             kind: "youtube",
             figureClass: "fx10-overview-video co-parts-overview-video",
-            caption: "The educational video I wrote and presented on the co-part process, which reached over 80,000 views"
+            caption: "I wrote and presented this explanation of the co-part method; it has reached more than 80,000 views"
           }
         ]
       },
@@ -306,9 +305,9 @@ const projectCatalog = {
           {
             kind: "copy",
             copyClass: "fx10-design-copy fx10-generic-design-copy co-parts-process-copy",
-            kicker: "Process",
+            kicker: "Design Method",
             paragraphs: [
-              "Candidate parts are those with competing feature optimizations: perpendicular cylindrical features, thin protrusions that do not lie in a common plane, high-aspect-ratio features, or loads applied across printed layers. A tent-pole mounting plate provided a clear test case. Four bolts secure the plate to the ground while the central boss is loaded perpendicular to the mounting surface, a direction that cannot be optimally reinforced with one continuous-fiber print orientation.",
+              "The method targets parts whose critical features need incompatible build orientations: perpendicular bosses, thin protrusions in different planes, high-aspect-ratio features, or any geometry loaded across layer lines. A tent-pole mounting plate made the conflict clear. Its four mounting holes carry in-plane loads while the central boss is pulled perpendicular to the plate, so no single build orientation can place continuous fiber around both load paths.",
               {
                 figureGroup: {
                   groupClass: "co-parts-break-pair",
@@ -318,7 +317,7 @@ const projectCatalog = {
                   ]
                 }
               },
-              "The geometry was separated into two co-parts using Boolean subtraction, and each was printed in its strongest orientation with continuous carbon fiber aligned to its primary load. Load transfer between the co-parts drove the interface design: the parts are arranged so that applied load attempts to pull one co-part through the other, seating a flared base against a fiber-reinforced pocket. Printed with zero gap allowance, the co-parts were press-fit together with an arbor press. Adhesives or dovetail-style joinery can be used instead when loads act in multiple directions."
+              "I separated the geometry with a Boolean subtraction, oriented each co-part for its own load case, and routed continuous fiber along both primary load paths. The interface was designed so the applied force seats a flared base against a reinforced pocket instead of relying on interlayer adhesion. The zero-clearance parts were press-fit with an arbor press; geometries with reversing or multidirectional loads can instead use adhesive or mechanically locking interfaces."
             ]
           },
           {
@@ -329,8 +328,8 @@ const projectCatalog = {
                 kind: "copy",
                 copyClass: "fx10-design-copy fx10-generic-design-copy co-parts-flow-copy",
                 paragraphs: [
-                  "The decomposition follows a repeatable workflow. First, select the build orientation that places the largest critical features in the XY plane, where printed strength is highest and continuous fiber can be routed. Next, identify critical features left with poor local orientation, such as loading across layer lines, and separate them into co-parts in CAD, detailing only the mating interface before the Boolean operation.",
-                  "Each co-part is then individually oriented in the slicer and reinforced with continuous fiber along its principal load path. Finally, the collection of co-parts is printed in a single build and assembled by press fitting. Because only the interface geometry changes, the process can be iterated quickly. Small unit-test prints of just the interface are an efficient way to tune the fit for a particular printer and material."
+                  "The workflow begins by orienting the largest critical feature in the strong XY plane. Any remaining feature loaded across the layers becomes a candidate co-part. In CAD, I define the mating interface on that feature and use Boolean subtraction to generate its matching pocket in the parent geometry.",
+                  "Each co-part is then oriented and reinforced independently in the slicer, printed in the same build, and assembled. Because iteration is concentrated at the interface, fit can be tuned quickly with small test coupons before committing to a complete print. This makes the method practical for standard engineering workflows rather than a one-off demonstration."
                 ]
               },
               {
@@ -348,20 +347,20 @@ const projectCatalog = {
             videoClass: "co-parts-process-video",
             src: "../assets/projects/co-parts/example part.webm",
             ariaLabel: "Co-part example assembly animation",
-            caption: "Separating a mounting plate into co-parts using Solidworks"
+            caption: "Separating the mounting plate into complementary co-parts in SOLIDWORKS"
           }
         ]
       },
       {
         sectionClass: "fx10-section fx10-design-section co-parts-testing-section",
-        kicker: "Testing",
+        kicker: "Experimental Validation",
         parts: [
           {
             kind: "copy",
             copyClass: "fx10-design-copy fx10-generic-design-copy",
             paragraphs: [
-              "Each demonstration part was printed in up to four strategies: a monolithic plastic control, plastic-only co-parts, single-plane continuous fiber reinforcement, and fiber-reinforced co-parts. Three samples were tested per cohort, dried for 48 hours under vacuum before testing to control for environmental variability.",
-              "All samples were loaded to failure on an Instron 3369 with a 50 kN load cell, using custom fixtures designed so the applied forces mimicked each part's real-world use case. Beyond the two full parts, three unit tests isolated common weak features that are often forced into poor print orientations by the rest of a part: a snap-fit clip, a cylindrical post, and a loop."
+              "I compared four fabrication strategies where applicable: a monolithic plastic control, plastic-only co-parts, a monolithic part with continuous fiber in one plane, and fiber-reinforced co-parts. Three specimens were tested per condition, with every sample vacuum-dried for 48 hours beforehand to control moisture-dependent variation.",
+              "I designed custom fixtures that reproduced each part's intended loading and tested every specimen to failure on an Instron 3369 with a 50 kN load cell. Two complete demonstration parts evaluated system-level behavior, while snap-fit, cylindrical-post, and loop coupons isolated features that are commonly weakened by an unfavorable build orientation."
             ]
           },
           {
@@ -389,11 +388,11 @@ const projectCatalog = {
             copyClass: "fx10-outcome-section co-parts-outcome-copy",
             kicker: "Outcome",
             paragraphs: [
-              "Co-part assembly proved to be a practical way to sidestep FFF anisotropy without new printer hardware. Fiber-reinforced co-parts held up to 6.4x the ultimate load of equivalent plastic-only parts and enabled reinforcement in otherwise incompatible planes.",
-              "The work was published open-access in the Rapid Prototyping Journal. The same decomposition strategy can extend beyond strength to stiffness, accuracy, surface finish, and conductivity."
+              "The experiments showed that co-part decomposition can overcome a fundamental limitation of three-axis composite FFF without changing the printer. Fiber-reinforced co-parts sustained up to 6.4× the ultimate load of equivalent plastic-only parts while placing reinforcement in otherwise incompatible planes.",
+              "The method and validation results were published open access in the Rapid Prototyping Journal. I also translated the research into an educational video viewed more than 80,000 times, making the workflow accessible to engineers outside the original study."
             ],
             actions: [
-              ["Read the journal paper", "https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf"],
+              ["Read the open-access paper", "https://www.emerald.com/rpj/article-pdf/29/11/64/2307484/rpj-12-2022-0415.pdf"],
               ["Read the blog post", "https://markforged.com/resources/blog/using-co-part-assemblies-and-continuous-fibers-to-print-stronger-parts"]
             ]
           },
@@ -411,11 +410,10 @@ const projectCatalog = {
   harpy: {
     hero: "../assets/projects/harpy/harpy leg.png",
     heroAlt: "Harpy leg actuator assembly",
-    tags: ["Actuator design", "Composite 3D printing", "Multibody simulation", "PCB design", "Generative design"],
+    tags: ["Research robotics", "Actuator design", "Multibody simulation", "Hardware validation", "Composite fabrication"],
     overview: [
-      "Harpy was my master's thesis project at Northeastern's SiliconSynapse Lab: a bipedal robot with six leg actuators, two vectoring thruster actuators, and two electric ducted fans. Inspired by the Jackson's Widowbird, which uses its wings and legs together to jump many times its body length, the platform was designed to support research in thruster-assisted legged locomotion, where thrust can help stabilize balance, soften impacts, and increase jump performance.",
-      "My work covered the electromechanical architecture of the robot: actuator selection and packaging, composite 3D printed housings, carbon-fiber leg structures, embedded fabrication methods, thruster integration, electrical layout, simulation, and physical leg testing.",
-      "Three constraints drove every design decision: a thrust-to-weight ratio greater than one, legs that could survive repeated free-fall impacts, and modular actuators that could be revised or repaired quickly without rebuilding printed structure."
+      "For my master's thesis at Northeastern's SiliconSynapse Lab, I developed the electromechanical architecture for Harpy, a bipedal research robot with six leg actuators, two thrust-vectoring actuators, and two electric ducted fans. Inspired by birds that coordinate their wings and legs to jump, Harpy was built to study how controllable thrust could improve balance, reduce impact loads, and extend the capabilities of legged locomotion.",
+      "I owned actuator selection and packaging, composite housings, carbon fiber leg structures, thruster integration, support electronics, multibody simulation, and physical leg testing. The design balanced three system-level constraints: thrust greater than the robot's weight, legs robust to repeated free-fall impacts, and modular hardware that researchers could revise, test, and service quickly."
     ],
     overviewMedia: {
       src: "../assets/projects/harpy/harpy-render.png",
@@ -425,8 +423,8 @@ const projectCatalog = {
       {
         kicker: "Leg Design",
         body: [
-          "The leg layout used a pantograph-style mechanism with sagittal hip, frontal hip, and knee actuation. The pantograph made efficient use of actuator torque while preventing knee inversion and singular configurations, and I designed the carbon-fiber tube and plate structure, pelvis interface, and knee assembly around it. Oval cross-section carbon-fiber tubes concentrated bending stiffness in the sagittal plane, where walking and jumping loads are highest, saving weight over round tubes of equivalent stiffness.",
-          "To decouple the actuators from ground impacts, I designed a passive shock absorber in series with the pantograph control rod. A preloaded spring keeps the leg rigid during normal walking but compresses under large peak loads, protecting the transmissions and storing energy for subsequent jumps. Interchangeable springs from 1.0 to 10.5 N/mm and an adjustable preload nut let stiffness be tuned between tests without any redesign."
+          "Each three-DoF leg combined sagittal hip, frontal hip, and knee actuation in a pantograph mechanism that used actuator torque efficiently while avoiding knee inversion and singular configurations. I designed the surrounding pelvis interface, knee assembly, and carbon fiber tube-and-plate structure. Oval tubes concentrated bending stiffness in the high-load sagittal plane, reducing mass relative to round tubes of equivalent stiffness.",
+          "To isolate the transmissions from ground impacts, I placed a passive shock absorber in series with the pantograph control rod. A preloaded spring kept the leg rigid during normal walking, then compressed under peak loads to protect the drivetrain and return energy during a jump. Interchangeable 1.0 to 10.5 N/mm springs and adjustable preload allowed compliance to be tuned between experiments without redesigning the leg."
         ],
         asideFigure: {
           src: "../assets/projects/harpy/harpyLegDOF.png",
@@ -442,9 +440,9 @@ const projectCatalog = {
       {
         kicker: "Actuation and Fabrication",
         body: [
-          "Actuators dominate the mass budget of a legged robot, so component selection came first. I traded direct drive, planetary, spur, belt, and harmonic transmissions against torque density, backdrivability, and backlash, then compared more than 40 brushless motors on power- and torque-to-weight. The result paired a 30:1 Harmonic Drive component set with a T-motor Antigravity 4006, giving each complete leg joint actuator 8.5 Nm of peak torque at just 270 g.",
-          "I designed the integrated actuator housings around bearings, motor mounting, transmission support, and output structure. Machined interfaces used 316 stainless where bearing surfaces demanded precision and 7075 aluminum where they didn't, and FEA verified the output flange at twice the transmission's rated peak torque. Composite FDM made it possible to create high-complexity housings while keeping mass low.",
-          "A major part of the work was fabrication strategy. Bearings, heat-set inserts, and carbon-fiber plates were embedded into printed parts mid-print, allowing printed geometry to locate and support stiffer structural elements instead of relying on plastic alone — with pullout strength set by the surrounding carbon-fiber-reinforced material rather than an adhesive bond."
+          "Because actuators dominated the robot's mass budget, I began with a system-level trade study. I compared direct drive, planetary, spur, belt, and strain-wave transmissions across torque density, backdrivability, and backlash, then evaluated more than 40 brushless motors. The selected 30:1 Harmonic Drive and T-Motor Antigravity 4006 delivered 8.5 Nm of peak torque in a complete 270 g leg actuator.",
+          "I designed the integrated housing around the motor, bearings, transmission, and output structure. I used 316 stainless at wear-critical bearing interfaces and 7075 aluminum for the remaining machined structure, balancing durability, stiffness, and mass. FEA verified the output flange at twice the transmission's rated peak torque, while composite FDM enabled lightweight geometry for alignment, packaging, and load transfer.",
+          "I developed an embedded-fabrication process for the high-load printed assemblies. Bearings, heat-set inserts, and carbon fiber plates were placed during paused prints, allowing the printed geometry to locate structural elements while the reinforced material—not an adhesive joint—carried pullout loads."
         ],
         figure: {
           src: "../assets/projects/harpy/actuator-exploded.png",
@@ -452,7 +450,7 @@ const projectCatalog = {
           caption: "Exploded leg joint actuator architecture"
         },
         afterFigureBody: [
-          "By sandwiching printed thermoplastic between layers of continuous carbon fiber, the housings behaved like composite sandwich panels: stiff where bending loads demanded it, light everywhere else. The same print-and-pause process built the thruster and leg actuator housings, letting printed parts provide complex alignment and packaging features while carbon-fiber and bearing elements carried the high loads."
+          "Continuous carbon fiber layers turned the printed housings into composite sandwich structures: stiff across the critical bending paths and light elsewhere. I used the same repeatable print-and-pause process for the leg and thruster actuators, combining precise printed alignment features with metal and composite elements at the load-bearing interfaces."
         ],
         fullWidthFigure: {
           src: "../assets/projects/harpy/embedThruster.png",
@@ -460,7 +458,7 @@ const projectCatalog = {
           caption: "Embedded composite-printing process used for high-load actuator housings"
         },
         bottomAsideBody: [
-          "I also designed support electronics, including a motor-drive interface PCB that provides EtherCAT, safe-torque-off, USB, and encoder connections for each motor drive, and packaged the drives, ESCs, heatsinks, and wiring so the system could be assembled, tested, and serviced."
+          "I also designed a motor-drive interface PCB providing EtherCAT, safe-torque-off, USB, and encoder connections, then packaged the drives, ESCs, heatsinks, and wiring for straightforward assembly, debugging, and service."
         ],
         bottomAsideFigure: {
           src: "../assets/projects/harpy/ampPCB.png",
@@ -471,8 +469,8 @@ const projectCatalog = {
       {
         kicker: "Thrusters",
         body: [
-          "Hitting a thrust-to-weight ratio above one required 68 N of total thrust. Propellers would have needed 25+ cm blade diameters — unsafe and impractical on a walking robot — and gas turbines were too heavy, hot, and slow to respond. I selected carbon-fiber Schuebeler EDFs instead, each producing 53 N from a housed 80 mm duct that keeps blades protected during ground operation.",
-          "For thrust vectoring, I chose gimballed thrusters over control flaps for their efficiency and far larger range of motion, and designed the actuator that steers each EDF by adapting the leg joint architecture with a smaller motor and harmonic drive. Two output bearings support the EDF coupling so the transmission sees pure torque despite sustained bending loads from the thrusters."
+          "A thrust-to-weight ratio above one required at least 68 N of total thrust. Open propellers would have required unsafe 25+ cm blade diameters, while gas turbines were too heavy, hot, and slow to respond. I selected enclosed 80 mm Schuebeler electric ducted fans, each capable of 53 N, providing control authority with protected blades for ground testing.",
+          "I selected gimballed thrusters over control flaps for their efficiency and wider steering range, then adapted the leg-actuator architecture to vector each fan. A dual-bearing output isolated the transmission from sustained thruster bending loads so the Harmonic Drive carried torque rather than acting as a structural bearing."
         ],
         fullWidthFigure: {
           src: "../assets/projects/harpy/upperBody.png",
@@ -484,8 +482,8 @@ const projectCatalog = {
         kicker: "Simulation",
         className: "harpy-simulation-section",
         body: [
-          "Before building the complete robot, I created a MATLAB Simscape Multibody model to estimate joint torque requirements and compare how shock absorber stiffness and thruster force affected falls and hops. The simulation showed how passive compliance and thrust could reduce peak actuator loads during impact.",
-          "Drop cases swept shock absorber stiffnesses from 4 to 8 N/mm and thruster forces from 0 to 40 N, showing that the knee and sagittal hip dominate torque requirements while the frontal hip load is negligible — a result that later simplified the leg test fixture. Commanded hop trajectories were then evaluated across thrust levels before committing to hardware tests."
+          "Before committing to full-system hardware, I built a MATLAB Simscape Multibody model to estimate joint torques and test how shock-absorber stiffness and thruster force affected drops and hops. The model connected design parameters to actuator loads and quantified how passive compliance and thrust reduced impact peaks.",
+          "I swept spring stiffness from 4 to 8 N/mm and thrust from 0 to 40 N. The results identified the knee and sagittal hip as the dominant load paths, with negligible frontal-hip torque in the tested motion; that finding simplified the physical fixture. I then evaluated commanded hop trajectories across thrust levels before running the same experiments on hardware."
         ],
         asideFigure: {
           src: "../assets/projects/harpy/harpyThrusterPlot.png",
@@ -504,8 +502,8 @@ const projectCatalog = {
       {
         kicker: "System Architecture",
         body: [
-          "The robot architecture connected a Simulink Real-Time target PC to Elmo Gold Twitter motor drives over EtherCAT at 10 kHz, with a daisy-chained Nucleo microcontroller commanding the thruster ESCs. Power came from a tethered 30 V supply in the lab or an 8S LiPo untethered, and a hardware emergency stop cut both the safe-torque-off signal to the drives and the PWM to the EDFs.",
-          "I designed the mechanical packaging around that architecture — including a carbon-fiber motor-drive rack holding all eight drives on the torso, keeping drive mass off the legs and thermally isolated from the actuator motors — so the robot could stay light while leaving the controls team a practical research platform."
+          "The controls architecture linked a Simulink Real-Time target to eight Elmo motor drives over 10 kHz EtherCAT, while a daisy-chained Nucleo microcontroller commanded the thruster ESCs. The platform supported a tethered 30 V lab supply or untethered 8S LiPo, and a hardware emergency stop removed both motor-drive torque and fan PWM commands.",
+          "I designed the mechanical and electrical packaging around the controls stack, including a carbon fiber rack that kept all eight drives on the torso and thermally isolated from the actuator motors. Accessible interfaces and modular assemblies gave the controls team a lightweight platform that could be instrumented, debugged, and reconfigured between experiments."
         ],
         fullWidthFigure: {
           src: "../assets/projects/harpy/robotArchitecture.png",
@@ -517,8 +515,8 @@ const projectCatalog = {
         kicker: "Testing",
         className: "harpy-testing-section",
         body: [
-          "I designed a T-slot single-leg test fixture with an 80 cm linear rail so the leg could be drop-tested and commanded through hops while isolating the most demanding sagittal-plane mechanism.",
-          "The test setup preserved the thruster actuator and EDF above the leg, making it possible to compare assisted and unassisted behavior. Tests included a 55 cm fall, a 16 cm hop, and high-speed foot motion of 10 cm per cycle at 13 Hz."
+          "I designed a single-leg fixture with an 80 cm linear rail, isolating the highest-load sagittal mechanism for repeatable drop and hop tests before full-robot integration.",
+          "The fixture retained the vectoring actuator and ducted fan, enabling direct comparison of assisted and unassisted motion. Hardware tests demonstrated survival of a 55 cm fall, a 16 cm hop, and 10 cm cyclic foot motion at 13 Hz, providing a physical check on the simulated behavior."
         ],
         asideVideo: {
           src: "../assets/projects/harpy/legFixture.mp4",
@@ -541,8 +539,8 @@ const projectCatalog = {
       {
         kicker: "Generative Design",
         body: [
-          "To help finalize component placement on the full robot, I built a parametric model of Harpy in Grasshopper and connected it to an evolutionary solver. Actuator, EDF, motor drive, heatsink, and battery locations were exposed as parameters, and a fitness function scored each candidate on how closely it hit target center-of-mass and body moment-of-inertia values.",
-          "The solver produced families of viable placements that could be re-run whenever the design changed, turning a tedious manual balancing exercise into a repeatable optimization and giving the controls team direct influence over the robot's mass properties."
+          "To optimize full-robot component placement, I built a parametric Harpy model in Grasshopper and connected it to an evolutionary solver. Actuator, fan, motor-drive, heatsink, and battery locations became design variables; a fitness function scored each candidate against target center-of-mass and body moment-of-inertia values.",
+          "The solver returned families of feasible layouts and could be rerun as hardware changed. This converted mass allocation into a repeatable optimization problem and gave the controls team a direct way to shape the robot's mass properties before mechanical packaging was finalized."
         ],
         asideVideo: {
           src: "../assets/projects/harpy/generativeFinal.webm",
@@ -554,7 +552,7 @@ const projectCatalog = {
         }
       }
     ],
-    outcome: "The thesis established Harpy's core hardware architecture and validated the most demanding leg subsystem through simulation and physical testing. The work turned the robot from a research concept into a buildable platform with defined actuation, fabrication, electronics, simulation, and test methods.",
+    outcome: "Harpy progressed from a research concept to an integrated, buildable platform with defined actuation, fabrication, electronics, controls interfaces, and safety systems. Simulation-guided hardware tests validated the highest-load leg subsystem and established a repeatable path for full-robot integration and future locomotion experiments.",
     media: [],
     outcomeFigures: [
       {
@@ -664,20 +662,20 @@ const projectCatalog = {
     heroAlt: "Aerobat biomimetic flapping robot",
     tags: ["Mechanism design", "Parametric CAD", "PolyJet", "Biomimetics"],
     overview: [
-      "Aerobat explores flapping flight as a safer alternative to rigid propellers in environments shared with people. My early work centered on the robot's mechanism design and central structure.",
-      "The primary wing concept extends during the downstroke and retracts during the upstroke to produce net positive lift while using flexible, bio-inspired joints."
+      "Aerobat explores flapping flight as a safer, collision-tolerant alternative to rigid propellers in environments shared with people. Bats are the model: they extend their wings during the downstroke and retract them during the upstroke, maximizing net positive lift within each wingbeat. My early work centered on the robot's bat-inspired armwing mechanism and central structure.",
+      "Each armwing packs 12 links and 17 joints into a monolithic structure of rigid members and flexible living hinges, with humerus and radius link lengths dimensioned from the Egyptian fruit bat. Because a single motor drives the wing through coupled crank and four-bar stages, extension and retraction are mechanically slaved to the flapping motion. Morphology does the work that would otherwise require additional actuators and feedback control."
     ],
     overviewMedia: {
       src: "../assets/projects/aerobat/wing-stages.png",
-      caption: "Images 1–2 show the wing downstroke/expansion motion while images 3–4 show the wing upstroke/retraction motion"
+      caption: "One wingbeat of the printed armwing: frames 1–2 show the downstroke/extension motion, frames 3–4 the upstroke/retraction"
     },
     sections: [
       {
         kicker: "Mechanism",
         title: "Turning a biological motion into tunable geometry",
         body: [
-          "Working with a postdoctoral researcher, I helped develop the initial flexible wing concept, then built a parametric Grasshopper model to tune link lengths and hinge positions.",
-          "The mechanism was transferred to SolidWorks and fabricated with multi-material PolyJet printing, integrating rigid members and flexible hinges of different durometers into one assembly."
+          "Working with a postdoctoral researcher, I helped develop the initial flexible armwing concept, then built a parametric Grasshopper model to tune link lengths and hinge positions against the target gait (full wingspan at mid-downstroke, retraction through the upstroke), with the entire drive mechanism constrained to a 50 mm diameter capsule at the robot's core.",
+          "The mechanism was transferred to SolidWorks and fabricated as a single multi-material PolyJet print, integrating rigid members and flexible living hinges into a 7-gram armwing. Trajectory optimization of 30 linkage parameters then refined the geometry to closely track the target shoulder and elbow angles, eliminating the elbow hyperextension present in the initial layout."
         ],
         inlineVideo: {
           src: "../assets/projects/aerobat/aerobat-wing.mp4",
@@ -693,8 +691,8 @@ const projectCatalog = {
         kicker: "Iteration",
         title: "Adding feathering and evaluating flexible joints",
         body: [
-          "Additional concepts introduced wing feathering as well as retraction, improving the kinematics for forward flight. High-speed testing and microscopy exposed fatigue and variability in the flexible hinges.",
-          "Those findings informed the later transition toward rigid carbon-fiber mechanisms capable of surviving the cycle speed required for useful lift."
+          "Additional concepts introduced wing feathering as well as retraction, improving the kinematics for forward flight. A hinge trade study across Shore 50A–85A durometers and 1.3–2 mm thicknesses showed the softest hinges collapsing torsionally and the stiffest turning brittle; 1.3 mm hinges at 70A–85A gave the best balance of articulation and off-axis stiffness, with hyperelastic FEA confirming peak strains of 43% against the material's 120–140% elongation at break.",
+          "Even the best flexible hinges showed fatigue and cycle-to-cycle variability under high-speed testing and microscopy. Those findings informed the later transition toward rigid carbon fiber mechanisms capable of surviving the roughly 10 Hz flapping rate needed for useful lift."
         ],
         asideVideo: {
           src: "../assets/projects/aerobat/flap.webm",
@@ -708,9 +706,9 @@ const projectCatalog = {
     ],
     outcome: {
       parts: [
-        "The flexible wing work was published in ",
+        "This armwing work was published in ",
         { text: "IEEE Robotics & Automation Letters", href: "https://par.nsf.gov/servlets/purl/10194913" },
-        " and established the kinematic foundation for later, more durable Aerobat mechanisms."
+        " and became the basis for the Aerobat hardware that followed: the optimized kinematics and hinge findings carried directly into the more durable carbon-fiber mechanisms of the complete flying robot, shown below in outdoor flight testing."
       ]
     },
     outcomeFigures: [
@@ -718,6 +716,7 @@ const projectCatalog = {
         type: "video",
         src: "../assets/projects/aerobat/aerobat-flight.webm",
         label: "Aerobat tethered flight test",
+        caption: "Aerobat outdoor test flight",
         fit: "cover"
       }
     ],
@@ -998,7 +997,7 @@ const projectCatalog = {
   "asthma-inhaler-assistive-device": {
     hero: "../assets/projects/asthma-inhaler-assistive-device/inhaler-desktop.png",
     heroAlt: "Asthma inhaler assistive device",
-    tags: ["Human-centered design", "Embedded electronics", "3D printing", "Capstone"],
+    tags: ["Human-centered design", "Embedded electronics", "3D printing"],
     overview: [
       "This capstone project created an assistive device for people with limited dexterity and strength. It positions and actuates a standard asthma inhaler while also tracking remaining doses, sleeping automatically to conserve power, and providing a manual backup for a caregiver.",
       "The system is divided into a sealed upper casing, a removable electronics module, and interchangeable handles that can be adapted to an individual user's needs."
@@ -1094,7 +1093,7 @@ const projectCatalog = {
   "cat-treat-dispenser": {
     hero: "../assets/projects/cat-treat-dispenser/treatdispenser.jpg",
     heroAlt: "Cat treat dispenser assembly",
-    tags: ["Arduino", "Stepper drive", "Proximity sensing", "Desktop FDM"],
+    tags: ["Arduino", "Stepper drive", "Proximity sensing", "3D printing"],
     overview: [
       "This device is intended to be controlled by a cat (specifically my roommate's cat), which can be trained to put its paw into the chute in exchange for a treat. Most cat food/treats can be loaded into the chute using the hinged lid and be left to the cat to decide when it wants a treat once it figures out how to control the device. A timer to limit how often a treat can be dispensed can be controlled by the human user.",
       {
@@ -1149,34 +1148,35 @@ const projectCatalog = {
     source: "https://peterkellyyy.wixsite.com/peterkelly/cat-treat-dispenser"
   },
   "audio-variometer": {
-    hero: "../assets/projects/audio-variometer/01-bf35d4888dbe.png",
+    hero: "../assets/projects/audio-variometer/vario-desktop.png",
     heroAlt: "Portable audio variometer with OLED display",
-    tags: ["Arduino", "Electronics packaging"],
+    tags: ["Arduino", "Electronics packaging", "3D printing"],
     overview: [
-      "An audio variometer lets a glider pilot keep their eyes outside the cockpit while listening for changes in climb or sink rate. Commercial retrofits can be expensive, so this project explored a compact standalone alternative with both audible guidance and an OLED display."
+      "Glider pilots use variometers to find rising air while keeping their attention outside the cockpit. I designed and built this compact, standalone instrument as an affordable alternative to commercial retrofit systems, combining audible climb-and-sink cues with an OLED display."
     ],
     overviewMedia: {
-      src: "../assets/projects/audio-variometer/vario-desktop.png",
+      src: "../assets/projects/audio-variometer/variometer-render.png",
       alt: "Portable audio variometer with OLED display",
-      caption: "Completed portable audio variometer"
+      caption: "CAD render of audio variometer"
     },
     sections: [
       {
-        kicker: "Electronics",
+        kicker: "Sensing & Feedback",
         body: [
-          "An Arduino Feather reads an MPL3115A2 pressure sensor and calculates altitude and vertical speed. A rolling average of the five most recent readings reduces noise while preserving useful responsiveness.",
-          "Sink produces a steady low tone. Climb produces intermittent beeps that increase in pitch and frequency with vertical speed, allowing the pilot to center rising air without watching the screen."
+          "An MPL3115A2 barometric pressure sensor feeds an Arduino Feather, which converts pressure readings into altitude and vertical speed. I applied a five-sample rolling average to suppress sensor noise without making the instrument feel sluggish.",
+          "I translated vertical speed into an audio pattern a pilot can interpret without looking down: a steady low tone indicates sink, while climb produces intermittent beeps that rise in pitch and frequency as lift strengthens. The OLED provides altitude and vertical-speed data when a visual reference is useful."
         ],
         asideFigure: {
           src: "../assets/projects/audio-variometer/03-e5a00260916c.jpg",
           alt: "Breadboard electronics prototype",
-          caption: "Breadboard electronics prototype"
+          caption: "Breadboard electronics prototype",
+          figureClass: "audio-variometer-breadboard-figure"
         }
       },
       {
-        kicker: "Packaging",
+        kicker: "Compact Packaging",
         body: [
-          "The pressure sensor, 1.3-inch OLED, speaker, microcontroller, and rechargeable battery were packaged in a compact printed case. The tight arrangement made connector access, speaker clearance, charging, and display visibility part of the mechanical design problem."
+          "I designed a 3D-printed enclosure around the pressure sensor, 1.3-inch OLED, speaker, microcontroller, and rechargeable battery. Within the compact footprint, the layout preserves speaker clearance, charging-port access, display visibility, and room to assemble and service the electronics."
         ],
         fullWidthFigure: {
           src: "../assets/projects/audio-variometer/variometer-parts.png",
@@ -1186,7 +1186,7 @@ const projectCatalog = {
         }
       }
     ],
-    outcome: "The prototype detects small altitude changes and served as a practical exercise in embedded programming, sensor filtering, audio feedback, and compact electromechanical packaging.",
+    outcome: "The finished prototype detects small altitude changes and converts them into clear visual and audible feedback. It brought sensing, signal filtering, interface design, and compact electromechanical packaging together in a functional flight instrument.",
     videoAfterOutcome: true,
     videos: [
       {
@@ -1209,7 +1209,7 @@ const moreProjectCards = {
     alt: "Berkshire Grey robotic manipulation cell",
     date: "Oct 2024 – Present",
     title: "Robotic Manipulation R&D",
-    summary: "End effectors, instrumented validation, robot-learning hardware, and eight-cell deployment from concept through commissioning.",
+    summary: "End effectors for difficult SKUs, gripper validation fixtures, and robot learning data collection hardware sustaining 70,000+ episodes per week.",
     company: "Berkshire Grey"
   },
   fx10: {
@@ -1249,7 +1249,7 @@ const moreProjectCards = {
     alt: "Continuous-fiber reinforced co-part assembly",
     date: "Jan 2023 - May 2023",
     title: "Continuous-Fiber Co-parts",
-    summary: "Interlocking printed components optimized for reinforcement across multiple load planes.",
+    summary: "Published composite-design method enabling reinforcement across multiple load planes and up to 6.4× the load of plastic-only parts.",
     company: "Markforged"
   },
   harpy: {
@@ -1258,8 +1258,8 @@ const moreProjectCards = {
     thumbClass: "harpy-thumb harpy-thumb-upper",
     alt: "Harpy leg actuator assembly",
     date: "May 2020 - May 2021",
-    title: "Thruster-assisted Legged Robot",
-    summary: "Lightweight robotic platform for thruster-assisted locomotion and reduced-gravity research.",
+    title: "Thruster-Assisted Bipedal Robot",
+    summary: "Research biped integrating custom actuators, thrust vectoring, real-time control, multibody simulation, and hardware validation.",
     company: "SiliconSynapse Lab"
   },
   aerobat: {
