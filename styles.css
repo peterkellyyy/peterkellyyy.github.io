@@ -5263,7 +5263,18 @@ body[data-project="berkshire-grey"] .standard-section-full-figure img {
   width: 100%;
 }
 
+/* Wide (2.25:1) public picking-cell photo renders at natural aspect instead of
+   the letterboxed fixed height paired figures get by default */
+body[data-project="berkshire-grey"] .standard-section-aside-figure img {
+  height: auto;
+}
+
 body[data-project="berkshire-grey"] .fx10-outcome-section {
+  border-top: 0;
+}
+
+/* Drop the divider between the closing flight video and the More Projects rail */
+body[data-project="aerobat"] .more-projects-section {
   border-top: 0;
 }
 
@@ -5316,12 +5327,12 @@ body[data-project="audio-variometer"] .audio-variometer-parts-figure {
   width: 70%;
 }
 
-body[data-project="audio-variometer"] .standard-section-aside-figure:has(img[src*="03-e5a00260916c"]) {
+body[data-project="audio-variometer"] .audio-variometer-breadboard-figure {
   border-radius: 16px;
   overflow: hidden;
 }
 
-body[data-project="audio-variometer"] .standard-section-aside-figure img[src*="03-e5a00260916c"] {
+body[data-project="audio-variometer"] .audio-variometer-breadboard-figure img {
   border-radius: 16px;
   clip-path: inset(0 round 16px);
 }
