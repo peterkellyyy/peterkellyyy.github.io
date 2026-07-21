@@ -316,8 +316,7 @@ const projectCatalog = {
                     { figureClass: "co-parts-figure co-parts-break", src: "../assets/projects/co-parts/break2.png", alt: "Mounting plate co-part interface detail", caption: "The co-part interface, where load pulls one part against the other" }
                   ]
                 }
-              },
-              "I separated the geometry with a Boolean subtraction, oriented each co-part for its own load case, and routed continuous fiber along both primary load paths. The interface was designed so the applied force seats a flared base against a reinforced pocket instead of relying on interlayer adhesion. The zero-clearance parts were press-fit with an arbor press; geometries with reversing or multidirectional loads can instead use adhesive or mechanically locking interfaces."
+              }
             ]
           },
           {
@@ -328,6 +327,7 @@ const projectCatalog = {
                 kind: "copy",
                 copyClass: "fx10-design-copy fx10-generic-design-copy co-parts-flow-copy",
                 paragraphs: [
+                  "I separated the geometry with a Boolean subtraction, oriented each co-part for its own load case, and routed continuous fiber along both primary load paths. The interface was designed so the applied force seats a flared base against a reinforced pocket instead of relying on interlayer adhesion. The zero-clearance parts were press-fit with an arbor press; geometries with reversing or multidirectional loads can instead use adhesive or mechanically locking interfaces.",
                   "The workflow begins by orienting the largest critical feature in the strong XY plane. Any remaining feature loaded across the layers becomes a candidate co-part. In CAD, I define the mating interface on that feature and use Boolean subtraction to generate its matching pocket in the parent geometry.",
                   "Each co-part is then oriented and reinforced independently in the slicer, printed in the same build, and assembled. Because iteration is concentrated at the interface, fit can be tuned quickly with small test coupons before committing to a complete print. This makes the method practical for standard engineering workflows rather than a one-off demonstration."
                 ]
@@ -999,21 +999,13 @@ const projectCatalog = {
     heroAlt: "Asthma inhaler assistive device",
     tags: ["Human-centered design", "Embedded electronics", "3D printing"],
     overview: [
-      "This capstone project created an assistive device for people with limited dexterity and strength. It positions and actuates a standard asthma inhaler while also tracking remaining doses, sleeping automatically to conserve power, and providing a manual backup for a caregiver.",
-      "The system is divided into a sealed upper casing, a removable electronics module, and interchangeable handles that can be adapted to an individual user's needs."
+      "This capstone project created an assistive device for people with limited dexterity and strength. Many users who rely on a standard asthma inhaler can find the force, coordination, and timing needed to administer a dose difficult to manage independently. Our team designed a device that holds a conventional inhaler in a stable position, allowing it to be used with a more accessible physical interaction.",
+      "The device uses a pressure sensor to detect when the user begins inhaling through the mouthpiece. It then triggers a linear servo to actuate the inhaler at the appropriate moment, helping coordinate medication delivery with the user's breath. A sealed upper casing protects the mechanism while opening its vents during actuation, and a removable electronics module keeps the internal components accessible for maintenance and iteration.",
+      "The project also considered the practical conditions of daily use. The device tracks remaining doses, enters a low-power sleep state when inactive, and signals a low battery before it can no longer operate reliably. Interchangeable handles can be adapted to a user's grip and strength, while a top-mounted manual control gives a caregiver a straightforward backup method for administering medication when needed."
     ],
     overviewMedia: {
-      type: "imagePair",
-      images: [
-        {
-          src: "../assets/projects/asthma-inhaler-assistive-device/inhaler.png",
-          alt: "Asthma inhaler assistive device"
-        },
-        {
-          src: "../assets/projects/asthma-inhaler-assistive-device/inhaler-transparent.png",
-          alt: "Transparent view of asthma inhaler assistive device"
-        }
-      ]
+      src: "../assets/projects/asthma-inhaler-assistive-device/inhalerDesign.png",
+      alt: "Opaque and transparent views of the asthma inhaler assistive device"
     },
     featureBreakdown: [
       {
@@ -1029,8 +1021,8 @@ const projectCatalog = {
       },
       {
         title: "Electronics Module",
-        image: "../assets/projects/asthma-inhaler-assistive-device/electronics-module.png",
-        alt: "Electronics module for asthma inhaler assistive device",
+        image: "../assets/projects/asthma-inhaler-assistive-device/electronicsSection.png",
+        alt: "Section view of inhaler electronics module",
         bullets: [
           "Custom PCB with Arduino Pro Micro, ported pressure sensor, and capacitive touch sensor",
           "OLED display acts as dosage counter and displays instructions to aide",
@@ -1050,43 +1042,65 @@ const projectCatalog = {
         ]
       }
     ],
+    featureBreakdownLabel: "Design summary",
+    featureBreakdownIntro: "The system is divided into a sealed upper casing, a removable electronics module, and interchangeable handles that can be adapted to an individual user's needs.",
     designSpread: {
-      intro: [
-        "The primary tasks I led in this project were the software and electrical design, 3D printing of components, conceptual design of the device, and the management of tasks and overall timeline of the project. One of the first objectives was to identify the actuation method of the inhaler. I was initially between a solenoid and a linear servo, but after conducting compression testing with a standard inhaler, the group and I decided that a linear servo would be the best solution since a solenoid cannot provide a sufficient amount of force to reliably actuate an inhaler. Linear servos are much slower, but I found a reliable, mechanical solution to this problem. By sealing the upper casing of the device and attaching a flexible 3D-printed part to the tip of the linear servo, the upper casing can be unsealed during the actuation of the inhaler and sealed again when the servo retracts through vents on the side of the upper casing. This allows the user to save their breath, and perfectly times the inhaler dose since the user builds up some pressure by sucking through the mouthpiece. The vaporized medicine is then automatically breathed into the lungs when air starts flowing through the vents.",
-        "The method of triggering the actuator I chose was a ported pressure sensor, which connects to a silicone tube and a hole in the mouthpiece of the outer casing. This allows the user to be able to actuate their inhaler without worrying about a button or any fine motor movements. Also, in order to make the 2400 mAh lithium ion battery last over one week without being recharged, the microcontroller by default puts the system into a sleep mode, dramatically extending battery life. In order to wake up the device without the user having to worry about a button or switch, there is a capacitive touch sensor on the PCB that connects to copper strips mounted in the handle. Even through the polyethylene grip and 3D printed material, the change in capacitance from a human hand gripping the handle can be sensed 100% of the time. The bridge between the electronics module and handle is formed by a conductive spring in the handle and a copper pad on the bottom of the electronics module. This ensures that handles can be swapped without needing to manually connect any wires."
-      ],
-      sideFigures: [
-        {
-          type: "video",
-          src: "../assets/projects/asthma-inhaler-assistive-device/inhalerMechanism.webm",
-          caption: "Unsealing of upper casing vents during inhaler actuation",
-          aspectRatio: "960 / 742"
-        },
-        {
-          src: "../assets/projects/asthma-inhaler-assistive-device/05-77055ef20fae.png",
-          alt: "Section view of inhaler electronics module",
-          caption: "Section view of inhaler electronics module"
+      mechanical: {
+        label: "Mechanical Design",
+        body: [
+          "The primary tasks I led in this project were the software and electrical design, 3D printing of components, conceptual design of the device, and the management of tasks and overall timeline of the project. One of the first objectives was to identify the actuation method of the inhaler. I was initially between a solenoid and a linear servo, but after conducting compression testing with a standard inhaler, the group and I decided that a linear servo would be the best solution since a solenoid cannot provide a sufficient amount of force to reliably actuate an inhaler. Linear servos are much slower, but I found a reliable, mechanical solution to this problem.",
+          "By sealing the upper casing of the device and attaching a flexible 3D-printed part to the tip of the linear servo, the upper casing can be unsealed during the actuation of the inhaler and sealed again when the servo retracts through vents on the side of the upper casing. This allows the user to save their breath, and perfectly times the inhaler dose since the user builds up some pressure by sucking through the mouthpiece. The vaporized medicine is then automatically breathed into the lungs when air starts flowing through the vents."
+        ],
+        sideFigures: [
+          {
+            type: "video",
+            figureClass: "asthma-vent-actuation-figure",
+            src: "../assets/projects/asthma-inhaler-assistive-device/inhalerMechanism.webm",
+            caption: "Unsealing of upper casing vents during inhaler actuation",
+            aspectRatio: "500 / 1000",
+            fit: "contain"
+          }
+        ],
+        bottomVideo: {
+          src: "../assets/projects/asthma-inhaler-assistive-device/breadboardTest.webm",
+          caption: "Breadboard pressure-sensor and actuator test",
+          aspectRatio: "16 / 9",
+          fit: "cover"
         }
-      ],
-      pcbIntro: "The PCB was designed in Autodesk EAGLE and is mounted into slots in the electronics module. Components like the OLED display, button, and LED are connected through external wires and connectors. The lithium ion battery is boosted from 3.7 V to 5 V in order to run the linear servo with a boost board that doubles as a charger, and connects to the external micro-USB input.",
-      pcbFigures: [
-        {
-          src: "../assets/projects/asthma-inhaler-assistive-device/06-03771f7ed6ce.png",
-          alt: "2D PCB layout for asthma inhaler assistive device"
-        },
-        {
-          src: "../assets/projects/asthma-inhaler-assistive-device/07-5522deb01194.png",
-          alt: "3D render of assembled asthma inhaler assistive device PCB"
-        }
-      ],
-      pcbCaption: "2D unassembled and 3D render of assembled PCB",
-      outro: "The low battery warning LED is illuminated once the battery voltage drops below 3.2 V, alerting the user to charge the device as soon as possible. Pressing the \"inhaler swap mode\" pushbutton retracts the linear servo and displays a set of instructions on the OLED display for an aide to remove the back cover and replace the inhaler. Once the button is pressed again, the dosage counter is reset and the linear servo returns to its original position. The button is partially recessed in order to prevent unintentional activation. The hard on/off switch physically disconnects the battery from the microcontroller. This is to be used by an aide if the device needs to be off for an extended period of time."
+      },
+      electrical: {
+        label: "Electrical Design",
+        body: [
+          "The method of triggering the actuator I chose was a ported pressure sensor, which connects to a silicone tube and a hole in the mouthpiece of the outer casing. This allows the user to be able to actuate their inhaler without worrying about a button or any fine motor movements. Also, in order to make the 2400 mAh lithium ion battery last over one week without being recharged, the microcontroller by default puts the system into a sleep mode, dramatically extending battery life. In order to wake up the device without the user having to worry about a button or switch, there is a capacitive touch sensor on the PCB that connects to copper strips mounted in the handle. Even through the polyethylene grip and 3D printed material, the change in capacitance from a human hand gripping the handle can be sensed 100% of the time. The bridge between the electronics module and handle is formed by a conductive spring in the handle and a copper pad on the bottom of the electronics module. This ensures that handles can be swapped without needing to manually connect any wires."
+        ],
+        pcbIntro: "The PCB was designed in Autodesk EAGLE and is mounted into slots in the electronics module. Components like the OLED display, button, and LED are connected through external wires and connectors. The lithium ion battery is boosted from 3.7 V to 5 V in order to run the linear servo with a boost board that doubles as a charger, and connects to the external micro-USB input.",
+        pcbFigures: [
+          {
+            src: "../assets/projects/asthma-inhaler-assistive-device/inhalerBreadboard.jpg",
+            alt: "Breadboard electronics prototype for asthma inhaler assistive device",
+            caption: "Breadboard electronics prototype",
+            className: "asthma-breadboard-figure"
+          },
+          {
+            src: "../assets/projects/asthma-inhaler-assistive-device/inhalerPCB.png",
+            alt: "3D render of assembled asthma inhaler assistive device PCB",
+            caption: "3D render of assembled PCB"
+          }
+        ],
+        outro: "The low battery warning LED is illuminated once the battery voltage drops below 3.2 V, alerting the user to charge the device as soon as possible. Pressing the \"inhaler swap mode\" pushbutton retracts the linear servo and displays a set of instructions on the OLED display for an aide to remove the back cover and replace the inhaler. Once the button is pressed again, the dosage counter is reset and the linear servo returns to its original position. The button is partially recessed in order to prevent unintentional activation. The hard on/off switch physically disconnects the battery from the microcontroller. This is to be used by an aide if the device needs to be off for an extended period of time."
+      }
     },
     sections: [],
-    outcome: "The project participant independently picked up and actuated the final device using breath control. The design won Northeastern's Most Technically Complete capstone award and tied for Biggest Potential Impact.",
+    outcome: "My capstone group worked with an individual with cerebral palsy throughout our entire design process. The individual was able to independently pick up and actuate the finalized device using their breath. We custom designed a handle to fit their individual needs, proving that people with extremely limited motor skills could position and control their asthma inhaler using our assistive device. In the end, capstone judges awarded our group with the \"Most Technically Complete\" award, in addition to tying for the \"Biggest Potential Impact\" award.",
     media: [],
+    videoAfterOutcome: true,
     videos: [
-      ["../assets/projects/asthma-inhaler-assistive-device/video-1.mp4", "../assets/projects/asthma-inhaler-assistive-device/09-a2f903f51220.jpg", "Prototype wake, automatic actuation, and dose-counter demonstration"]
+      {
+        src: "../assets/projects/asthma-inhaler-assistive-device/video-1.mp4",
+        caption: "Prototype wake, automatic actuation, and dose-counter demonstration",
+        aspectRatio: "16 / 9",
+        fit: "contain"
+      }
     ],
     source: "https://peterkellyyy.wixsite.com/peterkelly/asthma-inhaler-assistive-device"
   },
