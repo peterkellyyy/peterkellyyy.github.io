@@ -575,6 +575,8 @@ const renderStandardProject = () => {
 
   if (project.featureBreakdown?.length) {
     const breakdown = el("section", "fx10-section module-breakdown-section");
+    if (project.featureBreakdownLabel) breakdown.append(el("p", "fx10-section-kicker", project.featureBreakdownLabel));
+    if (project.featureBreakdownIntro) breakdown.append(el("p", "asthma-design-copy module-breakdown-intro", project.featureBreakdownIntro));
     project.featureBreakdown.forEach((item) => {
       const row = el("article", "module-breakdown-row");
       const image = el("img", "module-breakdown-image");
@@ -593,63 +595,121 @@ const renderStandardProject = () => {
   }
 
   if (project.designSpread) {
-    const designSpread = el("section", "fx10-section asthma-design-spread");
-    designSpread.append(el("p", "fx10-section-kicker", "Design"));
+    const appendAsthmaInlineVideo = (copy, videoData) => {
+      if (!videoData || !copy.firstElementChild) return;
+      const figure = el("figure", "asthma-design-inline-video");
+      const video = el("video");
+      video.src = videoData.src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", videoData.label || videoData.caption || "");
+      applyMediaPresentation(video, videoData);
+      figure.append(video);
+      if (videoData.caption) figure.append(el("figcaption", "", videoData.caption));
+      copy.firstElementChild.after(figure);
+    };
+    const appendAsthmaSectionVideo = (section, videoData) => {
+      if (!videoData) return;
+      const figure = el("figure", "asthma-design-inline-video asthma-design-bottom-video");
+      const video = el("video");
+      video.src = videoData.src;
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", videoData.label || videoData.caption || "");
+      applyMediaPresentation(video, videoData);
+      figure.append(video);
+      if (videoData.caption) figure.append(el("figcaption", "", videoData.caption));
+      section.append(figure);
+    };
+    const appendAsthmaSideFigures = (container, figures = []) => {
+      figures.forEach((figureData) => {
+        const figure = el("figure", `asthma-design-figure ${figureData.figureClass || ""}`.trim());
+        if (figureData.type === "video") {
+          const video = el("video");
+          video.src = figureData.src;
+          video.autoplay = true;
+          video.loop = true;
+          video.muted = true;
+          video.playsInline = true;
+          video.preload = "metadata";
+          video.setAttribute("aria-label", figureData.caption || "");
+          applyMediaPresentation(video, figureData);
+          figure.append(video);
+        } else {
+          const image = el("img");
+          image.src = figureData.src;
+          image.alt = figureData.alt || figureData.caption || "";
+          image.loading = "lazy";
+          figure.append(image);
+        }
+        if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+        container.append(figure);
+      });
+    };
+    const appendAsthmaPcbContent = (section, spread) => {
+      if (spread.pcbIntro) {
+        section.append(el("p", "asthma-design-copy asthma-design-wide-copy", spread.pcbIntro));
+      }
+      if (spread.pcbFigures?.length) {
+        const pcbGrid = el("div", "asthma-pcb-grid");
+        spread.pcbFigures.forEach((figureData) => {
+          const figure = el("figure", `asthma-pcb-figure ${figureData.className || ""}`.trim());
+          const image = el("img");
+          image.src = figureData.src;
+          image.alt = figureData.alt || spread.pcbCaption || "";
+          image.loading = "lazy";
+          figure.append(image);
+          if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
+          pcbGrid.append(figure);
+        });
+        section.append(pcbGrid);
+      }
+      if (spread.outro) {
+        section.append(el("p", "asthma-design-copy asthma-design-wide-copy", spread.outro));
+      }
+    };
+    const appendAsthmaDesignSection = (spread) => {
+      const designSpread = el("section", "fx10-section asthma-design-spread");
+      designSpread.append(el("p", "fx10-section-kicker", spread.label || "Design"));
+      const topGrid = el("div", "asthma-design-top");
+      const introCopy = el("div", "asthma-design-copy");
+      addParagraphs(introCopy, spread.body || spread.intro || []);
+      appendAsthmaInlineVideo(introCopy, spread.introAfterFirstVideo);
+      const sideFigures = el("div", "asthma-design-side-figures");
+      appendAsthmaSideFigures(sideFigures, spread.sideFigures);
+      if (spread.sideFigures?.length) {
+        topGrid.append(introCopy, sideFigures);
+        designSpread.append(topGrid);
+      } else {
+        designSpread.append(introCopy);
+      }
+      appendAsthmaSectionVideo(designSpread, spread.bottomVideo);
+      appendAsthmaPcbContent(designSpread, spread);
+      root.append(designSpread);
+    };
 
-    const topGrid = el("div", "asthma-design-top");
+    if (project.designSpread.mechanical || project.designSpread.electrical) {
+      [project.designSpread.mechanical, project.designSpread.electrical].filter(Boolean).forEach(appendAsthmaDesignSection);
+    } else {
+      const designSpread = el("section", "fx10-section asthma-design-spread");
+      designSpread.append(el("p", "fx10-section-kicker", "Design"));
+      const topGrid = el("div", "asthma-design-top");
     const introCopy = el("div", "asthma-design-copy");
     addParagraphs(introCopy, project.designSpread.intro || []);
+      appendAsthmaInlineVideo(introCopy, project.designSpread.introAfterFirstVideo);
     const sideFigures = el("div", "asthma-design-side-figures");
-    project.designSpread.sideFigures?.forEach((figureData) => {
-      const figure = el("figure", "asthma-design-figure");
-      if (figureData.type === "video") {
-        const video = el("video");
-        video.src = figureData.src;
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.preload = "metadata";
-        video.setAttribute("aria-label", figureData.caption || "");
-        applyMediaPresentation(video, figureData);
-        figure.append(video);
-      } else {
-        const image = el("img");
-        image.src = figureData.src;
-        image.alt = figureData.alt || figureData.caption || "";
-        image.loading = "lazy";
-        figure.append(image);
-      }
-      if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
-      sideFigures.append(figure);
-    });
+      appendAsthmaSideFigures(sideFigures, project.designSpread.sideFigures);
     topGrid.append(introCopy, sideFigures);
     designSpread.append(topGrid);
-
-    if (project.designSpread.pcbIntro) {
-      designSpread.append(el("p", "asthma-design-copy asthma-design-wide-copy", project.designSpread.pcbIntro));
-    }
-
-    if (project.designSpread.pcbFigures?.length) {
-      const pcbFigure = el("figure", "asthma-pcb-figure");
-      const pcbGrid = el("div", "asthma-pcb-grid");
-      project.designSpread.pcbFigures.forEach((figureData) => {
-        const image = el("img");
-        image.src = figureData.src;
-        image.alt = figureData.alt || project.designSpread.pcbCaption || "";
-        image.loading = "lazy";
-        pcbGrid.append(image);
-      });
-      pcbFigure.append(pcbGrid);
-      if (project.designSpread.pcbCaption) pcbFigure.append(el("figcaption", "", project.designSpread.pcbCaption));
-      designSpread.append(pcbFigure);
-    }
-
-    if (project.designSpread.outro) {
-      designSpread.append(el("p", "asthma-design-copy asthma-design-wide-copy", project.designSpread.outro));
-    }
-
+      appendAsthmaPcbContent(designSpread, project.designSpread);
     root.append(designSpread);
+    }
   }
 
   const projectSections = project.sections ? [...project.sections] : [];
