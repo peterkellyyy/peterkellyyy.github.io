@@ -567,15 +567,15 @@ const projectCatalog = {
   finefeatures: {
     hero: "../assets/projects/finefeatures/finefeatures-bg.png",
     heroAlt: "Fine-featured copper and stainless steel parts produced on the Markforged Metal X",
-    tags: ["Process R&D", "Metal FFF", "Copper", "17-4PH stainless", "Qualification"],
+    tags: ["Process development", "Metal 3D printing", "Materials testing"],
     overview: [
-      "Fine Features is a pair of production-ready Metal X print profiles released through Eiger with no hardware changes. I led process development and qualification for pure copper and 17-4PH v2 stainless steel, taking the work from exploratory toolpaths through cross-system validation and customer release.",
-      "The profiles improved surface finish, dimensional accuracy, minimum feature size, and interlaminar strength relative to the standard process. The work connected hands-on printing, materials behavior, machine code, and software implementation across the complete print, debind, and sinter workflow."
+      "Fine Features is a set of Metal X slicer settings released in 2023. I led development and rigorous testing for pure copper and 17-4PH v2 stainless steel, taking the work from exploratory R&D through production-ready settings that customers could use without hardware changes.",
+      "Compared with the standard process, the profiles delivered smoother surfaces, greater dimensional accuracy, smaller printable features, and higher interlaminar strength. The work joined hands-on printing, materials behavior, machine code, and software implementation across the complete print, debind, and sinter workflow. I built and measured feature coupons alongside representative customer geometries, using the results to refine toolpaths and parameters before translating the validated process into Eiger, Markforged's cloud-based 3D printing platform."
     ],
     overviewMedia: {
       type: "video",
       src: "../assets/projects/finefeatures/finefeatures-demo.webm",
-      caption: "Fine Features process demonstration",
+      caption: "Fine features promotional video",
       aspectRatio: "1080 / 1400",
       background: "transparent",
       fit: "contain"
@@ -583,78 +583,72 @@ const projectCatalog = {
     sections: [
       {
         kicker: "Process Development",
-        title: "Finding detail without sacrificing reliability",
         body: [
-          "The intuitive first move was a smaller nozzle. I evaluated reduced orifices alongside nozzle temperature, print speed, cooling, extrusion width, and geometry-dependent offsets. Smaller nozzles sharpened detail, but particle-size variation introduced an unacceptable risk of restricted flow and clogging.",
-          "Testing showed that a carefully tuned profile using the production nozzle captured much of the detail improvement without the lifetime and reliability penalty of a smaller orifice. Purpose-built coupons and demanding parts exposed minimum holes, pins, walls, gaps, overhangs, and articulated geometry."
+          "The project began as an R&D study of smaller nozzle orifices, intended to increase detail and reduce the minimum printable feature size beyond what production Metal X nozzles could achieve. Early experiments sharpened detail, but also made nozzle lifetime a serious concern: larger metal particles in the filament could restrict flow or clog the smaller passage.",
+          "I tested new nozzle designs alongside nozzle temperature, print speed, fan speed, extrusion-path width, and geometry-dependent offsets. A carefully tuned profile using the production nozzle did not match the smallest-orifice experiments, but delivered a significant improvement over standard settings without sacrificing reliability. Purpose-built coupons and demanding parts exposed minimum holes, pins, walls, gaps, overhangs, and articulated geometry."
         ],
         asideFigure: {
-          src: "../assets/projects/finefeatures/05-327a1f4d9f29.png",
-          alt: "Copper feature test coupon held in tweezers",
-          caption: "Test coupon for holes, pins, slots, walls, and overhangs"
+          src: "../assets/projects/finefeatures/dragonPrint.png",
+          alt: "Printing a flexible copper dragon with fine features settings",
+          caption: "Printing a flexible copper dragon with fine features settings",
+          fit: "contain",
+          figureClass: "finefeatures-dragon-print"
         },
         fullWidthFigure: {
-          src: "../assets/projects/finefeatures/02-d477f3d24f5e.png",
-          alt: "Metal X print head depositing an intricate articulated copper dragon",
-          caption: "Prototype profile printing an articulated copper dragon"
+          src: "../assets/projects/finefeatures/copperDemoParts.jpg",
+          alt: "Copper Fine Features demo parts printed on the Metal X",
+          caption: "Copper Fine Features demo parts",
+          aspectRatio: "1200 / 627",
+          fit: "cover",
+          figureClass: "finefeatures-wide-media"
         }
       },
       {
         kicker: "Qualification",
-        title: "Validating the complete powder-to-part process",
         body: [
-          "A successful green part was only the beginning. The released profile had to survive solvent debinding, sintering, and predictable shrinkage while maintaining dimensional and mechanical targets. Qualification therefore spanned multiple printers, material lots, debinders, and furnaces.",
-          "For issues the production slicer could not yet express, I generated machine code directly to test prototype toolpaths. I then worked with software engineering to translate those findings into customer-facing Eiger parameters and repeatable qualification builds."
+          "A successful green part was only the beginning. Each printed part still contained polymer and wax binder around the metal powder, then had to survive solvent debinding and sintering while shrinking into the intended shape with the expected mechanical properties. Qualification therefore spanned multiple printers, material lots, debinding units, and sintering furnaces.",
+          "For print issues the production slicer could not yet express, I generated machine code directly to test prototype toolpaths. I used those experiments to isolate the process changes that mattered, then worked with software engineering to translate them into customer-facing Eiger parameters and repeatable qualification builds."
         ],
-        asideFigure: {
-          src: "../assets/projects/finefeatures/03-7ed736fc7ae5.jpg",
-          alt: "Sintered articulated pure copper dragon held in a hand",
-          caption: "Detail retained after debinding and sintering"
-        },
-        fullWidthFigure: {
-          src: "../assets/projects/finefeatures/01-a4f12fd4b466.jpg",
-          alt: "Collection of small fine-featured 17-4PH stainless steel components beside a metric ruler",
-          caption: "Qualified 17-4PH geometry at useful production scale"
+        asideSlideshow: {
+          caption: "Copper fine features demo parts",
+          aspectRatio: "1390 / 1854",
+          fit: "cover",
+          slides: [
+            {
+              src: "../assets/projects/finefeatures/copper1.png",
+              alt: "Copper feature test coupon held in tweezers"
+            },
+            {
+              src: "../assets/projects/finefeatures/copper2.jpg",
+              alt: "Copper fine-feature test print"
+            },
+            {
+              src: "../assets/projects/finefeatures/copper3.png",
+              alt: "Copper fine-feature geometry"
+            },
+            {
+              src: "../assets/projects/finefeatures/copper4.jpg",
+              alt: "Copper fine-feature test print"
+            }
+          ]
         }
-      },
-      {
-        kicker: "Customer Release",
-        title: "One installed platform, two new material capabilities",
-        body: [
-          "Fine Features for pure copper launched in March 2023. In exchange for roughly 30% longer print time, it delivered smoother surfaces, improved dimensional accuracy, smaller feature sizes, and stronger layer-to-layer bonding without a special nozzle.",
-          "The 17-4PH v2 profile followed in July 2023. Its 0.085 mm post-sinter layer height improved fine parts that previously printed with defects and enabled small solid-infill geometry that had not been printable on the system."
-        ],
-        figures: [
-          {
-            src: "../assets/projects/finefeatures/06-5fca1d71ca0f.jpg",
-            alt: "Fine-featured pure copper radial heat sink",
-            caption: "Pure copper: thin radial fins and narrow channels"
-          },
-          {
-            src: "../assets/projects/finefeatures/10-78d55f234f78.jpg",
-            alt: "Small fine-featured 17-4PH stainless steel bracket beside a ruler",
-            caption: "17-4PH v2: compact bracket with thin ribs and small holes"
-          }
-        ]
       }
     ],
-    outcome: "Fine Features expanded what customers could make on Metal X hardware they already owned. The project moved from experimental process development to two released alloy profiles, demonstrating end-to-end ownership across print testing, failure analysis, qualification, and collaboration with materials, software, and product teams.",
+    outcome: "Fine Features for copper launched in March 2023, followed by 17-4PH v2 stainless steel in July. The profiles expanded what customers could make on the Metal X systems they already owned, supporting new sales opportunities while giving existing users a production-ready path to finer geometry. The project moved from experimental process development to released software settings, demonstrating end-to-end ownership across print testing, failure analysis, qualification, and collaboration with materials, software, and product teams.",
     outcomeFigures: [
       {
-        src: "../assets/projects/finefeatures/08-53c31dd3d713.jpg",
-        alt: "Collection of intricate pure copper Fine Features parts",
-        caption: "Fine Features copper application set"
-      },
-      {
-        src: "../assets/projects/finefeatures/09-7f1b24bb1932.jpg",
-        alt: "Miniature stainless assembly beside a ruler",
-        caption: "Small articulated stainless assembly"
+        src: "../assets/projects/finefeatures/01-a4f12fd4b466.jpg",
+        alt: "Collection of small fine-featured 17-4PH stainless steel components beside a metric ruler",
+        caption: "17-4PH fine features demo parts",
+        aspectRatio: "2400 / 1160",
+        fit: "cover"
       }
     ],
     links: [
-      ["Read the copper launch", "https://markforged.com/resources/blog/introducing-fine-features-for-pure-copper-on-the-metal-x"],
-      ["Read the 17-4PH launch", "https://markforged.com/resources/blog/introducing-fine-features-turbo-mode-for-17-4ph-stainless-steel"]
+      ["Copper launch announcement", "https://markforged.com/resources/blog/introducing-fine-features-for-pure-copper-on-the-metal-x"],
+      ["17-4PH stainless steel announcement", "https://markforged.com/resources/blog/introducing-fine-features-turbo-mode-for-17-4ph-stainless-steel"]
     ],
+    linksBeforeOutcomeFigures: true,
     hideSourceAction: true
   },
   aerobat: {
@@ -1248,7 +1242,7 @@ const moreProjectCards = {
   },
   finefeatures: {
     href: "finefeatures.html",
-    thumb: "../assets/projects/finefeatures/04-665a4d8e0c6c.png",
+    thumb: "../assets/projects/finefeatures/copper3.png",
     thumbClass: "portfolio-thumb portfolio-thumb-cover finefeatures-thumb-lower",
     alt: "Metal X Fine Features sample parts",
     date: "Oct 2021 - Jul 2023",
@@ -1402,7 +1396,6 @@ const projectOrder = [
 // Cards temporarily hidden from the homepage grid (their pages remain
 // reachable by direct link).
 const temporarilyHiddenPortfolioCards = new Set([
-  "finefeatures",
   "morse-corp",
   "irobot",
   "sikorsky"
