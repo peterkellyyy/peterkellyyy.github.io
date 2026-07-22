@@ -48,6 +48,99 @@ const applyMediaPresentation = (video, media = {}) => {
   if (media.fit) video.style.setProperty("--media-fit", media.fit);
 };
 
+const createImageSlideshow = (slides) => {
+  const slideshow = el("div", "project-image-slideshow");
+  const images = [
+    el("img", "project-slideshow-image is-active"),
+    el("img", "project-slideshow-image")
+  ];
+  let activeImageIndex = 0;
+  let activeIndex = 0;
+  let timerId;
+  let transitionId;
+
+  const setImage = (image, slide) => {
+    image.src = slide.src;
+    image.alt = slide.alt || "";
+    applyMediaPresentation(image, slide);
+  };
+
+  const showSlide = (index, animate = true) => {
+    const slide = slides[index];
+    if (!animate) {
+      window.clearTimeout(transitionId);
+      setImage(images[activeImageIndex], slide);
+      images[activeImageIndex].classList.add("is-active");
+      activeIndex = index;
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const incomingImageIndex = activeImageIndex === 0 ? 1 : 0;
+    const incomingImage = images[incomingImageIndex];
+    const outgoingImage = images[activeImageIndex];
+    window.clearTimeout(transitionId);
+    incomingImage.classList.remove("is-active");
+    outgoingImage.classList.remove("is-active");
+
+    const finishTransition = () => {
+      setImage(incomingImage, slide);
+      void incomingImage.offsetWidth;
+      incomingImage.classList.add("is-active");
+      activeImageIndex = incomingImageIndex;
+    };
+
+    if (prefersReducedMotion) {
+      finishTransition();
+    } else {
+      transitionId = window.setTimeout(finishTransition, 540);
+    }
+    activeIndex = index;
+  };
+
+  const restartTimer = () => {
+    window.clearInterval(timerId);
+    timerId = window.setInterval(() => {
+      showSlide((activeIndex + 1) % slides.length);
+    }, 5000);
+  };
+
+  slides.forEach((slide) => {
+    const preload = new Image();
+    preload.src = slide.src;
+  });
+  showSlide(activeIndex, false);
+  slideshow.append(...images);
+
+  if (slides.length > 1) {
+    const createNavButton = (direction, label, icon) => {
+      const button = el("button", `project-slideshow-nav project-slideshow-${direction}`);
+      const iconImage = el("img");
+      button.type = "button";
+      button.setAttribute("aria-label", label);
+      button.title = label;
+      iconImage.src = icon;
+      iconImage.alt = "";
+      button.append(iconImage);
+      return button;
+    };
+    const previous = createNavButton("prev", "Previous image", "../icons/chevron-left.svg");
+    const next = createNavButton("next", "Next image", "../icons/chevron-right.svg");
+    previous.addEventListener("click", () => {
+      showSlide((activeIndex - 1 + slides.length) % slides.length);
+      restartTimer();
+    });
+    next.addEventListener("click", () => {
+      showSlide((activeIndex + 1) % slides.length);
+      restartTimer();
+    });
+    slideshow.append(previous, next);
+    restartTimer();
+  }
+
+  return slideshow;
+};
+
 // Wraps a controllable <video> in a shell with a large custom play-button overlay
 // so paused videos clearly invite playback while native controls handle scrubbing.
 const decorateWithPlayOverlay = (figure, video, media = {}) => {
@@ -646,6 +739,7 @@ const renderStandardProject = () => {
           image.src = figureData.src;
           image.alt = figureData.alt || figureData.caption || "";
           image.loading = "lazy";
+          applyMediaPresentation(image, figureData);
           figure.append(image);
         }
         if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
@@ -730,7 +824,14 @@ const renderStandardProject = () => {
     }
     if (section.afterBullets?.length) addParagraphs(designCopy, section.afterBullets);
     design.append(designCopy);
-    if (section.asideFigure) {
+    if (section.asideSlideshow?.slides?.length) {
+      const slideshow = section.asideSlideshow;
+      const figure = el("figure", `standard-section-paired-figure standard-section-aside-figure project-slideshow-figure ${slideshow.figureClass || ""}`.trim());
+      figure.append(createImageSlideshow(slideshow.slides));
+      if (slideshow.caption) figure.append(el("figcaption", "", slideshow.caption));
+      design.classList.add("fx10-design-section-with-media");
+      design.append(figure);
+    } else if (section.asideFigure) {
       const figure = el("figure", `standard-section-paired-figure standard-section-aside-figure ${section.asideFigure.figureClass || ""}`.trim());
       const image = el("img");
       image.src = section.asideFigure.src;
@@ -980,6 +1081,13 @@ const renderStandardProject = () => {
       outcome.append(figure);
     }
     if (project.videoAfterOutcome) appendVideoContent(outcome);
+    const appendOutcomeActions = () => {
+      if (!project.links?.length) return;
+      const actions = el("div", "project-actions");
+      project.links.forEach((link) => actions.append(createLink(link)));
+      outcome.append(actions);
+    };
+    if (project.linksBeforeOutcomeFigures) appendOutcomeActions();
     if (project.outcomeFigures?.length) {
       const figurePair = el("div", "standard-section-figure-pair outcome-supplemental-figures");
       project.outcomeFigures.forEach((figureData) => {
@@ -1000,6 +1108,7 @@ const renderStandardProject = () => {
           image.src = figureData.src;
           image.alt = figureData.alt || figureData.caption || "";
           image.loading = "lazy";
+          applyMediaPresentation(image, figureData);
           figure.append(image);
         }
         if (figureData.caption) figure.append(el("figcaption", "", figureData.caption));
@@ -1007,11 +1116,7 @@ const renderStandardProject = () => {
       });
       outcome.append(figurePair);
     }
-    if (project.links?.length) {
-      const actions = el("div", "project-actions");
-      project.links?.forEach((link) => actions.append(createLink(link)));
-      outcome.append(actions);
-    }
+    if (!project.linksBeforeOutcomeFigures) appendOutcomeActions();
     root.append(outcome);
   }
   renderMoreProjects();
