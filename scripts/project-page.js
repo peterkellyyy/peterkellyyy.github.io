@@ -332,7 +332,9 @@ const renderMoreProjects = () => {
   section.append(el("p", "fx10-section-kicker", "More Projects"));
   const grid = el("div", "project-grid more-projects-grid");
   projectOrder
-    .filter((projectKey) => projectKey !== key)
+    .filter((projectKey) => projectKey !== key
+      && !(typeof temporarilyHiddenPortfolioCards !== "undefined"
+        && temporarilyHiddenPortfolioCards.has(projectKey)))
     .slice(0, 3)
     .forEach((projectKey) => grid.append(createMoreProjectCard(moreProjectCards[projectKey])));
   grid.append(createReturnProjectsCard());

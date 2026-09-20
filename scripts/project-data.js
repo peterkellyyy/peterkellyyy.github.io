@@ -1396,6 +1396,7 @@ const projectOrder = [
 // Cards temporarily hidden from the homepage grid (their pages remain
 // reachable by direct link).
 const temporarilyHiddenPortfolioCards = new Set([
+  "berkshire-grey",
   "morse-corp",
   "irobot",
   "sikorsky"
